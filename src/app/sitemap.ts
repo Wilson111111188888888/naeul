@@ -1,13 +1,15 @@
 import type { MetadataRoute } from "next";
+import { getAllPostsMeta } from "@/lib/blog";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://naeul.fr";
 
-// Phase 1 (pré-lancement) : on n'indexe que les pages publiques actuelles.
-// Les routes e-commerce (produit, panier, checkout) restent en dormance, non listées.
+// Phase 1 (pré-lancement) : pages publiques + blog SEO.
+// Les routes e-commerce (panier, checkout) restent en dormance, non listées.
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
+  const staticRoutes = [
     "",
     "/le-produit",
+    "/blog",
     "/a-propos",
     "/faq",
     "/contact",
@@ -18,4 +20,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
     priority: path === "" ? 1 : 0.6,
   }));
+
+  const posts = getAllPostsMeta().map((post) => ({
+    url: `${SITE_URL}/blog/${post.slug}`,
+    lastModified: post.updated ?? post.date,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...posts];
 }
