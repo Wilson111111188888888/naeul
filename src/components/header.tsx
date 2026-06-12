@@ -38,7 +38,7 @@ export function Header() {
               </Link>
             ))}
             <Link href="/#precommande" className={buttonClasses({ size: "sm" })}>
-              Précommande -15%
+              Je veux être prévenue (-15%)
             </Link>
           </nav>
 
@@ -78,7 +78,7 @@ export function Header() {
               onClick={() => setOpen(false)}
               className={buttonClasses({ size: "sm", className: "mt-2 w-full" })}
             >
-              Précommande -15%
+              Je veux être prévenue (-15%)
             </Link>
           </nav>
         </Container>

@@ -51,7 +51,7 @@ export function WaitlistForm({
         )}
       >
         <CheckCircle size={22} weight="light" className="shrink-0" />
-        <p>C&apos;est noté ! Surveillez votre boîte mail pour votre code -15%.</p>
+        <p>C&apos;est noté. Surveille ta boîte mail pour ton code -15%.</p>
       </div>
     );
   }
@@ -62,10 +62,10 @@ export function WaitlistForm({
         <Input
           type="email"
           required
-          placeholder="votre@email.fr"
+          placeholder="ton@email.fr"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          aria-label="Votre adresse email"
+          aria-label="Ton adresse email"
           className={tone === "onAccent" ? "border-cream/30 bg-cream/95" : "bg-cream"}
         />
         <Button
@@ -81,7 +81,7 @@ export function WaitlistForm({
       </form>
       {status === "error" && (
         <p className={cn("mt-2 text-sm", tone === "onAccent" ? "text-cream/90" : "text-terracotta")}>
-          Inscription impossible pour le moment. Réessayez.
+          Inscription impossible pour le moment. Réessaie.
         </p>
       )}
       <p className={cn("mt-2.5 text-xs", tone === "onAccent" ? "text-cream/70" : "text-stone")}>

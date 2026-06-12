@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Sparkle, Drop, MapPin, ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { Sparkle, Drop, Leaf, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { Container } from "@/components/ui/container";
 import { Wordmark } from "@/components/wordmark";
 import { WaitlistForm } from "@/components/waitlist-form";
@@ -19,12 +19,12 @@ const PILLARS = [
   {
     icon: Sparkle,
     title: "La peau grasse, spécifiquement",
-    text: "Une marque qui ne cherche pas à plaire à toutes les peaux. Une seule, la vôtre.",
+    text: "Une marque qui ne cherche pas à plaire à toutes les peaux. Une seule, la tienne.",
   },
   {
-    icon: MapPin,
-    title: "Pensé en France, fait en UE",
-    text: "Formulation française, fabrication européenne certifiée ISO 22716 et ECOCERT.",
+    icon: Leaf,
+    title: "Clean & vegan",
+    text: "Certifiée ECOCERT et ISO 22716. Vegan, sans parfum, sans gluten.",
   },
 ];
 
@@ -39,9 +39,8 @@ export default function Home() {
             K-beauty pour peau grasse, sans agresser.
           </h1>
           <p className="mt-5 max-w-md leading-relaxed text-stone">
-            Notre premier sérum arrive bientôt. Inscrivez-vous pour être prévenue en
-            avant-première et obtenir <strong className="text-ink">-15%</strong> sur votre
-            précommande.
+            Notre premier sérum arrive bientôt. Inscris-toi pour être prévenue en
+            avant-première et obtenir <strong className="text-ink">-15%</strong> au lancement.
           </p>
           <WaitlistForm className="mt-8 w-full max-w-md" />
         </Container>
@@ -101,7 +100,7 @@ export default function Home() {
               </ul>
               <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
                 <Link href="/le-produit" className={buttonClasses({ size: "lg" })}>
-                  Découvrir le produit
+                  En savoir plus
                   <ArrowRight size={18} />
                 </Link>
                 <span className="text-sm text-stone">
@@ -120,13 +119,13 @@ export default function Home() {
       <section className="border-y border-line bg-cream">
         <Container className="py-20 text-center md:py-28">
           <div className="mx-auto max-w-2xl">
-            <p className="text-xs uppercase tracking-[0.25em] text-stone">나을 · Notre histoire</p>
+            <p className="text-xs uppercase tracking-[0.25em] text-stone">Notre histoire</p>
             <p className="mt-6 text-balance font-serif text-2xl leading-relaxed text-ink md:text-3xl">
               « Naeul » signifie « devenir meilleure » en coréen. Une marque pensée pour
-              accompagner votre peau, pas pour la juger.
+              accompagner ta peau, pas pour la juger.
             </p>
             <p className="mt-6 leading-relaxed text-stone">
-              Nous construisons naeul pas à pas, avec exigence et transparence. Les premières
+              On construit naeul pas à pas, avec exigence et transparence. Les premières
               inscrites seront aux premières loges — et les premières servies.
             </p>
           </div>
@@ -137,15 +136,15 @@ export default function Home() {
       <Reviews />
 
       {/* CAPTURE FINALE */}
-      <section id="precommande" className="scroll-mt-20 border-t border-line bg-sage">
+      <section id="precommande" className="scroll-mt-20 border-y border-line bg-cream">
         <Container className="flex flex-col items-center gap-6 py-20 text-center md:py-28">
-          <h2 className="max-w-xl text-balance text-3xl text-cream md:text-4xl">
-            Soyez prévenue en avant-première. -15% sur votre précommande.
+          <h2 className="max-w-xl text-balance text-3xl md:text-4xl">
+            Sois prévenue en avant-première. -15% au lancement.
           </h2>
-          <p className="max-w-md leading-relaxed text-cream/80">
-            Rejoignez la liste. Vous recevrez votre code et serez la première informée du lancement.
+          <p className="max-w-md leading-relaxed text-stone">
+            Rejoins la liste. Tu recevras ton code et seras la première informée du lancement.
           </p>
-          <WaitlistForm tone="onAccent" className="w-full max-w-md" />
+          <WaitlistForm className="w-full max-w-md" />
         </Container>
       </section>
     </>

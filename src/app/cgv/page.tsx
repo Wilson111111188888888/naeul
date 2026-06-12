@@ -25,7 +25,7 @@ export default function CgvPage() {
       <h2>3. Prix</h2>
       <p>
         Les prix sont indiqués en euros toutes taxes comprises. Les frais de livraison sont précisés
-        avant la validation de la commande. La livraison est offerte à partir de 2 boîtes.
+        avant la validation de la commande. Livraison Mondial Relay 3,50 €, offerte dès 50 €.
       </p>
 
       <h2>4. Commande et paiement</h2>

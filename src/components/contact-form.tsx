@@ -8,9 +8,9 @@ import { Input, Textarea, Label } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 const schema = z.object({
-  name: z.string().min(2, "Indiquez votre nom."),
+  name: z.string().min(2, "Indique ton nom."),
   email: z.string().email("Email invalide."),
-  message: z.string().min(10, "Votre message est un peu court."),
+  message: z.string().min(10, "Ton message est un peu court."),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -49,7 +49,7 @@ export function ContactForm() {
         <CheckCircle size={36} weight="light" className="text-sage" />
         <h2 className="text-xl">Message envoyé</h2>
         <p className="text-sm leading-relaxed text-stone">
-          Merci, nous revenons vers vous sous 24-48h ouvrées à l'adresse indiquée.
+          Merci, on revient vers toi sous 24-48h ouvrées à l'adresse indiquée.
         </p>
       </div>
     );

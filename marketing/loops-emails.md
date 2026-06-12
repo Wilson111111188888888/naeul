@@ -12,7 +12,7 @@ Prêts à coller dans Loops. Voix de marque : posée, experte, douce, éducative
 
 ## Email 1 — Welcome (immédiat, J+0)
 
-**Objet :** Bienvenue chez naeul — ton −15 % est là 🤍
+**Objet :** Bienvenue chez naeul — ton −15 % est là
 **Préheader :** « Devenir meilleure » — et ta peau grasse aussi.
 
 Bonjour {firstName},
@@ -111,7 +111,7 @@ Encore merci d'être là si tôt,
 
 ## Email 5 — Lancement (broadcast, le jour J)
 
-**Objet :** C'est aujourd'hui. 🤍 naeul est en ligne (−15 % pour toi)
+**Objet :** C'est aujourd'hui. naeul est en ligne (−15 % pour toi)
 **Préheader :** Ton code BIENVENUE15 t'attend.
 
 Bonjour {firstName},

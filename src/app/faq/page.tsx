@@ -18,7 +18,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Que signifie « naeul » ?",
-    a: "Naeul (나을) signifie « devenir meilleure » en coréen. C'est l'idée derrière la marque : accompagner votre peau, en douceur, sans la juger.",
+    a: "Naeul (나을) signifie « devenir meilleure » en coréen. C'est l'idée derrière la marque : accompagner ta peau, en douceur, sans la juger.",
   },
   {
     q: "Pourquoi spécifiquement la peau grasse ?",
@@ -34,11 +34,11 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "C'est quoi la précommande et le -15% ?",
-    a: "En vous inscrivant maintenant, vous rejoignez la liste d'avant-première. Vous recevez un code -15% à utiliser sur votre première commande au lancement, et vous êtes prévenue en priorité dès que le produit est disponible.",
+    a: "En t'inscrivant maintenant, tu rejoins la liste d'avant-première. Tu reçois un code -15% à utiliser sur ta première commande au lancement, et tu es prévenue en priorité dès que le produit est disponible.",
   },
   {
     q: "Comment être prévenue du lancement ?",
-    a: "Laissez votre email sur la page d'accueil. C'est tout. Pas de spam : vous recevez seulement les étapes importantes et votre code de bienvenue.",
+    a: "Laisse ton email sur la page d'accueil. C'est tout. Pas de spam : tu reçois seulement les étapes importantes et ton code de bienvenue.",
   },
 ];
 
@@ -50,7 +50,7 @@ export default function FaqPage() {
         <p className="mt-4 text-lg leading-relaxed text-stone">
           Tout ce qu&apos;il faut savoir sur naeul et la précommande. Une autre question ?{" "}
           <Link href="/contact" className="text-sage underline underline-offset-4">
-            Écrivez-nous
+            Écris-nous
           </Link>
           .
         </p>
@@ -73,7 +73,7 @@ export default function FaqPage() {
 
       <div className="mt-12">
         <Link href="/#precommande" className={buttonClasses({ size: "lg" })}>
-          Rejoindre la précommande -15%
+          Je veux être prévenue (-15%)
         </Link>
       </div>
     </Container>

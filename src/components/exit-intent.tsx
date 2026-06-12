@@ -85,7 +85,7 @@ export function ExitIntent() {
           Prends <strong className="text-ink">-15 %</strong> sur ta première commande. Inscris-toi et
           sois prévenue en avant-première du lancement.
         </p>
-        <WaitlistForm className="mt-5" cta="Je veux -15%" />
+        <WaitlistForm className="mt-5" />
       </div>
     </div>
   );

@@ -21,8 +21,7 @@ export default function CartPage() {
 
   const resolved = resolveLines(lines);
   const total = cartTotal(lines);
-  const totalBoxes = resolved.reduce((s, l) => s + l.variant.flacons * l.quantity, 0);
-  const freeShipping = totalBoxes >= 2;
+  const freeShipping = total >= 50;
 
   async function checkout() {
     setLoading(true);
@@ -46,7 +45,7 @@ export default function CartPage() {
     return (
       <Container className="flex flex-col items-center py-28 text-center">
         <Bag size={40} className="text-stone" />
-        <h1 className="mt-6 text-3xl">Votre panier est vide</h1>
+        <h1 className="mt-6 text-3xl">Ton panier est vide</h1>
         <p className="mt-3 max-w-sm text-stone">
           Une routine, un geste, une peau plus lisse. Commencez par le produit hero.
         </p>
@@ -59,7 +58,7 @@ export default function CartPage() {
 
   return (
     <Container className="py-16 md:py-20">
-      <h1 className="text-3xl md:text-4xl">Votre panier</h1>
+      <h1 className="text-3xl md:text-4xl">Ton panier</h1>
 
       <div className="mt-10 grid gap-12 lg:grid-cols-[1fr_360px]">
         {/* Lignes */}
@@ -128,7 +127,7 @@ export default function CartPage() {
             </dl>
             {!freeShipping && (
               <p className="mt-3 rounded-lg bg-sand px-3 py-2 text-xs text-stone">
-                Ajoutez une boîte pour bénéficier de la livraison offerte.
+                Plus que {formatPrice(50 - total)} pour la livraison offerte.
               </p>
             )}
             <div className="mt-5 flex justify-between border-t border-line pt-5">

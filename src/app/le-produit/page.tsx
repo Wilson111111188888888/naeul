@@ -124,12 +124,12 @@ export default function LeProduitPage() {
           {/* Waitlist */}
           <div className="mt-8 rounded-2xl border border-line bg-cream p-6">
             <p className="text-sm font-medium text-ink">
-              Le sérum arrive bientôt. Soyez prévenue en avant-première.
+              Le sérum arrive bientôt. Sois prévenue en avant-première.
             </p>
             <p className="mt-1 text-xs text-stone">
               Premier batch limité — les inscrites sont prévenues et servies en priorité.
             </p>
-            <WaitlistForm className="mt-4" cta="Je veux -15%" />
+            <WaitlistForm className="mt-4" />
           </div>
         </div>
       </Container>
@@ -139,7 +139,7 @@ export default function LeProduitPage() {
         <Container className="py-16 md:py-24">
           <div className="max-w-3xl">
             <p className="text-xs uppercase tracking-[0.25em] text-stone">La différence naeul</p>
-            <h2 className="mt-3 text-3xl md:text-4xl">On ne vous assèche pas.</h2>
+            <h2 className="mt-3 text-3xl md:text-4xl">On ne t&apos;assèche pas.</h2>
             <p className="mt-6 text-lg leading-relaxed text-stone">{product.differentiator}</p>
           </div>
         </Container>
@@ -247,12 +247,12 @@ export default function LeProduitPage() {
       <Reviews />
 
       {/* CTA FINAL */}
-      <section id="precommande" className="scroll-mt-20 bg-sage">
+      <section id="precommande" className="scroll-mt-20 border-t border-line bg-cream">
         <Container className="flex flex-col items-center gap-6 py-20 text-center md:py-24">
-          <h2 className="max-w-xl text-balance text-3xl text-cream md:text-4xl">
-            Soyez la première à l&apos;essayer. -15% sur votre précommande.
+          <h2 className="max-w-xl text-balance text-3xl md:text-4xl">
+            Sois la première à l&apos;essayer. -15% au lancement.
           </h2>
-          <WaitlistForm tone="onAccent" cta="Je veux -15%" className="w-full max-w-md" />
+          <WaitlistForm className="w-full max-w-md" />
         </Container>
       </section>
     </div>

@@ -110,17 +110,17 @@ export default async function ArticlePage({
 
         {/* CTA */}
         <div className="mt-12 rounded-2xl border border-line bg-cream p-8 text-center">
-          <h2 className="text-xl">Le sérum naeul arrive bientôt</h2>
+          <h2 className="text-xl">Notre sérum arrive bientôt</h2>
           <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-stone">
-            K-beauty pour peau grasse, sans agresser. Inscrivez-vous pour être prévenue en
+            K-beauty pour peau grasse, sans agresser. Inscris-toi pour être prévenue en
             avant-première et obtenir -15 %.
           </p>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <Link href="/#precommande" className={buttonClasses({ size: "lg" })}>
-              Rejoindre la précommande
+              Je veux être prévenue (-15%)
             </Link>
             <Link href="/le-produit" className={buttonClasses({ variant: "secondary", size: "lg" })}>
-              Voir le produit
+              En savoir plus
             </Link>
           </div>
         </div>

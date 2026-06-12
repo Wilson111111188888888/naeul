@@ -26,7 +26,7 @@ export function BuyBox({ product }: { product: Product }) {
     <div>
       {/* Sélecteur de pack */}
       <fieldset className="space-y-3">
-        <legend className="mb-3 text-sm font-medium text-ink">Choisissez votre format</legend>
+        <legend className="mb-3 text-sm font-medium text-ink">Choisis ton format</legend>
         {product.variants.map((variant) => {
           const active = variant.id === selectedId;
           const perBox = variant.price / variant.flacons;
@@ -103,7 +103,7 @@ export function BuyBox({ product }: { product: Product }) {
       <div className="mt-6 space-y-2.5 border-t border-line pt-5 text-sm text-stone">
         <p className="flex items-center gap-2.5">
           <Truck size={18} className="shrink-0 text-sage" />
-          Livraison France 48-72h · offerte dès 2 boîtes
+          Livraison Mondial Relay 3,50 € · offerte dès 50 €
         </p>
         <p className="flex items-center gap-2.5">
           <ArrowsClockwise size={18} className="shrink-0 text-sage" />

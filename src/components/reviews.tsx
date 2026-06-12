@@ -36,12 +36,12 @@ export function Reviews() {
               <p className="mt-2 leading-relaxed text-stone">
                 Nous n&apos;affichons que des avis réels et vérifiés. Le sérum n&apos;étant pas
                 encore lancé, il n&apos;y en a pas encore — et nous n&apos;en inventerons jamais.
-                Inscrivez-vous : les premières inscrites seront aussi les premières à pouvoir
+                Inscris-toi : les premières inscrites seront aussi les premières à pouvoir
                 donner leur avis.
               </p>
             </div>
             <Link href="/#precommande" className={buttonClasses({ size: "lg" })}>
-              Rejoindre la précommande -15%
+              Je veux être prévenue (-15%)
             </Link>
           </div>
         ) : (

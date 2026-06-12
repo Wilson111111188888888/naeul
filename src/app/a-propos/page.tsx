@@ -103,13 +103,13 @@ export default function AProposPage() {
       {/* CTA */}
       <Container className="flex flex-col items-center gap-6 py-20 text-center">
         <h2 className="max-w-xl text-balance text-3xl md:text-4xl">
-          Soyez là dès le premier jour.
+          Sois là dès le premier jour.
         </h2>
         <p className="max-w-md leading-relaxed text-stone">
-          Rejoignez la précommande et obtenez -15% sur votre première commande.
+          Rejoins la liste d&apos;avant-première et obtiens -15% au lancement.
         </p>
         <Link href="/#precommande" className={buttonClasses({ size: "lg" })}>
-          Rejoindre la précommande
+          Je veux être prévenue (-15%)
         </Link>
       </Container>
     </>
