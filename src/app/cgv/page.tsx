@@ -7,12 +7,12 @@ export default function CgvPage() {
   return (
     <ContentPage
       title="Conditions générales de vente"
-      intro="Les présentes CGV régissent les ventes réalisées sur naeul.fr."
+      intro="Les présentes CGV régissent les ventes réalisées sur naeul.com."
       updated="12 juin 2026"
     >
       <h2>1. Objet</h2>
       <p>
-        Les présentes conditions s'appliquent à toute commande passée sur le site naeul.fr par un
+        Les présentes conditions s'appliquent à toute commande passée sur le site naeul.com par un
         consommateur. Le vendeur est <Todo>raison sociale</Todo>.
       </p>
 
@@ -45,7 +45,7 @@ export default function CgvPage() {
         Conformément aux articles L221-18 et suivants du Code de la consommation, vous disposez d'un
         délai de <strong>14 jours</strong> à compter de la réception pour exercer votre droit de
         rétractation, sans avoir à justifier de motif. Pour l'exercer, contactez-nous à
-        contact@naeul.fr. Les frais de retour sont à votre charge, sauf produit défectueux.
+        contact@naeul.com. Les frais de retour sont à votre charge, sauf produit défectueux.
       </p>
       <p>
         Au-delà du droit légal, NAEUL applique une politique de retour étendue de 30 jours

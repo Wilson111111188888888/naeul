@@ -40,7 +40,7 @@ const jsonLd = {
       name: product.name,
       description: product.shortDescription,
       brand: { "@type": "Brand", name: "naeul" },
-      image: product.photos.map((p) => `https://naeul.fr${p.src}`),
+      image: product.photos.map((p) => `https://naeul.com${p.src}`),
       category: "Soin du visage / Sérum",
       offers: {
         "@type": "AggregateOffer",

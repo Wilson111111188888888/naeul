@@ -20,7 +20,7 @@ export default function RetoursPage() {
 
       <h2>Comment procéder</h2>
       <ol>
-        <li>Écrivez à contact@naeul.fr en indiquant votre numéro de commande.</li>
+        <li>Écrivez à contact@naeul.com en indiquant votre numéro de commande.</li>
         <li>Nous vous envoyons les instructions de retour sous 24-48h ouvrées.</li>
         <li>Renvoyez le produit (même entamé) à l'adresse indiquée.</li>
         <li>Le remboursement est effectué sous 14 jours après réception, sur le moyen de paiement initial.</li>
@@ -34,7 +34,7 @@ export default function RetoursPage() {
 
       <h2>Produit défectueux</h2>
       <p>
-        Si votre commande arrive endommagée, envoyez-nous une photo à contact@naeul.fr : nous
+        Si votre commande arrive endommagée, envoyez-nous une photo à contact@naeul.com : nous
         réexpédions ou remboursons immédiatement, sans retour nécessaire.
       </p>
     </ContentPage>

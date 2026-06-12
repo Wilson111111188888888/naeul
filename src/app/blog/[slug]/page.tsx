@@ -7,7 +7,7 @@ import { getPost, getPostSlugs, getAllPostsMeta } from "@/lib/blog";
 import { Container } from "@/components/ui/container";
 import { buttonClasses } from "@/components/ui/button";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://naeul.fr";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://naeul.com";
 
 export function generateStaticParams() {
   return getPostSlugs().map((slug) => ({ slug }));

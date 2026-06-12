@@ -11,7 +11,7 @@ const schema = z.object({
 const apiKey = process.env.RESEND_API_KEY;
 const resend = apiKey ? new Resend(apiKey) : null;
 
-const TO = process.env.CONTACT_TO ?? "contact@naeul.fr";
+const TO = process.env.CONTACT_TO ?? "contact@naeul.com";
 const FROM = process.env.CONTACT_FROM ?? "NAEUL <onboarding@resend.dev>";
 
 export async function POST(request: Request) {

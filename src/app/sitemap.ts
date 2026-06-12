@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllPostsMeta } from "@/lib/blog";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://naeul.fr";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://naeul.com";
 
 // Phase 1 (pré-lancement) : pages publiques + blog SEO.
 // Les routes e-commerce (panier, checkout) restent en dormance, non listées.

@@ -20,7 +20,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://naeul.fr";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://naeul.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

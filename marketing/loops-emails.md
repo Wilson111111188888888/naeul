@@ -32,7 +32,7 @@ On te tient au courant à chaque étape, sans spam. À très vite,
 
 > 나을 signifie « devenir meilleure » en coréen.
 
-**CTA :** Découvrir le produit → https://naeul.fr/le-produit
+**CTA :** Découvrir le produit → https://naeul.com/le-produit
 
 ---
 
@@ -56,7 +56,7 @@ Dans le prochain email, je te montre exactement **quels actifs on a choisis, et 
 À dans une semaine,
 — L'équipe naeul
 
-**CTA :** Notre histoire → https://naeul.fr/a-propos
+**CTA :** Notre histoire → https://naeul.com/a-propos
 
 ---
 
@@ -82,7 +82,7 @@ La semaine prochaine, je t'emmène dans les coulisses : où on en est vraiment.
 
 — L'équipe naeul
 
-**CTA :** Voir le sérum → https://naeul.fr/le-produit
+**CTA :** Voir le sérum → https://naeul.com/le-produit
 
 ---
 
@@ -105,7 +105,7 @@ Tu fais partie des toutes premières informées. Quand le lancement sera là, tu
 Encore merci d'être là si tôt,
 — L'équipe naeul
 
-**CTA :** Tout savoir sur le produit → https://naeul.fr/le-produit
+**CTA :** Tout savoir sur le produit → https://naeul.com/le-produit
 
 ---
 
@@ -126,7 +126,7 @@ Le premier batch est limité. Si tu attendais un soin K-beauty pensé pour ta pe
 
 — L'équipe naeul
 
-**CTA :** Commander le sérum (−15 %) → https://naeul.fr/le-produit
+**CTA :** Commander le sérum (−15 %) → https://naeul.com/le-produit
 
 ---
 
@@ -145,4 +145,4 @@ Pas de spam, désinscription en un clic.
 
 — L'équipe naeul
 
-**CTA :** Je veux mon −15 % → https://naeul.fr/#precommande
+**CTA :** Je veux mon −15 % → https://naeul.com/#precommande

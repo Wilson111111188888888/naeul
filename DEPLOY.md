@@ -29,10 +29,10 @@ git push -u origin main
 
 | Name | Value | Note |
 |------|-------|------|
-| `NEXT_PUBLIC_SITE_URL` | `https://naeul.fr` | (ou l'URL Vercel temporaire au début) |
+| `NEXT_PUBLIC_SITE_URL` | `https://naeul.com` | (ou l'URL Vercel temporaire au début) |
 | `LOOPS_API_KEY` | *(ta clé Loops)* | active la collecte d'emails |
 | `RESEND_API_KEY` | *(ta clé Resend)* | formulaire de contact |
-| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | `naeul.fr` | analytics (optionnel) |
+| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | `naeul.com` | analytics (optionnel) |
 
 4. **Deploy.** Tu obtiens une URL `…vercel.app` live en ~1 min.
 
@@ -40,19 +40,19 @@ git push -u origin main
 
 ---
 
-## 3. Brancher le domaine naeul.fr
+## 3. Brancher le domaine naeul.com
 
-1. Achète `naeul.fr` (OVH, Namecheap… ~12 €/an). *(Achat = paiement, à faire toi-même.)*
-2. Vercel → projet → **Settings → Domains → Add** → `naeul.fr` (+ `www.naeul.fr`).
+1. Achète `naeul.com` (OVH, Namecheap… ~12 €/an). *(Achat = paiement, à faire toi-même.)*
+2. Vercel → projet → **Settings → Domains → Add** → `naeul.com` (+ `www.naeul.com`).
 3. Suis les enregistrements DNS indiqués par Vercel (A / CNAME) chez ton registrar.
-4. Une fois le domaine actif, mets `NEXT_PUBLIC_SITE_URL=https://naeul.fr` puis **Redeploy** (pour que sitemap, canoniques et Open Graph utilisent la bonne URL).
+4. Une fois le domaine actif, mets `NEXT_PUBLIC_SITE_URL=https://naeul.com` puis **Redeploy** (pour que sitemap, canoniques et Open Graph utilisent la bonne URL).
 
 ---
 
 ## 4. Google Search Console + sitemap
 
 ### Vérifier la propriété
-1. Va sur **search.google.com/search-console** → **Ajouter une propriété** → **Préfixe d'URL** → `https://naeul.fr`.
+1. Va sur **search.google.com/search-console** → **Ajouter une propriété** → **Préfixe d'URL** → `https://naeul.com`.
 2. Choisis la méthode **Balise HTML**. Google donne un token (`content="..."`).
 3. Dans Vercel → Environment Variables, ajoute :
    - `GOOGLE_SITE_VERIFICATION` = *(le token, sans la balise `<meta>`, juste la valeur de `content`)*
@@ -61,20 +61,20 @@ git push -u origin main
 
 ### Soumettre le sitemap
 1. Search Console → **Sitemaps** (menu de gauche).
-2. Saisis `sitemap.xml` → **Envoyer**. (URL complète : `https://naeul.fr/sitemap.xml`)
+2. Saisis `sitemap.xml` → **Envoyer**. (URL complète : `https://naeul.com/sitemap.xml`)
 3. Le sitemap liste la home, le produit, le blog et les 12 articles. Robots.txt l'autorise déjà.
 
 ### (Bonus SEO)
 - Crée un **Google Business Profile** (impact SEO local).
-- Mets le lien `naeul.fr` dans les bios **TikTok** et **Instagram**.
+- Mets le lien `naeul.com` dans les bios **TikTok** et **Instagram**.
 
 ---
 
 ## 5. Checklist post-déploiement
 
-- [ ] Le site `…vercel.app` ou `naeul.fr` répond, pages OK.
+- [ ] Le site `…vercel.app` ou `naeul.com` répond, pages OK.
 - [ ] Inscription précommande → contact bien créé dans Loops.
-- [ ] `https://naeul.fr/sitemap.xml` et `/robots.txt` accessibles.
+- [ ] `https://naeul.com/sitemap.xml` et `/robots.txt` accessibles.
 - [ ] Propriété vérifiée dans Search Console + sitemap soumis.
 - [ ] `NEXT_PUBLIC_SITE_URL` pointe sur le domaine final.
 - [ ] Mentions légales complétées (raison sociale, SIRET, adresse) — voir `<Todo>` dans le code.

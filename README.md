@@ -61,9 +61,9 @@ Voir `.env.example`. Tout se dégrade proprement sans clé (message clair, pas d
 2. Sur **vercel.com** : New Project → importez le repo (Next.js auto-détecté).
 3. Ajoutez les variables d'environnement (au moins `LOOPS_API_KEY`, `NEXT_PUBLIC_SITE_URL`).
 4. Deploy.
-5. Domaine : achetez `naeul.fr` (OVH/Namecheap ~12 €/an), puis Project → Settings → Domains →
-   ajoutez `naeul.fr` et suivez les enregistrements DNS indiqués.
-6. Mettez `NEXT_PUBLIC_SITE_URL=https://naeul.fr` puis redéployez.
+5. Domaine : achetez `naeul.com` (OVH/Namecheap ~12 €/an), puis Project → Settings → Domains →
+   ajoutez `naeul.com` et suivez les enregistrements DNS indiqués.
+6. Mettez `NEXT_PUBLIC_SITE_URL=https://naeul.com` puis redéployez.
 
 ## À compléter avant lancement
 
