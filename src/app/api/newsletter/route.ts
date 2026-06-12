@@ -1,0 +1,46 @@
+import { NextResponse } from "next/server";
+import { z } from "zod";
+
+const schema = z.object({ email: z.string().email() });
+
+const LOOPS_API_KEY = process.env.LOOPS_API_KEY;
+
+/**
+ * Inscription newsletter → ajout du contact dans Loops.
+ * Le welcome email avec code -15% est déclenché côté Loops (loop « Welcome »).
+ */
+export async function POST(request: Request) {
+  let email: string;
+  try {
+    email = schema.parse(await request.json()).email;
+  } catch {
+    return NextResponse.json({ error: "Email invalide." }, { status: 400 });
+  }
+
+  if (!LOOPS_API_KEY) {
+    console.info("[newsletter] (simulé — LOOPS_API_KEY absente)", email);
+    return NextResponse.json({ ok: true, simulated: true });
+  }
+
+  try {
+    const res = await fetch("https://app.loops.so/api/v1/contacts/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${LOOPS_API_KEY}`,
+      },
+      body: JSON.stringify({ email, source: "website", subscribed: true }),
+    });
+    if (!res.ok) {
+      const detail = await res.text();
+      console.error("[newsletter] Loops error:", res.status, detail);
+      // Contact déjà existant : on considère l'inscription comme réussie.
+      if (res.status === 409) return NextResponse.json({ ok: true });
+      throw new Error("Loops error");
+    }
+    return NextResponse.json({ ok: true });
+  } catch (err) {
+    console.error("[newsletter]", err);
+    return NextResponse.json({ error: "Inscription impossible pour le moment." }, { status: 500 });
+  }
+}

@@ -1,0 +1,42 @@
+import type { Metadata } from "next";
+import { Container } from "@/components/ui/container";
+import { ContactForm } from "@/components/contact-form";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Une question sur votre peau, une commande ou un retour ? Écrivez-nous.",
+};
+
+export default function ContactPage() {
+  return (
+    <Container className="py-16 md:py-24">
+      <div className="grid gap-12 md:grid-cols-2 md:gap-20">
+        <div>
+          <h1 className="text-4xl md:text-5xl">Nous écrire</h1>
+          <p className="mt-4 leading-relaxed text-stone">
+            Une question sur la marque, la précommande ou votre inscription ? Nous répondons sous
+            24-48h ouvrées.
+          </p>
+          <dl className="mt-8 space-y-4 text-sm">
+            <div>
+              <dt className="font-medium text-ink">Email</dt>
+              <dd className="text-stone">contact@naeul.fr</dd>
+            </div>
+            <div>
+              <dt className="font-medium text-ink">Précommande</dt>
+              <dd className="text-stone">
+                Inscrivez-vous sur la{" "}
+                <a href="/#precommande" className="text-sage underline underline-offset-2">
+                  page d&apos;accueil
+                </a>{" "}
+                pour être prévenue en avant-première.
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <ContactForm />
+      </div>
+    </Container>
+  );
+}

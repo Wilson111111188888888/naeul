@@ -1,0 +1,92 @@
+"use client";
+
+import { useState } from "react";
+import { CheckCircle } from "@phosphor-icons/react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+/**
+ * Capture email pour la précommande. Poste vers /api/newsletter (→ Loops).
+ * `tone="light"` pour fond clair, `tone="onAccent"` pour fond sauge.
+ */
+export function WaitlistForm({
+  tone = "light",
+  cta = "Je veux être prévenue (-15%)",
+  className,
+}: {
+  tone?: "light" | "onAccent";
+  cta?: string;
+  className?: string;
+}) {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
+
+  async function submit(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error();
+      setStatus("done");
+      setEmail("");
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  if (status === "done") {
+    return (
+      <div
+        className={cn(
+          "flex items-center gap-3 rounded-xl border px-4 py-3.5 text-sm",
+          tone === "onAccent"
+            ? "border-cream/30 bg-cream/10 text-cream"
+            : "border-sage/30 bg-sage/[0.06] text-ink",
+          className,
+        )}
+      >
+        <CheckCircle size={22} weight="light" className="shrink-0" />
+        <p>C&apos;est noté ! Surveillez votre boîte mail pour votre code -15%.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className={className}>
+      <form onSubmit={submit} className="flex flex-col gap-3 sm:flex-row">
+        <Input
+          type="email"
+          required
+          placeholder="votre@email.fr"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          aria-label="Votre adresse email"
+          className={tone === "onAccent" ? "border-cream/30 bg-cream/95" : "bg-cream"}
+        />
+        <Button
+          type="submit"
+          disabled={status === "loading"}
+          className={cn(
+            "shrink-0",
+            tone === "onAccent" && "bg-cream text-ink hover:bg-sand",
+          )}
+        >
+          {status === "loading" ? "…" : cta}
+        </Button>
+      </form>
+      {status === "error" && (
+        <p className={cn("mt-2 text-sm", tone === "onAccent" ? "text-cream/90" : "text-terracotta")}>
+          Inscription impossible pour le moment. Réessayez.
+        </p>
+      )}
+      <p className={cn("mt-2.5 text-xs", tone === "onAccent" ? "text-cream/70" : "text-stone")}>
+        Pas de spam. Désinscription en un clic.
+      </p>
+    </div>
+  );
+}
