@@ -4,7 +4,8 @@ import { ContactForm } from "@/components/contact-form";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Une question sur votre peau, une commande ou un retour ? Écrivez-nous.",
+  description: "Une question sur la marque naeul, le sérum ou la précommande ? Écrivez-nous.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

@@ -19,17 +19,59 @@ import { formatPrice } from "@/lib/utils";
 const product = HERO_PRODUCT;
 
 export const metadata: Metadata = {
-  title: product.name,
-  description: product.shortDescription,
+  title: "Sérum aux exosomes et à la niacinamide pour peau grasse",
+  description:
+    "Sérum K-beauty pour peau grasse : niacinamide, exosomes, acide hyaluronique. Régule le sébum, apaise sans dessécher. Made in EU, vegan. Précommande -15%.",
+  alternates: { canonical: "/le-produit" },
 };
 
 const ACTIVE_ICONS = [Drop, Sparkle, Leaf, FlowerLotus, ShieldCheck, Sun];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Brand",
+      name: "naeul",
+      slogan: "K-beauty pour peau grasse, sans agresser.",
+    },
+    {
+      "@type": "Product",
+      name: product.name,
+      description: product.shortDescription,
+      brand: { "@type": "Brand", name: "naeul" },
+      image: product.photos.map((p) => `https://naeul.fr${p.src}`),
+      category: "Soin du visage / Sérum",
+      offers: {
+        "@type": "AggregateOffer",
+        priceCurrency: "EUR",
+        lowPrice: Math.min(...product.variants.map((v) => v.price)),
+        highPrice: Math.max(...product.variants.map((v) => v.price)),
+        offerCount: product.variants.length,
+        availability: "https://schema.org/PreOrder",
+      },
+      // Pas d'aggregateRating tant qu'il n'y a pas d'avis réels (sinon publicité trompeuse).
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: product.faq.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+};
 
 export default function LeProduitPage() {
   const [hero, ...gallery] = product.photos;
 
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* HERO */}
       <Container className="grid gap-10 py-12 md:grid-cols-2 md:gap-16 md:py-20">
         <div className="md:sticky md:top-24 md:self-start">
@@ -83,6 +125,9 @@ export default function LeProduitPage() {
           <div className="mt-8 rounded-2xl border border-line bg-cream p-6">
             <p className="text-sm font-medium text-ink">
               Le sérum arrive bientôt. Soyez prévenue en avant-première.
+            </p>
+            <p className="mt-1 text-xs text-stone">
+              Premier batch limité — les inscrites sont prévenues et servies en priorité.
             </p>
             <WaitlistForm className="mt-4" cta="Je veux -15%" />
           </div>

@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
+import { AnnouncementBar } from "@/components/announcement-bar";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CookieBanner } from "@/components/cookie-banner";
+import { ExitIntent } from "@/components/exit-intent";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -39,6 +41,14 @@ export const metadata: Metadata = {
     url: SITE_URL,
     images: ["/images/naeul-produit-avec-box.jpg"],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "naeul — K-beauty pour peau grasse, sans agresser",
+    description:
+      "Soins K-beauty doux et efficaces pour les peaux grasses. Lancement bientôt — inscris-toi pour -15%.",
+    images: ["/images/naeul-produit-avec-box.jpg"],
+  },
+  alternates: { canonical: "/" },
   robots: { index: true, follow: true },
 };
 
@@ -50,10 +60,12 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${fraunces.variable} ${inter.variable}`}>
       <body className="flex min-h-dvh flex-col bg-sand text-ink">
+        <AnnouncementBar />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
         <CookieBanner />
+        <ExitIntent />
       </body>
     </html>
   );

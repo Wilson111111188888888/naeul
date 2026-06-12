@@ -35,9 +35,9 @@ export default function Home() {
       <section className="flex min-h-[calc(100dvh-4rem)] items-center">
         <Container className="flex flex-col items-center py-16 text-center">
           <Wordmark className="text-7xl sm:text-8xl" hangulClassName="text-base tracking-[0.4em]" />
-          <p className="mt-10 max-w-xl text-balance font-serif text-2xl italic leading-snug text-ink sm:text-3xl">
+          <h1 className="mt-10 max-w-xl text-balance font-serif text-2xl italic font-normal leading-snug text-ink sm:text-3xl">
             K-beauty pour peau grasse, sans agresser.
-          </p>
+          </h1>
           <p className="mt-5 max-w-md leading-relaxed text-stone">
             Notre premier sérum arrive bientôt. Inscrivez-vous pour être prévenue en
             avant-première et obtenir <strong className="text-ink">-15%</strong> sur votre

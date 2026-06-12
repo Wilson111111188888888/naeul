@@ -4,7 +4,12 @@ import { CaretDown } from "@phosphor-icons/react/dist/ssr";
 import { Container } from "@/components/ui/container";
 import { buttonClasses } from "@/components/ui/button";
 
-export const metadata: Metadata = { title: "FAQ" };
+export const metadata: Metadata = {
+  title: "FAQ",
+  description:
+    "Questions fréquentes sur naeul : quand sort le sérum, pourquoi la peau grasse, où c'est fabriqué, comment être prévenue du lancement.",
+  alternates: { canonical: "/faq" },
+};
 
 const FAQ: { q: string; a: string }[] = [
   {

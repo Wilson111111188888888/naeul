@@ -8,7 +8,8 @@ import { Todo } from "@/components/content-page";
 export const metadata: Metadata = {
   title: "À propos",
   description:
-    "naeul, « devenir meilleure » en coréen. Une marque K-beauty française pensée pour les peaux grasses.",
+    "naeul, « devenir meilleure » en coréen. Une marque K-beauty française pensée pour les peaux grasses, sans les agresser.",
+  alternates: { canonical: "/a-propos" },
 };
 
 const VALUES = [

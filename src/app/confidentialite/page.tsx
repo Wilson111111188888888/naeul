@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { ContentPage, Todo } from "@/components/content-page";
 
-export const metadata: Metadata = { title: "Politique de confidentialité" };
+export const metadata: Metadata = {
+  title: "Politique de confidentialité",
+  description: "Comment naeul traite vos données personnelles, dans le respect du RGPD.",
+  alternates: { canonical: "/confidentialite" },
+};
 
 export default function ConfidentialitePage() {
   return (
