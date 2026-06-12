@@ -96,7 +96,7 @@ export default function BlogIndexPage() {
               href="/#precommande"
               className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-cream underline underline-offset-4"
             >
-              Rejoindre <ArrowRight size={14} />
+              Je veux être prévenue (-15%) <ArrowRight size={14} />
             </Link>
           </div>
         </aside>

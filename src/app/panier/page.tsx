@@ -47,10 +47,10 @@ export default function CartPage() {
         <Bag size={40} className="text-stone" />
         <h1 className="mt-6 text-3xl">Ton panier est vide</h1>
         <p className="mt-3 max-w-sm text-stone">
-          Une routine, un geste, une peau plus lisse. Commencez par le produit hero.
+          K-beauty pour peau grasse, sans agresser. Découvre notre sérum.
         </p>
-        <Link href="/produits/pads-exfoliants" className={buttonClasses({ size: "lg", className: "mt-8" })}>
-          Découvrir les pads
+        <Link href="/le-produit" className={buttonClasses({ size: "lg", className: "mt-8" })}>
+          En savoir plus
         </Link>
       </Container>
     );

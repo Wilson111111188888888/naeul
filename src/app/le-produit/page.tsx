@@ -101,12 +101,25 @@ export default function LeProduitPage() {
           </p>
 
           {/* Prix (info, pas d'achat en Phase 1) */}
-          <div className="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <span className="text-sm text-stone">À partir de</span>
-            <span className="font-serif text-3xl text-ink">{formatPrice(product.unitPrice)}</span>
-            <span className="text-sm text-stone">
-              · packs jusqu&apos;à {formatPrice(product.variants[2].price / product.variants[2].flacons)} le flacon
-            </span>
+          <div className="mt-6">
+            <ul className="divide-y divide-line overflow-hidden rounded-xl border border-line">
+              {product.variants.map((v) => (
+                <li key={v.id} className="flex items-center justify-between gap-4 px-4 py-3">
+                  <span className="text-sm text-ink">{v.label}</span>
+                  <span className="flex items-baseline gap-2">
+                    {v.saving > 0 && (
+                      <span className="text-xs font-medium text-sage">
+                        économise {formatPrice(v.saving)}
+                      </span>
+                    )}
+                    <span className="font-serif text-lg text-ink">{formatPrice(v.price)}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 text-xs text-stone">
+              Livraison Mondial Relay 3,50 € — offerte dès 50 €.
+            </p>
           </div>
 
           {/* Certifications */}

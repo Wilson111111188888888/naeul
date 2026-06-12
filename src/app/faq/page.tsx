@@ -18,7 +18,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Que signifie « naeul » ?",
-    a: "Naeul (나을) signifie « devenir meilleure » en coréen. C'est l'idée derrière la marque : accompagner ta peau, en douceur, sans la juger.",
+    a: "Naeul signifie « devenir meilleure » en coréen. C'est l'idée derrière la marque : accompagner ta peau, en douceur, sans la juger.",
   },
   {
     q: "Pourquoi spécifiquement la peau grasse ?",

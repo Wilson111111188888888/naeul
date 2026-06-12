@@ -74,11 +74,11 @@ export const HERO_PRODUCT: Product = {
     { id: "naeul-serum-3", flacons: 3, label: "3 flacons", price: 84.9, saving: 13 },
   ],
   photos: [
-    { src: "/images/naeul-produit-avec-box.jpg", alt: "Sérum naeul et sa boîte vert sauge" },
-    { src: "/images/naeul-produit-lifestyle.jpg", alt: "Sérum naeul avec feuillage vert" },
-    { src: "/images/naeul-produit-bois.jpg", alt: "Sérum naeul sur ambiance bois" },
-    { src: "/images/naeul-produit-minimal.jpg", alt: "Sérum naeul, composition minimaliste" },
-    { src: "/images/naeul-produit-bath.jpg", alt: "Sérum naeul dans une salle de bain" },
+    { src: "/images/naeul-produit-avec-box.jpg", alt: "Le sérum naeul aux exosomes et à la niacinamide et sa boîte vert sauge" },
+    { src: "/images/naeul-produit-lifestyle.jpg", alt: "Le sérum naeul avec un feuillage vert" },
+    { src: "/images/naeul-produit-bois.jpg", alt: "Le sérum naeul sur fond bois" },
+    { src: "/images/naeul-produit-minimal.jpg", alt: "Le sérum naeul, composition minimaliste" },
+    { src: "/images/naeul-produit-bath.jpg", alt: "Le sérum naeul dans une salle de bain" },
     { src: "/images/naeul-produit-dos.jpg", alt: "Dos de la boîte naeul avec la liste INCI" },
   ],
   forWho: [

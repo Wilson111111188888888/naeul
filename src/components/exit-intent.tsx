@@ -65,7 +65,7 @@ export function ExitIntent() {
       onClick={() => setOpen(false)}
     >
       <div
-        className="relative w-full max-w-md rounded-2xl border border-line bg-sand p-8 text-center shadow-xl shadow-ink/10"
+        className="relative w-full max-w-md rounded-2xl border border-line bg-sand p-8 text-center shadow-sm"
         onClick={(e) => e.stopPropagation()}
       >
         <button

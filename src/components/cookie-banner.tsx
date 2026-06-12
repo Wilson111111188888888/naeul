@@ -21,7 +21,7 @@ export function CookieBanner() {
   if (!visible) return null;
 
   return (
-    <div className="fixed inset-x-3 bottom-3 z-[60] mx-auto max-w-2xl rounded-2xl border border-line bg-cream/95 p-5 shadow-lg shadow-ink/5 backdrop-blur-md">
+    <div className="fixed inset-x-3 bottom-3 z-[60] mx-auto max-w-2xl rounded-2xl border border-line bg-cream/95 p-5 shadow-sm backdrop-blur-md">
       <p className="text-sm leading-relaxed text-stone">
         Nous utilisons uniquement des données nécessaires au fonctionnement du site et une mesure
         d'audience anonyme (sans cookie publicitaire). Tu gardes le contrôle.{" "}

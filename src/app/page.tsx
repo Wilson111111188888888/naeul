@@ -104,7 +104,9 @@ export default function Home() {
                   <ArrowRight size={18} />
                 </Link>
                 <span className="text-sm text-stone">
-                  Dès {formatPrice(HERO_PRODUCT.unitPrice)} · lancement bientôt
+                  {formatPrice(HERO_PRODUCT.variants[0].price)} · pack de 2{" "}
+                  {formatPrice(HERO_PRODUCT.variants[1].price)} · pack de 3{" "}
+                  {formatPrice(HERO_PRODUCT.variants[2].price)}
                 </span>
               </div>
             </div>
