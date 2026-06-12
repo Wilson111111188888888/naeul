@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Check, X, CaretDown, Drop, Sparkle, ShieldCheck, Leaf } from "@phosphor-icons/react/dist/ssr";
+import { Check, X, CaretDown, Drop, Sparkle, ShieldCheck, Leaf, Star } from "@phosphor-icons/react/dist/ssr";
 import { getProduct, PRODUCTS } from "@/lib/products";
 import { Container } from "@/components/ui/container";
 import { ProductVisual } from "@/components/product/product-visual";
@@ -176,9 +176,9 @@ export default async function ProductPage({
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {[0, 1, 2].map((i) => (
             <div key={i} className="rounded-xl border border-dashed border-line bg-sand/60 p-6">
-              <div className="flex gap-1 text-terracotta">
-                {"★★★★★".split("").map((s, j) => (
-                  <span key={j}>{s}</span>
+              <div className="flex gap-0.5 text-terracotta">
+                {[0, 1, 2, 3, 4].map((j) => (
+                  <Star key={j} size={16} weight="fill" />
                 ))}
               </div>
               <p className="mt-4 text-sm leading-relaxed text-stone">

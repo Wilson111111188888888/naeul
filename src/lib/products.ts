@@ -74,12 +74,12 @@ export const HERO_PRODUCT: Product = {
     { id: "naeul-serum-3", flacons: 3, label: "3 flacons", price: 84.9, saving: 13 },
   ],
   photos: [
-    { src: "/images/naeul-produit-avec-box.jpg", alt: "Le sérum naeul aux exosomes et à la niacinamide et sa boîte vert sauge" },
-    { src: "/images/naeul-produit-lifestyle.jpg", alt: "Le sérum naeul avec un feuillage vert" },
-    { src: "/images/naeul-produit-bois.jpg", alt: "Le sérum naeul sur fond bois" },
-    { src: "/images/naeul-produit-minimal.jpg", alt: "Le sérum naeul, composition minimaliste" },
-    { src: "/images/naeul-produit-bath.jpg", alt: "Le sérum naeul dans une salle de bain" },
-    { src: "/images/naeul-produit-dos.jpg", alt: "Dos de la boîte naeul avec la liste INCI" },
+    { src: "/images/naeul-produit-avec-box.jpg", alt: "naeul — le sérum aux exosomes et à la niacinamide, avec sa boîte vert sauge" },
+    { src: "/images/naeul-produit-lifestyle.jpg", alt: "naeul — le sérum, avec un feuillage vert" },
+    { src: "/images/naeul-produit-bois.jpg", alt: "naeul — le sérum, sur fond bois" },
+    { src: "/images/naeul-produit-minimal.jpg", alt: "naeul — le sérum, composition minimaliste" },
+    { src: "/images/naeul-produit-bath.jpg", alt: "naeul — le sérum, dans une salle de bain" },
+    { src: "/images/naeul-produit-dos.jpg", alt: "naeul — dos de la boîte, avec la liste INCI" },
   ],
   forWho: [
     "Peau grasse, mixte ou à pores visibles",

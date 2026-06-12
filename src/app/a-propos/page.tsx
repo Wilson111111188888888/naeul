@@ -36,7 +36,7 @@ export default function AProposPage() {
         <div className="relative aspect-[16/7] w-full overflow-hidden">
           <Image
             src="/images/naeul-produit-bois.jpg"
-            alt="Le sérum naeul, ambiance éditoriale"
+            alt="naeul — le sérum, ambiance éditoriale"
             fill
             sizes="100vw"
             className="object-cover"

@@ -119,7 +119,7 @@ export function BuyBox({ product }: { product: Product }) {
             <p className="font-serif text-base text-ink">{formatPrice(selected.price)}</p>
           </div>
           <Button className="flex-1" onClick={handleAdd}>
-            {justAdded ? "Ajouté ✓" : "Ajouter au panier"}
+            {justAdded ? "Ajouté" : "Ajouter au panier"}
           </Button>
         </div>
       </div>
