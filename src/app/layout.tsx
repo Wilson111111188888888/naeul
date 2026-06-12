@@ -50,6 +50,11 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
+  // Vérification Google Search Console : coller le token (méthode balise HTML) dans
+  // GOOGLE_SITE_VERIFICATION (Vercel → Environment Variables), puis redéployer.
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
 };
 
 export default function RootLayout({
