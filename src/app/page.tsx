@@ -71,16 +71,20 @@ export default function Home() {
       <section>
         <Container className="py-20 md:py-28">
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
-            <div className="overflow-hidden rounded-2xl bg-rose/30">
+            <Link
+              href="/le-produit"
+              aria-label="Voir le produit"
+              className="group block overflow-hidden rounded-2xl bg-rose/30"
+            >
               <Image
                 src={HERO_PRODUCT.photos[0].src}
                 alt={HERO_PRODUCT.photos[0].alt}
                 width={1100}
                 height={1400}
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
               />
-            </div>
+            </Link>
             <div>
               <p className="text-xs uppercase tracking-[0.25em] text-stone">Le produit qui arrive</p>
               <h2 className="mt-3 text-3xl md:text-4xl">{HERO_PRODUCT.name}</h2>
@@ -104,8 +108,8 @@ export default function Home() {
                   <ArrowRight size={18} />
                 </Link>
                 <span className="text-sm text-stone">
-                  {formatPrice(HERO_PRODUCT.variants[0].price)} · pack de 2{" "}
-                  {formatPrice(HERO_PRODUCT.variants[1].price)} · pack de 3{" "}
+                  1 flacon {formatPrice(HERO_PRODUCT.variants[0].price)} · pack de 2 ={" "}
+                  {formatPrice(HERO_PRODUCT.variants[1].price)} · pack de 3 ={" "}
                   {formatPrice(HERO_PRODUCT.variants[2].price)}
                 </span>
               </div>
@@ -116,6 +120,43 @@ export default function Home() {
 
       {/* PREUVES DE CONFIANCE */}
       <TrustStrip />
+
+      {/* POUR TOUTES LES PEAUX GRASSES */}
+      <section>
+        <Container className="py-20 md:py-28">
+          <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
+            <figure className="order-2 md:order-1">
+              <div className="overflow-hidden rounded-2xl bg-rose/30">
+                <Image
+                  src="/images/naeul-communaute.jpg"
+                  alt="Quatre femmes aux carnations variées tiennent le sérum naeul"
+                  width={1000}
+                  height={1000}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="aspect-square h-full w-full object-cover"
+                />
+              </div>
+              <figcaption className="mt-2 text-xs text-stone">
+                Visuel d&apos;inspiration — naeul est faite pour toutes les peaux grasses.
+              </figcaption>
+            </figure>
+            <div className="order-1 md:order-2">
+              <p className="text-xs uppercase tracking-[0.25em] text-stone">
+                Pour toutes les peaux grasses
+              </p>
+              <h2 className="mt-3 text-3xl md:text-4xl">Tu peux t&apos;y reconnaître.</h2>
+              <p className="mt-5 leading-relaxed text-stone">
+                La peau grasse n&apos;a pas un seul visage. naeul s&apos;adresse à toutes celles
+                qui brillent en milieu de journée — quels que soient ton teint, ton âge ou ton
+                histoire. Une marque, une seule peau : la tienne.
+              </p>
+              <Link href="/#precommande" className={buttonClasses({ size: "lg", className: "mt-8" })}>
+                Je veux être prévenue (-15%)
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </section>
 
       {/* NOTRE HISTOIRE */}
       <section className="border-y border-line bg-cream">

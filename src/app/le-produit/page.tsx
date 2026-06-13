@@ -21,7 +21,7 @@ const product = HERO_PRODUCT;
 export const metadata: Metadata = {
   title: "Sérum aux exosomes et à la niacinamide pour peau grasse",
   description:
-    "Sérum K-beauty pour peau grasse : niacinamide, exosomes, acide hyaluronique. Régule le sébum, apaise sans dessécher. Made in EU, vegan. Précommande -15%.",
+    "Sérum K-beauty pour peau grasse : niacinamide, exosomes, acide hyaluronique. Régule le sébum, apaise sans dessécher. Vegan, ECOCERT. Précommande -15%.",
   alternates: { canonical: "/le-produit" },
 };
 

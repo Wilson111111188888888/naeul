@@ -124,8 +124,25 @@
     animation: naeul-fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
+  /* Bannière défilante (marquee) */
+  @keyframes naeul-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: naeul-marquee 32s linear infinite;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .animate-fade-up {
+      animation: none;
+    }
+    .animate-marquee {
       animation: none;
     }
     html {

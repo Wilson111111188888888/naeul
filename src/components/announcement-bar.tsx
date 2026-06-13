@@ -1,16 +1,35 @@
 import Link from "next/link";
 
-/** Bandeau d'annonce fin, en haut de page. Adapté à la phase pré-lancement. */
+// Messages de conversion (sans « Made in EU » — on en parle le moins possible).
+const MESSAGES = [
+  "Précommande ouverte · -15 % en avant-première",
+  "Inscription = accès prioritaire au lancement",
+  "Premier batch limité",
+  "Vegan · ECOCERT · sans parfum",
+  "K-beauty pour peau grasse, sans agresser",
+];
+
+/** Bandeau d'annonce défilant (marquee), en haut de page. */
 export function AnnouncementBar() {
   return (
-    <div className="bg-ink text-center text-cream">
+    <div className="bg-ink text-cream">
       <Link
         href="/#precommande"
-        className="block px-4 py-2 text-xs tracking-wide transition-opacity hover:opacity-90"
+        aria-label="Précommande ouverte — -15 % en avant-première"
+        className="block overflow-hidden py-2"
       >
-        Précommande ouverte — <strong className="font-medium">-15 %</strong> en avant-première
-        <span className="mx-2 text-cream/40">·</span>
-        Made in EU
+        <div className="flex w-max animate-marquee whitespace-nowrap">
+          {[0, 1].map((group) => (
+            <ul key={group} className="flex shrink-0" aria-hidden={group === 1}>
+              {MESSAGES.map((m, i) => (
+                <li key={i} className="flex items-center text-xs tracking-wide">
+                  <span className="mx-6">{m}</span>
+                  <span className="text-cream/40">·</span>
+                </li>
+              ))}
+            </ul>
+          ))}
+        </div>
       </Link>
     </div>
   );

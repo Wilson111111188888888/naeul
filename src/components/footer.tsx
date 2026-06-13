@@ -29,8 +29,8 @@ export function Footer() {
             </p>
             <div className="mt-5 flex gap-3">
               <a
-                href="https://instagram.com"
-                aria-label="Instagram"
+                href="https://www.instagram.com/naeul_by_kbeauty"
+                aria-label="naeul sur Instagram"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-lg border border-line text-ink transition-colors hover:border-sage hover:text-sage"
@@ -38,8 +38,8 @@ export function Footer() {
                 <InstagramLogo size={18} />
               </a>
               <a
-                href="https://tiktok.com"
-                aria-label="TikTok"
+                href="https://www.tiktok.com/@naeul.bykbeauty"
+                aria-label="naeul sur TikTok"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-lg border border-line text-ink transition-colors hover:border-sage hover:text-sage"
