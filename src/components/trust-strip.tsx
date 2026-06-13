@@ -1,11 +1,10 @@
 import { SealCheck, Leaf, Certificate, MapPin } from "@phosphor-icons/react/dist/ssr";
 import { Container } from "@/components/ui/container";
-import { HERO_PRODUCT } from "@/lib/products";
 
 const ITEMS = [
   { icon: SealCheck, label: "ISO 22716 & ECOCERT", sub: "Laboratoire certifié" },
   { icon: Leaf, label: "Vegan, sans parfum", sub: "Sans gluten" },
-  { icon: Certificate, label: "CPNP enregistré", sub: HERO_PRODUCT.cpnp },
+  { icon: Certificate, label: "Conforme aux normes EU", sub: "Notification CPNP en cours" },
   { icon: MapPin, label: "K-beauty française", sub: "Conçue en France" },
 ];
 

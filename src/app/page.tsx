@@ -2,7 +2,16 @@ import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
 import Image from "next/image";
-import { Sparkle, Drop, Leaf, ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import {
+  Sparkle,
+  Drop,
+  Leaf,
+  ArrowRight,
+  Star,
+  Tag,
+  Package,
+  ShieldCheck,
+} from "@phosphor-icons/react/dist/ssr";
 import { Container } from "@/components/ui/container";
 import { Wordmark } from "@/components/wordmark";
 import { WaitlistForm } from "@/components/waitlist-form";
@@ -30,6 +39,24 @@ const PILLARS = [
     icon: Leaf,
     title: "Clean & vegan",
     text: "Certifiée ECOCERT et ISO 22716. Vegan, sans parfum, sans gluten.",
+  },
+];
+
+const FOUNDERS = [
+  {
+    icon: Star,
+    title: "Accès prioritaire",
+    text: "Tu es prévenue et servie avant tout le monde, dès l'ouverture.",
+  },
+  {
+    icon: Tag,
+    title: "-15% sur ta 1ʳᵉ commande",
+    text: "La remise Édition Fondatrices, appliquée automatiquement.",
+  },
+  {
+    icon: Package,
+    title: "Édition limitée",
+    text: "Seulement 200 flacons pour le tout premier batch.",
   },
 ];
 
@@ -100,6 +127,32 @@ export default function Home() {
                 </span>
                 <h3 className="mt-5 text-lg">{pillar.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-stone">{pillar.text}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* LES 200 PREMIÈRES (Édition Fondatrices) */}
+      <section className="border-b border-line">
+        <Container className="py-20 md:py-28">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs uppercase tracking-[0.25em] text-stone">Édition Fondatrices</p>
+            <h2 className="mt-3 text-3xl md:text-4xl">Les 200 premières</h2>
+            <p className="mt-4 leading-relaxed text-stone">
+              Le tout premier batch est limité à 200 flacons. Rejoins-le maintenant : tu fais partie
+              des fondatrices qui vivent le lancement en avant-première, avec -15% sur ta première
+              commande.
+            </p>
+          </div>
+          <div className="mt-14 grid gap-10 md:grid-cols-3">
+            {FOUNDERS.map((f) => (
+              <div key={f.title} className="text-center md:text-left">
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-sage/10 text-sage">
+                  <f.icon size={24} />
+                </span>
+                <h3 className="mt-5 text-lg">{f.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-stone">{f.text}</p>
               </div>
             ))}
           </div>
@@ -259,6 +312,20 @@ export default function Home() {
 
       {/* AVIS */}
       <Reviews />
+
+      {/* GARANTIE 30 JOURS */}
+      <section className="border-t border-line">
+        <Container className="py-16 md:py-20">
+          <div className="mx-auto flex max-w-2xl flex-col items-center gap-3 rounded-2xl border border-line bg-cream p-8 text-center md:p-10">
+            <ShieldCheck size={32} weight="light" className="text-sage" />
+            <h2 className="text-2xl md:text-3xl">30 jours pour tester. Sans risque.</h2>
+            <p className="max-w-md leading-relaxed text-stone">
+              Si naeul ne te convient pas, on te rembourse intégralement — même flacon entamé. Notre
+              seul critère : ta satisfaction.
+            </p>
+          </div>
+        </Container>
+      </section>
 
       {/* CAPTURE FINALE */}
       <section id="precommande" className="scroll-mt-20 border-y border-line bg-cream">

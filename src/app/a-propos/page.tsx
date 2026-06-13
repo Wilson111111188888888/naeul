@@ -105,6 +105,11 @@ export default function AProposPage() {
               </div>
             ))}
           </div>
+          <p className="mt-10 max-w-2xl text-sm leading-relaxed text-stone">
+            En toute transparence : notre formulation est en cours d&apos;enregistrement au portail
+            CPNP (Cosmetic Products Notification Portal) auprès des autorités européennes. Le numéro
+            sera affiché au lancement officiel.
+          </p>
         </Container>
       </section>
 

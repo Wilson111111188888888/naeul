@@ -58,7 +58,7 @@ export const HERO_PRODUCT: Product = {
   format: "Flacon pompe airless, verre transparent",
   volume: "30 ml / 1.01 fl oz",
   origin: "Designed in France · Made in EU (Lettonie)",
-  cpnp: "EU CPNP No 5853763",
+  cpnp: "Notification CPNP en cours",
   certifications: ["ISO 22716", "ECOCERT", "Vegan", "Sans parfum", "Sans gluten"],
   actives: [
     { name: "Niacinamide", role: "Régule la production de sébum, équilibre la peau" },

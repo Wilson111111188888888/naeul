@@ -1,11 +1,5 @@
 import { cn } from "@/lib/utils";
 
-/**
- * Nombre réel d'inscrits sur la liste d'avant-première.
- * ⚠️ À mettre à jour à la main avec le vrai chiffre (ne jamais gonfler artificiellement).
- */
-export const WAITLIST_COUNT = 100;
-
 const DOTS = [
   "var(--color-sage)",
   "var(--color-terracotta)",
@@ -13,7 +7,10 @@ const DOTS = [
   "var(--color-stone)",
 ];
 
-/** Petite preuve sociale honnête : « 100+ inscrites attendent déjà le lancement ». */
+/**
+ * Preuve sociale honnête, SANS chiffre annoncé (évite tout risque d'allégation
+ * trompeuse tant qu'il n'y a pas de compteur réel relié à Loops).
+ */
 export function WaitlistCount({ className }: { className?: string }) {
   return (
     <div className={cn("flex items-center justify-center gap-3", className)}>
@@ -26,10 +23,7 @@ export function WaitlistCount({ className }: { className?: string }) {
           />
         ))}
       </div>
-      <p className="text-sm text-stone">
-        <strong className="font-medium text-ink">{WAITLIST_COUNT}+</strong> inscrites attendent déjà
-        le lancement
-      </p>
+      <p className="text-sm text-stone">Les premières inscrites attendent déjà le lancement.</p>
     </div>
   );
 }

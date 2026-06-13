@@ -33,6 +33,10 @@ const FAQ: { q: string; a: string }[] = [
     a: "Oui : vegan, sans parfum et sans gluten, formulé dans un laboratoire certifié ISO 22716 et ECOCERT.",
   },
   {
+    q: "Le produit est-il déclaré aux autorités (CPNP) ?",
+    a: "Notre formulation est en cours d'enregistrement au portail CPNP (Cosmetic Products Notification Portal) auprès des autorités européennes. Le numéro sera affiché au lancement officiel.",
+  },
+  {
     q: "C'est quoi la précommande et le -15% ?",
     a: "En t'inscrivant maintenant, tu rejoins la liste d'avant-première. Tu reçois un code -15% à utiliser sur ta première commande au lancement, et tu es prévenue en priorité dès que le produit est disponible.",
   },
