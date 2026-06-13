@@ -112,6 +112,16 @@ export default function LeProduitPage() {
           <p className="mt-4 text-lg leading-relaxed text-stone">{product.tagline}</p>
           <p className="mt-4 leading-relaxed text-ink/80">{product.shortDescription}</p>
 
+          {/* Bénéfices clairs, près du CTA */}
+          <ul className="mt-6 space-y-2.5">
+            {product.does.map((d) => (
+              <li key={d} className="flex items-start gap-2.5 text-sm text-ink/85">
+                <Check size={17} weight="bold" className="mt-0.5 shrink-0 text-sage" />
+                {d}
+              </li>
+            ))}
+          </ul>
+
           <p className="mt-6 text-sm text-stone">
             {product.format} — {product.volume}
           </p>
@@ -175,18 +185,7 @@ export default function LeProduitPage() {
         </div>
       </Container>
 
-      {/* DIFFÉRENCIATEUR */}
-      <section className="border-y border-line bg-cream">
-        <Container className="py-16 md:py-24">
-          <div className="max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.25em] text-stone">La différence naeul</p>
-            <h2 className="mt-3 text-3xl md:text-4xl">Réguler, pas dessécher.</h2>
-            <p className="mt-6 text-lg leading-relaxed text-stone">{product.differentiator}</p>
-          </div>
-        </Container>
-      </section>
-
-      {/* RÉSULTATS — avant/après (test documenté) */}
+      {/* RÉSULTATS — avant/après (proof early) */}
       {hasAvantApres && (
         <Container className="py-16 md:py-24">
           <div className="mx-auto max-w-2xl text-center">
@@ -215,60 +214,28 @@ export default function LeProduitPage() {
         </Container>
       )}
 
-      {/* COMPARAISON */}
-      <Container className="py-16 md:py-24">
-        <SectionHeading eyebrow="La différence, concrètement" title="naeul vs un sérum « peau grasse » classique" />
-        <div className="mt-10 max-w-2xl overflow-hidden rounded-2xl border border-line">
-          <div className="grid grid-cols-[1.5fr_1fr_1fr] bg-cream text-xs font-medium uppercase tracking-wider text-stone">
-            <span className="p-4" />
-            <span className="p-4 text-center text-sage">naeul</span>
-            <span className="p-4 text-center">Sérums classiques</span>
+      {/* DIFFÉRENCIATEUR */}
+      <section className="border-y border-line bg-cream">
+        <Container className="py-16 md:py-24">
+          <div className="max-w-3xl">
+            <p className="text-xs uppercase tracking-[0.25em] text-stone">La différence naeul</p>
+            <h2 className="mt-3 text-3xl md:text-4xl">Réguler, pas dessécher.</h2>
+            <p className="mt-6 text-lg leading-relaxed text-stone">{product.differentiator}</p>
           </div>
-          {[
-            { c: "Approche", a: "Équilibre en douceur", b: "Dessèche" },
-            { c: "Alcool dénaturé, BHA forts", a: "Jamais", b: "Souvent" },
-            { c: "ECOCERT · ISO 22716 · Vegan", a: "Oui", b: "Variable" },
-            { c: "Pensé pour la peau grasse", a: "Uniquement", b: "Toutes peaux" },
-            { c: "Transparence (INCI, actifs)", a: "Totale", b: "Variable" },
-          ].map((row) => (
-            <div key={row.c} className="grid grid-cols-[1.5fr_1fr_1fr] border-t border-line text-sm">
-              <span className="p-4 text-ink/85">{row.c}</span>
-              <span className="bg-rose/20 p-4 text-center font-medium text-ink">{row.a}</span>
-              <span className="p-4 text-center text-stone">{row.b}</span>
-            </div>
-          ))}
-        </div>
-      </Container>
+        </Container>
+      </section>
 
-      {/* ACTIFS */}
-      <Container className="pb-16 md:pb-24">
+      {/* ACTIFS — la formule */}
+      <Container className="py-16 md:py-24">
         <SectionHeading eyebrow="La formule" title="Six actifs, une intention" />
         <ActivesCarousel actives={product.actives} />
       </Container>
 
-      {/* SENSORIALITÉ (visuels décoratifs abstraits) */}
-      <Container className="pb-16 md:pb-24">
-        <SectionHeading eyebrow="L'expérience" title="Le sérum, en gestes" />
-        <GalleryCarousel cards={GALLERY} />
-      </Container>
-
-      {/* À QUI C'EST POUR (qualification honnête) */}
-      <Container className="pb-16 md:pb-24">
-        <SectionHeading eyebrow="À qui ça s'adresse" title="Pour toi, ou pas" />
-        <div className="mt-10 grid gap-8 md:grid-cols-2">
-          <Card title="Pour toi si…" items={product.forWho} tone="positive" />
-          <Card title="Sans doute pas pour toi si…" items={product.notForWho} tone="negative" />
-        </div>
-      </Container>
-
-      {/* CE QUE ÇA FAIT / NE FAIT PAS */}
+      {/* L'EXPÉRIENCE — galerie */}
       <section className="border-y border-line bg-cream">
         <Container className="py-16 md:py-24">
-          <SectionHeading eyebrow="Promesse honnête" title="Ce que ça fait — et ce que ça ne fait pas" />
-          <div className="mt-10 grid gap-8 md:grid-cols-2">
-            <Card title="Ce que ça fait" items={product.does} tone="positive" />
-            <Card title="Ce que ça ne fait pas" items={product.doesNot} tone="negative" />
-          </div>
+          <SectionHeading eyebrow="L'expérience" title="Le sérum, en gestes" />
+          <GalleryCarousel cards={GALLERY} />
         </Container>
       </section>
 
@@ -290,6 +257,53 @@ export default function LeProduitPage() {
           ))}
         </ol>
       </Container>
+
+      {/* COMPARAISON */}
+      <section className="border-y border-line bg-cream">
+        <Container className="py-16 md:py-24">
+          <SectionHeading eyebrow="La différence, concrètement" title="naeul vs un sérum « peau grasse » classique" />
+          <div className="mt-10 max-w-2xl overflow-hidden rounded-2xl border border-line">
+            <div className="grid grid-cols-[1.5fr_1fr_1fr] bg-sand text-xs font-medium uppercase tracking-wider text-stone">
+              <span className="p-4" />
+              <span className="p-4 text-center text-sage">naeul</span>
+              <span className="p-4 text-center">Sérums classiques</span>
+            </div>
+            {[
+              { c: "Approche", a: "Équilibre en douceur", b: "Dessèche" },
+              { c: "Alcool dénaturé, BHA forts", a: "Jamais", b: "Souvent" },
+              { c: "ECOCERT · ISO 22716 · Vegan", a: "Oui", b: "Variable" },
+              { c: "Pensé pour la peau grasse", a: "Uniquement", b: "Toutes peaux" },
+              { c: "Transparence (INCI, actifs)", a: "Totale", b: "Variable" },
+            ].map((row) => (
+              <div key={row.c} className="grid grid-cols-[1.5fr_1fr_1fr] border-t border-line text-sm">
+                <span className="p-4 text-ink/85">{row.c}</span>
+                <span className="bg-rose/20 p-4 text-center font-medium text-ink">{row.a}</span>
+                <span className="p-4 text-center text-stone">{row.b}</span>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* CE QUE ÇA FAIT / NE FAIT PAS */}
+      <Container className="py-16 md:py-24">
+        <SectionHeading eyebrow="Promesse honnête" title="Ce que ça fait — et ce que ça ne fait pas" />
+        <div className="mt-10 grid gap-8 md:grid-cols-2">
+          <Card title="Ce que ça fait" items={product.does} tone="positive" />
+          <Card title="Ce que ça ne fait pas" items={product.doesNot} tone="negative" />
+        </div>
+      </Container>
+
+      {/* POUR QUI */}
+      <section className="border-y border-line bg-cream">
+        <Container className="py-16 md:py-24">
+          <SectionHeading title="Pour qui ?" />
+          <div className="mt-10 grid gap-8 md:grid-cols-2">
+            <Card title="Pour toi si…" items={product.forWho} tone="positive" />
+            <Card title="Sans doute pas pour toi si…" items={product.notForWho} tone="negative" />
+          </div>
+        </Container>
+      </section>
 
       {/* AVIS */}
       <Reviews />
@@ -359,11 +373,11 @@ export default function LeProduitPage() {
 
 /* ---------- sous-composants ---------- */
 
-function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
+function SectionHeading({ eyebrow, title }: { eyebrow?: string; title: string }) {
   return (
     <div className="max-w-2xl">
-      <p className="text-xs uppercase tracking-[0.25em] text-stone">{eyebrow}</p>
-      <h2 className="mt-3 text-3xl md:text-4xl">{title}</h2>
+      {eyebrow && <p className="text-xs uppercase tracking-[0.25em] text-stone">{eyebrow}</p>}
+      <h2 className={`text-3xl md:text-4xl${eyebrow ? " mt-3" : ""}`}>{title}</h2>
     </div>
   );
 }
