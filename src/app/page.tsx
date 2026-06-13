@@ -20,6 +20,7 @@ import { buttonClasses } from "@/components/ui/button";
 import { TrustStrip } from "@/components/trust-strip";
 import { SkinSelector } from "@/components/home/skin-selector";
 import { WaitlistCount } from "@/components/waitlist-count";
+import { CountUp } from "@/components/count-up";
 import { Reviews } from "@/components/reviews";
 import { HERO_PRODUCT } from "@/lib/products";
 import { PREORDER_ENABLED, foundersPrice } from "@/lib/preorder";
@@ -181,7 +182,7 @@ export default function Home() {
 
             {/* Cellule stat */}
             <div className="flex flex-col justify-center rounded-2xl border border-line bg-sand p-7">
-              <p className="font-serif text-5xl leading-none text-ink">6</p>
+              <CountUp to={6} className="font-serif text-5xl leading-none text-ink" />
               <p className="mt-3 text-sm leading-relaxed text-stone">
                 actifs ciblés, dosés juste — niacinamide, AHA doux, Centella, acide hyaluronique,
                 ferments, exosomes.
@@ -386,17 +387,45 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* CAPTURE FINALE */}
-      <section id="precommande" className="scroll-mt-20 border-y border-line bg-cream">
-        <Container className="flex flex-col items-center gap-6 py-20 text-center md:py-28">
-          <h2 className="max-w-xl text-balance text-3xl md:text-4xl">
-            Sois prévenue en avant-première. -15% au lancement.
-          </h2>
-          <p className="max-w-md leading-relaxed text-stone">
-            Rejoins la liste. Tu recevras ton code et seras la première informée du lancement.
-          </p>
-          <WaitlistForm className="w-full max-w-md" />
-          <WaitlistCount />
+      {/* CAPTURE FINALE — Cinematic CTA */}
+      <section id="precommande" className="relative scroll-mt-20 overflow-hidden">
+        <Image
+          src="/images/naeul-produit-bois.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-ink/75" />
+        <Container className="relative flex flex-col items-center gap-6 py-24 text-center md:py-32">
+          {PREORDER_ENABLED ? (
+            <>
+              <h2 className="max-w-2xl text-balance font-serif text-3xl text-cream md:text-5xl">
+                Rejoins les fondatrices de naeul.
+              </h2>
+              <p className="max-w-md leading-relaxed text-cream/80">
+                -15%, livraison offerte, garantie 30 jours. Premier batch limité à 200 flacons.
+              </p>
+              <Link href="/le-produit#acheter" className={buttonClasses({ size: "lg", className: "mt-2" })}>
+                Précommander (-15%)
+                <ArrowRight size={18} />
+              </Link>
+            </>
+          ) : (
+            <>
+              <h2 className="max-w-2xl text-balance font-serif text-3xl text-cream md:text-5xl">
+                Sois prévenue en avant-première.
+              </h2>
+              <p className="max-w-md leading-relaxed text-cream/80">
+                Rejoins la liste : tu reçois ton code -15% et tu es la première informée du
+                lancement.
+              </p>
+              <WaitlistForm tone="onAccent" className="w-full max-w-md" />
+              <p className="text-[0.7rem] text-cream/60">
+                Pas de spam. Désinscription en un clic.
+              </p>
+            </>
+          )}
         </Container>
       </section>
     </>
