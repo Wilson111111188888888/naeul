@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
+import { Eye, Sparkle, Leaf } from "@phosphor-icons/react/dist/ssr";
 import { buttonClasses } from "@/components/ui/button";
 
 export const metadata: Metadata = {
@@ -12,9 +13,9 @@ export const metadata: Metadata = {
 };
 
 const VALUES = [
-  { t: "Transparence", d: "On dit ce qu'on fait, et ce qu'on ne fait pas. Pas de promesse magique." },
-  { t: "Efficacité", d: "Une marque utile, pensée pour un besoin précis : la peau grasse." },
-  { t: "Simplicité", d: "Des gestes simples, une routine claire. Le superflu, on le laisse de côté." },
+  { icon: Eye, t: "Transparence", d: "On dit ce qu'on fait, et ce qu'on ne fait pas. Pas de promesse magique." },
+  { icon: Sparkle, t: "Efficacité", d: "Une marque utile, pensée pour un besoin précis : la peau grasse." },
+  { icon: Leaf, t: "Simplicité", d: "Des gestes simples, une routine claire. Le superflu, on le laisse de côté." },
 ];
 
 export default function AProposPage() {
@@ -96,7 +97,10 @@ export default function AProposPage() {
           <div className="mt-10 grid gap-8 md:grid-cols-3">
             {VALUES.map((item) => (
               <div key={item.t}>
-                <h3 className="text-lg">{item.t}</h3>
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-sage/10 text-sage">
+                  <item.icon size={22} />
+                </span>
+                <h3 className="mt-4 text-lg">{item.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-stone">{item.d}</p>
               </div>
             ))}
