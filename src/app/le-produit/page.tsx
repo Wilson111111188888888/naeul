@@ -184,6 +184,15 @@ export default function LeProduitPage() {
         <SensorialStrip />
       </Container>
 
+      {/* À QUI C'EST POUR (qualification honnête) */}
+      <Container className="pb-16 md:pb-24">
+        <SectionHeading eyebrow="Honnêteté" title="Pour toi, ou pas" />
+        <div className="mt-10 grid gap-8 md:grid-cols-2">
+          <Card title="Pour toi si…" items={product.forWho} tone="positive" />
+          <Card title="Sans doute pas pour toi si…" items={product.notForWho} tone="negative" />
+        </div>
+      </Container>
+
       {/* CE QUE ÇA FAIT / NE FAIT PAS */}
       <section className="border-y border-line bg-cream">
         <Container className="py-16 md:py-24">
