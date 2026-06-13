@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { getAllPostsMeta, getCategories } from "@/lib/blog";
 import { Container } from "@/components/ui/container";
+import { PREORDER_ENABLED } from "@/lib/preorder";
 
 export const metadata: Metadata = {
   title: "Journal — K-beauty & peau grasse",
@@ -88,15 +89,18 @@ export default function BlogIndexPage() {
           </div>
 
           <div className="mt-5 rounded-2xl border border-line bg-sage p-6 text-cream">
-            <p className="font-serif text-lg">-15 % au lancement</p>
+            <p className="font-serif text-lg">-15 % {PREORDER_ENABLED ? "Édition Fondatrices" : "au lancement"}</p>
             <p className="mt-2 text-sm text-cream/80">
-              Inscris-toi pour être prévenue en avant-première.
+              {PREORDER_ENABLED
+                ? "Précommande ouverte — premier batch limité à 200 flacons."
+                : "Inscris-toi pour être prévenue en avant-première."}
             </p>
             <Link
-              href="/#precommande"
+              href={PREORDER_ENABLED ? "/le-produit#acheter" : "/#precommande"}
               className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-cream underline underline-offset-4"
             >
-              Je veux être prévenue (-15%) <ArrowRight size={14} />
+              {PREORDER_ENABLED ? "Précommander (-15%)" : "Je veux être prévenue (-15%)"}
+              <ArrowRight size={14} />
             </Link>
           </div>
         </aside>
