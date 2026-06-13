@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
 import Image from "next/image";
-import { Sparkle, Drop, Leaf, ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { Sparkle, Drop, Leaf, ArrowRight, FlowerLotus, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
 import { Container } from "@/components/ui/container";
 import { Wordmark } from "@/components/wordmark";
 import { WaitlistForm } from "@/components/waitlist-form";
@@ -28,6 +28,13 @@ const PILLARS = [
     title: "Clean & vegan",
     text: "Certifiée ECOCERT et ISO 22716. Vegan, sans parfum, sans gluten.",
   },
+];
+
+const BENEFITS = [
+  { icon: Drop, title: "Sébum régulé", text: "La niacinamide aide à équilibrer la production de sébum, jour après jour." },
+  { icon: Sparkle, title: "Pores resserrés", text: "L'apparence des pores s'affine et le grain de peau se lisse en douceur." },
+  { icon: FlowerLotus, title: "Peau apaisée", text: "La Centella et les ferments calment et renforcent la barrière cutanée." },
+  { icon: ShieldCheck, title: "Hydratée, pas grasse", text: "L'acide hyaluronique hydrate sans effet gras ni brillance." },
 ];
 
 export default function Home() {
@@ -124,6 +131,27 @@ export default function Home() {
                 </span>
               </div>
             </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* CE QUE TA PEAU Y GAGNE (bénéfices concrets) */}
+      <section className="border-y border-line bg-cream">
+        <Container className="py-20 md:py-28">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs uppercase tracking-[0.25em] text-stone">Les bénéfices</p>
+            <h2 className="mt-3 text-3xl md:text-4xl">Ce que ta peau y gagne</h2>
+          </div>
+          <div className="mt-14 grid gap-10 sm:grid-cols-2 md:grid-cols-4 md:gap-8">
+            {BENEFITS.map((b) => (
+              <div key={b.title} className="text-center">
+                <span className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-xl bg-sage/10 text-sage">
+                  <b.icon size={24} />
+                </span>
+                <h3 className="mt-5 text-lg">{b.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-stone">{b.text}</p>
+              </div>
+            ))}
           </div>
         </Container>
       </section>
