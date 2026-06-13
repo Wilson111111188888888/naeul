@@ -36,8 +36,8 @@ const PILLARS = [
 export default function Home() {
   // Les sections lifestyle n'apparaissent que si l'image existe dans public/images.
   const hasImage = (name: string) => fs.existsSync(path.join(process.cwd(), "public/images", name));
-  const hasDuo = hasImage("naeul-duo.jpg");
-  const hasPortrait = hasImage("naeul-portrait.jpg");
+  const hasDuo = hasImage("naeul-application.jpg");
+  const hasPortrait = hasImage("naeul-texture-macro.jpg");
 
   return (
     <>
@@ -148,18 +148,15 @@ export default function Home() {
         <section>
           <Container className="py-20 md:py-28">
             <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
-              <figure className="order-2 md:order-1">
-                <div className="overflow-hidden rounded-2xl bg-rose/30">
-                  <Image
-                    src="/images/naeul-duo.jpg"
-                    alt="Deux femmes aux carnations différentes, peau lumineuse"
-                    width={1000}
-                    height={1250}
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="aspect-[4/5] h-full w-full object-cover"
-                  />
-                </div>
-                <figcaption className="mt-2 text-xs text-stone">Visuel d&apos;inspiration</figcaption>
+              <figure className="order-2 overflow-hidden rounded-2xl md:order-1">
+                <Image
+                  src="/images/naeul-application.jpg"
+                  alt="Une femme à la peau lumineuse applique le sérum naeul"
+                  width={1122}
+                  height={1402}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="aspect-[4/5] h-full w-full object-cover"
+                />
               </figure>
               <div className="order-1 md:order-2">
                 <p className="text-xs uppercase tracking-[0.25em] text-stone">
@@ -185,18 +182,15 @@ export default function Home() {
         <section className="border-y border-line bg-cream">
           <Container className="py-20 md:py-28">
             <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
-              <figure className="order-2">
-                <div className="overflow-hidden rounded-2xl bg-rose/30">
-                  <Image
-                    src="/images/naeul-portrait.jpg"
-                    alt="Portrait éditorial, peau équilibrée et lumineuse"
-                    width={1000}
-                    height={1333}
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="aspect-[3/4] h-full w-full object-cover"
-                  />
-                </div>
-                <figcaption className="mt-2 text-xs text-stone">Visuel d&apos;inspiration</figcaption>
+              <figure className="order-2 overflow-hidden rounded-2xl">
+                <Image
+                  src="/images/naeul-texture-macro.jpg"
+                  alt="Macro de la texture du sérum naeul : une goutte fluide et légère"
+                  width={1254}
+                  height={1254}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="aspect-square h-full w-full object-cover"
+                />
               </figure>
               <div className="order-1">
                 <p className="text-xs uppercase tracking-[0.25em] text-stone">Notre approche K-beauty</p>
