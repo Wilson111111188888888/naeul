@@ -74,12 +74,12 @@ export const HERO_PRODUCT: Product = {
     { id: "naeul-serum-3", flacons: 3, label: "3 flacons", price: 84.9, saving: 13 },
   ],
   photos: [
-    { src: "/images/naeul-produit-avec-box.jpg", alt: "naeul — le sérum aux exosomes et à la niacinamide, avec sa boîte vert sauge" },
-    { src: "/images/naeul-produit-lifestyle.jpg", alt: "naeul — le sérum, avec un feuillage vert" },
-    { src: "/images/naeul-produit-bois.jpg", alt: "naeul — le sérum, sur fond bois" },
-    { src: "/images/naeul-produit-minimal.jpg", alt: "naeul — le sérum, composition minimaliste" },
-    { src: "/images/naeul-produit-bath.jpg", alt: "naeul — le sérum, dans une salle de bain" },
-    { src: "/images/naeul-produit-dos.jpg", alt: "naeul — dos de la boîte, avec la liste INCI" },
+    { src: "/images/naeul-produit-avec-box.jpg", alt: "Sérum K-beauty naeul aux exosomes et à la niacinamide pour peau grasse, avec sa boîte vert sauge" },
+    { src: "/images/naeul-produit-lifestyle.jpg", alt: "Sérum naeul à la niacinamide pour peau grasse, dans une ambiance végétale" },
+    { src: "/images/naeul-produit-bois.jpg", alt: "Sérum K-beauty naeul pour peau grasse et pores, sur fond bois" },
+    { src: "/images/naeul-produit-minimal.jpg", alt: "Flacon airless du sérum naeul à la niacinamide, composition minimaliste" },
+    { src: "/images/naeul-produit-bath.jpg", alt: "Sérum naeul pour peau grasse dans une salle de bain" },
+    { src: "/images/naeul-produit-dos.jpg", alt: "Dos de la boîte du sérum naeul, liste des ingrédients INCI" },
   ],
   forWho: [
     "Peau grasse, mixte ou à pores visibles",

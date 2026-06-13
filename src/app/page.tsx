@@ -232,7 +232,7 @@ export default function Home() {
               <figure className="order-2 overflow-hidden rounded-2xl md:order-1">
                 <Image
                   src="/images/naeul-application.jpg"
-                  alt="Une femme à la peau lumineuse applique le sérum naeul"
+                  alt="Application du sérum naeul pour peau grasse sur peau mixte lumineuse"
                   width={1122}
                   height={1402}
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -266,7 +266,7 @@ export default function Home() {
               <figure className="order-2 overflow-hidden rounded-2xl">
                 <Image
                   src="/images/naeul-texture-macro.jpg"
-                  alt="Macro de la texture du sérum naeul : une goutte fluide et légère"
+                  alt="Texture légère et non grasse du sérum naeul à la niacinamide pour peau grasse"
                   width={1254}
                   height={1254}
                   sizes="(max-width: 768px) 100vw, 50vw"
