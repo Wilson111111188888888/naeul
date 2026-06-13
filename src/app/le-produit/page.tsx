@@ -175,7 +175,7 @@ export default function LeProduitPage() {
                   Le sérum arrive bientôt. Sois prévenue en avant-première.
                 </p>
                 <p className="mt-1 text-xs text-stone">
-                  Premier batch limité à 200 flacons — les inscrites sont prévenues et servies en priorité.
+                  Premier lot limité à 200 flacons — les inscrites sont prévenues et servies en priorité.
                 </p>
                 <WaitlistForm className="mt-4" />
                 <WaitlistCount className="mt-4 justify-start" />

@@ -44,7 +44,7 @@ export function PreorderBox({ product }: { product: Product }) {
       {/* Bandeau Édition Fondatrices */}
       <div className="mb-5 flex items-center gap-2 rounded-full border border-terracotta/40 bg-terracotta/[0.08] px-3 py-1.5 text-xs font-medium text-ink">
         <Package size={15} className="text-terracotta" />
-        Édition Fondatrices — premier batch limité à {FOUNDERS_LIMIT} flacons
+        Édition Fondatrices — premier lot limité à {FOUNDERS_LIMIT} flacons
       </div>
 
       {/* Sélecteur de format */}

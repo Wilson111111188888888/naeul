@@ -92,7 +92,7 @@ export default function BlogIndexPage() {
             <p className="font-serif text-lg">-15 % {PREORDER_ENABLED ? "Édition Fondatrices" : "au lancement"}</p>
             <p className="mt-2 text-sm text-cream/80">
               {PREORDER_ENABLED
-                ? "Précommande ouverte — premier batch limité à 200 flacons."
+                ? "Précommande ouverte — premier lot limité à 200 flacons."
                 : "Inscris-toi pour être prévenue en avant-première."}
             </p>
             <Link

@@ -28,7 +28,7 @@ export function Footer() {
               Sois prévenue en avant-première.
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-stone">
-              -15% au lancement, accès prioritaire au premier batch. Inscription gratuite, pas de spam.
+              -15% au lancement, accès prioritaire au premier lot. Inscription gratuite, pas de spam.
             </p>
           </div>
           <Link href="/#precommande" className={buttonClasses({ size: "lg" })}>

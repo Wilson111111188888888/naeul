@@ -5,13 +5,13 @@ import { PREORDER_ENABLED } from "@/lib/preorder";
 const MESSAGES = PREORDER_ENABLED
   ? [
       "Précommande ouverte · Édition Fondatrices -15 %",
-      "Premier batch limité à 200 flacons",
+      "Premier lot limité à 200 flacons",
       "Livraison offerte pour les fondatrices",
       "Satisfait ou remboursé 30 jours",
     ]
   : [
       "Avant-première ouverte · -15 % au lancement",
-      "Premier batch limité à 200 flacons",
+      "Premier lot limité à 200 flacons",
       "Livraison offerte dès 50 €",
       "Satisfait ou remboursé 30 jours",
     ];

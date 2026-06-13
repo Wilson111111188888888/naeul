@@ -16,7 +16,7 @@ export const PREORDER_ENABLED = process.env.NEXT_PUBLIC_PREORDER_ENABLED === "tr
 /** Remise Édition Fondatrices appliquée automatiquement (pas de code à taper). */
 export const FOUNDERS_DISCOUNT = 0.15;
 
-/** Limite réelle du premier batch (Selfnamed). Rareté honnête, pas de faux compteur. */
+/** Limite réelle du premier lot (Selfnamed). Rareté honnête, pas de faux compteur. */
 export const FOUNDERS_LIMIT = 200;
 
 /**

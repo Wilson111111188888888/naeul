@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
 import Image from "next/image";
-import heroLifestyle from "../../public/images/naeul-produit-lifestyle.jpg";
+import heroLifestyle from "../../public/images/naeul-hero.jpg";
 import {
   Sparkle,
   Drop,
@@ -59,7 +59,7 @@ const FOUNDERS = [
   {
     icon: Package,
     title: "Édition limitée",
-    text: "Seulement 200 flacons pour le tout premier batch.",
+    text: "Seulement 200 flacons pour le tout premier lot.",
   },
 ];
 
@@ -77,7 +77,7 @@ export default function Home() {
         <div className="relative h-60 w-full overflow-hidden sm:h-80 md:h-auto">
           <Image
             src={heroLifestyle}
-            alt="Sérum K-beauty naeul aux exosomes et à la niacinamide sur fond botanique"
+            alt="Sérum K-beauty naeul tenu en main dans une lumière dorée"
             fill
             priority
             quality={90}
@@ -101,7 +101,7 @@ export default function Home() {
               <>
                 <p className="mt-5 text-sm leading-relaxed text-ink md:text-[0.95rem]">
                   L&apos;Édition Fondatrices est ouverte : <strong className="font-medium">-15%</strong>,
-                  livraison offerte et garantie 30 jours. Premier batch limité à 200 flacons.
+                  livraison offerte et garantie 30 jours. Premier lot limité à 200 flacons.
                 </p>
                 <Link
                   href="/le-produit#acheter"
@@ -181,7 +181,7 @@ export default function Home() {
               </p>
               <h2 className="mt-2 font-serif text-3xl text-cream md:text-4xl">Les 200 premières</h2>
               <p className="mt-3 text-sm leading-relaxed text-cream/75">
-                Le tout premier batch est limité à 200 flacons. Rejoins les fondatrices qui vivent
+                Le tout premier lot est limité à 200 flacons. Rejoins les fondatrices qui vivent
                 le lancement en avant-première.
               </p>
             </div>
@@ -386,7 +386,7 @@ export default function Home() {
                 Rejoins les fondatrices de naeul.
               </h2>
               <p className="max-w-md leading-relaxed text-cream/80">
-                -15%, livraison offerte, garantie 30 jours. Premier batch limité à 200 flacons.
+                -15%, livraison offerte, garantie 30 jours. Premier lot limité à 200 flacons.
               </p>
               <Link href="/le-produit#acheter" className={buttonClasses({ size: "lg", className: "mt-2" })}>
                 Précommander (-15%)

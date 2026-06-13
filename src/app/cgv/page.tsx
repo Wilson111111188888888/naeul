@@ -38,7 +38,7 @@ export default function CgvPage() {
       <p>
         Certains produits sont proposés en <strong>pré-commande</strong>. La commande porte alors sur
         un produit dont la fabrication ou la disponibilité est à venir, dans la limite du premier
-        batch (édition limitée à 200 unités).
+        lot (édition limitée à 200 unités).
       </p>
       <ul>
         <li>
