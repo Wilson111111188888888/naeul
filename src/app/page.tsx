@@ -117,8 +117,11 @@ export default function Home() {
                 </li>
               </ul>
               <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
-                <Link href="/le-produit" className={buttonClasses({ size: "lg" })}>
-                  En savoir plus
+                <Link
+                  href={PREORDER_ENABLED ? "/le-produit#acheter" : "/le-produit"}
+                  className={buttonClasses({ size: "lg" })}
+                >
+                  {PREORDER_ENABLED ? "Précommander (-15%)" : "En savoir plus"}
                   <ArrowRight size={18} />
                 </Link>
                 <span className="text-sm text-stone">
