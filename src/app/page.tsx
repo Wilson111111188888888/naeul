@@ -155,16 +155,38 @@ export default function Home() {
             <p className="text-xs uppercase tracking-[0.25em] text-stone">Pourquoi naeul</p>
             <h2 className="mt-3 text-3xl md:text-4xl">Une marque, une intention</h2>
           </div>
-          <div className="mt-14 grid gap-10 md:grid-cols-3">
+          {/* Bento grid */}
+          <div className="mt-12 grid gap-4 md:grid-cols-3 md:[grid-auto-rows:1fr]">
+            {/* Cellule image (haute) */}
+            <div className="relative min-h-[260px] overflow-hidden rounded-2xl bg-rose/30 md:row-span-2">
+              <Image
+                src="/images/naeul-produit-minimal.jpg"
+                alt="Le sérum naeul à la niacinamide pour peau grasse, composition minimaliste"
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover"
+              />
+            </div>
+
+            {/* Piliers */}
             {PILLARS.map((pillar) => (
-              <div key={pillar.title} className="text-center md:text-left">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-sage/10 text-sage">
-                  <pillar.icon size={24} />
+              <div key={pillar.title} className="rounded-2xl border border-line bg-sand p-7">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-sage/10 text-sage">
+                  <pillar.icon size={22} />
                 </span>
-                <h3 className="mt-5 text-lg">{pillar.title}</h3>
+                <h3 className="mt-4 text-lg">{pillar.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-stone">{pillar.text}</p>
               </div>
             ))}
+
+            {/* Cellule stat */}
+            <div className="flex flex-col justify-center rounded-2xl border border-line bg-sand p-7">
+              <p className="font-serif text-5xl leading-none text-ink">6</p>
+              <p className="mt-3 text-sm leading-relaxed text-stone">
+                actifs ciblés, dosés juste — niacinamide, AHA doux, Centella, acide hyaluronique,
+                ferments, exosomes.
+              </p>
+            </div>
           </div>
         </Container>
       </section>
