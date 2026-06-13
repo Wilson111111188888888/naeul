@@ -65,6 +65,9 @@ const jsonLd = {
 
 export default function LeProduitPage() {
   const hasMosaic = fs.existsSync(path.join(process.cwd(), "public/images/naeul-communaute.jpg"));
+  const hasAvantApres = fs.existsSync(
+    path.join(process.cwd(), "public/images/naeul-avant-apres.jpg"),
+  );
   return (
     <div className="pb-20 md:pb-0">
       <script
@@ -156,6 +159,35 @@ export default function LeProduitPage() {
           </div>
         </Container>
       </section>
+
+      {/* RÉSULTATS — avant/après (test documenté) */}
+      {hasAvantApres && (
+        <Container className="py-16 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs uppercase tracking-[0.25em] text-stone">Résultats</p>
+            <h2 className="mt-3 text-3xl md:text-4xl">Le grain de peau, en 4 semaines</h2>
+            <p className="mt-4 leading-relaxed text-stone">
+              Pores resserrés, peau plus lisse et moins brillante. Un résultat observé sur notre
+              test produit.
+            </p>
+          </div>
+          <figure className="mx-auto mt-10 max-w-3xl">
+            <div className="overflow-hidden rounded-2xl border border-line">
+              <Image
+                src="/images/naeul-avant-apres.jpg"
+                alt="Avant / après — grain de peau plus lisse et pores resserrés après 4 semaines d'utilisation du sérum naeul"
+                width={1540}
+                height={1027}
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <figcaption className="mt-3 text-center text-xs text-stone">
+              Résultat observé après 4 semaines d&apos;utilisation. Résultat individuel, non garanti.
+            </figcaption>
+          </figure>
+        </Container>
+      )}
 
       {/* COMPARAISON */}
       <Container className="py-16 md:py-24">
