@@ -239,7 +239,7 @@ export default function LeProduitPage() {
       <section className="border-t border-line">
         <Container className="py-16 md:py-24">
           <SectionHeading eyebrow="Notre démarche" title="De la formule à ta peau" />
-          <ol className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+          <ol className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2 scrollbar-hide sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 sm:overflow-visible lg:grid-cols-4">
             {[
               {
                 t: "La formule",
@@ -258,7 +258,7 @@ export default function LeProduitPage() {
                 d: "Édition limitée à 200 flacons, livraison Mondial Relay, garantie 30 jours.",
               },
             ].map((step, i, arr) => (
-              <li key={step.t} className="relative">
+              <li key={step.t} className="relative min-w-[68%] shrink-0 snap-start sm:min-w-0">
                 <div className="flex items-center gap-3">
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-sage font-serif text-sm text-sage">
                     {i + 1}
