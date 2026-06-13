@@ -17,7 +17,7 @@ import { FaqAccordion } from "@/components/faq-accordion";
 import { WaitlistCount } from "@/components/waitlist-count";
 import { PREORDER_ENABLED, SHIPPING_DATE } from "@/lib/preorder";
 import { buttonClasses } from "@/components/ui/button";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice, cn } from "@/lib/utils";
 
 const product = HERO_PRODUCT;
 
@@ -123,21 +123,23 @@ export default function LeProduitPage() {
             ))}
           </ul>
 
-          <p className="mt-6 text-sm text-stone">
-            {product.format} — {product.volume}
-          </p>
-
-          {/* Certifications */}
-          <ul className="mt-6 flex flex-wrap gap-2">
-            {product.certifications.map((c) => (
-              <li
-                key={c}
-                className="rounded-full border border-terracotta/40 px-3 py-1 text-xs text-stone"
-              >
-                {c}
-              </li>
-            ))}
-          </ul>
+          {/* Specs + certifications */}
+          <div className="mt-7 border-t border-line pt-5">
+            <p className="text-sm text-stone">
+              {product.format} · {product.volume}
+            </p>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {product.certifications.map((c) => (
+                <li
+                  key={c}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-line bg-cream px-3 py-1 text-xs text-stone"
+                >
+                  <Check size={12} weight="bold" className="text-sage" />
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </div>
 
           {PREORDER_ENABLED ? (
             /* PRÉ-COMMANDE — Édition Fondatrices */
@@ -392,9 +394,6 @@ export default function LeProduitPage() {
               </p>
               <WaitlistForm className="w-full max-w-md" />
               <WaitlistCount />
-              <p className="text-[0.7rem] text-stone/80">
-                Inscription gratuite · pas de spam · désinscription en un clic.
-              </p>
             </>
           )}
         </Container>
@@ -435,7 +434,12 @@ function Card({
 }) {
   const Icon = tone === "positive" ? Check : X;
   return (
-    <div className="rounded-xl border border-line bg-sand p-7">
+    <div
+      className={cn(
+        "rounded-xl border p-7",
+        tone === "positive" ? "border-rose/50 bg-rose/15" : "border-line bg-sand",
+      )}
+    >
       <h3 className="text-lg">{title}</h3>
       <ul className="mt-5 space-y-3">
         {items.map((item) => (

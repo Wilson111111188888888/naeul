@@ -92,9 +92,7 @@ export default function Home() {
         <div className="flex items-center bg-sand px-6 py-9 md:px-12 md:py-14">
           <div className="mx-auto w-full max-w-[480px] animate-fade-up [animation-delay:150ms]">
             <p className="text-[0.7rem] uppercase tracking-[0.2em] text-stone">
-              {PREORDER_ENABLED
-                ? "K-beauty française · Édition Fondatrices"
-                : "K-beauty française · Avant-première"}
+              {PREORDER_ENABLED ? "K-beauty · Édition Fondatrices" : "K-beauty · Avant-première"}
             </p>
             <h1 className="mt-5 text-balance font-serif text-[1.75rem] font-normal italic leading-tight text-ink md:text-[2.5rem]">
               K-beauty pour peau grasse, sans agresser.
@@ -128,9 +126,6 @@ export default function Home() {
                   première commande.
                 </p>
                 <WaitlistForm className="mt-6" />
-                <p className="mt-3 text-[0.7rem] text-stone">
-                  Pas de spam. Désinscription en un clic.
-                </p>
               </>
             )}
 
@@ -206,9 +201,12 @@ export default function Home() {
                 le lancement en avant-première.
               </p>
             </div>
-            <ul className="grid gap-7 sm:grid-cols-3">
+            <ul className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-1 scrollbar-hide sm:grid sm:grid-cols-3 sm:gap-7 sm:overflow-visible">
               {FOUNDERS.map((f) => (
-                <li key={f.title}>
+                <li
+                  key={f.title}
+                  className="min-w-[72%] shrink-0 snap-start border-l border-cream/15 pl-4 sm:min-w-0 sm:border-l-0 sm:pl-0"
+                >
                   <f.icon size={22} className="text-terracotta" />
                   <p className="mt-3 font-medium text-cream">{f.title}</p>
                   <p className="mt-1 text-xs leading-relaxed text-cream/65">{f.text}</p>
@@ -421,9 +419,6 @@ export default function Home() {
                 lancement.
               </p>
               <WaitlistForm tone="onAccent" className="w-full max-w-md" />
-              <p className="text-[0.7rem] text-cream/60">
-                Pas de spam. Désinscription en un clic.
-              </p>
             </>
           )}
         </Container>
