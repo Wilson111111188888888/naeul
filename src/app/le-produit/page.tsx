@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import {
   Check,
   X,
@@ -14,6 +13,7 @@ import { HERO_PRODUCT } from "@/lib/products";
 import { Container } from "@/components/ui/container";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { Reviews } from "@/components/reviews";
+import { ProductCarousel } from "@/components/product/product-carousel";
 import { formatPrice } from "@/lib/utils";
 
 const product = HERO_PRODUCT;
@@ -64,8 +64,6 @@ const jsonLd = {
 };
 
 export default function LeProduitPage() {
-  const [hero, ...gallery] = product.photos;
-
   return (
     <div>
       <script
@@ -74,19 +72,7 @@ export default function LeProduitPage() {
       />
       {/* HERO */}
       <Container className="grid gap-10 py-12 md:grid-cols-2 md:gap-16 md:py-20">
-        <div className="md:sticky md:top-24 md:self-start">
-          <div className="overflow-hidden rounded-2xl bg-rose/30">
-            <Image
-              src={hero.src}
-              alt={hero.alt}
-              width={1200}
-              height={1500}
-              priority
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="h-full w-full object-cover"
-            />
-          </div>
-        </div>
+        <ProductCarousel photos={product.photos} />
 
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-sage/30 bg-sage/[0.06] px-3 py-1 text-xs font-medium text-sage">
@@ -205,27 +191,6 @@ export default function LeProduitPage() {
           ))}
         </ol>
       </Container>
-
-      {/* GALERIE */}
-      <section className="border-t border-line bg-cream">
-        <Container className="py-16 md:py-24">
-          <SectionHeading eyebrow="En images" title="Le sérum, en situation" />
-          <div className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {gallery.map((photo) => (
-              <div key={photo.src} className="overflow-hidden rounded-xl bg-rose/30">
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  width={800}
-                  height={1000}
-                  sizes="(max-width: 1024px) 50vw, 25vw"
-                  className="aspect-[4/5] h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
-                />
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
 
       {/* CONFORMITÉ */}
       <Container className="py-16 md:py-24">
