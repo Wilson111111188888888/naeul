@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { AnnouncementBar } from "@/components/announcement-bar";
 import { Header } from "@/components/header";
@@ -71,6 +72,13 @@ export default function RootLayout({
         <Footer />
         <CookieBanner />
         <ExitIntent />
+        {process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN && (
+          <Script
+            defer
+            data-domain={process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN}
+            src="https://plausible.io/js/script.js"
+          />
+        )}
       </body>
     </html>
   );
