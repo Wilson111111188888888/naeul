@@ -153,10 +153,13 @@ export default function Home() {
               grasse — qu&apos;on équilibre en douceur, jamais en agressant.
             </p>
           </div>
-          {/* 3 raisons en ligne, compactes */}
-          <div className="mx-auto mt-12 grid max-w-4xl gap-8 sm:grid-cols-3">
+          {/* 3 raisons — swipe sur mobile, grille sur desktop */}
+          <div className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 scrollbar-hide sm:mx-auto sm:mt-12 sm:grid sm:max-w-4xl sm:grid-cols-3 sm:gap-8 sm:overflow-visible">
             {PILLARS.map((pillar) => (
-              <div key={pillar.title} className="text-center">
+              <div
+                key={pillar.title}
+                className="min-w-[80%] shrink-0 snap-start text-center sm:min-w-0"
+              >
                 <span className="mx-auto inline-flex h-11 w-11 items-center justify-center rounded-xl bg-sage/10 text-sage">
                   <pillar.icon size={22} />
                 </span>
