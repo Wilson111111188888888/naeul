@@ -1,4 +1,7 @@
+import fs from "node:fs";
+import path from "node:path";
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   Check,
   X,
@@ -66,6 +69,7 @@ const jsonLd = {
 };
 
 export default function LeProduitPage() {
+  const hasMosaic = fs.existsSync(path.join(process.cwd(), "public/images/naeul-communaute.jpg"));
   return (
     <div className="pb-20 md:pb-0">
       <script
@@ -254,6 +258,30 @@ export default function LeProduitPage() {
 
       {/* AVIS */}
       <Reviews />
+
+      {/* LE SÉRUM EN ACTION (mosaïque) */}
+      {hasMosaic && (
+        <section className="border-t border-line">
+          <Container className="py-16 md:py-24">
+            <SectionHeading eyebrow="En situation" title="Le sérum en action" />
+            <figure className="mx-auto mt-10 max-w-3xl">
+              <div className="overflow-hidden rounded-2xl bg-rose/30">
+                <Image
+                  src="/images/naeul-communaute.jpg"
+                  alt="Quatre femmes aux carnations variées avec le sérum naeul"
+                  width={1100}
+                  height={1100}
+                  sizes="(max-width: 768px) 100vw, 768px"
+                  className="aspect-square h-full w-full object-cover"
+                />
+              </div>
+              <figcaption className="mt-2 text-center text-xs text-stone">
+                Visuel d&apos;inspiration
+              </figcaption>
+            </figure>
+          </Container>
+        </section>
+      )}
 
       {/* CTA FINAL */}
       <section id="precommande" className="scroll-mt-20 border-t border-line bg-cream">

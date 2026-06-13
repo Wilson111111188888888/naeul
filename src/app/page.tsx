@@ -31,10 +31,10 @@ const PILLARS = [
 ];
 
 export default function Home() {
-  // La section « communauté » n'apparaît que si l'image a été déposée dans public/images.
-  const hasCommunityImage = fs.existsSync(
-    path.join(process.cwd(), "public/images/naeul-communaute.jpg"),
-  );
+  // Les sections lifestyle n'apparaissent que si l'image existe dans public/images.
+  const hasImage = (name: string) => fs.existsSync(path.join(process.cwd(), "public/images", name));
+  const hasDuo = hasImage("naeul-duo.jpg");
+  const hasPortrait = hasImage("naeul-portrait.jpg");
 
   return (
     <>
@@ -131,43 +131,79 @@ export default function Home() {
       {/* PREUVES DE CONFIANCE */}
       <TrustStrip />
 
-      {/* POUR TOUTES LES PEAUX GRASSES */}
-      {hasCommunityImage && (
-      <section>
-        <Container className="py-20 md:py-28">
-          <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
-            <figure className="order-2 md:order-1">
-              <div className="overflow-hidden rounded-2xl bg-rose/30">
-                <Image
-                  src="/images/naeul-communaute.jpg"
-                  alt="Quatre femmes aux carnations variées tiennent le sérum naeul"
-                  width={1000}
-                  height={1000}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="aspect-square h-full w-full object-cover"
-                />
+      {/* POUR TOUTES LES PEAUX GRASSES (communauté duo) */}
+      {hasDuo && (
+        <section>
+          <Container className="py-20 md:py-28">
+            <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
+              <figure className="order-2 md:order-1">
+                <div className="overflow-hidden rounded-2xl bg-rose/30">
+                  <Image
+                    src="/images/naeul-duo.jpg"
+                    alt="Deux femmes aux carnations différentes, peau lumineuse"
+                    width={1000}
+                    height={1250}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="aspect-[4/5] h-full w-full object-cover"
+                  />
+                </div>
+                <figcaption className="mt-2 text-xs text-stone">Visuel d&apos;inspiration</figcaption>
+              </figure>
+              <div className="order-1 md:order-2">
+                <p className="text-xs uppercase tracking-[0.25em] text-stone">
+                  Pour toutes les peaux grasses
+                </p>
+                <h2 className="mt-3 text-3xl md:text-4xl">Tu peux t&apos;y reconnaître.</h2>
+                <p className="mt-5 leading-relaxed text-stone">
+                  La peau grasse n&apos;a pas un seul visage. naeul s&apos;adresse à toutes celles
+                  qui brillent en milieu de journée — quels que soient ton teint, ton âge ou ton
+                  histoire. Une marque, une seule peau : la tienne.
+                </p>
+                <Link href="/#precommande" className={buttonClasses({ size: "lg", className: "mt-8" })}>
+                  Je veux être prévenue (-15%)
+                </Link>
               </div>
-              <figcaption className="mt-2 text-xs text-stone">
-                Visuel d&apos;inspiration — naeul est faite pour toutes les peaux grasses.
-              </figcaption>
-            </figure>
-            <div className="order-1 md:order-2">
-              <p className="text-xs uppercase tracking-[0.25em] text-stone">
-                Pour toutes les peaux grasses
-              </p>
-              <h2 className="mt-3 text-3xl md:text-4xl">Tu peux t&apos;y reconnaître.</h2>
-              <p className="mt-5 leading-relaxed text-stone">
-                La peau grasse n&apos;a pas un seul visage. naeul s&apos;adresse à toutes celles
-                qui brillent en milieu de journée — quels que soient ton teint, ton âge ou ton
-                histoire. Une marque, une seule peau : la tienne.
-              </p>
-              <Link href="/#precommande" className={buttonClasses({ size: "lg", className: "mt-8" })}>
-                Je veux être prévenue (-15%)
-              </Link>
             </div>
-          </div>
-        </Container>
-      </section>
+          </Container>
+        </section>
+      )}
+
+      {/* NOTRE APPROCHE K-BEAUTY (portrait éditorial) */}
+      {hasPortrait && (
+        <section className="border-y border-line bg-cream">
+          <Container className="py-20 md:py-28">
+            <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
+              <figure className="order-2">
+                <div className="overflow-hidden rounded-2xl bg-rose/30">
+                  <Image
+                    src="/images/naeul-portrait.jpg"
+                    alt="Portrait éditorial, peau équilibrée et lumineuse"
+                    width={1000}
+                    height={1333}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="aspect-[3/4] h-full w-full object-cover"
+                  />
+                </div>
+                <figcaption className="mt-2 text-xs text-stone">Visuel d&apos;inspiration</figcaption>
+              </figure>
+              <div className="order-1">
+                <p className="text-xs uppercase tracking-[0.25em] text-stone">Notre approche K-beauty</p>
+                <h2 className="mt-3 text-3xl md:text-4xl">Équilibrer, pas agresser.</h2>
+                <p className="mt-5 leading-relaxed text-stone">
+                  La douceur d&apos;abord. On régule le sébum et on resserre l&apos;apparence des
+                  pores avec des actifs justes — niacinamide, AHA doux, Centella — au lieu de
+                  décaper la peau. Le résultat se construit semaine après semaine.
+                </p>
+                <Link
+                  href="/le-produit"
+                  className={buttonClasses({ variant: "secondary", size: "lg", className: "mt-8" })}
+                >
+                  En savoir plus
+                </Link>
+              </div>
+            </div>
+          </Container>
+        </section>
       )}
 
       {/* NOTRE HISTOIRE */}
