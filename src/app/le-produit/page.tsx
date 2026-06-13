@@ -275,16 +275,17 @@ export default function LeProduitPage() {
       {/* ROUTINE */}
       <Container className="py-16 md:py-24">
         <SectionHeading eyebrow="La routine" title="Comment l'utiliser" />
-        <ol className="mt-10 max-w-2xl space-y-5">
+        <ol className="mt-10 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto pb-2 scrollbar-hide">
           {product.steps.map((step, i) => (
-            <li key={step.title} className="flex gap-5">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-sage font-serif text-sm text-sage">
+            <li
+              key={step.title}
+              className="flex min-w-[72%] shrink-0 snap-start flex-col rounded-2xl border border-line bg-sand p-6 sm:min-w-[45%] lg:min-w-[31%]"
+            >
+              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-sage font-serif text-sm text-sage">
                 {i + 1}
               </span>
-              <div className="pt-1">
-                <h3 className="text-base">{step.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-stone">{step.detail}</p>
-              </div>
+              <h3 className="mt-4 text-base">{step.title}</h3>
+              <p className="mt-1 text-sm leading-relaxed text-stone">{step.detail}</p>
             </li>
           ))}
         </ol>
