@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { InstagramLogo, TiktokLogo } from "@phosphor-icons/react/dist/ssr";
+import { InstagramLogo, TiktokLogo, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { Container } from "@/components/ui/container";
 import { Wordmark } from "@/components/wordmark";
+import { buttonClasses } from "@/components/ui/button";
 
 const LEGAL = [
   { href: "/mentions-legales", label: "Mentions légales" },
@@ -20,13 +21,35 @@ export function Footer() {
   return (
     <footer className="mt-24 border-t border-line bg-cream">
       <Container className="py-16">
-        <div className="grid gap-12 md:grid-cols-[1.6fr_1fr_1fr]">
+        {/* Bande CTA — présente sur toutes les pages */}
+        <div className="flex flex-col items-start gap-6 border-b border-line pb-12 md:flex-row md:items-center md:justify-between">
+          <div className="max-w-md">
+            <h2 className="font-serif text-2xl text-ink md:text-3xl">
+              Sois prévenue en avant-première.
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-stone">
+              -15% au lancement, accès prioritaire au premier batch. Inscription gratuite, pas de spam.
+            </p>
+          </div>
+          <Link href="/#precommande" className={buttonClasses({ size: "lg" })}>
+            Je veux être prévenue (-15%)
+            <ArrowRight size={18} />
+          </Link>
+        </div>
+
+        <div className="mt-12 grid gap-12 md:grid-cols-[1.6fr_1fr_1fr]">
           <div className="max-w-xs">
             <Wordmark className="text-2xl" hangulClassName="text-[0.6rem] tracking-[0.3em]" />
             <p className="mt-5 text-sm leading-relaxed text-stone">
               K-beauty pour peau grasse, sans agresser. Notre premier sérum arrive bientôt —
               inscris-toi pour être prévenue en avant-première.
             </p>
+            <a
+              href="mailto:hello@naeul.com"
+              className="mt-4 inline-block text-sm text-ink/80 underline underline-offset-4 transition-colors hover:text-sage"
+            >
+              hello@naeul.com
+            </a>
             <div className="mt-5 flex gap-3">
               <a
                 href="https://www.instagram.com/naeul_by_kbeauty"
@@ -80,8 +103,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-line pt-6 text-xs text-stone">
+        <div className="mt-14 flex flex-col gap-3 border-t border-line pt-6 text-xs text-stone md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} naeul. Tous droits réservés.</p>
+          <p className="tracking-wide text-stone/80">
+            K-beauty française · Vegan · ECOCERT · sans parfum
+          </p>
         </div>
       </Container>
     </footer>

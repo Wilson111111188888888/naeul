@@ -11,6 +11,7 @@ import { Reviews } from "@/components/reviews";
 import { ProductCarousel } from "@/components/product/product-carousel";
 import { ActivesCarousel } from "@/components/product/actives-carousel";
 import { SensorialStrip } from "@/components/product/sensorial-strip";
+import { FaqAccordion } from "@/components/faq-accordion";
 import { WaitlistCount } from "@/components/waitlist-count";
 import { buttonClasses } from "@/components/ui/button";
 import { formatPrice } from "@/lib/utils";
@@ -261,17 +262,7 @@ export default function LeProduitPage() {
       <section className="border-t border-line">
         <Container className="py-16 md:py-24">
           <SectionHeading eyebrow="Questions fréquentes" title="Avant le lancement" />
-          <div className="mt-10 max-w-2xl divide-y divide-line border-y border-line">
-            {product.faq.map((item) => (
-              <details key={item.q} className="group py-5">
-                <summary className="flex cursor-pointer items-center justify-between gap-4 text-base font-medium text-ink marker:content-none">
-                  {item.q}
-                  <span className="text-stone transition-transform group-open:rotate-45">+</span>
-                </summary>
-                <p className="mt-3 text-sm leading-relaxed text-stone">{item.a}</p>
-              </details>
-            ))}
-          </div>
+          <FaqAccordion items={product.faq} className="mt-10 max-w-2xl" />
         </Container>
       </section>
 

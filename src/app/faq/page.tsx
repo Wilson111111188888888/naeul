@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CaretDown } from "@phosphor-icons/react/dist/ssr";
 import { Container } from "@/components/ui/container";
 import { buttonClasses } from "@/components/ui/button";
+import { FaqAccordion } from "@/components/faq-accordion";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -56,20 +56,7 @@ export default function FaqPage() {
         </p>
       </header>
 
-      <div className="mt-12 max-w-2xl divide-y divide-line border-y border-line">
-        {FAQ.map((item) => (
-          <details key={item.q} className="group py-5">
-            <summary className="flex cursor-pointer items-center justify-between gap-4 text-base font-medium text-ink marker:content-none">
-              {item.q}
-              <CaretDown
-                size={18}
-                className="shrink-0 text-stone transition-transform group-open:rotate-180"
-              />
-            </summary>
-            <p className="mt-3 text-sm leading-relaxed text-stone">{item.a}</p>
-          </details>
-        ))}
-      </div>
+      <FaqAccordion items={FAQ} className="mt-12 max-w-2xl" />
 
       <div className="mt-12">
         <Link href="/#precommande" className={buttonClasses({ size: "lg" })}>
