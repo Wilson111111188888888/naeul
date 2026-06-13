@@ -2,22 +2,14 @@ import fs from "node:fs";
 import path from "node:path";
 import type { Metadata } from "next";
 import Image from "next/image";
-import {
-  Check,
-  X,
-  Drop,
-  Sparkle,
-  ShieldCheck,
-  Leaf,
-  FlowerLotus,
-  Sun,
-} from "@phosphor-icons/react/dist/ssr";
+import { Check, X } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { HERO_PRODUCT } from "@/lib/products";
 import { Container } from "@/components/ui/container";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { Reviews } from "@/components/reviews";
 import { ProductCarousel } from "@/components/product/product-carousel";
+import { ActivesCarousel } from "@/components/product/actives-carousel";
 import { buttonClasses } from "@/components/ui/button";
 import { formatPrice } from "@/lib/utils";
 
@@ -29,8 +21,6 @@ export const metadata: Metadata = {
     "Sérum K-beauty pour peau grasse : niacinamide, exosomes, acide hyaluronique. Régule le sébum, apaise sans dessécher. Vegan, ECOCERT. Précommande -15%.",
   alternates: { canonical: "/le-produit" },
 };
-
-const ACTIVE_ICONS = [Drop, Sparkle, Leaf, FlowerLotus, ShieldCheck, Sun];
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -135,6 +125,9 @@ export default function LeProduitPage() {
               Premier batch limité à 200 flacons — les inscrites sont prévenues et servies en priorité.
             </p>
             <WaitlistForm className="mt-4" />
+            <p className="mt-3 text-[0.7rem] text-stone/80">
+              Inscription gratuite · pas de spam · ton code -15% par email.
+            </p>
           </div>
         </div>
       </Container>
@@ -144,7 +137,7 @@ export default function LeProduitPage() {
         <Container className="py-16 md:py-24">
           <div className="max-w-3xl">
             <p className="text-xs uppercase tracking-[0.25em] text-stone">La différence naeul</p>
-            <h2 className="mt-3 text-3xl md:text-4xl">On ne t&apos;assèche pas.</h2>
+            <h2 className="mt-3 text-3xl md:text-4xl">Hydrater, pas décaper.</h2>
             <p className="mt-6 text-lg leading-relaxed text-stone">{product.differentiator}</p>
           </div>
         </Container>
@@ -178,24 +171,7 @@ export default function LeProduitPage() {
       {/* ACTIFS */}
       <Container className="pb-16 md:pb-24">
         <SectionHeading eyebrow="La formule" title="Six actifs, une intention" />
-        <div className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scrollbar-hide md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:pb-0">
-          {product.actives.map((active, i) => {
-            const Icon = ACTIVE_ICONS[i % ACTIVE_ICONS.length];
-            return (
-              <div
-                key={active.name}
-                className="flex min-w-[78%] shrink-0 snap-start flex-col rounded-2xl border border-line bg-sand p-6 transition-colors hover:border-sage/40 sm:min-w-[46%] md:min-w-0"
-              >
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-sage/10 text-sage">
-                  <Icon size={20} />
-                </span>
-                <h3 className="mt-4 font-serif text-lg">{active.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-stone">{active.role}</p>
-              </div>
-            );
-          })}
-        </div>
-        <p className="mt-3 text-xs text-stone md:hidden">Faites défiler pour voir les 6 actifs →</p>
+        <ActivesCarousel actives={product.actives} />
       </Container>
 
       {/* CE QUE ÇA FAIT / NE FAIT PAS */}
@@ -227,8 +203,53 @@ export default function LeProduitPage() {
         </ol>
       </Container>
 
-      {/* FAQ */}
-      <section className="border-t border-line bg-cream">
+      {/* EN SITUATION — le problème, et notre réponse (à la place de l'ancienne FAQ) */}
+      {hasMosaic && (
+        <section className="border-t border-line bg-cream">
+          <Container className="py-16 md:py-24">
+            <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
+              <figure className="order-2 md:order-1">
+                <div className="overflow-hidden rounded-2xl bg-rose/30">
+                  <Image
+                    src="/images/naeul-communaute.jpg"
+                    alt="Quatre femmes aux carnations variées avec le sérum naeul"
+                    width={1100}
+                    height={1100}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="aspect-square h-full w-full object-cover"
+                  />
+                </div>
+                <figcaption className="mt-2 text-xs text-stone">Visuel d&apos;inspiration</figcaption>
+              </figure>
+              <div className="order-1 md:order-2">
+                <p className="text-xs uppercase tracking-[0.25em] text-stone">En situation</p>
+                <h2 className="mt-3 text-3xl md:text-4xl">Le problème, et notre réponse.</h2>
+                <p className="mt-6 leading-relaxed text-stone">
+                  Milieu de journée : la zone T brille, les pores se voient, le maquillage glisse. Le
+                  réflexe — décaper, matifier — assèche la peau, qui réagit en produisant encore plus
+                  de sébum.
+                </p>
+                <p className="mt-4 leading-relaxed text-stone">
+                  naeul casse ce cercle : on régule le sébum <em>et</em> on hydrate en même temps,
+                  avec des actifs doux. La peau s&apos;équilibre, au lieu de sur-réagir.
+                </p>
+                <Link
+                  href="#precommande"
+                  className={buttonClasses({ size: "lg", className: "mt-8" })}
+                >
+                  Je veux être prévenue (-15%)
+                </Link>
+              </div>
+            </div>
+          </Container>
+        </section>
+      )}
+
+      {/* AVIS */}
+      <Reviews />
+
+      {/* FAQ — déplacée ici, juste avant le CTA final */}
+      <section className="border-t border-line">
         <Container className="py-16 md:py-24">
           <SectionHeading eyebrow="Questions fréquentes" title="Avant le lancement" />
           <div className="mt-10 max-w-2xl divide-y divide-line border-y border-line">
@@ -245,40 +266,20 @@ export default function LeProduitPage() {
         </Container>
       </section>
 
-      {/* AVIS */}
-      <Reviews />
-
-      {/* LE SÉRUM EN ACTION (mosaïque) */}
-      {hasMosaic && (
-        <section className="border-t border-line">
-          <Container className="py-16 md:py-24">
-            <SectionHeading eyebrow="En situation" title="Le sérum en action" />
-            <figure className="mx-auto mt-10 max-w-3xl">
-              <div className="overflow-hidden rounded-2xl bg-rose/30">
-                <Image
-                  src="/images/naeul-communaute.jpg"
-                  alt="Quatre femmes aux carnations variées avec le sérum naeul"
-                  width={1100}
-                  height={1100}
-                  sizes="(max-width: 768px) 100vw, 768px"
-                  className="aspect-square h-full w-full object-cover"
-                />
-              </div>
-              <figcaption className="mt-2 text-center text-xs text-stone">
-                Visuel d&apos;inspiration
-              </figcaption>
-            </figure>
-          </Container>
-        </section>
-      )}
-
       {/* CTA FINAL */}
       <section id="precommande" className="scroll-mt-20 border-t border-line bg-cream">
         <Container className="flex flex-col items-center gap-6 py-20 text-center md:py-24">
           <h2 className="max-w-xl text-balance text-3xl md:text-4xl">
             Sois la première à l&apos;essayer. -15% au lancement.
           </h2>
+          <p className="max-w-md leading-relaxed text-stone">
+            Rejoins la liste d&apos;avant-première : tu reçois ton code -15% et tu es prévenue dès
+            l&apos;ouverture des précommandes.
+          </p>
           <WaitlistForm className="w-full max-w-md" />
+          <p className="text-[0.7rem] text-stone/80">
+            Inscription gratuite · pas de spam · désinscription en un clic.
+          </p>
         </Container>
       </section>
 

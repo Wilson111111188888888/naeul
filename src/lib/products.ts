@@ -106,9 +106,9 @@ export const HERO_PRODUCT: Product = {
   steps: [
     { title: "Matin et/ou soir", detail: "Sur peau propre et sèche, après le nettoyage." },
     { title: "2 à 3 pressions", detail: "La pompe airless préserve les actifs et dose juste." },
-    { title: "Faire pénétrer", detail: "Massez doucement jusqu'à absorption complète." },
-    { title: "Hydratez par-dessus", detail: "Une crème légère pour sceller l'hydratation." },
-    { title: "SPF le matin", detail: "Non négociable : la protection solaire protège vos résultats." },
+    { title: "Faire pénétrer", detail: "Masse doucement jusqu'à absorption complète." },
+    { title: "Hydrate par-dessus", detail: "Une crème légère pour sceller l'hydratation." },
+    { title: "SPF le matin", detail: "Non négociable : la protection solaire protège tes résultats." },
   ],
   priceBreakdown: [
     { label: "Formulation laboratoire EU (ISO 22716, ECOCERT)", value: "Actifs dosés, pas de remplissage" },
