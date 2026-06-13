@@ -42,8 +42,8 @@ export default function MentionsLegalesPage() {
         d&apos;une notification au portail CPNP.
       </p>
       <ul>
-        <li>Fabricant : Selfnamed — SIA NORD Beauty, Baložu 20a, Riga LV-1048, Lettonie (UE)</li>
-        <li>Notification CPNP : <Todo>numéro CPNP du produit</Todo> (géré par le fabricant)</li>
+        <li>Fabrication : laboratoire partenaire certifié ISO 22716 et ECOCERT, établi dans l&apos;Union européenne</li>
+        <li>Notification CPNP : <Todo>numéro CPNP du produit</Todo></li>
         <li>Personne responsable UE : <Todo>nom et adresse de la personne responsable</Todo></li>
       </ul>
 

@@ -7,7 +7,7 @@ import { buttonClasses } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "FAQ",
   description:
-    "Questions fréquentes sur naeul : quand sort le sérum, pourquoi la peau grasse, où c'est fabriqué, comment être prévenue du lancement.",
+    "Questions fréquentes sur naeul : quand sort le sérum, pourquoi la peau grasse, peaux sensibles, comment être prévenue du lancement.",
   alternates: { canonical: "/faq" },
 };
 
@@ -25,12 +25,12 @@ const FAQ: { q: string; a: string }[] = [
     a: "Parce que la plupart des marques cherchent à plaire à toutes les peaux, et finissent par n'en servir vraiment aucune. naeul fait le choix inverse : se concentrer sur les peaux grasses, mixtes et à pores apparents.",
   },
   {
-    q: "Pourquoi un sérum est-il adapté à la peau grasse ?",
-    a: "La plupart des soins « peau grasse » assèchent — et la peau répond en produisant encore plus de sébum. Notre sérum fait l'inverse : texture légère, fini non gras, niacinamide pour réguler et acide hyaluronique pour hydrater. On équilibre sans dessécher.",
+    q: "Le sérum convient-il aux peaux sensibles ?",
+    a: "Oui. La formule reste douce — sans parfum, apaisée par la Centella — et évite les actifs trop agressifs. Si ta peau est réactive, commence un jour sur deux la première semaine, puis tous les jours.",
   },
   {
-    q: "Où sont fabriqués les produits ?",
-    a: "Designed in France, Made in EU (Lettonie), dans un laboratoire certifié ISO 22716 et ECOCERT. Vegan, sans parfum, sans gluten. Notification cosmétique EU (CPNP) en règle.",
+    q: "Le sérum est-il vegan et sans parfum ?",
+    a: "Oui : vegan, sans parfum et sans gluten, formulé dans un laboratoire certifié ISO 22716 et ECOCERT.",
   },
   {
     q: "C'est quoi la précommande et le -15% ?",

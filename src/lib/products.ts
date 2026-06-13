@@ -118,16 +118,16 @@ export const HERO_PRODUCT: Product = {
   ],
   faq: [
     {
-      q: "Pourquoi un sérum est-il adapté à la peau grasse ?",
-      a: "Parce qu'il est léger et pénètre vite, sans laisser de film gras. La niacinamide régule le sébum pendant que l'acide hyaluronique hydrate — la peau grasse a besoin d'hydratation, pas d'assèchement.",
-    },
-    {
       q: "Quand puis-je l'utiliser ?",
-      a: "Matin et/ou soir, sur peau propre, avant la crème hydratante. Le matin, terminez toujours par un SPF.",
+      a: "Matin et/ou soir, sur peau propre, avant ta crème hydratante. Le matin, termine toujours par un SPF.",
     },
     {
-      q: "Où est-il fabriqué ?",
-      a: "Designed in France, Made in EU (Lettonie), dans un laboratoire certifié ISO 22716 et ECOCERT. Vegan, sans parfum, sans gluten.",
+      q: "Le sérum laisse-t-il un fini gras ?",
+      a: "Non. Sa texture légère pénètre vite, pour un fini non gras — c'est tout l'intérêt d'un sérum sur peau grasse : hydrater sans alourdir.",
+    },
+    {
+      q: "Convient-il aux peaux sensibles ?",
+      a: "Oui, la formule reste douce : sans parfum, apaisée par la Centella. Si ta peau est réactive, commence un jour sur deux la première semaine.",
     },
     {
       q: "Au bout de combien de temps voit-on un résultat ?",

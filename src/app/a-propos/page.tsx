@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { buttonClasses } from "@/components/ui/button";
-import { Todo } from "@/components/content-page";
 
 export const metadata: Metadata = {
   title: "À propos",
@@ -70,15 +69,20 @@ export default function AProposPage() {
             <h2 className="text-3xl">La fondatrice</h2>
             <div className="mt-6 space-y-4 leading-relaxed text-stone">
               <p>
-                naeul est née d&apos;une frustration personnelle : <Todo>prénom de la fondatrice</Todo>,
-                la peau grasse depuis l&apos;adolescence, ne trouvait pas de marque pensée pour elle.
+                naeul est née d&apos;une frustration personnelle. La peau grasse depuis
+                l&apos;adolescence, sa fondatrice a passé des années à tester des produits trop
+                agressifs — alcool, acides forts, formules « matifiantes » — qui asséchaient sa peau
+                sans jamais l&apos;équilibrer.
               </p>
               <p>
-                <Todo>1-2 phrases sur son parcours et son rapport à la K-beauty</Todo>.
+                C&apos;est en découvrant la K-beauty qu&apos;elle comprend qu&apos;une autre approche
+                existe : prendre soin de la peau grasse avec douceur, au lieu de la décaper. naeul
+                est née de cette conviction — créer le soin qu&apos;elle aurait voulu trouver, pensé
+                pour un seul type de peau, le sien.
               </p>
               <p>
-                Aujourd&apos;hui, elle porte la marque avec une conviction simple : proposer
-                seulement ce en quoi elle croit vraiment.
+                Aujourd&apos;hui, elle porte la marque avec une règle simple : ne proposer que ce en
+                quoi elle croit vraiment.
               </p>
             </div>
           </div>
