@@ -57,18 +57,18 @@ export function Header() {
       {/* Menu mobile */}
       <div
         className={cn(
-          "overflow-hidden border-t border-line/70 bg-sand md:hidden",
-          open ? "max-h-72" : "max-h-0 border-t-0",
+          "overflow-hidden border-t border-line/70 bg-sand/95 backdrop-blur-md transition-[max-height] duration-300 ease-out md:hidden",
+          open ? "max-h-80" : "max-h-0 border-t-0",
         )}
       >
         <Container>
-          <nav className="flex flex-col gap-1 py-3">
+          <nav className="flex flex-col py-2">
             {NAV.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-2 py-3 text-sm text-stone transition-colors hover:bg-ink/[0.04] hover:text-ink"
+                className="border-b border-line/50 py-2.5 text-[0.95rem] text-stone transition-colors last:border-0 hover:text-ink"
               >
                 {item.label}
               </Link>
@@ -76,7 +76,7 @@ export function Header() {
             <Link
               href="/#precommande"
               onClick={() => setOpen(false)}
-              className={buttonClasses({ size: "sm", className: "mt-2 w-full" })}
+              className={buttonClasses({ size: "sm", className: "mt-3 w-full" })}
             >
               Je veux être prévenue (-15%)
             </Link>

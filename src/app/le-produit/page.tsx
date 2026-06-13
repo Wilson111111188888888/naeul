@@ -227,17 +227,6 @@ export default function LeProduitPage() {
         </ol>
       </Container>
 
-      {/* CONFORMITÉ */}
-      <Container className="py-16 md:py-24">
-        <SectionHeading eyebrow="Transparence" title="Origine & conformité" />
-        <dl className="mt-10 max-w-2xl divide-y divide-line rounded-xl border border-line bg-sand">
-          <Row label="Origine" value={product.origin} />
-          <Row label="Notification cosmétique" value={product.cpnp} />
-          <Row label="Certifications" value={product.certifications.join(" · ")} />
-          <Row label="Fabricant" value="Selfnamed (Cosmetics Nord), Riga, Lettonie — UE" />
-        </dl>
-      </Container>
-
       {/* FAQ */}
       <section className="border-t border-line bg-cream">
         <Container className="py-16 md:py-24">
@@ -339,15 +328,6 @@ function Card({
           </li>
         ))}
       </ul>
-    </div>
-  );
-}
-
-function Row({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex flex-col gap-1 p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
-      <dt className="text-sm font-medium text-ink">{label}</dt>
-      <dd className="text-sm text-stone sm:text-right">{value}</dd>
     </div>
   );
 }
