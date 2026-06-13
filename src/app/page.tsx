@@ -12,6 +12,7 @@ import { SkinSelector } from "@/components/home/skin-selector";
 import { WaitlistCount } from "@/components/waitlist-count";
 import { Reviews } from "@/components/reviews";
 import { HERO_PRODUCT } from "@/lib/products";
+import { PREORDER_ENABLED, foundersPrice } from "@/lib/preorder";
 import { formatPrice } from "@/lib/utils";
 
 const PILLARS = [
@@ -121,9 +122,14 @@ export default function Home() {
                   <ArrowRight size={18} />
                 </Link>
                 <span className="text-sm text-stone">
-                  1 flacon {formatPrice(HERO_PRODUCT.variants[0].price)} · pack de 2 ={" "}
-                  {formatPrice(HERO_PRODUCT.variants[1].price)} · pack de 3 ={" "}
-                  {formatPrice(HERO_PRODUCT.variants[2].price)}
+                  {PREORDER_ENABLED ? (
+                    <>
+                      Édition Fondatrices · dès{" "}
+                      {formatPrice(foundersPrice(HERO_PRODUCT.variants[0].price))}
+                    </>
+                  ) : (
+                    <>À partir de {formatPrice(HERO_PRODUCT.variants[0].price)}</>
+                  )}
                 </span>
               </div>
             </div>

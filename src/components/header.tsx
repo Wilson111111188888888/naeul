@@ -7,6 +7,7 @@ import { Container } from "@/components/ui/container";
 import { Wordmark } from "@/components/wordmark";
 import { buttonClasses } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { PREORDER_ENABLED } from "@/lib/preorder";
 
 const NAV = [
   { href: "/le-produit", label: "Le produit" },
@@ -15,6 +16,9 @@ const NAV = [
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
+
+const CTA_HREF = PREORDER_ENABLED ? "/le-produit#acheter" : "/#precommande";
+const CTA_LABEL = PREORDER_ENABLED ? "Précommander (-15%)" : "Je veux être prévenue (-15%)";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -37,8 +41,8 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            <Link href="/#precommande" className={buttonClasses({ size: "sm" })}>
-              Je veux être prévenue (-15%)
+            <Link href={CTA_HREF} className={buttonClasses({ size: "sm" })}>
+              {CTA_LABEL}
             </Link>
           </nav>
 
@@ -74,11 +78,11 @@ export function Header() {
               </Link>
             ))}
             <Link
-              href="/#precommande"
+              href={CTA_HREF}
               onClick={() => setOpen(false)}
               className={buttonClasses({ size: "sm", className: "mt-3 w-full" })}
             >
-              Je veux être prévenue (-15%)
+              {CTA_LABEL}
             </Link>
           </nav>
         </Container>
