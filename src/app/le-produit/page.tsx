@@ -140,7 +140,7 @@ export default function LeProduitPage() {
         <Container className="py-16 md:py-24">
           <div className="max-w-3xl">
             <p className="text-xs uppercase tracking-[0.25em] text-stone">La différence naeul</p>
-            <h2 className="mt-3 text-3xl md:text-4xl">Hydrater, pas décaper.</h2>
+            <h2 className="mt-3 text-3xl md:text-4xl">Réguler, pas dessécher.</h2>
             <p className="mt-6 text-lg leading-relaxed text-stone">{product.differentiator}</p>
           </div>
         </Container>
@@ -156,7 +156,7 @@ export default function LeProduitPage() {
             <span className="p-4 text-center">Sérums classiques</span>
           </div>
           {[
-            { c: "Approche", a: "Équilibre en douceur", b: "Décape" },
+            { c: "Approche", a: "Équilibre en douceur", b: "Dessèche" },
             { c: "Alcool dénaturé, BHA forts", a: "Jamais", b: "Souvent" },
             { c: "ECOCERT · ISO 22716 · Vegan", a: "Oui", b: "Variable" },
             { c: "Pensé pour la peau grasse", a: "Uniquement", b: "Toutes peaux" },

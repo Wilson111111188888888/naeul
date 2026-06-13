@@ -147,6 +147,24 @@
     display: none;
   }
 
+  /*
+    Apparition douce au scroll — 100% CSS (scroll-driven), enhancement progressif.
+    Ne s'active QUE si le navigateur supporte les scroll timelines (Chrome/Safari récents)
+    et si l'utilisateur n'a pas réduit les animations. Sinon : contenu visible normalement,
+    aucun JS, aucun risque de contenu masqué. Le hero (1re section) reste instantané.
+    Léger : translation de 12px portée par le compositeur, liée au scroll.
+  */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      main section:not(:first-of-type),
+      [data-reveal] {
+        animation: naeul-fade-up linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 28%;
+      }
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .animate-fade-up {
       animation: none;
