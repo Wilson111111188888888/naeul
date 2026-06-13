@@ -16,7 +16,7 @@ export default function ConfidentialitePage() {
     >
       <h2>Responsable du traitement</h2>
       <p>
-        Le responsable du traitement est <Todo>raison sociale</Todo>, joignable à contact@naeul.com.
+        Le responsable du traitement est <Todo>raison sociale</Todo>, joignable à hello@naeul.com.
       </p>
 
       <h2>Données collectées</h2>
@@ -55,7 +55,7 @@ export default function ConfidentialitePage() {
       <h2>Vos droits</h2>
       <p>
         Vous disposez d'un droit d'accès, de rectification, d'effacement, d'opposition, de limitation
-        et de portabilité. Pour les exercer, écrivez à contact@naeul.com. Vous pouvez introduire une
+        et de portabilité. Pour les exercer, écrivez à hello@naeul.com. Vous pouvez introduire une
         réclamation auprès de la CNIL (cnil.fr).
       </p>
 

@@ -21,7 +21,7 @@ export default function ContactPage() {
           <dl className="mt-8 space-y-4 text-sm">
             <div>
               <dt className="font-medium text-ink">Email</dt>
-              <dd className="text-stone">contact@naeul.com</dd>
+              <dd className="text-stone">hello@naeul.com</dd>
             </div>
             <div>
               <dt className="font-medium text-ink">Précommande</dt>

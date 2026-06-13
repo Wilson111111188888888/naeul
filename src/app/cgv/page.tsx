@@ -45,7 +45,7 @@ export default function CgvPage() {
         Conformément aux articles L221-18 et suivants du Code de la consommation, vous disposez d'un
         délai de <strong>14 jours</strong> à compter de la réception pour exercer votre droit de
         rétractation, sans avoir à justifier de motif. Pour l'exercer, contactez-nous à
-        contact@naeul.com. Les frais de retour sont à votre charge, sauf produit défectueux.
+        hello@naeul.com. Les frais de retour sont à votre charge, sauf produit défectueux.
       </p>
       <p>
         Au-delà du droit légal, NAEUL applique une politique de retour étendue de 30 jours

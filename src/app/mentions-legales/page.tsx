@@ -25,7 +25,7 @@ export default function MentionsLegalesPage() {
         <li>Adresse : <Todo>adresse complète du siège</Todo></li>
         <li>SIRET : <Todo>numéro SIRET à 14 chiffres</Todo></li>
         <li>Numéro de TVA intracommunautaire : non applicable — TVA non applicable, article 293 B du CGI (franchise en base)</li>
-        <li>Email : contact@naeul.com</li>
+        <li>Email : hello@naeul.com</li>
         <li>Directeur / Directrice de la publication : <Todo>Prénom NOM</Todo></li>
       </ul>
 
@@ -78,7 +78,7 @@ export default function MentionsLegalesPage() {
       <h2>Droit applicable</h2>
       <p>
         Le présent site et les présentes mentions légales sont soumis au droit français. Pour toute
-        question, écrivez-nous à contact@naeul.com.
+        question, écrivez-nous à hello@naeul.com.
       </p>
     </ContentPage>
   );
