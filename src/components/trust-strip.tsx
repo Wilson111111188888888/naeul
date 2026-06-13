@@ -6,7 +6,7 @@ const ITEMS = [
   { icon: SealCheck, label: "ISO 22716 & ECOCERT", sub: "Laboratoire certifié" },
   { icon: Leaf, label: "Vegan, sans parfum", sub: "Sans gluten" },
   { icon: Certificate, label: "CPNP enregistré", sub: HERO_PRODUCT.cpnp },
-  { icon: MapPin, label: "Designed in France", sub: "K-beauty française" },
+  { icon: MapPin, label: "K-beauty française", sub: "Conçue en France" },
 ];
 
 /** Preuves de confiance réelles — substitut honnête aux avis avant lancement. */

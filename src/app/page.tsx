@@ -18,7 +18,7 @@ import { formatPrice } from "@/lib/utils";
 const PILLARS = [
   {
     icon: Drop,
-    title: "K-beauty douce",
+    title: "K-beauty",
     text: "On équilibre la peau grasse sans l'agresser : pas d'alcool dénaturé, pas de BHA forts.",
   },
   {
