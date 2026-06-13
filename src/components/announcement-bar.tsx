@@ -4,7 +4,8 @@ import Link from "next/link";
 const MESSAGES = [
   "Précommande ouverte · -15 % en avant-première",
   "Inscription = accès prioritaire au lancement",
-  "Premier batch limité",
+  "Premier batch limité à 200 flacons",
+  "Livraison offerte dès 50 €",
   "Vegan · ECOCERT · sans parfum",
   "K-beauty pour peau grasse, sans agresser",
 ];

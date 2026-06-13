@@ -128,7 +128,7 @@ export default function LeProduitPage() {
               Le sérum arrive bientôt. Sois prévenue en avant-première.
             </p>
             <p className="mt-1 text-xs text-stone">
-              Premier batch limité — les inscrites sont prévenues et servies en priorité.
+              Premier batch limité à 200 flacons — les inscrites sont prévenues et servies en priorité.
             </p>
             <WaitlistForm className="mt-4" />
           </div>
@@ -146,8 +146,33 @@ export default function LeProduitPage() {
         </Container>
       </section>
 
-      {/* ACTIFS */}
+      {/* COMPARAISON */}
       <Container className="py-16 md:py-24">
+        <SectionHeading eyebrow="La différence, concrètement" title="naeul vs un sérum « peau grasse » classique" />
+        <div className="mt-10 max-w-2xl overflow-hidden rounded-2xl border border-line">
+          <div className="grid grid-cols-[1.5fr_1fr_1fr] bg-cream text-xs font-medium uppercase tracking-wider text-stone">
+            <span className="p-4" />
+            <span className="p-4 text-center text-sage">naeul</span>
+            <span className="p-4 text-center">Sérums classiques</span>
+          </div>
+          {[
+            { c: "Approche", a: "Équilibre en douceur", b: "Décape" },
+            { c: "Alcool dénaturé, BHA forts", a: "Jamais", b: "Souvent" },
+            { c: "ECOCERT · ISO 22716 · Vegan", a: "Oui", b: "Variable" },
+            { c: "Pensé pour la peau grasse", a: "Uniquement", b: "Toutes peaux" },
+            { c: "Transparence (INCI, actifs)", a: "Totale", b: "Variable" },
+          ].map((row) => (
+            <div key={row.c} className="grid grid-cols-[1.5fr_1fr_1fr] border-t border-line text-sm">
+              <span className="p-4 text-ink/85">{row.c}</span>
+              <span className="bg-rose/20 p-4 text-center font-medium text-ink">{row.a}</span>
+              <span className="p-4 text-center text-stone">{row.b}</span>
+            </div>
+          ))}
+        </div>
+      </Container>
+
+      {/* ACTIFS */}
+      <Container className="pb-16 md:pb-24">
         <SectionHeading eyebrow="La formule" title="Six actifs, une intention" />
         <div className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scrollbar-hide md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:pb-0">
           {product.actives.map((active, i) => {
