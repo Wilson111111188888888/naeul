@@ -10,7 +10,7 @@ import { WaitlistForm } from "@/components/waitlist-form";
 import { Reviews } from "@/components/reviews";
 import { ProductCarousel } from "@/components/product/product-carousel";
 import { ActivesCarousel } from "@/components/product/actives-carousel";
-import { SensorialStrip } from "@/components/product/sensorial-strip";
+import { GalleryCarousel } from "@/components/product/gallery-carousel";
 import { PreorderBox } from "@/components/product/preorder-box";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { WaitlistCount } from "@/components/waitlist-count";
@@ -19,6 +19,33 @@ import { buttonClasses } from "@/components/ui/button";
 import { formatPrice } from "@/lib/utils";
 
 const product = HERO_PRODUCT;
+
+const GALLERY = [
+  {
+    src: "/images/naeul-texture-macro.jpg",
+    alt: "Macro de la texture du sérum naeul : une goutte fluide et légère sur la peau",
+    title: "Texture légère",
+    desc: "Un sérum fluide et non gras, qui pénètre vite.",
+  },
+  {
+    src: "/images/naeul-application.jpg",
+    alt: "Une femme à la peau lumineuse applique le sérum naeul sur le dos de sa main",
+    title: "En 2-3 gouttes",
+    desc: "Matin et/ou soir, sur peau propre, avant ta crème.",
+  },
+  {
+    src: "/images/naeul-produit-minimal.jpg",
+    alt: "Le flacon airless du sérum naeul, composition minimaliste",
+    title: "Flacon airless 30 ml",
+    desc: "Protège les actifs de l'air et de la lumière.",
+  },
+  {
+    src: "/images/naeul-produit-lifestyle.jpg",
+    alt: "Le sérum naeul dans une ambiance végétale",
+    title: "Une routine douce",
+    desc: "Un seul geste, pensé pour la peau grasse.",
+  },
+];
 
 export const metadata: Metadata = {
   title: "Sérum aux exosomes et à la niacinamide pour peau grasse",
@@ -66,9 +93,6 @@ const jsonLd = {
 export default function LeProduitPage() {
   const hasAvantApres = fs.existsSync(
     path.join(process.cwd(), "public/images/naeul-avant-apres.jpg"),
-  );
-  const hasApplication = fs.existsSync(
-    path.join(process.cwd(), "public/images/naeul-application.jpg"),
   );
   return (
     <div className="pb-20 md:pb-0">
@@ -224,8 +248,8 @@ export default function LeProduitPage() {
 
       {/* SENSORIALITÉ (visuels décoratifs abstraits) */}
       <Container className="pb-16 md:pb-24">
-        <SectionHeading eyebrow="La sensorialité" title="Sa texture" />
-        <SensorialStrip />
+        <SectionHeading eyebrow="L'expérience" title="Le sérum, en gestes" />
+        <GalleryCarousel cards={GALLERY} />
       </Container>
 
       {/* À QUI C'EST POUR (qualification honnête) */}
@@ -265,45 +289,6 @@ export default function LeProduitPage() {
           ))}
         </ol>
       </Container>
-
-      {/* EN SITUATION — le problème, et notre réponse */}
-      {hasApplication && (
-        <section className="border-t border-line bg-cream">
-          <Container className="py-16 md:py-24">
-            <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
-              <figure className="order-2 overflow-hidden rounded-2xl md:order-1">
-                <Image
-                  src="/images/naeul-application.jpg"
-                  alt="Une femme à la peau lumineuse applique le sérum naeul sur le dos de sa main"
-                  width={1122}
-                  height={1402}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="aspect-[4/5] h-full w-full object-cover"
-                />
-              </figure>
-              <div className="order-1 md:order-2">
-                <p className="text-xs uppercase tracking-[0.25em] text-stone">En situation</p>
-                <h2 className="mt-3 text-3xl md:text-4xl">Le problème, et notre réponse.</h2>
-                <p className="mt-6 leading-relaxed text-stone">
-                  Milieu de journée : la zone T brille, les pores se voient, le maquillage glisse. Le
-                  réflexe — décaper, matifier — assèche la peau, qui réagit en produisant encore plus
-                  de sébum.
-                </p>
-                <p className="mt-4 leading-relaxed text-stone">
-                  naeul casse ce cercle : on régule le sébum et on hydrate en même temps, avec des
-                  actifs doux. La peau s&apos;équilibre, au lieu de sur-réagir.
-                </p>
-                <Link
-                  href={PREORDER_ENABLED ? "#acheter" : "/#precommande"}
-                  className={buttonClasses({ size: "lg", className: "mt-8" })}
-                >
-                  {PREORDER_ENABLED ? "Précommander (-15%)" : "Je veux être prévenue (-15%)"}
-                </Link>
-              </div>
-            </div>
-          </Container>
-        </section>
-      )}
 
       {/* AVIS */}
       <Reviews />
