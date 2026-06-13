@@ -8,6 +8,7 @@ import { Wordmark } from "@/components/wordmark";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { buttonClasses } from "@/components/ui/button";
 import { TrustStrip } from "@/components/trust-strip";
+import { WaitlistCount } from "@/components/waitlist-count";
 import { Reviews } from "@/components/reviews";
 import { HERO_PRODUCT } from "@/lib/products";
 import { formatPrice } from "@/lib/utils";
@@ -57,6 +58,7 @@ export default function Home() {
             avant-première et obtenir <strong className="text-ink">-15%</strong> au lancement.
           </p>
           <WaitlistForm className="mt-8 w-full max-w-md" />
+          <WaitlistCount className="mt-6" />
           <p className="mt-5 text-[0.7rem] uppercase tracking-[0.25em] text-stone/70">
             Vegan · ECOCERT · Sans parfum
           </p>
@@ -264,6 +266,7 @@ export default function Home() {
             Rejoins la liste. Tu recevras ton code et seras la première informée du lancement.
           </p>
           <WaitlistForm className="w-full max-w-md" />
+          <WaitlistCount />
         </Container>
       </section>
     </>

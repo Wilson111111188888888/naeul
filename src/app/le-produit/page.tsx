@@ -10,6 +10,8 @@ import { WaitlistForm } from "@/components/waitlist-form";
 import { Reviews } from "@/components/reviews";
 import { ProductCarousel } from "@/components/product/product-carousel";
 import { ActivesCarousel } from "@/components/product/actives-carousel";
+import { SensorialStrip } from "@/components/product/sensorial-strip";
+import { WaitlistCount } from "@/components/waitlist-count";
 import { buttonClasses } from "@/components/ui/button";
 import { formatPrice } from "@/lib/utils";
 
@@ -125,6 +127,7 @@ export default function LeProduitPage() {
               Premier batch limité à 200 flacons — les inscrites sont prévenues et servies en priorité.
             </p>
             <WaitlistForm className="mt-4" />
+            <WaitlistCount className="mt-4 justify-start" />
             <p className="mt-3 text-[0.7rem] text-stone/80">
               Inscription gratuite · pas de spam · ton code -15% par email.
             </p>
@@ -172,6 +175,12 @@ export default function LeProduitPage() {
       <Container className="pb-16 md:pb-24">
         <SectionHeading eyebrow="La formule" title="Six actifs, une intention" />
         <ActivesCarousel actives={product.actives} />
+      </Container>
+
+      {/* SENSORIALITÉ (visuels décoratifs abstraits) */}
+      <Container className="pb-16 md:pb-24">
+        <SectionHeading eyebrow="La sensorialité" title="Comment il se pose sur la peau" />
+        <SensorialStrip />
       </Container>
 
       {/* CE QUE ÇA FAIT / NE FAIT PAS */}
@@ -277,6 +286,7 @@ export default function LeProduitPage() {
             l&apos;ouverture des précommandes.
           </p>
           <WaitlistForm className="w-full max-w-md" />
+          <WaitlistCount />
           <p className="text-[0.7rem] text-stone/80">
             Inscription gratuite · pas de spam · désinscription en un clic.
           </p>
