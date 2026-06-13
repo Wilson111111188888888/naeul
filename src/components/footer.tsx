@@ -19,7 +19,7 @@ const NAV = [
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-line bg-cream">
+    <footer className="border-t border-line bg-cream">
       <Container className="py-16">
         {/* Bande CTA — présente sur toutes les pages */}
         <div className="flex flex-col items-start gap-6 border-b border-line pb-12 md:flex-row md:items-center md:justify-between">
