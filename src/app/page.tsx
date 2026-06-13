@@ -20,7 +20,6 @@ import { buttonClasses } from "@/components/ui/button";
 import { TrustStrip } from "@/components/trust-strip";
 import { SkinSelector } from "@/components/home/skin-selector";
 import { WaitlistCount } from "@/components/waitlist-count";
-import { CountUp } from "@/components/count-up";
 import { Reviews } from "@/components/reviews";
 import { HERO_PRODUCT } from "@/lib/products";
 import { PREORDER_ENABLED, foundersPrice } from "@/lib/preorder";
@@ -35,7 +34,7 @@ const PILLARS = [
   {
     icon: Sparkle,
     title: "La peau grasse, spécifiquement",
-    text: "Une marque qui ne cherche pas à plaire à toutes les peaux. Une seule, la tienne.",
+    text: "Pensée pour les peaux grasses, mixtes et à pores visibles — on connaît la tienne.",
   },
   {
     icon: Leaf,
@@ -75,7 +74,7 @@ export default function Home() {
       {/* HERO — split-screen */}
       <section className="grid items-stretch md:min-h-[calc(100dvh-4rem)] md:grid-cols-2">
         {/* Image */}
-        <div className="relative h-60 w-full sm:h-80 md:h-auto">
+        <div className="relative h-60 w-full overflow-hidden sm:h-80 md:h-auto">
           <Image
             src={heroLifestyle}
             alt="Sérum K-beauty naeul aux exosomes et à la niacinamide sur fond botanique"
@@ -84,7 +83,7 @@ export default function Home() {
             quality={90}
             placeholder="blur"
             sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover object-center"
+            className="animate-kenburns object-cover object-center"
           />
         </div>
 
@@ -144,45 +143,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* POURQUOI NAEUL */}
+      {/* POURQUOI NAEUL — Mission Section */}
       <section className="border-y border-line bg-cream">
-        <Container className="py-20 md:py-28">
-          <div className="mx-auto max-w-2xl text-center">
+        <Container className="py-16 md:py-20">
+          <div className="mx-auto max-w-3xl text-center">
             <p className="text-xs uppercase tracking-[0.25em] text-stone">Pourquoi naeul</p>
-            <h2 className="mt-3 text-3xl md:text-4xl">Une marque, une intention</h2>
+            <p className="mt-6 text-balance font-serif text-2xl leading-snug text-ink md:text-[2rem]">
+              Une marque qui ne cherche pas à plaire à toutes les peaux. Une seule&nbsp;: la peau
+              grasse — qu&apos;on équilibre en douceur, jamais en agressant.
+            </p>
           </div>
-          {/* Bento grid */}
-          <div className="mt-12 grid gap-4 md:grid-cols-3 md:[grid-auto-rows:1fr]">
-            {/* Cellule image (haute) */}
-            <div className="relative min-h-[260px] overflow-hidden rounded-2xl bg-rose/30 md:row-span-2">
-              <Image
-                src="/images/naeul-produit-minimal.jpg"
-                alt="Le sérum naeul à la niacinamide pour peau grasse, composition minimaliste"
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover"
-              />
-            </div>
-
-            {/* Piliers */}
+          {/* 3 raisons en ligne, compactes */}
+          <div className="mx-auto mt-12 grid max-w-4xl gap-8 sm:grid-cols-3">
             {PILLARS.map((pillar) => (
-              <div key={pillar.title} className="rounded-2xl border border-line bg-sand p-7">
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-sage/10 text-sage">
+              <div key={pillar.title} className="text-center">
+                <span className="mx-auto inline-flex h-11 w-11 items-center justify-center rounded-xl bg-sage/10 text-sage">
                   <pillar.icon size={22} />
                 </span>
-                <h3 className="mt-4 text-lg">{pillar.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-stone">{pillar.text}</p>
+                <h3 className="mt-4 text-base">{pillar.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-stone">{pillar.text}</p>
               </div>
             ))}
-
-            {/* Cellule stat */}
-            <div className="flex flex-col justify-center rounded-2xl border border-line bg-sand p-7">
-              <CountUp to={6} className="font-serif text-5xl leading-none text-ink" />
-              <p className="mt-3 text-sm leading-relaxed text-stone">
-                actifs ciblés, dosés juste — niacinamide, AHA doux, Centella, acide hyaluronique,
-                ferments, exosomes.
-              </p>
-            </div>
           </div>
         </Container>
       </section>

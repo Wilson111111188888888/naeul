@@ -137,6 +137,20 @@
     animation: naeul-fade-in 0.8s ease-out both;
   }
 
+  /* Zoom lent cinématique (Ken Burns) pour les images hero */
+  @keyframes naeul-kenburns {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.07);
+    }
+  }
+
+  .animate-kenburns {
+    animation: naeul-kenburns 20s ease-in-out infinite alternate;
+  }
+
   /* Bannière défilante (marquee) */
   @keyframes naeul-marquee {
     from {
@@ -180,7 +194,8 @@
 
   @media (prefers-reduced-motion: reduce) {
     .animate-fade-up,
-    .animate-fade-in {
+    .animate-fade-in,
+    .animate-kenburns {
       animation: none;
     }
     .animate-marquee {
