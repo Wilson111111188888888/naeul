@@ -169,28 +169,29 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* LES 200 PREMIÈRES (Édition Fondatrices) */}
-      <section className="border-b border-line">
-        <Container className="py-20 md:py-28">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-xs uppercase tracking-[0.25em] text-stone">Édition Fondatrices</p>
-            <h2 className="mt-3 text-3xl md:text-4xl">Les 200 premières</h2>
-            <p className="mt-4 leading-relaxed text-stone">
-              Le tout premier batch est limité à 200 flacons. Rejoins-le maintenant : tu fais partie
-              des fondatrices qui vivent le lancement en avant-première, avec -15% sur ta première
-              commande.
-            </p>
-          </div>
-          <div className="mt-14 grid gap-10 md:grid-cols-3">
-            {FOUNDERS.map((f) => (
-              <div key={f.title} className="text-center md:text-left">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-sage/10 text-sage">
-                  <f.icon size={24} />
-                </span>
-                <h3 className="mt-5 text-lg">{f.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-stone">{f.text}</p>
-              </div>
-            ))}
+      {/* LES 200 PREMIÈRES (Édition Fondatrices) — bande sombre compacte */}
+      <section className="bg-ink text-cream">
+        <Container className="py-14 md:py-16">
+          <div className="grid gap-10 md:grid-cols-[1fr_1.5fr] md:items-center md:gap-16">
+            <div>
+              <p className="text-[0.7rem] uppercase tracking-[0.25em] text-cream/60">
+                Édition Fondatrices
+              </p>
+              <h2 className="mt-2 font-serif text-3xl text-cream md:text-4xl">Les 200 premières</h2>
+              <p className="mt-3 text-sm leading-relaxed text-cream/75">
+                Le tout premier batch est limité à 200 flacons. Rejoins les fondatrices qui vivent
+                le lancement en avant-première.
+              </p>
+            </div>
+            <ul className="grid gap-7 sm:grid-cols-3">
+              {FOUNDERS.map((f) => (
+                <li key={f.title}>
+                  <f.icon size={22} className="text-terracotta" />
+                  <p className="mt-3 font-medium text-cream">{f.title}</p>
+                  <p className="mt-1 text-xs leading-relaxed text-cream/65">{f.text}</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </Container>
       </section>
