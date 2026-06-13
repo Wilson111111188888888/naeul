@@ -11,8 +11,10 @@ import { Reviews } from "@/components/reviews";
 import { ProductCarousel } from "@/components/product/product-carousel";
 import { ActivesCarousel } from "@/components/product/actives-carousel";
 import { SensorialStrip } from "@/components/product/sensorial-strip";
+import { PreorderBox } from "@/components/product/preorder-box";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { WaitlistCount } from "@/components/waitlist-count";
+import { PREORDER_ENABLED, SHIPPING_DATE } from "@/lib/preorder";
 import { buttonClasses } from "@/components/ui/button";
 import { formatPrice } from "@/lib/utils";
 
@@ -85,30 +87,8 @@ export default function LeProduitPage() {
             {product.format} — {product.volume}
           </p>
 
-          {/* Prix (info, pas d'achat en Phase 1) */}
-          <div className="mt-6">
-            <ul className="divide-y divide-line overflow-hidden rounded-xl border border-line">
-              {product.variants.map((v) => (
-                <li key={v.id} className="flex items-center justify-between gap-4 px-4 py-3">
-                  <span className="text-sm text-ink">{v.label}</span>
-                  <span className="flex items-baseline gap-2">
-                    {v.saving > 0 && (
-                      <span className="text-xs font-medium text-sage">
-                        économise {formatPrice(v.saving)}
-                      </span>
-                    )}
-                    <span className="font-serif text-lg text-ink">{formatPrice(v.price)}</span>
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-2 text-xs text-stone">
-              Livraison Mondial Relay 3,50 € — offerte dès 50 €.
-            </p>
-          </div>
-
           {/* Certifications */}
-          <ul className="mt-5 flex flex-wrap gap-2">
+          <ul className="mt-6 flex flex-wrap gap-2">
             {product.certifications.map((c) => (
               <li
                 key={c}
@@ -119,20 +99,50 @@ export default function LeProduitPage() {
             ))}
           </ul>
 
-          {/* Waitlist */}
-          <div className="mt-8 rounded-2xl border border-line bg-cream p-6">
-            <p className="text-sm font-medium text-ink">
-              Le sérum arrive bientôt. Sois prévenue en avant-première.
-            </p>
-            <p className="mt-1 text-xs text-stone">
-              Premier batch limité à 200 flacons — les inscrites sont prévenues et servies en priorité.
-            </p>
-            <WaitlistForm className="mt-4" />
-            <WaitlistCount className="mt-4 justify-start" />
-            <p className="mt-3 text-[0.7rem] text-stone/80">
-              Inscription gratuite · pas de spam · ton code -15% par email.
-            </p>
-          </div>
+          {PREORDER_ENABLED ? (
+            /* PRÉ-COMMANDE — Édition Fondatrices */
+            <div className="mt-8">
+              <PreorderBox product={product} />
+            </div>
+          ) : (
+            /* WAITLIST — mode pré-lancement (avant activation du paiement) */
+            <>
+              <div className="mt-6">
+                <ul className="divide-y divide-line overflow-hidden rounded-xl border border-line">
+                  {product.variants.map((v) => (
+                    <li key={v.id} className="flex items-center justify-between gap-4 px-4 py-3">
+                      <span className="text-sm text-ink">{v.label}</span>
+                      <span className="flex items-baseline gap-2">
+                        {v.saving > 0 && (
+                          <span className="text-xs font-medium text-sage">
+                            économise {formatPrice(v.saving)}
+                          </span>
+                        )}
+                        <span className="font-serif text-lg text-ink">{formatPrice(v.price)}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-2 text-xs text-stone">
+                  Livraison Mondial Relay 3,50 € — offerte dès 50 €.
+                </p>
+              </div>
+
+              <div className="mt-8 rounded-2xl border border-line bg-cream p-6">
+                <p className="text-sm font-medium text-ink">
+                  Le sérum arrive bientôt. Sois prévenue en avant-première.
+                </p>
+                <p className="mt-1 text-xs text-stone">
+                  Premier batch limité à 200 flacons — les inscrites sont prévenues et servies en priorité.
+                </p>
+                <WaitlistForm className="mt-4" />
+                <WaitlistCount className="mt-4 justify-start" />
+                <p className="mt-3 text-[0.7rem] text-stone/80">
+                  Inscription gratuite · pas de spam · ton code -15% par email.
+                </p>
+              </div>
+            </>
+          )}
         </div>
       </Container>
 
@@ -278,25 +288,52 @@ export default function LeProduitPage() {
       {/* CTA FINAL */}
       <section id="precommande" className="scroll-mt-20 border-t border-line bg-cream">
         <Container className="flex flex-col items-center gap-6 py-20 text-center md:py-24">
-          <h2 className="max-w-xl text-balance text-3xl md:text-4xl">
-            Sois la première à l&apos;essayer. -15% au lancement.
-          </h2>
-          <p className="max-w-md leading-relaxed text-stone">
-            Rejoins la liste d&apos;avant-première : tu reçois ton code -15% et tu es prévenue dès
-            l&apos;ouverture des précommandes.
-          </p>
-          <WaitlistForm className="w-full max-w-md" />
-          <WaitlistCount />
-          <p className="text-[0.7rem] text-stone/80">
-            Inscription gratuite · pas de spam · désinscription en un clic.
-          </p>
+          {PREORDER_ENABLED ? (
+            <>
+              <h2 className="max-w-xl text-balance text-3xl md:text-4xl">
+                Rejoins les fondatrices de naeul.
+              </h2>
+              <p className="max-w-md leading-relaxed text-stone">
+                -15% sur l&apos;Édition Fondatrices, livraison offerte, garantie 30 jours.
+                Expédition prévue {SHIPPING_DATE}.
+              </p>
+              <Link href="#acheter" className={buttonClasses({ size: "lg" })}>
+                Précommander (-15%)
+              </Link>
+              <p className="text-sm text-stone">
+                Pas encore prête ?{" "}
+                <Link href="/#precommande" className="text-sage underline underline-offset-4">
+                  Rejoins la liste et reçois des nouvelles
+                </Link>
+                .
+              </p>
+            </>
+          ) : (
+            <>
+              <h2 className="max-w-xl text-balance text-3xl md:text-4xl">
+                Sois la première à l&apos;essayer. -15% au lancement.
+              </h2>
+              <p className="max-w-md leading-relaxed text-stone">
+                Rejoins la liste d&apos;avant-première : tu reçois ton code -15% et tu es prévenue dès
+                l&apos;ouverture des précommandes.
+              </p>
+              <WaitlistForm className="w-full max-w-md" />
+              <WaitlistCount />
+              <p className="text-[0.7rem] text-stone/80">
+                Inscription gratuite · pas de spam · désinscription en un clic.
+              </p>
+            </>
+          )}
         </Container>
       </section>
 
       {/* CTA sticky mobile */}
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-sand/95 p-3 backdrop-blur-md md:hidden">
-        <Link href="#precommande" className={buttonClasses({ size: "lg", className: "w-full" })}>
-          Je veux être prévenue (-15%)
+        <Link
+          href={PREORDER_ENABLED ? "#acheter" : "#precommande"}
+          className={buttonClasses({ size: "lg", className: "w-full" })}
+        >
+          {PREORDER_ENABLED ? "Précommander (-15%)" : "Je veux être prévenue (-15%)"}
         </Link>
       </div>
     </div>

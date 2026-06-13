@@ -1,14 +1,24 @@
 import Link from "next/link";
+import { PREORDER_ENABLED } from "@/lib/preorder";
 
 // Messages de conversion (sans « Made in EU » — on en parle le moins possible).
-const MESSAGES = [
-  "Précommande ouverte · -15 % en avant-première",
-  "Inscription = accès prioritaire au lancement",
-  "Premier batch limité à 200 flacons",
-  "Livraison offerte dès 50 €",
-  "Vegan · ECOCERT · sans parfum",
-  "K-beauty pour peau grasse, sans agresser",
-];
+const MESSAGES = PREORDER_ENABLED
+  ? [
+      "Précommande ouverte · Édition Fondatrices -15 %",
+      "Premier batch limité à 200 flacons",
+      "Livraison offerte pour les fondatrices",
+      "Garantie satisfait ou remboursé 30 jours",
+      "Vegan · ECOCERT · sans parfum",
+      "K-beauty pour peau grasse, sans agresser",
+    ]
+  : [
+      "Avant-première ouverte · -15 % au lancement",
+      "Inscription = accès prioritaire au lancement",
+      "Premier batch limité à 200 flacons",
+      "Livraison offerte dès 50 €",
+      "Vegan · ECOCERT · sans parfum",
+      "K-beauty pour peau grasse, sans agresser",
+    ];
 
 /** Bandeau d'annonce défilant (marquee), en haut de page. */
 export function AnnouncementBar() {

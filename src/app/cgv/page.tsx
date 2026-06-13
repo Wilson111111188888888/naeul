@@ -34,13 +34,42 @@ export default function CgvPage() {
         commande est confirmée par email après acceptation du paiement.
       </p>
 
-      <h2>5. Livraison</h2>
+      <h2>5. Pré-commande — Édition Fondatrices</h2>
+      <p>
+        Certains produits sont proposés en <strong>pré-commande</strong>. La commande porte alors sur
+        un produit dont la fabrication ou la disponibilité est à venir, dans la limite du premier
+        batch (édition limitée à 200 unités).
+      </p>
+      <ul>
+        <li>
+          <strong>Date d'expédition prévisionnelle</strong> : elle est affichée sur la page produit
+          avant la commande et rappelée dans l'email de confirmation. En cas de dépassement
+          significatif de cette date, vous pouvez demander le remboursement intégral.
+        </li>
+        <li>
+          <strong>Paiement</strong> : vous êtes débité(e) au moment de la commande, afin de réserver
+          votre flacon.
+        </li>
+        <li>
+          <strong>Délai maximal de livraison</strong> : conformément aux articles L216-1 et suivants
+          du Code de la consommation, à défaut de livraison dans le délai annoncé, vous pouvez
+          résoudre la vente et être remboursé(e). En tout état de cause, le remboursement intégral
+          est dû en cas de non-livraison sous 90 jours.
+        </li>
+        <li>
+          Le <strong>droit de rétractation de 14 jours</strong> et la{" "}
+          <strong>garantie satisfait ou remboursé 30 jours</strong> s'appliquent à compter de la
+          réception (voir ci-dessous).
+        </li>
+      </ul>
+
+      <h2>6. Livraison</h2>
       <p>
         Les produits sont livrés en France métropolitaine et dans l'Union européenne (FR, BE, LU, MC)
         sous 48 à 72 heures ouvrées après expédition. Tout retard anormal sera signalé.
       </p>
 
-      <h2>6. Droit de rétractation (14 jours)</h2>
+      <h2>7. Droit de rétractation (14 jours)</h2>
       <p>
         Conformément aux articles L221-18 et suivants du Code de la consommation, vous disposez d'un
         délai de <strong>14 jours</strong> à compter de la réception pour exercer votre droit de
@@ -52,19 +81,19 @@ export default function CgvPage() {
         (voir la page <a href="/retours">Retours &amp; remboursements</a>).
       </p>
 
-      <h2>7. Garanties légales</h2>
+      <h2>8. Garanties légales</h2>
       <p>
         Tous les produits bénéficient de la garantie légale de conformité (art. L217-3 et suivants)
         et de la garantie contre les vices cachés (art. 1641 et suivants du Code civil).
       </p>
 
-      <h2>8. Données personnelles</h2>
+      <h2>9. Données personnelles</h2>
       <p>
         Le traitement de vos données est décrit dans notre{" "}
         <a href="/confidentialite">politique de confidentialité</a>.
       </p>
 
-      <h2>9. Droit applicable</h2>
+      <h2>10. Droit applicable</h2>
       <p>Les présentes CGV sont soumises au droit français.</p>
     </ContentPage>
   );
