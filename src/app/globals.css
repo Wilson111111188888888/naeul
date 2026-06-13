@@ -138,6 +138,15 @@
     animation: naeul-marquee 32s linear infinite;
   }
 
+  /* Masquer la barre de défilement (carrousels horizontaux) */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .animate-fade-up {
       animation: none;

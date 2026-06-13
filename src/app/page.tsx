@@ -50,6 +50,9 @@ export default function Home() {
             avant-première et obtenir <strong className="text-ink">-15%</strong> au lancement.
           </p>
           <WaitlistForm className="mt-8 w-full max-w-md" />
+          <p className="mt-5 text-[0.7rem] uppercase tracking-[0.25em] text-stone/70">
+            Vegan · ECOCERT · Sans parfum
+          </p>
         </Container>
       </section>
 

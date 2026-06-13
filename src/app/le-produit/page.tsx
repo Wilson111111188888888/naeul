@@ -9,11 +9,13 @@ import {
   FlowerLotus,
   Sun,
 } from "@phosphor-icons/react/dist/ssr";
+import Link from "next/link";
 import { HERO_PRODUCT } from "@/lib/products";
 import { Container } from "@/components/ui/container";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { Reviews } from "@/components/reviews";
 import { ProductCarousel } from "@/components/product/product-carousel";
+import { buttonClasses } from "@/components/ui/button";
 import { formatPrice } from "@/lib/utils";
 
 const product = HERO_PRODUCT;
@@ -65,7 +67,7 @@ const jsonLd = {
 
 export default function LeProduitPage() {
   return (
-    <div>
+    <div className="pb-20 md:pb-0">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -147,20 +149,24 @@ export default function LeProduitPage() {
       {/* ACTIFS */}
       <Container className="py-16 md:py-24">
         <SectionHeading eyebrow="La formule" title="Six actifs, une intention" />
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scrollbar-hide md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:pb-0">
           {product.actives.map((active, i) => {
             const Icon = ACTIVE_ICONS[i % ACTIVE_ICONS.length];
             return (
-              <div key={active.name} className="rounded-xl border border-line bg-sand p-6">
-                <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-sage/10 text-sage">
+              <div
+                key={active.name}
+                className="flex min-w-[78%] shrink-0 snap-start flex-col rounded-2xl border border-line bg-sand p-6 transition-colors hover:border-sage/40 sm:min-w-[46%] md:min-w-0"
+              >
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-sage/10 text-sage">
                   <Icon size={20} />
                 </span>
-                <h3 className="mt-4 text-base">{active.name}</h3>
+                <h3 className="mt-4 font-serif text-lg">{active.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-stone">{active.role}</p>
               </div>
             );
           })}
         </div>
+        <p className="mt-3 text-xs text-stone md:hidden">Faites défiler pour voir les 6 actifs →</p>
       </Container>
 
       {/* CE QUE ÇA FAIT / NE FAIT PAS */}
@@ -233,6 +239,13 @@ export default function LeProduitPage() {
           <WaitlistForm className="w-full max-w-md" />
         </Container>
       </section>
+
+      {/* CTA sticky mobile */}
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-sand/95 p-3 backdrop-blur-md md:hidden">
+        <Link href="#precommande" className={buttonClasses({ size: "lg", className: "w-full" })}>
+          Je veux être prévenue (-15%)
+        </Link>
+      </div>
     </div>
   );
 }
