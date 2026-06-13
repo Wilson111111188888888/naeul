@@ -48,12 +48,37 @@ export default function Home() {
           <h1 className="mt-10 max-w-xl text-balance font-serif text-2xl italic font-normal leading-snug text-ink sm:text-3xl">
             K-beauty pour peau grasse, sans agresser.
           </h1>
-          <p className="mt-5 max-w-md leading-relaxed text-stone">
-            Notre premier sérum arrive bientôt. Inscris-toi pour être prévenue en
-            avant-première et obtenir <strong className="text-ink">-15%</strong> au lancement.
-          </p>
-          <WaitlistForm className="mt-8 w-full max-w-md" />
-          <WaitlistCount className="mt-6" />
+          {PREORDER_ENABLED ? (
+            <>
+              <p className="mt-5 max-w-md leading-relaxed text-stone">
+                L&apos;Édition Fondatrices est ouverte : <strong className="text-ink">-15%</strong>,
+                livraison offerte et garantie 30 jours. Premier batch limité à 200 flacons.
+              </p>
+              <Link
+                href="/le-produit#acheter"
+                className={buttonClasses({ size: "lg", className: "mt-8" })}
+              >
+                Précommander (-15%)
+                <ArrowRight size={18} />
+              </Link>
+              <WaitlistCount className="mt-6" />
+              <p className="mt-4 text-sm text-stone">
+                Pas encore prête ?{" "}
+                <Link href="#precommande" className="text-sage underline underline-offset-4">
+                  Rejoins la liste d&apos;avant-première
+                </Link>
+              </p>
+            </>
+          ) : (
+            <>
+              <p className="mt-5 max-w-md leading-relaxed text-stone">
+                Notre premier sérum arrive bientôt. Inscris-toi pour être prévenue en
+                avant-première et obtenir <strong className="text-ink">-15%</strong> au lancement.
+              </p>
+              <WaitlistForm className="mt-8 w-full max-w-md" />
+              <WaitlistCount className="mt-6" />
+            </>
+          )}
           <p className="mt-5 text-[0.7rem] uppercase tracking-[0.25em] text-stone/70">
             Vegan · ECOCERT · Sans parfum
           </p>
