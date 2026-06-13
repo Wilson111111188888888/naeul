@@ -23,7 +23,7 @@ export default function ConfidentialitePage() {
       <ul>
         <li>Adresse email lors d'une inscription à la précommande / liste d'avant-première.</li>
         <li>Nom, email et message lorsque vous utilisez le formulaire de contact.</li>
-        <li>Données de navigation anonymisées via Plausible Analytics (sans cookie).</li>
+        <li>Données de navigation anonymisées via Vercel Analytics (sans cookie).</li>
       </ul>
 
       <h2>Finalités</h2>
@@ -42,7 +42,7 @@ export default function ConfidentialitePage() {
       <h2>Sous-traitants</h2>
       <p>
         Resend (emails transactionnels), Loops (email marketing et liste d'avant-première), Vercel
-        (hébergement), Plausible (mesure d'audience). Ces prestataires présentent des garanties
+        (hébergement), Vercel Analytics (mesure d'audience). Ces prestataires présentent des garanties
         conformes au RGPD.
       </p>
 
@@ -61,7 +61,7 @@ export default function ConfidentialitePage() {
 
       <h2>Cookies</h2>
       <p>
-        Le site n'utilise pas de cookies publicitaires. La mesure d'audience (Plausible) fonctionne
+        Le site n'utilise pas de cookies publicitaires. La mesure d'audience (Vercel Analytics) fonctionne
         sans cookie. Un consentement vous est demandé pour tout traceur non essentiel.
       </p>
     </ContentPage>
