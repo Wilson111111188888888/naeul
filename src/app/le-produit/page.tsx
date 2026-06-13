@@ -11,6 +11,7 @@ import { Reviews } from "@/components/reviews";
 import { ProductCarousel } from "@/components/product/product-carousel";
 import { ActivesCarousel } from "@/components/product/actives-carousel";
 import { GalleryCarousel } from "@/components/product/gallery-carousel";
+import { ResultsCarousel } from "@/components/product/results-carousel";
 import { PreorderBox } from "@/components/product/preorder-box";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { WaitlistCount } from "@/components/waitlist-count";
@@ -196,8 +197,8 @@ export default function LeProduitPage() {
               test produit.
             </p>
           </div>
-          <div className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 scrollbar-hide">
-            {[
+          <ResultsCarousel
+            items={[
               {
                 src: "/images/naeul-avant-apres.jpg",
                 alt: "Avant / après — grain de peau plus lisse et pores resserrés après 4 semaines avec le sérum naeul",
@@ -206,25 +207,9 @@ export default function LeProduitPage() {
                 src: "/images/naeul-avant-apres-2.jpg",
                 alt: "Avant / après sur peau mate — teint plus net et lisse après 4 semaines avec le sérum naeul",
               },
-            ].map((r) => (
-              <figure
-                key={r.src}
-                className="min-w-[88%] shrink-0 snap-center sm:min-w-[70%] lg:min-w-[58%]"
-              >
-                <div className="overflow-hidden rounded-2xl border border-line">
-                  <Image
-                    src={r.src}
-                    alt={r.alt}
-                    width={1540}
-                    height={1027}
-                    sizes="(max-width: 768px) 88vw, 58vw"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              </figure>
-            ))}
-          </div>
-          <p className="mt-3 text-center text-xs text-stone">
+            ]}
+          />
+          <p className="mt-4 text-center text-xs text-stone">
             Résultats observés après 4 semaines d&apos;utilisation. Résultats individuels, non
             garantis.
           </p>

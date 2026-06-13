@@ -11,9 +11,9 @@ import {
   Tag,
   Package,
   ShieldCheck,
+  Check,
 } from "@phosphor-icons/react/dist/ssr";
 import { Container } from "@/components/ui/container";
-import { Wordmark } from "@/components/wordmark";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { buttonClasses } from "@/components/ui/button";
 import { TrustStrip } from "@/components/trust-strip";
@@ -42,6 +42,8 @@ const PILLARS = [
   },
 ];
 
+const TRUST_BADGES = ["Sans parfum", "Vegan ECOCERT", "Livraison 48-72h", "Satisfait remboursé 30j"];
+
 const FOUNDERS = [
   {
     icon: Star,
@@ -68,48 +70,80 @@ export default function Home() {
 
   return (
     <>
-      {/* HERO */}
-      <section className="flex min-h-[calc(100dvh-4rem)] items-center">
-        <Container className="flex flex-col items-center py-16 text-center">
-          <Wordmark className="text-7xl sm:text-8xl" hangulClassName="text-base tracking-[0.4em]" />
-          <h1 className="mt-10 max-w-xl text-balance font-serif text-2xl italic font-normal leading-snug text-ink sm:text-3xl">
-            K-beauty pour peau grasse, sans agresser.
-          </h1>
-          {PREORDER_ENABLED ? (
-            <>
-              <p className="mt-5 max-w-md leading-relaxed text-stone">
-                L&apos;Édition Fondatrices est ouverte : <strong className="text-ink">-15%</strong>,
-                livraison offerte et garantie 30 jours. Premier batch limité à 200 flacons.
-              </p>
-              <Link
-                href="/le-produit#acheter"
-                className={buttonClasses({ size: "lg", className: "mt-8" })}
-              >
-                Précommander (-15%)
-                <ArrowRight size={18} />
-              </Link>
-              <WaitlistCount className="mt-6" />
-              <p className="mt-4 text-sm text-stone">
-                Pas encore prête ?{" "}
-                <Link href="#precommande" className="text-sage underline underline-offset-4">
-                  Rejoins la liste d&apos;avant-première
+      {/* HERO — split-screen */}
+      <section className="grid items-stretch md:min-h-[calc(100dvh-4rem)] md:grid-cols-2">
+        {/* Image */}
+        <div className="relative h-60 w-full sm:h-80 md:h-auto">
+          <Image
+            src="/images/naeul-produit-lifestyle.jpg"
+            alt="Sérum K-beauty naeul aux exosomes et à la niacinamide sur fond botanique"
+            fill
+            priority
+            quality={90}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="animate-fade-in object-cover object-center"
+          />
+        </div>
+
+        {/* Contenu */}
+        <div className="flex items-center bg-sand px-6 py-9 md:px-12 md:py-14">
+          <div className="mx-auto w-full max-w-[480px] animate-fade-up [animation-delay:150ms]">
+            <p className="text-[0.7rem] uppercase tracking-[0.2em] text-stone">
+              {PREORDER_ENABLED
+                ? "K-beauty française · Édition Fondatrices"
+                : "K-beauty française · Avant-première"}
+            </p>
+            <h1 className="mt-5 text-balance font-serif text-[1.75rem] font-normal italic leading-tight text-ink md:text-[2.5rem]">
+              K-beauty pour peau grasse, sans agresser.
+            </h1>
+
+            {PREORDER_ENABLED ? (
+              <>
+                <p className="mt-5 text-sm leading-relaxed text-ink md:text-[0.95rem]">
+                  L&apos;Édition Fondatrices est ouverte : <strong className="font-medium">-15%</strong>,
+                  livraison offerte et garantie 30 jours. Premier batch limité à 200 flacons.
+                </p>
+                <Link
+                  href="/le-produit#acheter"
+                  className={buttonClasses({ size: "lg", className: "mt-6 w-full sm:w-auto" })}
+                >
+                  Précommander (-15%)
+                  <ArrowRight size={18} />
                 </Link>
-              </p>
-            </>
-          ) : (
-            <>
-              <p className="mt-5 max-w-md leading-relaxed text-stone">
-                Notre premier sérum arrive bientôt. Inscris-toi pour être prévenue en
-                avant-première et obtenir <strong className="text-ink">-15%</strong> au lancement.
-              </p>
-              <WaitlistForm className="mt-8 w-full max-w-md" />
-              <WaitlistCount className="mt-6" />
-            </>
-          )}
-          <p className="mt-5 text-[0.7rem] uppercase tracking-[0.25em] text-stone/70">
-            Vegan · ECOCERT · Sans parfum
-          </p>
-        </Container>
+                <p className="mt-3 text-xs text-stone">
+                  Pas encore prête ?{" "}
+                  <Link href="#precommande" className="text-sage underline underline-offset-4">
+                    Rejoins la liste d&apos;avant-première
+                  </Link>
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="mt-5 text-sm leading-relaxed text-ink md:text-[0.95rem]">
+                  Notre premier sérum arrive bientôt. Inscris-toi pour être prévenue en
+                  avant-première et recevoir <strong className="font-medium">-15%</strong> sur ta
+                  première commande.
+                </p>
+                <WaitlistForm className="mt-6" />
+                <p className="mt-3 text-[0.7rem] text-stone">
+                  Pas de spam. Désinscription en un clic.
+                </p>
+              </>
+            )}
+
+            {/* Trust badges 2x2 */}
+            <ul className="mt-7 grid grid-cols-2 gap-x-4 gap-y-2.5">
+              {TRUST_BADGES.map((t) => (
+                <li key={t} className="flex items-center gap-2 text-[0.7rem] text-stone">
+                  <Check size={14} weight="bold" className="shrink-0 text-sage" />
+                  {t}
+                </li>
+              ))}
+            </ul>
+
+            <WaitlistCount className="mt-7 justify-start" />
+          </div>
+        </div>
       </section>
 
       {/* POURQUOI NAEUL */}
