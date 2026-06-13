@@ -233,6 +233,46 @@ export default function LeProduitPage() {
         <ActivesCarousel actives={product.actives} />
       </Container>
 
+      {/* TIMELINE — de la formule à ta peau */}
+      <section className="border-t border-line">
+        <Container className="py-16 md:py-24">
+          <SectionHeading eyebrow="Notre démarche" title="De la formule à ta peau" />
+          <ol className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                t: "La formule",
+                d: "Six actifs dosés juste, pensés pour la peau grasse — sans alcool dénaturé ni BHA forts.",
+              },
+              {
+                t: "Le laboratoire",
+                d: "Formulée dans un laboratoire certifié ISO 22716 et ECOCERT, dans l'Union européenne.",
+              },
+              {
+                t: "Les contrôles",
+                d: "Conformité cosmétique européenne, notification CPNP en cours d'enregistrement.",
+              },
+              {
+                t: "Chez toi",
+                d: "Édition limitée à 200 flacons, livraison Mondial Relay, garantie 30 jours.",
+              },
+            ].map((step, i, arr) => (
+              <li key={step.t} className="relative">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-sage font-serif text-sm text-sage">
+                    {i + 1}
+                  </span>
+                  {i < arr.length - 1 && (
+                    <span className="hidden h-px flex-1 bg-line lg:block" aria-hidden="true" />
+                  )}
+                </div>
+                <h3 className="mt-4 text-base">{step.t}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-stone">{step.d}</p>
+              </li>
+            ))}
+          </ol>
+        </Container>
+      </section>
+
       {/* L'EXPÉRIENCE — galerie */}
       <section className="border-y border-line bg-cream">
         <Container className="py-16 md:py-24">
