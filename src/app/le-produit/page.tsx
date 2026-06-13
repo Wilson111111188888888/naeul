@@ -64,9 +64,11 @@ const jsonLd = {
 };
 
 export default function LeProduitPage() {
-  const hasMosaic = fs.existsSync(path.join(process.cwd(), "public/images/naeul-communaute.jpg"));
   const hasAvantApres = fs.existsSync(
     path.join(process.cwd(), "public/images/naeul-avant-apres.jpg"),
+  );
+  const hasApplication = fs.existsSync(
+    path.join(process.cwd(), "public/images/naeul-application.jpg"),
   );
   return (
     <div className="pb-20 md:pb-0">
@@ -222,7 +224,7 @@ export default function LeProduitPage() {
 
       {/* SENSORIALITÉ (visuels décoratifs abstraits) */}
       <Container className="pb-16 md:pb-24">
-        <SectionHeading eyebrow="La sensorialité" title="Comment il se pose sur la peau" />
+        <SectionHeading eyebrow="La sensorialité" title="Sa texture" />
         <SensorialStrip />
       </Container>
 
@@ -264,23 +266,20 @@ export default function LeProduitPage() {
         </ol>
       </Container>
 
-      {/* EN SITUATION — le problème, et notre réponse (à la place de l'ancienne FAQ) */}
-      {hasMosaic && (
+      {/* EN SITUATION — le problème, et notre réponse */}
+      {hasApplication && (
         <section className="border-t border-line bg-cream">
           <Container className="py-16 md:py-24">
             <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
-              <figure className="order-2 md:order-1">
-                <div className="overflow-hidden rounded-2xl bg-rose/30">
-                  <Image
-                    src="/images/naeul-communaute.jpg"
-                    alt="Quatre femmes aux carnations variées avec le sérum naeul"
-                    width={1100}
-                    height={1100}
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="aspect-square h-full w-full object-cover"
-                  />
-                </div>
-                <figcaption className="mt-2 text-xs text-stone">Visuel d&apos;inspiration</figcaption>
+              <figure className="order-2 overflow-hidden rounded-2xl md:order-1">
+                <Image
+                  src="/images/naeul-application.jpg"
+                  alt="Une femme à la peau lumineuse applique le sérum naeul sur le dos de sa main"
+                  width={1122}
+                  height={1402}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="aspect-[4/5] h-full w-full object-cover"
+                />
               </figure>
               <div className="order-1 md:order-2">
                 <p className="text-xs uppercase tracking-[0.25em] text-stone">En situation</p>
@@ -291,14 +290,14 @@ export default function LeProduitPage() {
                   de sébum.
                 </p>
                 <p className="mt-4 leading-relaxed text-stone">
-                  naeul casse ce cercle : on régule le sébum <em>et</em> on hydrate en même temps,
-                  avec des actifs doux. La peau s&apos;équilibre, au lieu de sur-réagir.
+                  naeul casse ce cercle : on régule le sébum et on hydrate en même temps, avec des
+                  actifs doux. La peau s&apos;équilibre, au lieu de sur-réagir.
                 </p>
                 <Link
-                  href="#precommande"
+                  href={PREORDER_ENABLED ? "#acheter" : "/#precommande"}
                   className={buttonClasses({ size: "lg", className: "mt-8" })}
                 >
-                  Je veux être prévenue (-15%)
+                  {PREORDER_ENABLED ? "Précommander (-15%)" : "Je veux être prévenue (-15%)"}
                 </Link>
               </div>
             </div>
