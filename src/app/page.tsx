@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import Link from "next/link";
 import Image from "next/image";
 import { Sparkle, Drop, Leaf, ArrowRight } from "@phosphor-icons/react/dist/ssr";
@@ -29,6 +31,11 @@ const PILLARS = [
 ];
 
 export default function Home() {
+  // La section « communauté » n'apparaît que si l'image a été déposée dans public/images.
+  const hasCommunityImage = fs.existsSync(
+    path.join(process.cwd(), "public/images/naeul-communaute.jpg"),
+  );
+
   return (
     <>
       {/* HERO */}
@@ -122,6 +129,7 @@ export default function Home() {
       <TrustStrip />
 
       {/* POUR TOUTES LES PEAUX GRASSES */}
+      {hasCommunityImage && (
       <section>
         <Container className="py-20 md:py-28">
           <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
@@ -157,6 +165,7 @@ export default function Home() {
           </div>
         </Container>
       </section>
+      )}
 
       {/* NOTRE HISTOIRE */}
       <section className="border-y border-line bg-cream">
