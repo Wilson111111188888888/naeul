@@ -7,6 +7,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CookieBanner } from "@/components/cookie-banner";
 import { ExitIntent } from "@/components/exit-intent";
+import { HelpBubble } from "@/components/help-bubble";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -72,6 +73,7 @@ export default function RootLayout({
         <Footer />
         <CookieBanner />
         <ExitIntent />
+        <HelpBubble />
         <Analytics />
       </body>
     </html>

@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
 import Image from "next/image";
+import heroLifestyle from "../../public/images/naeul-produit-lifestyle.jpg";
 import {
   Sparkle,
   Drop,
@@ -75,13 +76,14 @@ export default function Home() {
         {/* Image */}
         <div className="relative h-60 w-full sm:h-80 md:h-auto">
           <Image
-            src="/images/naeul-produit-lifestyle.jpg"
+            src={heroLifestyle}
             alt="Sérum K-beauty naeul aux exosomes et à la niacinamide sur fond botanique"
             fill
             priority
             quality={90}
+            placeholder="blur"
             sizes="(max-width: 768px) 100vw, 50vw"
-            className="animate-fade-in object-cover object-center"
+            className="object-cover object-center"
           />
         </div>
 
