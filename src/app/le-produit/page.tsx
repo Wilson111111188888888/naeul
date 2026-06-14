@@ -17,6 +17,7 @@ import { FaqAccordion } from "@/components/faq-accordion";
 import { WaitlistCount } from "@/components/waitlist-count";
 import { StickyCta } from "@/components/sticky-cta";
 import { ReassuranceRow } from "@/components/reassurance-row";
+import { LifestyleGrid } from "@/components/lifestyle-grid";
 import { PREORDER_ENABLED, SHIPPING_DATE } from "@/lib/preorder";
 import { buttonClasses } from "@/components/ui/button";
 import { formatPrice, cn } from "@/lib/utils";
@@ -96,6 +97,9 @@ const jsonLd = {
 export default function LeProduitPage() {
   const hasAvantApres = fs.existsSync(
     path.join(process.cwd(), "public/images/naeul-avant-apres.jpg"),
+  );
+  const hasLifestyle = fs.existsSync(
+    path.join(process.cwd(), "public/images/naeul-lifestyle-1.jpg"),
   );
   return (
     <div className="pb-20 md:pb-0">
@@ -346,6 +350,23 @@ export default function LeProduitPage() {
           </div>
         </Container>
       </section>
+
+      {/* EN SITUATION — grille lifestyle (imagerie neutre) */}
+      {hasLifestyle && (
+        <section className="border-t border-line">
+          <Container className="py-16 md:py-24">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="text-xs uppercase tracking-[0.25em] text-stone">En situation</p>
+              <h2 className="mt-3 text-3xl md:text-4xl">Un geste, toutes les peaux grasses</h2>
+              <p className="mt-4 leading-relaxed text-stone">
+                Le même sérum, la même promesse — réguler le sébum sans agresser, quelle que soit
+                ta carnation.
+              </p>
+            </div>
+            <LifestyleGrid className="mx-auto mt-10 max-w-2xl" />
+          </Container>
+        </section>
+      )}
 
       {/* AVIS */}
       <Reviews />

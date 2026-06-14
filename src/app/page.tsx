@@ -21,6 +21,7 @@ import { TrustStrip } from "@/components/trust-strip";
 import { SkinSelector } from "@/components/home/skin-selector";
 import { AutoScrollRow } from "@/components/auto-scroll-row";
 import { SwipeCarousel } from "@/components/swipe-carousel";
+import { LifestyleGrid } from "@/components/lifestyle-grid";
 import { WaitlistCount } from "@/components/waitlist-count";
 import { StickyCta } from "@/components/sticky-cta";
 import { ReassuranceRow } from "@/components/reassurance-row";
@@ -72,7 +73,7 @@ export default function Home() {
   const hasImage = (name: string) => fs.existsSync(path.join(process.cwd(), "public/images", name));
   const hasDuo = hasImage("naeul-application.jpg");
   const hasPortrait = hasImage("naeul-texture-macro.jpg");
-  const hasLifestyleGrid = hasImage("naeul-lifestyle-grid.jpg");
+  const hasLifestyleGrid = hasImage("naeul-lifestyle-1.jpg");
 
   return (
     <>
@@ -347,16 +348,7 @@ export default function Home() {
                 carnation, ton âge ou ton histoire.
               </p>
             </div>
-            <figure className="mx-auto mt-10 max-w-2xl overflow-hidden rounded-2xl border border-line">
-              <Image
-                src="/images/naeul-lifestyle-grid.jpg"
-                alt="Le sérum naeul appliqué sur différentes carnations à tendance grasse"
-                width={1252}
-                height={1252}
-                sizes="(max-width: 768px) 100vw, 672px"
-                className="h-full w-full object-cover"
-              />
-            </figure>
+            <LifestyleGrid className="mx-auto mt-10 max-w-2xl" />
           </Container>
         </section>
       )}
