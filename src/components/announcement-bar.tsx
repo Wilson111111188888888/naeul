@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Marquee } from "@/components/marquee";
 import { PREORDER_ENABLED } from "@/lib/preorder";
 
 // Messages de conversion (sans « Made in EU » — on en parle le moins possible).
@@ -16,27 +17,21 @@ const MESSAGES = PREORDER_ENABLED
       "Satisfait ou remboursé 30 jours",
     ];
 
-/** Bandeau d'annonce défilant (marquee), en haut de page. */
+/** Bandeau d'annonce défilant (marquee premium), en haut de page. */
 export function AnnouncementBar() {
   return (
     <div className="bg-ink text-cream">
       <Link
         href="/#precommande"
         aria-label="Précommande ouverte — -15 % en avant-première"
-        className="block overflow-hidden py-1.5"
+        className="block py-2"
       >
-        <div className="flex w-max animate-marquee whitespace-nowrap">
-          {[0, 1].map((group) => (
-            <ul key={group} className="flex shrink-0" aria-hidden={group === 1}>
-              {MESSAGES.map((m, i) => (
-                <li key={i} className="flex items-center text-[0.7rem] tracking-wide">
-                  <span className="mx-6">{m}</span>
-                  <span className="text-cream/40">·</span>
-                </li>
-              ))}
-            </ul>
-          ))}
-        </div>
+        <Marquee
+          items={MESSAGES}
+          duration={46}
+          itemClassName="text-[0.7rem] uppercase tracking-[0.22em] text-cream/85"
+          separatorClassName="text-[0.6rem] text-terracotta/80"
+        />
       </Link>
     </div>
   );

@@ -20,6 +20,7 @@ import { buttonClasses } from "@/components/ui/button";
 import { TrustStrip } from "@/components/trust-strip";
 import { SkinSelector } from "@/components/home/skin-selector";
 import { SwipeCarousel } from "@/components/swipe-carousel";
+import { Marquee } from "@/components/marquee";
 import { LifestyleGrid } from "@/components/lifestyle-grid";
 import { WaitlistCount } from "@/components/waitlist-count";
 import { StickyCta } from "@/components/sticky-cta";
@@ -48,6 +49,16 @@ const PILLARS = [
 ];
 
 const TRUST_BADGES = ["Sans parfum", "Vegan ECOCERT", "Livraison 48-72h", "Satisfait remboursé 30j"];
+
+// Ruban de perks de l'Édition Fondatrices (défilement premium).
+const FOUNDERS_PERKS = [
+  "Accès prioritaire",
+  "-15 % sur ta 1ʳᵉ commande",
+  "Édition limitée · 200 flacons",
+  "Livraison offerte",
+  "Garantie 30 jours",
+  "Servies en priorité",
+];
 
 const FOUNDERS = [
   {
@@ -176,6 +187,13 @@ export default function Home() {
 
       {/* LES 200 PREMIÈRES (Édition Fondatrices) — bande sombre compacte */}
       <section className="bg-ink text-cream">
+        {/* Ruban premium des avantages fondatrices */}
+        <Marquee
+          items={FOUNDERS_PERKS}
+          duration={40}
+          className="border-b border-cream/10 py-3.5"
+          itemClassName="font-serif text-base italic text-cream/85 tracking-wide"
+        />
         <Container className="py-14 md:py-16">
           <div className="grid gap-10 md:grid-cols-[1fr_1.5fr] md:items-center md:gap-16">
             <div>

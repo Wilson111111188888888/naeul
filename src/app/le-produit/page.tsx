@@ -18,6 +18,7 @@ import { WaitlistCount } from "@/components/waitlist-count";
 import { StickyCta } from "@/components/sticky-cta";
 import { ReassuranceRow } from "@/components/reassurance-row";
 import { LifestyleGrid } from "@/components/lifestyle-grid";
+import { Marquee } from "@/components/marquee";
 import { PREORDER_ENABLED, SHIPPING_DATE } from "@/lib/preorder";
 import { buttonClasses } from "@/components/ui/button";
 import { formatPrice, cn } from "@/lib/utils";
@@ -230,6 +231,14 @@ export default function LeProduitPage() {
         <SectionHeading eyebrow="La formule" title="Six actifs, une intention" />
         <ActivesCarousel actives={product.actives} />
       </Container>
+
+      {/* Ruban d'ingrédients — défilement premium pleine largeur */}
+      <Marquee
+        items={product.actives.map((a) => a.name)}
+        duration={44}
+        className="border-y border-line bg-cream py-6"
+        itemClassName="font-serif text-2xl italic text-ink md:text-3xl"
+      />
 
       {/* TIMELINE — de la formule à ta peau */}
       <section className="border-t border-line">
