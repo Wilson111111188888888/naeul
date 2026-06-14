@@ -60,6 +60,9 @@ const FOUNDERS_PERKS = [
   "Servies en priorité",
 ];
 
+// Bande typographique de marque (grand défilement, en transition vers le CTA final).
+const BRAND_WORDS = ["naeul", "나을", "K-beauty pour peau grasse", "sans agresser"];
+
 const FOUNDERS = [
   {
     icon: Star,
@@ -403,6 +406,16 @@ export default function Home() {
           </div>
         </Container>
       </section>
+
+      {/* BANDE DE MARQUE — défilement typographique premium */}
+      <Marquee
+        items={BRAND_WORDS}
+        duration={52}
+        reverse
+        className="border-y border-line py-10 md:py-14"
+        itemClassName="font-serif text-4xl italic text-ink/90 md:text-6xl"
+        separatorClassName="text-2xl md:text-4xl text-terracotta/70"
+      />
 
       {/* CAPTURE FINALE — Cinematic CTA */}
       <section id="precommande" className="relative scroll-mt-20 overflow-hidden">
