@@ -11,7 +11,7 @@ import { Reviews } from "@/components/reviews";
 import { ProductCarousel } from "@/components/product/product-carousel";
 import { ActivesCarousel } from "@/components/product/actives-carousel";
 import { GalleryCarousel } from "@/components/product/gallery-carousel";
-import { ResultsCarousel } from "@/components/product/results-carousel";
+import { BeforeAfter } from "@/components/product/before-after";
 import { PreorderBox } from "@/components/product/preorder-box";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { WaitlistCount } from "@/components/waitlist-count";
@@ -199,21 +199,10 @@ export default function LeProduitPage() {
               test produit.
             </p>
           </div>
-          <ResultsCarousel
-            items={[
-              {
-                src: "/images/naeul-avant-apres.jpg",
-                alt: "Avant / après — grain de peau plus lisse et pores resserrés après 4 semaines avec le sérum naeul",
-              },
-              {
-                src: "/images/naeul-avant-apres-2.jpg",
-                alt: "Avant / après sur peau mate — teint plus net et lisse après 4 semaines avec le sérum naeul",
-              },
-            ]}
-          />
+          <BeforeAfter />
           <p className="mt-4 text-center text-xs text-stone">
-            Résultats observés après 4 semaines d&apos;utilisation. Résultats individuels, non
-            garantis.
+            Glisse pour comparer · résultats observés après 4 semaines d&apos;utilisation. Résultats
+            individuels, non garantis.
           </p>
         </Container>
       )}
