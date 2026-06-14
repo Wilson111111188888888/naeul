@@ -15,7 +15,7 @@ type Props = {
  * en pause puis reprend après quelques secondes d'inactivité. Ne fait rien quand
  * le conteneur n'est pas scrollable (ex. grille sur desktop) ni en reduced-motion.
  */
-export function AutoScrollRow({ as = "div", className, interval = 4000, children }: Props) {
+export function AutoScrollRow({ as = "div", className, interval = 3000, children }: Props) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

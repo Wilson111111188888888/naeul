@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Check, X } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { HERO_PRODUCT } from "@/lib/products";

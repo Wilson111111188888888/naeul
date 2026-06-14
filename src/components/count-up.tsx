@@ -25,6 +25,8 @@ export function CountUp({
     const el = ref.current;
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // reduced-motion : on affiche directement la valeur finale (pas d'animation).
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setVal(to);
       return;
     }

@@ -10,6 +10,8 @@ export function CookieBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    // localStorage indisponible au SSR : on décide la visibilité côté client après montage.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (!localStorage.getItem(STORAGE_KEY)) setVisible(true);
   }, []);
 

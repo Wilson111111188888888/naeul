@@ -13,6 +13,8 @@ export default function CartPage() {
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // panier persisté (zustand) : on attend le montage client pour éviter le flash d'hydratation.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
