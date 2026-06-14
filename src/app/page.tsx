@@ -72,6 +72,7 @@ export default function Home() {
   const hasImage = (name: string) => fs.existsSync(path.join(process.cwd(), "public/images", name));
   const hasDuo = hasImage("naeul-application.jpg");
   const hasPortrait = hasImage("naeul-texture-macro.jpg");
+  const hasLifestyleGrid = hasImage("naeul-lifestyle-grid.jpg");
 
   return (
     <>
@@ -330,6 +331,32 @@ export default function Home() {
                 </Link>
               </div>
             </div>
+          </Container>
+        </section>
+      )}
+
+      {/* TOUTES LES CARNATIONS (grille lifestyle) — imagerie neutre, pas d'avis */}
+      {hasLifestyleGrid && (
+        <section className="border-t border-line">
+          <Container className="py-16 md:py-24">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="text-xs uppercase tracking-[0.25em] text-stone">Une peau, mille nuances</p>
+              <h2 className="mt-3 text-3xl md:text-4xl">La peau grasse, sous toutes ses carnations</h2>
+              <p className="mt-4 leading-relaxed text-stone">
+                Un même geste, pensé pour réguler le sébum sans agresser — quelle que soit ta
+                carnation, ton âge ou ton histoire.
+              </p>
+            </div>
+            <figure className="mx-auto mt-10 max-w-2xl overflow-hidden rounded-2xl border border-line">
+              <Image
+                src="/images/naeul-lifestyle-grid.jpg"
+                alt="Le sérum naeul appliqué sur différentes carnations à tendance grasse"
+                width={1252}
+                height={1252}
+                sizes="(max-width: 768px) 100vw, 672px"
+                className="h-full w-full object-cover"
+              />
+            </figure>
           </Container>
         </section>
       )}
