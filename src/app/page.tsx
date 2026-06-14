@@ -63,6 +63,26 @@ const FOUNDERS_PERKS = [
 // Bande typographique de marque (grand défilement, en transition vers le CTA final).
 const BRAND_WORDS = ["naeul", "나을", "K-beauty pour peau grasse", "sans agresser"];
 
+// Notre méthode — 4 étapes (autorité). Aligné sur ce qui est déjà affirmé sur le site.
+const METHOD = [
+  {
+    t: "Actifs ciblés",
+    d: "Six actifs K-beauty choisis pour la peau grasse : niacinamide, acide lactique, Centella, acide hyaluronique.",
+  },
+  {
+    t: "Formulation douce",
+    d: "Sans alcool dénaturé, sans BHA forts, sans parfum. On régule le sébum sans faire tirailler la peau.",
+  },
+  {
+    t: "Fabrication certifiée",
+    d: "Laboratoire certifié ECOCERT et ISO 22716, dans l'Union européenne.",
+  },
+  {
+    t: "Contrôle avant lancement",
+    d: "Conformité cosmétique européenne, notification CPNP en cours. Pas de mise en vente sans validation.",
+  },
+];
+
 const FOUNDERS = [
   {
     icon: Star,
@@ -372,6 +392,27 @@ export default function Home() {
           </Container>
         </section>
       )}
+
+      {/* NOTRE MÉTHODE — 4 étapes numérotées (autorité) */}
+      <section className="border-t border-line">
+        <Container className="py-16 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs uppercase tracking-[0.25em] text-stone">Notre méthode</p>
+            <h2 className="mt-3 text-3xl md:text-4xl">Quatre exigences, une formule</h2>
+          </div>
+          <ol className="mt-12 grid gap-8 sm:grid-cols-2 sm:gap-x-10 lg:grid-cols-4">
+            {METHOD.map((step, i) => (
+              <li key={step.t}>
+                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-sage font-serif text-sm text-sage">
+                  {i + 1}
+                </span>
+                <h3 className="mt-4 text-base">{step.t}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-stone">{step.d}</p>
+              </li>
+            ))}
+          </ol>
+        </Container>
+      </section>
 
       {/* NOTRE HISTOIRE */}
       <section className="border-y border-line bg-cream">

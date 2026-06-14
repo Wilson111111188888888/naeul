@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { InstagramLogo, TiktokLogo, ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { InstagramLogo, TiktokLogo, ArrowRight, Lock } from "@phosphor-icons/react/dist/ssr";
 import { Container } from "@/components/ui/container";
 import { Wordmark } from "@/components/wordmark";
 import { buttonClasses } from "@/components/ui/button";
@@ -7,7 +7,12 @@ import { buttonClasses } from "@/components/ui/button";
 const LEGAL = [
   { href: "/mentions-legales", label: "Mentions légales" },
   { href: "/confidentialite", label: "Confidentialité" },
+  { href: "/cgv", label: "CGV" },
+  { href: "/retours", label: "Retours & remboursement" },
 ];
+
+const PAYMENTS = ["Visa", "Mastercard", "CB", "Apple Pay", "PayPal"];
+const CERTS = ["ISO 22716", "ECOCERT", "Vegan", "Sans parfum"];
 
 const NAV = [
   { href: "/le-produit", label: "Le produit" },
@@ -103,7 +108,40 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-line pt-6 text-xs text-stone md:flex-row md:items-center md:justify-between">
+        {/* Paiements + certifications */}
+        <div className="mt-14 flex flex-col gap-5 border-t border-line pt-8 md:flex-row md:items-start md:justify-between">
+          <div>
+            <p className="flex items-center gap-2 text-xs font-medium text-stone">
+              <Lock size={14} weight="regular" className="text-sage" />
+              Paiement sécurisé
+            </p>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {PAYMENTS.map((p) => (
+                <li
+                  key={p}
+                  className="rounded-md border border-line bg-sand px-2.5 py-1 text-[0.7rem] font-medium text-stone"
+                >
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="md:text-right">
+            <p className="text-xs font-medium text-stone">Certifications</p>
+            <ul className="mt-3 flex flex-wrap gap-2 md:justify-end">
+              {CERTS.map((c) => (
+                <li
+                  key={c}
+                  className="rounded-md border border-line bg-sand px-2.5 py-1 text-[0.7rem] font-medium text-stone"
+                >
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-10 flex flex-col gap-3 border-t border-line pt-6 text-xs text-stone md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} naeul. Tous droits réservés.</p>
           <p className="tracking-wide text-stone/80">
             K-beauty française · Vegan · ECOCERT · sans parfum
