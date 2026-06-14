@@ -61,7 +61,7 @@ export function ActivesCarousel({ actives }: { actives: Active[] }) {
         return (
           <div
             key={active.name}
-            className="flex min-w-[78%] shrink-0 snap-start flex-col rounded-2xl border border-line bg-sand p-6 transition-colors hover:border-sage/40 sm:min-w-[46%] md:min-w-0"
+            className="flex w-[80%] shrink-0 snap-start flex-col rounded-2xl border border-line bg-sand p-6 transition-colors hover:border-sage/40 sm:w-[46%] md:w-auto"
           >
             <span className="flex h-11 w-11 items-center justify-center rounded-full bg-sage/10 text-sage">
               <Icon size={20} />

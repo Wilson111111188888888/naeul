@@ -152,11 +152,11 @@ export default function Home() {
             </p>
           </div>
           {/* 3 raisons — swipe sur mobile, grille sur desktop */}
-          <div className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 scrollbar-hide sm:mx-auto sm:mt-12 sm:grid sm:max-w-4xl sm:grid-cols-3 sm:gap-8 sm:overflow-visible">
+          <div className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scrollbar-hide sm:mx-auto sm:mt-12 sm:grid sm:max-w-4xl sm:grid-cols-3 sm:gap-8 sm:overflow-visible">
             {PILLARS.map((pillar) => (
               <div
                 key={pillar.title}
-                className="min-w-[80%] shrink-0 snap-start text-center sm:min-w-0"
+                className="w-[85%] shrink-0 snap-center text-center sm:w-auto"
               >
                 <span className="mx-auto inline-flex h-11 w-11 items-center justify-center rounded-xl bg-sage/10 text-sage">
                   <pillar.icon size={22} />
@@ -187,7 +187,7 @@ export default function Home() {
               {FOUNDERS.map((f) => (
                 <li
                   key={f.title}
-                  className="min-w-[72%] shrink-0 snap-start border-l border-cream/15 pl-4 sm:min-w-0 sm:border-l-0 sm:pl-0"
+                  className="w-[78%] shrink-0 snap-start border-l border-cream/15 pl-4 sm:w-auto sm:border-l-0 sm:pl-0"
                 >
                   <f.icon size={22} className="text-terracotta" />
                   <p className="mt-3 font-medium text-cream">{f.title}</p>

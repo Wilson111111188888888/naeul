@@ -18,7 +18,7 @@ export function GalleryCarousel({ cards }: { cards: GalleryCard[] }) {
       {cards.map((c) => (
         <figure
           key={c.title}
-          className="min-w-[78%] shrink-0 snap-start sm:min-w-[54%] lg:min-w-[31%]"
+          className="w-[80%] shrink-0 snap-start sm:w-[54%] lg:w-[31%]"
         >
           <div className="overflow-hidden rounded-2xl border border-line">
             <Image

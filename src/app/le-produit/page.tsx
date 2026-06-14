@@ -247,7 +247,7 @@ export default function LeProduitPage() {
                 d: "Édition limitée à 200 flacons, livraison Mondial Relay, garantie 30 jours.",
               },
             ].map((step, i, arr) => (
-              <li key={step.t} className="relative min-w-[68%] shrink-0 snap-start sm:min-w-0">
+              <li key={step.t} className="relative w-[78%] shrink-0 snap-start sm:w-auto">
                 <div className="flex items-center gap-3">
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-sage font-serif text-sm text-sage">
                     {i + 1}
