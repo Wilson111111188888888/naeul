@@ -139,10 +139,12 @@ export default function Home() {
         <Container className="relative w-full py-12 md:py-20">
           <div className="max-w-xl animate-fade-up [animation-delay:120ms]">
             <p className="text-[0.7rem] uppercase tracking-[0.2em] text-cream/70">
-              {PREORDER_ENABLED ? "K-beauty · Édition Fondatrices" : "K-beauty · Avant-première"}
+              {PREORDER_ENABLED
+                ? "K-beauty française · Édition Fondatrices"
+                : "K-beauty française · Avant-première"}
             </p>
             <h1 className="mt-4 text-balance font-serif text-3xl font-normal italic leading-tight text-cream md:text-5xl">
-              K-beauty pour peau grasse, sans agresser.
+              Moins de brillances. Pores affinés. Sans assécher.
             </h1>
 
             {PREORDER_ENABLED ? (
