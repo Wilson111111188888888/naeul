@@ -71,36 +71,34 @@ export default function Home() {
 
   return (
     <>
-      {/* HERO — split-screen */}
-      <section className="grid items-stretch md:min-h-[calc(100dvh-4rem)] md:grid-cols-2">
-        {/* Image */}
-        <div className="relative h-60 w-full overflow-hidden bg-rose/20 sm:h-80 md:h-auto">
-          <Image
-            src={heroLifestyle}
-            alt="Sérum K-beauty naeul tenu en main dans une lumière dorée"
-            fill
-            priority
-            quality={90}
-            placeholder="blur"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="animate-kenburns object-cover object-center"
-          />
-        </div>
+      {/* HERO — plein écran cinématique */}
+      <section className="relative flex min-h-[calc(100dvh-4rem)] items-end overflow-hidden sm:items-center">
+        <Image
+          src={heroLifestyle}
+          alt="Sérum K-beauty naeul tenu en main dans une lumière dorée"
+          fill
+          priority
+          quality={90}
+          placeholder="blur"
+          sizes="100vw"
+          className="animate-kenburns object-cover object-center"
+        />
+        {/* Voile dégradé pour la lisibilité (bas sur mobile, gauche sur desktop) */}
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/40 to-ink/5 sm:bg-gradient-to-r sm:from-ink/80 sm:via-ink/35 sm:to-transparent" />
 
-        {/* Contenu */}
-        <div className="flex items-center bg-sand px-6 py-9 md:px-12 md:py-14">
-          <div className="mx-auto w-full max-w-[480px] animate-fade-up [animation-delay:150ms]">
-            <p className="text-[0.7rem] uppercase tracking-[0.2em] text-stone">
+        <Container className="relative w-full py-12 md:py-20">
+          <div className="max-w-xl animate-fade-up [animation-delay:120ms]">
+            <p className="text-[0.7rem] uppercase tracking-[0.2em] text-cream/70">
               {PREORDER_ENABLED ? "K-beauty · Édition Fondatrices" : "K-beauty · Avant-première"}
             </p>
-            <h1 className="mt-5 text-balance font-serif text-[1.75rem] font-normal italic leading-tight text-ink md:text-[2.5rem]">
+            <h1 className="mt-4 text-balance font-serif text-3xl font-normal italic leading-tight text-cream md:text-5xl">
               K-beauty pour peau grasse, sans agresser.
             </h1>
 
             {PREORDER_ENABLED ? (
               <>
-                <p className="mt-5 text-sm leading-relaxed text-ink md:text-[0.95rem]">
-                  L&apos;Édition Fondatrices est ouverte : <strong className="font-medium">-15%</strong>,
+                <p className="mt-5 max-w-md leading-relaxed text-cream/85">
+                  L&apos;Édition Fondatrices est ouverte : <strong className="font-medium text-cream">-15%</strong>,
                   livraison offerte et garantie 30 jours. Premier lot limité à 200 flacons.
                 </p>
                 <Link
@@ -110,37 +108,37 @@ export default function Home() {
                   Précommander (-15%)
                   <ArrowRight size={18} />
                 </Link>
-                <p className="mt-3 text-xs text-stone">
+                <p className="mt-3 text-xs text-cream/70">
                   Pas encore prête ?{" "}
-                  <Link href="#precommande" className="text-sage underline underline-offset-4">
+                  <Link href="#precommande" className="text-cream underline underline-offset-4">
                     Rejoins la liste d&apos;avant-première
                   </Link>
                 </p>
               </>
             ) : (
               <>
-                <p className="mt-5 text-sm leading-relaxed text-ink md:text-[0.95rem]">
+                <p className="mt-5 max-w-md leading-relaxed text-cream/85">
                   Notre premier sérum arrive bientôt. Inscris-toi pour être prévenue en
-                  avant-première et recevoir <strong className="font-medium">-15%</strong> sur ta
-                  première commande.
+                  avant-première et recevoir <strong className="font-medium text-cream">-15%</strong>{" "}
+                  sur ta première commande.
                 </p>
-                <WaitlistForm className="mt-6" />
+                <WaitlistForm tone="onAccent" className="mt-6 max-w-md" />
               </>
             )}
 
-            {/* Trust badges 2x2 */}
-            <ul className="mt-7 grid grid-cols-2 gap-x-4 gap-y-2.5">
+            {/* Trust badges */}
+            <ul className="mt-7 grid max-w-md grid-cols-2 gap-x-4 gap-y-2.5">
               {TRUST_BADGES.map((t) => (
-                <li key={t} className="flex items-center gap-2 text-[0.7rem] text-stone">
-                  <Check size={14} weight="bold" className="shrink-0 text-sage" />
+                <li key={t} className="flex items-center gap-2 text-[0.7rem] text-cream/80">
+                  <Check size={14} weight="bold" className="shrink-0 text-cream" />
                   {t}
                 </li>
               ))}
             </ul>
 
-            <WaitlistCount className="mt-7 justify-start" />
+            <WaitlistCount tone="onDark" className="mt-7 justify-start" />
           </div>
-        </div>
+        </Container>
       </section>
 
       {/* POURQUOI NAEUL — Mission Section */}

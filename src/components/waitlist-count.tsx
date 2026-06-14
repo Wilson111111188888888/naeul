@@ -15,21 +15,34 @@ const DOTS = [
 ];
 
 /** Preuve sociale : « 108 inscrites attendent déjà le lancement » (chiffre réel). */
-export function WaitlistCount({ className }: { className?: string }) {
+export function WaitlistCount({
+  className,
+  tone = "light",
+}: {
+  className?: string;
+  tone?: "light" | "onDark";
+}) {
+  const onDark = tone === "onDark";
   return (
     <div className={cn("flex items-center justify-center gap-3", className)}>
       <div className="flex -space-x-2" aria-hidden="true">
         {DOTS.map((c, i) => (
           <span
             key={i}
-            className="inline-block h-7 w-7 rounded-full border-2 border-sand"
+            className={cn(
+              "inline-block h-7 w-7 rounded-full border-2",
+              onDark ? "border-ink/30" : "border-sand",
+            )}
             style={{ backgroundColor: c }}
           />
         ))}
       </div>
-      <p className="text-sm text-stone">
-        <CountUp to={WAITLIST_COUNT} className="font-medium text-ink" /> inscrites attendent déjà le
-        lancement
+      <p className={cn("text-sm", onDark ? "text-cream/85" : "text-stone")}>
+        <CountUp
+          to={WAITLIST_COUNT}
+          className={cn("font-medium", onDark ? "text-cream" : "text-ink")}
+        />{" "}
+        inscrites attendent déjà le lancement
       </p>
     </div>
   );
