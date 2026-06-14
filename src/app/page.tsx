@@ -86,11 +86,7 @@ const METHOD = [
   },
   {
     t: "Fabrication certifiée",
-    d: "Laboratoire certifié ECOCERT et ISO 22716, dans l'Union européenne.",
-  },
-  {
-    t: "Contrôle avant lancement",
-    d: "Conformité cosmétique européenne, notification CPNP en cours. Pas de mise en vente sans validation.",
+    d: "Laboratoire certifié ECOCERT et ISO 22716, dans l'Union européenne. Conformité cosmétique européenne.",
   },
 ];
 
@@ -411,11 +407,17 @@ export default function Home() {
         <Container className="py-16 md:py-24">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-xs uppercase tracking-[0.25em] text-stone">Notre méthode</p>
-            <h2 className="mt-3 text-3xl md:text-4xl">Quatre exigences, une formule</h2>
+            <h2 className="mt-3 text-3xl md:text-4xl">Trois exigences, une formule</h2>
           </div>
-          <ol className="mt-12 grid gap-8 sm:grid-cols-2 sm:gap-x-10 lg:grid-cols-4">
+          <SwipeCarousel
+            as="ol"
+            className="mt-10 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto pb-2 scrollbar-hide sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible"
+          >
             {METHOD.map((step, i) => (
-              <li key={step.t}>
+              <li
+                key={step.t}
+                className="flex w-full shrink-0 snap-center flex-col rounded-2xl border border-line bg-cream p-6 sm:w-auto"
+              >
                 <span className="flex h-9 w-9 items-center justify-center rounded-full border border-sage font-serif text-sm text-sage">
                   {i + 1}
                 </span>
@@ -423,7 +425,7 @@ export default function Home() {
                 <p className="mt-1.5 text-sm leading-relaxed text-stone">{step.d}</p>
               </li>
             ))}
-          </ol>
+          </SwipeCarousel>
         </Container>
       </section>
 
