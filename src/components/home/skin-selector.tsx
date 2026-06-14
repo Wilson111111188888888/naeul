@@ -55,7 +55,7 @@ export function SkinSelector() {
   const active = CONCERNS.find((c) => c.id === id) ?? CONCERNS[0];
 
   return (
-    <section className="border-y border-line bg-cream">
+    <section id="diagnostic" className="scroll-mt-20 border-y border-line bg-cream">
       <Container className="py-20 md:py-28">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs uppercase tracking-[0.25em] text-stone">Ta peau, notre réponse</p>
