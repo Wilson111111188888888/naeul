@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Link from "next/link";
 import Image from "next/image";
-import { HeroSlideshow } from "@/components/home/hero-slideshow";
+import heroLifestyle from "../../public/images/naeul-hero.jpg";
 import {
   Sparkle,
   Drop,
@@ -73,9 +73,18 @@ export default function Home() {
     <>
       {/* HERO — split-screen */}
       <section className="grid items-stretch md:min-h-[calc(100dvh-4rem)] md:grid-cols-2">
-        {/* Image — diaporama crossfade */}
+        {/* Image */}
         <div className="relative h-60 w-full overflow-hidden bg-rose/20 sm:h-80 md:h-auto">
-          <HeroSlideshow />
+          <Image
+            src={heroLifestyle}
+            alt="Sérum K-beauty naeul tenu en main dans une lumière dorée"
+            fill
+            priority
+            quality={90}
+            placeholder="blur"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="animate-kenburns object-cover object-center"
+          />
         </div>
 
         {/* Contenu */}
