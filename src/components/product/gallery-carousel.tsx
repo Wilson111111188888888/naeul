@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { AutoScrollRow } from "@/components/auto-scroll-row";
+import { SwipeCarousel } from "@/components/swipe-carousel";
 
 export type GalleryCard = {
   src: string;
@@ -14,7 +14,7 @@ export type GalleryCard = {
  */
 export function GalleryCarousel({ cards }: { cards: GalleryCard[] }) {
   return (
-    <AutoScrollRow className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 scrollbar-hide">
+    <SwipeCarousel className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 scrollbar-hide">
       {cards.map((c) => (
         <figure
           key={c.title}
@@ -36,6 +36,6 @@ export function GalleryCarousel({ cards }: { cards: GalleryCard[] }) {
           </figcaption>
         </figure>
       ))}
-    </AutoScrollRow>
+    </SwipeCarousel>
   );
 }

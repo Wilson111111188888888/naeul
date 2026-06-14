@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Children, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 /**
@@ -9,18 +9,21 @@ import { cn } from "@/lib/utils";
  * d'autres cartes et navigue d'elle-même. Les points héritent de la couleur de
  * texte courante (bg-current), donc utilisable sur fond clair comme sombre.
  * Quand le conteneur n'est pas déroulable (grille desktop), les points disparaissent.
+ * `as` garde la sémantique (ol pour des étapes ordonnées, ul pour une liste).
  */
 export function SwipeCarousel({
+  as = "div",
   className,
   children,
 }: {
+  as?: "div" | "ol" | "ul";
   className?: string;
   children: React.ReactNode;
 }) {
-  const ref = useRef<HTMLUListElement>(null);
+  const ref = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
   const [scrollable, setScrollable] = useState(false);
-  const count = Array.isArray(children) ? children.length : 1;
+  const count = Children.count(children);
 
   useEffect(() => {
     const el = ref.current;
@@ -54,11 +57,13 @@ export function SwipeCarousel({
     el.scrollTo({ left: step * i, behavior: "smooth" });
   }
 
+  const Track = as;
   return (
     <div>
-      <ul ref={ref} className={className}>
+      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+      <Track ref={ref as any} className={className}>
         {children}
-      </ul>
+      </Track>
       {count > 1 && scrollable && (
         <div className="mt-5 flex justify-center gap-2 sm:hidden">
           {Array.from({ length: count }).map((_, i) => (

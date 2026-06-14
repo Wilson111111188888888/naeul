@@ -1,5 +1,5 @@
 import { Drop, Sparkle, Leaf, FlowerLotus, ShieldCheck, Sun } from "@phosphor-icons/react/dist/ssr";
-import { AutoScrollRow } from "@/components/auto-scroll-row";
+import { SwipeCarousel } from "@/components/swipe-carousel";
 
 const ICONS = [Drop, Sparkle, Leaf, FlowerLotus, ShieldCheck, Sun];
 
@@ -11,7 +11,7 @@ type Active = { name: string; role: string };
  */
 export function ActivesCarousel({ actives }: { actives: Active[] }) {
   return (
-    <AutoScrollRow className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scrollbar-hide md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:pb-0">
+    <SwipeCarousel className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scrollbar-hide md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:pb-0">
       {actives.map((active, i) => {
         const Icon = ICONS[i % ICONS.length];
         return (
@@ -27,6 +27,6 @@ export function ActivesCarousel({ actives }: { actives: Active[] }) {
           </div>
         );
       })}
-    </AutoScrollRow>
+    </SwipeCarousel>
   );
 }

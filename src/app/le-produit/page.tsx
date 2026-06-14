@@ -11,7 +11,7 @@ import { ProductCarousel } from "@/components/product/product-carousel";
 import { ActivesCarousel } from "@/components/product/actives-carousel";
 import { GalleryCarousel } from "@/components/product/gallery-carousel";
 import { BeforeAfter } from "@/components/product/before-after";
-import { AutoScrollRow } from "@/components/auto-scroll-row";
+import { SwipeCarousel } from "@/components/swipe-carousel";
 import { PreorderBox } from "@/components/product/preorder-box";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { WaitlistCount } from "@/components/waitlist-count";
@@ -235,7 +235,7 @@ export default function LeProduitPage() {
       <section className="border-t border-line">
         <Container className="py-16 md:py-24">
           <SectionHeading eyebrow="Notre démarche" title="De la formule à ta peau" />
-          <AutoScrollRow
+          <SwipeCarousel
             as="ol"
             className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2 scrollbar-hide sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 sm:overflow-visible lg:grid-cols-4"
           >
@@ -270,7 +270,7 @@ export default function LeProduitPage() {
                 <p className="mt-1 text-sm leading-relaxed text-stone">{step.d}</p>
               </li>
             ))}
-          </AutoScrollRow>
+          </SwipeCarousel>
         </Container>
       </section>
 
@@ -285,7 +285,7 @@ export default function LeProduitPage() {
       {/* ROUTINE */}
       <Container className="py-16 md:py-24">
         <SectionHeading eyebrow="La routine" title="Comment l'utiliser" />
-        <AutoScrollRow
+        <SwipeCarousel
           as="ol"
           className="mt-10 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto pb-2 scrollbar-hide"
         >
@@ -301,7 +301,7 @@ export default function LeProduitPage() {
               <p className="mt-1 text-sm leading-relaxed text-stone">{step.detail}</p>
             </li>
           ))}
-        </AutoScrollRow>
+        </SwipeCarousel>
       </Container>
 
       {/* COMPARAISON */}

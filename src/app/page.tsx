@@ -19,7 +19,6 @@ import { WaitlistForm } from "@/components/waitlist-form";
 import { buttonClasses } from "@/components/ui/button";
 import { TrustStrip } from "@/components/trust-strip";
 import { SkinSelector } from "@/components/home/skin-selector";
-import { AutoScrollRow } from "@/components/auto-scroll-row";
 import { SwipeCarousel } from "@/components/swipe-carousel";
 import { LifestyleGrid } from "@/components/lifestyle-grid";
 import { WaitlistCount } from "@/components/waitlist-count";
@@ -157,8 +156,8 @@ export default function Home() {
               grasse — qu&apos;on équilibre en douceur, jamais en agressant.
             </p>
           </div>
-          {/* 3 raisons — swipe sur mobile, grille sur desktop */}
-          <AutoScrollRow className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scrollbar-hide sm:mx-auto sm:mt-12 sm:grid sm:max-w-4xl sm:grid-cols-3 sm:gap-8 sm:overflow-visible">
+          {/* 3 raisons — swipe + points sur mobile, grille sur desktop */}
+          <SwipeCarousel className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scrollbar-hide sm:mx-auto sm:mt-12 sm:grid sm:max-w-4xl sm:grid-cols-3 sm:gap-8 sm:overflow-visible">
             {PILLARS.map((pillar) => (
               <div
                 key={pillar.title}
@@ -171,7 +170,7 @@ export default function Home() {
                 <p className="mt-1.5 text-sm leading-relaxed text-stone">{pillar.text}</p>
               </div>
             ))}
-          </AutoScrollRow>
+          </SwipeCarousel>
         </Container>
       </section>
 
