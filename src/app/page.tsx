@@ -20,6 +20,7 @@ import { buttonClasses } from "@/components/ui/button";
 import { TrustStrip } from "@/components/trust-strip";
 import { SkinSelector } from "@/components/home/skin-selector";
 import { AutoScrollRow } from "@/components/auto-scroll-row";
+import { SwipeCarousel } from "@/components/swipe-carousel";
 import { WaitlistCount } from "@/components/waitlist-count";
 import { StickyCta } from "@/components/sticky-cta";
 import { ReassuranceRow } from "@/components/reassurance-row";
@@ -186,10 +187,7 @@ export default function Home() {
                 le lancement en avant-première.
               </p>
             </div>
-            <AutoScrollRow
-              as="ul"
-              className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-1 scrollbar-hide sm:grid sm:grid-cols-3 sm:gap-7 sm:overflow-visible"
-            >
+            <SwipeCarousel className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-1 scrollbar-hide sm:grid sm:grid-cols-3 sm:gap-7 sm:overflow-visible">
               {FOUNDERS.map((f) => (
                 <li key={f.title} className="w-full shrink-0 snap-center sm:w-auto">
                   <f.icon size={22} className="text-terracotta" />
@@ -197,7 +195,7 @@ export default function Home() {
                   <p className="mt-1 text-xs leading-relaxed text-cream/65">{f.text}</p>
                 </li>
               ))}
-            </AutoScrollRow>
+            </SwipeCarousel>
           </div>
         </Container>
       </section>
