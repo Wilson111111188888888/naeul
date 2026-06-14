@@ -7,11 +7,13 @@ import { cn } from "@/lib/utils";
 
 const PAIRS = [
   {
+    label: "Grain & pores",
     avant: "/images/naeul-resultat-1-avant.jpg",
     apres: "/images/naeul-resultat-1-apres.jpg",
     alt: "Joue : grain de peau et pores avant / après 4 semaines avec le sérum naeul",
   },
   {
+    label: "Teint net",
     avant: "/images/naeul-resultat-2-avant.jpg",
     apres: "/images/naeul-resultat-2-apres.jpg",
     alt: "Peau mate : teint plus net avant / après 4 semaines avec le sérum naeul",
@@ -96,24 +98,33 @@ export function BeforeAfter() {
         </div>
       </div>
 
-      {/* Sélecteur de résultat */}
+      {/* Sélecteur de résultat — onglets étiquetés (montre clairement qu'il y a 2 résultats) */}
       {PAIRS.length > 1 && (
-        <div className="mt-5 flex justify-center gap-2">
-          {PAIRS.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => {
-                setActive(i);
-                setPos(50);
-              }}
-              aria-label={`Voir le résultat ${i + 1}`}
-              className={cn(
-                "h-2 rounded-full transition-all duration-300",
-                i === active ? "w-6 bg-sage" : "w-2 bg-line hover:bg-stone/40",
-              )}
-            />
-          ))}
+        <div className="mt-5">
+          <p className="mb-2.5 text-center text-[0.7rem] uppercase tracking-[0.2em] text-stone/70">
+            {PAIRS.length} résultats · choisis
+          </p>
+          <div className="flex justify-center gap-2">
+            {PAIRS.map((p, i) => (
+              <button
+                key={p.label}
+                type="button"
+                onClick={() => {
+                  setActive(i);
+                  setPos(50);
+                }}
+                aria-pressed={i === active}
+                className={cn(
+                  "rounded-full border px-4 py-1.5 text-xs font-medium transition-colors",
+                  i === active
+                    ? "border-sage bg-sage text-cream"
+                    : "border-line bg-cream text-stone hover:border-sage/50",
+                )}
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
         </div>
       )}
     </div>
