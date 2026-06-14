@@ -6,13 +6,13 @@ import heroLifestyle from "../../public/images/naeul-hero.jpg";
 import {
   Sparkle,
   Drop,
-  Leaf,
   ArrowRight,
   Star,
   Tag,
   Package,
   ShieldCheck,
   Check,
+  X,
 } from "@phosphor-icons/react/dist/ssr";
 import { Container } from "@/components/ui/container";
 import { WaitlistForm } from "@/components/waitlist-form";
@@ -33,18 +33,18 @@ import { formatPrice } from "@/lib/utils";
 const PILLARS = [
   {
     icon: Drop,
-    title: "K-beauty",
-    text: "On équilibre la peau grasse sans l'agresser : pas d'alcool dénaturé, pas de BHA forts.",
+    title: "Le meilleur des deux mondes",
+    text: "La douceur de la K-beauty, adaptée à la peau d'ici : pas d'alcool dénaturé, pas de BHA forts, rien d'introuvable.",
   },
   {
     icon: Sparkle,
-    title: "La peau grasse, spécifiquement",
-    text: "Pensée pour les peaux grasses, mixtes et à pores visibles — on connaît la tienne.",
+    title: "Une seule peau, une seule expertise",
+    text: "On ne cherche pas à plaire à toutes les peaux. Une seule cible : la peau grasse, mixte à grasse et grasse sensible.",
   },
   {
-    icon: Leaf,
-    title: "Clean & vegan",
-    text: "Certifiée ECOCERT et ISO 22716. Vegan, sans parfum, sans gluten.",
+    icon: ShieldCheck,
+    title: "Transparence française",
+    text: "Certifié ECOCERT et ISO 22716, liste complète des actifs, SAV en français, livraison 48-72h. Tu sais ce que tu mets.",
   },
 ];
 
@@ -62,6 +62,17 @@ const FOUNDERS_PERKS = [
 
 // Bande typographique de marque (grand défilement, en transition vers le CTA final).
 const BRAND_WORDS = ["naeul", "나을", "K-beauty pour peau grasse", "sans agresser"];
+
+// Comparatif naeul vs K-beauty importée (différenciation). rival: true=oui, false=non, string=nuance.
+const COMPARISON: { label: string; rival: boolean | string }[] = [
+  { label: "Spécialiste de la peau grasse", rival: "Tout type" },
+  { label: "Pensé pour la peau d'ici", rival: "Peau asiatique" },
+  { label: "Approche K-beauty douce", rival: true },
+  { label: "SAV en français", rival: false },
+  { label: "Garantie 30 jours satisfait ou remboursé", rival: false },
+  { label: "Livraison 48-72h", rival: "2-3 semaines" },
+  { label: "Certifié ECOCERT · ISO 22716", rival: "Variable" },
+];
 
 // Notre méthode — 4 étapes (autorité). Aligné sur ce qui est déjà affirmé sur le site.
 const METHOD = [
@@ -411,6 +422,46 @@ export default function Home() {
               </li>
             ))}
           </ol>
+        </Container>
+      </section>
+
+      {/* COMPARATIF — naeul vs K-beauty importée (différenciation) */}
+      <section className="border-t border-line bg-cream">
+        <Container className="py-16 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs uppercase tracking-[0.25em] text-stone">La différence</p>
+            <h2 className="mt-3 text-3xl md:text-4xl">naeul vs K-beauty importée</h2>
+          </div>
+          <div className="mx-auto mt-10 max-w-2xl overflow-hidden rounded-2xl border border-line bg-sand">
+            <div className="grid grid-cols-[1.6fr_1fr_1fr] border-b border-line text-[0.65rem] font-semibold uppercase tracking-wide">
+              <span className="px-4 py-3" />
+              <span className="px-2 py-3 text-center text-sage">naeul</span>
+              <span className="px-2 py-3 text-center text-stone">K-beauty importée</span>
+            </div>
+            <ul className="divide-y divide-line">
+              {COMPARISON.map((row) => (
+                <li key={row.label} className="grid grid-cols-[1.6fr_1fr_1fr] items-center">
+                  <span className="px-4 py-3 text-sm leading-snug text-ink">{row.label}</span>
+                  <span className="flex justify-center px-2 py-3">
+                    <Check size={18} weight="bold" className="text-sage" />
+                  </span>
+                  <span className="px-2 py-3 text-center text-xs leading-snug text-stone">
+                    {row.rival === true ? (
+                      <Check size={16} className="mx-auto text-stone/50" />
+                    ) : row.rival === false ? (
+                      <X size={16} className="mx-auto text-stone/40" />
+                    ) : (
+                      row.rival
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <p className="mx-auto mt-5 max-w-2xl text-center text-xs text-stone/80">
+            On ne nomme personne : on cadre simplement le choix. Pour une peau normale ou sèche, une
+            K-beauty généraliste reste un très bon choix.
+          </p>
         </Container>
       </section>
 
