@@ -253,7 +253,7 @@ export default function Home() {
 
       {/* LE PRODUIT QUI ARRIVE */}
       <section>
-        <Container className="py-20 md:py-28">
+        <Container className="py-16 md:py-20">
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
             <Link
               href="/le-produit"
@@ -319,7 +319,7 @@ export default function Home() {
       {/* POUR TOUTES LES PEAUX GRASSES (communauté duo) */}
       {hasDuo && (
         <section>
-          <Container className="py-20 md:py-28">
+          <Container className="py-16 md:py-20">
             <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
               <figure className="order-2 overflow-hidden rounded-2xl md:order-1">
                 <Image
@@ -353,7 +353,7 @@ export default function Home() {
       {/* NOTRE APPROCHE K-BEAUTY (portrait éditorial) */}
       {hasPortrait && (
         <section className="border-y border-line bg-cream">
-          <Container className="py-20 md:py-28">
+          <Container className="py-16 md:py-20">
             <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
               <figure className="order-2 overflow-hidden rounded-2xl">
                 <Image
@@ -471,7 +471,7 @@ export default function Home() {
 
       {/* NOTRE HISTOIRE */}
       <section className="border-y border-line bg-cream">
-        <Container className="py-20 text-center md:py-28">
+        <Container className="py-16 text-center md:py-20">
           <div className="mx-auto max-w-2xl">
             <p className="text-xs uppercase tracking-[0.25em] text-stone">Notre histoire</p>
             <p className="mt-6 text-balance font-serif text-2xl leading-relaxed text-ink md:text-3xl">
