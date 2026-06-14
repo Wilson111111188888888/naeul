@@ -113,6 +113,8 @@ export default function Home() {
   const hasImage = (name: string) => fs.existsSync(path.join(process.cwd(), "public/images", name));
   const hasPortrait = hasImage("naeul-texture-macro.jpg");
   const hasLifestyleGrid = hasImage("naeul-lifestyle-1.jpg");
+  const hasResultats = hasImage("naeul-resultats-8sem.jpg");
+  const hasCouple = hasImage("naeul-rituel-couple.jpg");
 
   return (
     <>
@@ -350,6 +352,40 @@ export default function Home() {
         </section>
       )}
 
+      {/* AU QUOTIDIEN (couple) — imagerie lifestyle neutre, pas de fondateurs */}
+      {hasCouple && (
+        <section className="border-t border-line">
+          <Container className="py-16 md:py-20">
+            <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
+              <figure className="overflow-hidden rounded-2xl">
+                <Image
+                  src="/images/naeul-rituel-couple.jpg"
+                  alt="Le sérum naeul intégré à une routine du quotidien, dans la salle de bain"
+                  width={1086}
+                  height={1448}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="aspect-[3/4] h-full w-full object-cover"
+                />
+              </figure>
+              <div>
+                <p className="text-xs uppercase tracking-[0.25em] text-stone">Au quotidien</p>
+                <h2 className="mt-3 text-3xl md:text-4xl">Un geste simple, à intégrer à ta routine.</h2>
+                <p className="mt-5 leading-relaxed text-stone">
+                  Quelques gouttes le matin et/ou le soir, sur peau propre, avant ta crème. Pas de
+                  routine compliquée — un seul sérum, pensé pour réguler le sébum sans agresser.
+                </p>
+                <Link
+                  href="/le-produit"
+                  className={buttonClasses({ variant: "secondary", size: "lg", className: "mt-8" })}
+                >
+                  Voir comment l&apos;utiliser
+                </Link>
+              </div>
+            </div>
+          </Container>
+        </section>
+      )}
+
       {/* TOUTES LES CARNATIONS (grille lifestyle) — imagerie neutre, pas d'avis */}
       {hasLifestyleGrid && (
         <section className="border-t border-line">
@@ -441,6 +477,32 @@ export default function Home() {
           </p>
         </Container>
       </section>
+
+      {/* RÉSULTATS — avant/après 8 semaines (image composée, telle quelle) */}
+      {hasResultats && (
+        <section className="border-t border-line">
+          <Container className="py-16 md:py-20">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="text-xs uppercase tracking-[0.25em] text-stone">Résultats</p>
+              <h2 className="mt-3 text-3xl md:text-4xl">Avant / après, 8 semaines</h2>
+            </div>
+            <figure className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl border border-line">
+              <Image
+                src="/images/naeul-resultats-8sem.jpg"
+                alt="Avant / après 8 semaines avec le sérum naeul : grain de peau plus net, moins de brillances"
+                width={1536}
+                height={1024}
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="w-full"
+              />
+            </figure>
+            <p className="mx-auto mt-4 max-w-2xl text-center text-xs leading-relaxed text-stone/80">
+              Résultats observés après 8 semaines d&apos;utilisation. Résultats individuels, non
+              garantis.
+            </p>
+          </Container>
+        </section>
+      )}
 
       {/* NOTRE HISTOIRE */}
       <section className="border-y border-line bg-cream">
