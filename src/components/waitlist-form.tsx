@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@vercel/analytics";
 import { CheckCircle } from "@phosphor-icons/react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -9,14 +10,17 @@ import { cn } from "@/lib/utils";
 /**
  * Capture email pour la précommande. Poste vers /api/newsletter (→ Loops).
  * `tone="light"` pour fond clair, `tone="onAccent"` pour fond sauge.
+ * `source` = d'où vient l'inscription (hero, produit, exit-intent…) pour la mesure.
  */
 export function WaitlistForm({
   tone = "light",
   cta = "Je veux être prévenue (-15%)",
+  source = "inconnu",
   className,
 }: {
   tone?: "light" | "onAccent";
   cta?: string;
+  source?: string;
   className?: string;
 }) {
   const [email, setEmail] = useState("");
@@ -32,6 +36,7 @@ export function WaitlistForm({
         body: JSON.stringify({ email }),
       });
       if (!res.ok) throw new Error();
+      track("waitlist_signup", { source });
       setStatus("done");
       setEmail("");
     } catch {

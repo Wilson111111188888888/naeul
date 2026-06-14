@@ -15,6 +15,8 @@ import { AutoScrollRow } from "@/components/auto-scroll-row";
 import { PreorderBox } from "@/components/product/preorder-box";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { WaitlistCount } from "@/components/waitlist-count";
+import { StickyCta } from "@/components/sticky-cta";
+import { ReassuranceRow } from "@/components/reassurance-row";
 import { PREORDER_ENABLED, SHIPPING_DATE } from "@/lib/preorder";
 import { buttonClasses } from "@/components/ui/button";
 import { formatPrice, cn } from "@/lib/utils";
@@ -177,8 +179,9 @@ export default function LeProduitPage() {
                 <p className="mt-1 text-xs text-stone">
                   Premier lot limité à 200 flacons — les inscrites sont prévenues et servies en priorité.
                 </p>
-                <WaitlistForm className="mt-4" />
+                <WaitlistForm source="produit_haut" className="mt-4" />
                 <WaitlistCount className="mt-4 justify-start" />
+                <ReassuranceRow className="mt-4 border-t border-line pt-4" />
                 <p className="mt-3 text-[0.7rem] text-stone/80">
                   Inscription gratuite · pas de spam · ton code -15% par email.
                 </p>
@@ -387,22 +390,19 @@ export default function LeProduitPage() {
                 Rejoins la liste d&apos;avant-première : tu reçois ton code -15% et tu es prévenue dès
                 l&apos;ouverture des précommandes.
               </p>
-              <WaitlistForm className="w-full max-w-md" />
+              <WaitlistForm source="produit_bas" className="w-full max-w-md" />
               <WaitlistCount />
             </>
           )}
         </Container>
       </section>
 
-      {/* CTA sticky mobile */}
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-sand/95 p-3 backdrop-blur-md md:hidden">
-        <Link
-          href={PREORDER_ENABLED ? "#acheter" : "#precommande"}
-          className={buttonClasses({ size: "lg", className: "w-full" })}
-        >
-          {PREORDER_ENABLED ? "Précommander (-15%)" : "Je veux être prévenue (-15%)"}
-        </Link>
-      </div>
+      {/* CTA sticky mobile — se révèle au scroll, s'efface près du bas */}
+      <StickyCta
+        href={PREORDER_ENABLED ? "#acheter" : "#precommande"}
+        label={PREORDER_ENABLED ? "Précommander (-15%)" : "Je veux être prévenue (-15%)"}
+        event={PREORDER_ENABLED ? "sticky_preorder_click" : "sticky_waitlist_click"}
+      />
     </div>
   );
 }

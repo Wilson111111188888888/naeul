@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { track } from "@vercel/analytics";
 import { Minus, Plus, Trash, Bag } from "@phosphor-icons/react";
 import { useCart, resolveLines, cartTotal } from "@/lib/store/cart";
 import { Container } from "@/components/ui/container";
@@ -28,6 +29,7 @@ export default function CartPage() {
   async function checkout() {
     setLoading(true);
     setError(null);
+    track("begin_checkout", { total: cartTotal(lines), items: lines.length });
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
@@ -36,7 +38,7 @@ export default function CartPage() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "Erreur de paiement.");
-      window.location.href = data.url;
+      window.location.assign(data.url);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erreur inconnue.");
       setLoading(false);

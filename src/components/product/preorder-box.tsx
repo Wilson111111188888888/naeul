@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@vercel/analytics";
 import { Check, ShieldCheck, Truck, Lock, Package } from "@phosphor-icons/react";
 import type { Product } from "@/lib/products";
 import { Button } from "@/components/ui/button";
@@ -18,6 +19,7 @@ export function PreorderBox({ product }: { product: Product }) {
   async function precommander() {
     setLoading(true);
     setError(null);
+    track("begin_preorder", { variant: selected.id, price: selectedFounders });
     try {
       const res = await fetch("/api/preorder", {
         method: "POST",
@@ -26,7 +28,7 @@ export function PreorderBox({ product }: { product: Product }) {
       });
       const data = await res.json();
       if (data.url) {
-        window.location.href = data.url;
+        window.location.assign(data.url);
         return;
       }
       setError(data.error ?? "Une erreur est survenue.");

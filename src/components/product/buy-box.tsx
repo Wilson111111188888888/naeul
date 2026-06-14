@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { track } from "@vercel/analytics";
 import { Check, Truck, ArrowsClockwise } from "@phosphor-icons/react";
 import type { Product } from "@/lib/products";
 import { useCart } from "@/lib/store/cart";
@@ -18,6 +19,7 @@ export function BuyBox({ product }: { product: Product }) {
 
   function handleAdd() {
     add(selected.id, 1);
+    track("add_to_cart", { variant: selected.id, price: selected.price });
     setJustAdded(true);
     window.setTimeout(() => setJustAdded(false), 2200);
   }

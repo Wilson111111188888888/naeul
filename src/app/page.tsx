@@ -21,6 +21,8 @@ import { TrustStrip } from "@/components/trust-strip";
 import { SkinSelector } from "@/components/home/skin-selector";
 import { AutoScrollRow } from "@/components/auto-scroll-row";
 import { WaitlistCount } from "@/components/waitlist-count";
+import { StickyCta } from "@/components/sticky-cta";
+import { ReassuranceRow } from "@/components/reassurance-row";
 import { Reviews } from "@/components/reviews";
 import { HERO_PRODUCT } from "@/lib/products";
 import { PREORDER_ENABLED, foundersPrice } from "@/lib/preorder";
@@ -123,7 +125,7 @@ export default function Home() {
                   avant-première et recevoir <strong className="font-medium text-cream">-15%</strong>{" "}
                   sur ta première commande.
                 </p>
-                <WaitlistForm tone="onAccent" className="mt-6 max-w-md" />
+                <WaitlistForm tone="onAccent" source="hero" className="mt-6 max-w-md" />
               </>
             )}
 
@@ -401,11 +403,19 @@ export default function Home() {
                 Rejoins la liste : tu reçois ton code -15% et tu es la première informée du
                 lancement.
               </p>
-              <WaitlistForm tone="onAccent" className="w-full max-w-md" />
+              <WaitlistForm tone="onAccent" source="home_cta" className="w-full max-w-md" />
+              <ReassuranceRow tone="onAccent" className="mt-2 max-w-md" />
             </>
           )}
         </Container>
       </section>
+
+      {/* CTA sticky mobile — se révèle au scroll, s'efface près du bas */}
+      <StickyCta
+        href={PREORDER_ENABLED ? "/le-produit#acheter" : "#precommande"}
+        label={PREORDER_ENABLED ? "Précommander (-15%)" : "Je veux être prévenue (-15%)"}
+        event={PREORDER_ENABLED ? "sticky_preorder_click" : "sticky_waitlist_click"}
+      />
     </>
   );
 }
