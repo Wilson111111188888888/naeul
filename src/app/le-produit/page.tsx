@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { Metadata } from "next";
-import { Check, X } from "@phosphor-icons/react/dist/ssr";
+import { Check } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { HERO_PRODUCT } from "@/lib/products";
 import { Container } from "@/components/ui/container";
@@ -19,9 +19,10 @@ import { StickyCta } from "@/components/sticky-cta";
 import { ReassuranceRow } from "@/components/reassurance-row";
 import { LifestyleGrid } from "@/components/lifestyle-grid";
 import { Marquee } from "@/components/marquee";
+import { ListAccordion } from "@/components/list-accordion";
 import { PREORDER_ENABLED, SHIPPING_DATE } from "@/lib/preorder";
 import { buttonClasses } from "@/components/ui/button";
-import { formatPrice, cn } from "@/lib/utils";
+import { formatPrice } from "@/lib/utils";
 
 const product = HERO_PRODUCT;
 
@@ -340,23 +341,19 @@ export default function LeProduitPage() {
         </Container>
       </section>
 
-      {/* CE QUE ÇA FAIT / NE FAIT PAS */}
-      <Container className="py-16 md:py-24">
-        <SectionHeading eyebrow="Promesse honnête" title="Ce que ça fait — et ce que ça ne fait pas" />
-        <div className="mt-10 grid gap-8 md:grid-cols-2">
-          <Card title="Ce que ça fait" items={product.does} tone="positive" />
-          <Card title="Ce que ça ne fait pas" items={product.doesNot} tone="negative" />
-        </div>
-      </Container>
-
-      {/* POUR QUI */}
+      {/* L'ESSENTIEL — ce que ça fait/pas + pour qui, en accordéon compact */}
       <section className="border-y border-line bg-cream">
         <Container className="py-16 md:py-24">
-          <SectionHeading title="Pour qui ?" />
-          <div className="mt-10 grid gap-8 md:grid-cols-2">
-            <Card title="Pour toi si…" items={product.forWho} tone="positive" />
-            <Card title="Sans doute pas pour toi si…" items={product.notForWho} tone="negative" />
-          </div>
+          <SectionHeading eyebrow="Promesse honnête" title="L'essentiel, sans détour" />
+          <ListAccordion
+            className="mt-10 max-w-2xl"
+            rows={[
+              { title: "Ce que ça fait", items: product.does, tone: "positive" },
+              { title: "Ce que ça ne fait pas", items: product.doesNot, tone: "negative" },
+              { title: "Pour toi si…", items: product.forWho, tone: "positive" },
+              { title: "Sans doute pas pour toi si…", items: product.notForWho, tone: "negative" },
+            ]}
+          />
         </Container>
       </section>
 
@@ -448,36 +445,3 @@ function SectionHeading({ eyebrow, title }: { eyebrow?: string; title: string })
   );
 }
 
-function Card({
-  title,
-  items,
-  tone,
-}: {
-  title: string;
-  items: string[];
-  tone: "positive" | "negative";
-}) {
-  const Icon = tone === "positive" ? Check : X;
-  return (
-    <div
-      className={cn(
-        "rounded-xl border p-7",
-        tone === "positive" ? "border-rose/50 bg-rose/15" : "border-line bg-sand",
-      )}
-    >
-      <h3 className="text-lg">{title}</h3>
-      <ul className="mt-5 space-y-3">
-        {items.map((item) => (
-          <li key={item} className="flex gap-3 text-sm leading-relaxed text-ink/85">
-            <Icon
-              size={18}
-              weight="bold"
-              className={tone === "positive" ? "mt-0.5 shrink-0 text-sage" : "mt-0.5 shrink-0 text-terracotta"}
-            />
-            {item}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}

@@ -111,7 +111,6 @@ const FOUNDERS = [
 export default function Home() {
   // Les sections lifestyle n'apparaissent que si l'image existe dans public/images.
   const hasImage = (name: string) => fs.existsSync(path.join(process.cwd(), "public/images", name));
-  const hasDuo = hasImage("naeul-application.jpg");
   const hasPortrait = hasImage("naeul-texture-macro.jpg");
   const hasLifestyleGrid = hasImage("naeul-lifestyle-1.jpg");
 
@@ -316,40 +315,6 @@ export default function Home() {
       {/* PREUVES DE CONFIANCE */}
       <TrustStrip />
 
-      {/* POUR TOUTES LES PEAUX GRASSES (communauté duo) */}
-      {hasDuo && (
-        <section>
-          <Container className="py-16 md:py-20">
-            <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
-              <figure className="order-2 overflow-hidden rounded-2xl md:order-1">
-                <Image
-                  src="/images/naeul-application.jpg"
-                  alt="Application du sérum naeul pour peau grasse sur peau mixte lumineuse"
-                  width={1122}
-                  height={1402}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="aspect-[4/5] h-full w-full object-cover"
-                />
-              </figure>
-              <div className="order-1 md:order-2">
-                <p className="text-xs uppercase tracking-[0.25em] text-stone">
-                  Pour toutes les peaux grasses
-                </p>
-                <h2 className="mt-3 text-3xl md:text-4xl">Tu peux t&apos;y reconnaître.</h2>
-                <p className="mt-5 leading-relaxed text-stone">
-                  La peau grasse n&apos;a pas un seul visage. naeul s&apos;adresse à toutes celles
-                  et ceux qui brillent en milieu de journée — quels que soient ton teint, ton âge,
-                  ton genre ou ton histoire. Une marque, une seule peau : la tienne.
-                </p>
-                <Link href="/#precommande" className={buttonClasses({ size: "lg", className: "mt-8" })}>
-                  Je veux être prévenue (-15%)
-                </Link>
-              </div>
-            </div>
-          </Container>
-        </section>
-      )}
-
       {/* NOTRE APPROCHE K-BEAUTY (portrait éditorial) */}
       {hasPortrait && (
         <section className="border-y border-line bg-cream">
@@ -390,14 +355,22 @@ export default function Home() {
         <section className="border-t border-line">
           <Container className="py-16 md:py-24">
             <div className="mx-auto max-w-2xl text-center">
-              <p className="text-xs uppercase tracking-[0.25em] text-stone">Une peau, mille nuances</p>
+              <p className="text-xs uppercase tracking-[0.25em] text-stone">
+                Pour toutes les peaux grasses
+              </p>
               <h2 className="mt-3 text-3xl md:text-4xl">La peau grasse, sous toutes ses carnations</h2>
               <p className="mt-4 leading-relaxed text-stone">
-                Un même geste, pensé pour réguler le sébum sans agresser — quelle que soit ta
-                carnation, ton âge, ton genre ou ton histoire.
+                La peau grasse n&apos;a pas un seul visage. Un même geste pour réguler le sébum sans
+                agresser — quels que soient ton teint, ton âge, ton genre ou ton histoire. Une
+                marque, une seule peau : la tienne.
               </p>
             </div>
             <LifestyleGrid className="mx-auto mt-10 max-w-2xl" />
+            <div className="mt-10 text-center">
+              <Link href="/#precommande" className={buttonClasses({ size: "lg" })}>
+                Je veux être prévenue (-15%)
+              </Link>
+            </div>
           </Container>
         </section>
       )}
