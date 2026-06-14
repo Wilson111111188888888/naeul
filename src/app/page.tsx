@@ -412,9 +412,9 @@ export default function Home() {
         items={BRAND_WORDS}
         duration={52}
         reverse
-        className="border-y border-line py-7 md:py-9"
-        itemClassName="font-serif text-xl italic text-ink/90 md:text-3xl"
-        separatorClassName="text-base md:text-xl text-terracotta/70"
+        className="border-y border-line py-6 md:py-8"
+        itemClassName="font-serif text-lg italic text-ink/90 md:text-2xl"
+        separatorClassName="text-sm md:text-base text-terracotta/70"
       />
 
       {/* CAPTURE FINALE — Cinematic CTA */}
