@@ -471,13 +471,21 @@ export default function Home() {
           <div className="mx-auto max-w-2xl">
             <p className="text-xs uppercase tracking-[0.25em] text-stone">Notre histoire</p>
             <p className="mt-6 text-balance font-serif text-2xl leading-relaxed text-ink md:text-3xl">
-              « Naeul » signifie « devenir meilleure » en coréen. Une marque pensée pour
-              accompagner ta peau, pas pour la juger.
+              naeul, créé par un couple qui galérait avec la peau grasse.
             </p>
             <p className="mt-6 leading-relaxed text-stone">
-              On construit naeul pas à pas, avec exigence et transparence. Les premières
-              inscrites seront aux premières loges — et les premières servies.
+              Les classiques de pharmacie décapaient. Les « bio » ne donnaient rien. Les K-beauty
+              importées étaient excellentes — mais pensées pour la peau asiatique, sans SAV français.
+              Personne ne faisait spécifiquement la peau grasse, en français, avec une vraie approche
+              douce. Alors on l&apos;a fait.
             </p>
+            <Link
+              href="/a-propos"
+              className={buttonClasses({ variant: "secondary", size: "lg", className: "mt-8" })}
+            >
+              Notre histoire complète
+              <ArrowRight size={18} />
+            </Link>
           </div>
         </Container>
       </section>

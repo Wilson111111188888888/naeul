@@ -6,9 +6,9 @@ import { Eye, Sparkle, Leaf } from "@phosphor-icons/react/dist/ssr";
 import { buttonClasses } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "À propos",
+  title: "Notre histoire — naeul, K-beauty française",
   description:
-    "naeul, « devenir meilleure » en coréen. Une marque K-beauty française pensée pour les peaux grasses, sans les agresser.",
+    "naeul est né du parcours d'un couple qui en avait marre des marques agressives et des K-beauty importées sans SAV. Découvre notre histoire et notre méthode.",
   alternates: { canonical: "/a-propos" },
 };
 
@@ -26,11 +26,11 @@ export default function AProposPage() {
         <Container className="py-20 md:py-28">
           <p className="text-xs uppercase tracking-[0.25em] text-stone">나을 · naeul</p>
           <h1 className="mt-5 max-w-3xl text-balance text-4xl leading-tight md:text-6xl">
-            « Devenir meilleure. »
+            L&apos;histoire de naeul, en vrai.
           </h1>
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-stone">
-            Naeul, qui signifie « devenir meilleure » en coréen. Une marque K-beauty pensée
-            pour un seul type de peau : la peau grasse.
+            On n&apos;est pas une grosse marque avec un département marketing. On est un couple qui
+            en avait marre de chercher une marque honnête pour peau grasse. Alors on l&apos;a créée.
           </p>
         </Container>
         <div className="relative aspect-[16/7] w-full overflow-hidden">
@@ -44,48 +44,76 @@ export default function AProposPage() {
         </div>
       </section>
 
-      {/* Pourquoi + fondatrice */}
+      {/* Le récit */}
       <Container className="py-20 md:py-28">
-        <div className="grid gap-12 md:grid-cols-2 md:gap-20">
+        <div className="mx-auto max-w-2xl space-y-14">
           <div>
-            <h2 className="text-3xl">Pourquoi une seule peau ?</h2>
+            <h2 className="text-3xl">Le problème.</h2>
             <div className="mt-6 space-y-4 leading-relaxed text-stone">
               <p>
-                La plupart des marques K-beauty veulent plaire à toutes les peaux. Résultat : des
-                propositions qui ne ciblent vraiment personne.
+                Une peau grasse depuis l&apos;adolescence : brillances en milieu de journée, pores
+                visibles, boutons réguliers, maquillage qui glisse. Comme beaucoup, on a tout essayé.
               </p>
               <p>
-                naeul fait l&apos;inverse. Nous avons choisi la peau grasse — celle qui brille en
-                milieu de journée, dont les pores se voient, sur laquelle le maquillage glisse. Une
-                peau exigeante, longtemps mal conseillée.
+                Les classiques de pharmacie — efficaces à court terme, mais ça finit par décaper la
+                peau, et le sébum revient encore plus fort. Les « naturels » et « bio » français —
+                doux, mais souvent sans résultat visible. La K-beauty importée (du type Beauty of
+                Joseon ou COSRX) — d&apos;excellentes formulations, mais pensées pour la peau
+                asiatique, sans SAV en français, sans garantie, et des semaines de livraison.
+              </p>
+              <p className="font-medium text-ink">
+                À chaque fois, le même constat : personne ne fait spécifiquement la peau grasse, en
+                français, avec une vraie approche douce.
+              </p>
+            </div>
+          </div>
+
+          {/* Citation */}
+          <figure className="border-l-2 border-terracotta/50 pl-6">
+            <blockquote className="text-balance font-serif text-2xl leading-relaxed text-ink md:text-3xl">
+              « On ne te vendra jamais un produit qu&apos;on ne mettrait pas sur notre propre peau. »
+            </blockquote>
+            <figcaption className="mt-4 text-sm text-stone">— Les fondateurs de naeul</figcaption>
+          </figure>
+
+          <div>
+            <h2 className="text-3xl">La décision.</h2>
+            <div className="mt-6 space-y-4 leading-relaxed text-stone">
+              <p>
+                On a creusé. Les études sur la niacinamide, la logique de la routine coréenne, les
+                différences entre peau asiatique et peau européenne, la réglementation cosmétique.
+                Conclusion : la K-beauty a une vraie avance sur la formulation douce — mais personne
+                ne l&apos;adapte aux peaux grasses d&apos;ici, avec la transparence qu&apos;on
+                attendait.
+              </p>
+              <p>Alors on l&apos;a fait.</p>
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-3xl">Comment naeul est né.</h2>
+            <div className="mt-6 space-y-4 leading-relaxed text-stone">
+              <p>
+                On a sélectionné des actifs validés sur la peau grasse — niacinamide, acide lactique,
+                Centella Asiatica, acide hyaluronique. Trouvé un laboratoire certifié ECOCERT et ISO
+                22716, dans l&apos;Union européenne. Refusé les formulations qui ne tenaient pas la
+                promesse. Et fait valider le produit avant de le proposer.
               </p>
               <p>
-                Nous construisons la marque avec exigence et sans précipitation. Notre premier
-                produit arrive bientôt ; les inscrites seront les premières informées.
+                Le résultat : un sérum K-beauty français pour peau grasse. Et bientôt, une routine
+                complète.
               </p>
             </div>
           </div>
 
           <div>
-            <h2 className="text-3xl">La fondatrice</h2>
-            <div className="mt-6 space-y-4 leading-relaxed text-stone">
-              <p>
-                naeul est née d&apos;une frustration personnelle. La peau grasse depuis
-                l&apos;adolescence, sa fondatrice a passé des années à tester des produits trop
-                agressifs — alcool, acides forts, formules « matifiantes » — qui asséchaient sa peau
-                sans jamais l&apos;équilibrer.
-              </p>
-              <p>
-                C&apos;est en découvrant la K-beauty qu&apos;elle comprend qu&apos;une autre approche
-                existe : prendre soin de la peau grasse avec douceur, au lieu de la décaper. naeul
-                est née de cette conviction — créer le soin qu&apos;elle aurait voulu trouver, pensé
-                pour un seul type de peau, le sien.
-              </p>
-              <p>
-                Aujourd&apos;hui, elle porte la marque avec une règle simple : ne proposer que ce en
-                quoi elle croit vraiment.
-              </p>
-            </div>
+            <h2 className="text-3xl">Notre promesse.</h2>
+            <ul className="mt-6 space-y-3 leading-relaxed text-stone">
+              <li>On ne fera jamais de promesses qu&apos;on ne peut pas prouver.</li>
+              <li>On te répondra personnellement quand tu nous écriras — c&apos;est nous derrière l&apos;email.</li>
+              <li>Si ton sérum ne te convient pas, on te rembourse — même flacon entamé.</li>
+              <li>Une seule expertise : la peau grasse. Si ta peau est sèche, on te le dira.</li>
+            </ul>
           </div>
         </div>
       </Container>
@@ -115,15 +143,21 @@ export default function AProposPage() {
 
       {/* CTA */}
       <Container className="flex flex-col items-center gap-6 py-20 text-center">
-        <h2 className="max-w-xl text-balance text-3xl md:text-4xl">
-          Sois là dès le premier jour.
-        </h2>
+        <h2 className="max-w-xl text-balance text-3xl md:text-4xl">Sois là dès le premier jour.</h2>
         <p className="max-w-md leading-relaxed text-stone">
           Rejoins la liste d&apos;avant-première et obtiens -15% au lancement.
         </p>
-        <Link href="/#precommande" className={buttonClasses({ size: "lg" })}>
-          Je veux être prévenue (-15%)
-        </Link>
+        <div className="flex flex-col items-center gap-3 sm:flex-row">
+          <Link href="/#precommande" className={buttonClasses({ size: "lg" })}>
+            Je veux être prévenue (-15%)
+          </Link>
+          <Link
+            href="/diagnostic"
+            className={buttonClasses({ variant: "secondary", size: "lg" })}
+          >
+            Faire mon diagnostic peau
+          </Link>
+        </div>
       </Container>
     </>
   );
