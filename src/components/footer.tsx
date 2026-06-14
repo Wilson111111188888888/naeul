@@ -16,6 +16,7 @@ const CERTS = ["ISO 22716", "ECOCERT", "Vegan", "Sans parfum"];
 
 const NAV = [
   { href: "/le-produit", label: "Le produit" },
+  { href: "/diagnostic", label: "Diagnostic peau" },
   { href: "/blog", label: "Journal" },
   { href: "/a-propos", label: "À propos" },
   { href: "/faq", label: "FAQ" },

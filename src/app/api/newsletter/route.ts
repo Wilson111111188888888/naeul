@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-const schema = z.object({ email: z.string().email() });
+const schema = z.object({
+  email: z.string().email(),
+  source: z.string().max(60).optional(),
+});
 
 const LOOPS_API_KEY = process.env.LOOPS_API_KEY;
 
@@ -11,8 +14,11 @@ const LOOPS_API_KEY = process.env.LOOPS_API_KEY;
  */
 export async function POST(request: Request) {
   let email: string;
+  let source = "website";
   try {
-    email = schema.parse(await request.json()).email;
+    const parsed = schema.parse(await request.json());
+    email = parsed.email;
+    if (parsed.source) source = parsed.source;
   } catch {
     return NextResponse.json({ error: "Email invalide." }, { status: 400 });
   }
@@ -29,7 +35,7 @@ export async function POST(request: Request) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${LOOPS_API_KEY}`,
       },
-      body: JSON.stringify({ email, source: "website", subscribed: true }),
+      body: JSON.stringify({ email, source, subscribed: true }),
     });
     if (!res.ok) {
       const detail = await res.text();

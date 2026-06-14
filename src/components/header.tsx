@@ -11,6 +11,7 @@ import { PREORDER_ENABLED } from "@/lib/preorder";
 
 const NAV = [
   { href: "/le-produit", label: "Le produit" },
+  { href: "/diagnostic", label: "Diagnostic peau" },
   { href: "/blog", label: "Journal" },
   { href: "/a-propos", label: "À propos" },
   { href: "/faq", label: "FAQ" },

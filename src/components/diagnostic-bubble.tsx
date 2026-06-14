@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { track } from "@vercel/analytics";
 import { Gift, X } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
@@ -14,6 +15,10 @@ import { cn } from "@/lib/utils";
  */
 export function DiagnosticBubble() {
   const [open, setOpen] = useState(true);
+  const pathname = usePathname();
+
+  // Inutile (et gênant) sur la page diagnostic elle-même.
+  if (pathname === "/diagnostic") return null;
 
   return (
     <div className="fixed bottom-20 right-4 z-40 md:bottom-6 md:right-6">
@@ -28,7 +33,7 @@ export function DiagnosticBubble() {
             <X size={14} weight="bold" />
           </button>
           <Link
-            href="/#diagnostic"
+            href="/diagnostic"
             onClick={() => track("diagnostic_click", { source: "bubble" })}
             className="flex items-center gap-3 rounded-2xl bg-ink py-3 pl-5 pr-3 text-cream shadow-xl shadow-ink/25 ring-1 ring-cream/10 transition-transform hover:-translate-y-0.5"
           >
