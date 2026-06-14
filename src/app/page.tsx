@@ -19,6 +19,7 @@ import { WaitlistForm } from "@/components/waitlist-form";
 import { buttonClasses } from "@/components/ui/button";
 import { TrustStrip } from "@/components/trust-strip";
 import { SkinSelector } from "@/components/home/skin-selector";
+import { AutoScrollRow } from "@/components/auto-scroll-row";
 import { WaitlistCount } from "@/components/waitlist-count";
 import { Reviews } from "@/components/reviews";
 import { HERO_PRODUCT } from "@/lib/products";
@@ -72,7 +73,7 @@ export default function Home() {
   return (
     <>
       {/* HERO — plein écran cinématique */}
-      <section className="relative flex min-h-[calc(100dvh-4rem)] items-end overflow-hidden sm:items-center">
+      <section className="relative flex min-h-[80svh] items-end overflow-hidden sm:min-h-[calc(100dvh-4rem)] sm:items-center">
         <Image
           src={heroLifestyle}
           alt="Sérum K-beauty naeul tenu en main dans une lumière dorée"
@@ -152,11 +153,11 @@ export default function Home() {
             </p>
           </div>
           {/* 3 raisons — swipe sur mobile, grille sur desktop */}
-          <div className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scrollbar-hide sm:mx-auto sm:mt-12 sm:grid sm:max-w-4xl sm:grid-cols-3 sm:gap-8 sm:overflow-visible">
+          <AutoScrollRow className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scrollbar-hide sm:mx-auto sm:mt-12 sm:grid sm:max-w-4xl sm:grid-cols-3 sm:gap-8 sm:overflow-visible">
             {PILLARS.map((pillar) => (
               <div
                 key={pillar.title}
-                className="w-[85%] shrink-0 snap-center text-center sm:w-auto"
+                className="w-full shrink-0 snap-center text-center sm:w-auto"
               >
                 <span className="mx-auto inline-flex h-11 w-11 items-center justify-center rounded-xl bg-sage/10 text-sage">
                   <pillar.icon size={22} />
@@ -165,7 +166,7 @@ export default function Home() {
                 <p className="mt-1.5 text-sm leading-relaxed text-stone">{pillar.text}</p>
               </div>
             ))}
-          </div>
+          </AutoScrollRow>
         </Container>
       </section>
 
@@ -183,18 +184,18 @@ export default function Home() {
                 le lancement en avant-première.
               </p>
             </div>
-            <ul className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-1 scrollbar-hide sm:grid sm:grid-cols-3 sm:gap-7 sm:overflow-visible">
+            <AutoScrollRow
+              as="ul"
+              className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-1 scrollbar-hide sm:grid sm:grid-cols-3 sm:gap-7 sm:overflow-visible"
+            >
               {FOUNDERS.map((f) => (
-                <li
-                  key={f.title}
-                  className="w-[78%] shrink-0 snap-start border-l border-cream/15 pl-4 sm:w-auto sm:border-l-0 sm:pl-0"
-                >
+                <li key={f.title} className="w-full shrink-0 snap-center sm:w-auto">
                   <f.icon size={22} className="text-terracotta" />
                   <p className="mt-3 font-medium text-cream">{f.title}</p>
                   <p className="mt-1 text-xs leading-relaxed text-cream/65">{f.text}</p>
                 </li>
               ))}
-            </ul>
+            </AutoScrollRow>
           </div>
         </Container>
       </section>

@@ -23,13 +23,13 @@ export function AnnouncementBar() {
       <Link
         href="/#precommande"
         aria-label="Précommande ouverte — -15 % en avant-première"
-        className="block overflow-hidden py-2"
+        className="block overflow-hidden py-1.5"
       >
         <div className="flex w-max animate-marquee whitespace-nowrap">
           {[0, 1].map((group) => (
             <ul key={group} className="flex shrink-0" aria-hidden={group === 1}>
               {MESSAGES.map((m, i) => (
-                <li key={i} className="flex items-center text-xs tracking-wide">
+                <li key={i} className="flex items-center text-[0.7rem] tracking-wide">
                   <span className="mx-6">{m}</span>
                   <span className="text-cream/40">·</span>
                 </li>

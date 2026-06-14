@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { AutoScrollRow } from "@/components/auto-scroll-row";
 
 export type GalleryCard = {
   src: string;
@@ -8,17 +9,16 @@ export type GalleryCard = {
 };
 
 /**
- * Carrousel de cartes horizontal : chaque carte = image + titre + description.
- * Scroll-snap, aperçu de la carte suivante, barre cachée. Swipe sur mobile,
- * défilement libre sur desktop. Pur CSS, pas de JS.
+ * Carrousel de cartes : image + titre + description. Une carte pleine largeur à la
+ * fois sur mobile (défilement auto + manuel, pas de texte coupé), plusieurs sur desktop.
  */
 export function GalleryCarousel({ cards }: { cards: GalleryCard[] }) {
   return (
-    <div className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 scrollbar-hide">
+    <AutoScrollRow className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 scrollbar-hide">
       {cards.map((c) => (
         <figure
           key={c.title}
-          className="w-[80%] shrink-0 snap-start sm:w-[54%] lg:w-[31%]"
+          className="w-full shrink-0 snap-center sm:w-[54%] lg:w-[31%]"
         >
           <div className="overflow-hidden rounded-2xl border border-line">
             <Image
@@ -36,6 +36,6 @@ export function GalleryCarousel({ cards }: { cards: GalleryCard[] }) {
           </figcaption>
         </figure>
       ))}
-    </div>
+    </AutoScrollRow>
   );
 }

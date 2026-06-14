@@ -12,6 +12,7 @@ import { ProductCarousel } from "@/components/product/product-carousel";
 import { ActivesCarousel } from "@/components/product/actives-carousel";
 import { GalleryCarousel } from "@/components/product/gallery-carousel";
 import { BeforeAfter } from "@/components/product/before-after";
+import { AutoScrollRow } from "@/components/auto-scroll-row";
 import { PreorderBox } from "@/components/product/preorder-box";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { WaitlistCount } from "@/components/waitlist-count";
@@ -228,7 +229,10 @@ export default function LeProduitPage() {
       <section className="border-t border-line">
         <Container className="py-16 md:py-24">
           <SectionHeading eyebrow="Notre démarche" title="De la formule à ta peau" />
-          <ol className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2 scrollbar-hide sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 sm:overflow-visible lg:grid-cols-4">
+          <AutoScrollRow
+            as="ol"
+            className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2 scrollbar-hide sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 sm:overflow-visible lg:grid-cols-4"
+          >
             {[
               {
                 t: "La formule",
@@ -247,7 +251,7 @@ export default function LeProduitPage() {
                 d: "Édition limitée à 200 flacons, livraison Mondial Relay, garantie 30 jours.",
               },
             ].map((step, i, arr) => (
-              <li key={step.t} className="relative w-[78%] shrink-0 snap-start sm:w-auto">
+              <li key={step.t} className="relative w-full shrink-0 snap-center sm:w-auto">
                 <div className="flex items-center gap-3">
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-sage font-serif text-sm text-sage">
                     {i + 1}
@@ -260,7 +264,7 @@ export default function LeProduitPage() {
                 <p className="mt-1 text-sm leading-relaxed text-stone">{step.d}</p>
               </li>
             ))}
-          </ol>
+          </AutoScrollRow>
         </Container>
       </section>
 
@@ -275,11 +279,14 @@ export default function LeProduitPage() {
       {/* ROUTINE */}
       <Container className="py-16 md:py-24">
         <SectionHeading eyebrow="La routine" title="Comment l'utiliser" />
-        <ol className="mt-10 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto pb-2 scrollbar-hide">
+        <AutoScrollRow
+          as="ol"
+          className="mt-10 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto pb-2 scrollbar-hide"
+        >
           {product.steps.map((step, i) => (
             <li
               key={step.title}
-              className="flex min-w-[72%] shrink-0 snap-start flex-col rounded-2xl border border-line bg-sand p-6 sm:min-w-[45%] lg:min-w-[31%]"
+              className="flex w-full shrink-0 snap-center flex-col rounded-2xl border border-line bg-sand p-6 sm:w-[45%] lg:w-[31%]"
             >
               <span className="flex h-9 w-9 items-center justify-center rounded-full border border-sage font-serif text-sm text-sage">
                 {i + 1}
@@ -288,7 +295,7 @@ export default function LeProduitPage() {
               <p className="mt-1 text-sm leading-relaxed text-stone">{step.detail}</p>
             </li>
           ))}
-        </ol>
+        </AutoScrollRow>
       </Container>
 
       {/* COMPARAISON */}
