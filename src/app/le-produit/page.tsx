@@ -34,7 +34,7 @@ const GALLERY = [
   },
   {
     src: "/images/naeul-application.jpg",
-    alt: "Une femme à la peau lumineuse applique le sérum naeul sur le dos de sa main",
+    alt: "Une personne à la peau lumineuse applique le sérum naeul sur le dos de sa main",
     title: "En 2-3 gouttes",
     desc: "Matin et/ou soir, sur peau propre, avant ta crème.",
   },
@@ -368,8 +368,8 @@ export default function LeProduitPage() {
               <p className="text-xs uppercase tracking-[0.25em] text-stone">En situation</p>
               <h2 className="mt-3 text-3xl md:text-4xl">Un geste, toutes les peaux grasses</h2>
               <p className="mt-4 leading-relaxed text-stone">
-                Le même sérum, la même promesse — réguler le sébum sans agresser, quelle que soit
-                ta carnation.
+                Le même sérum, la même promesse — réguler le sébum sans agresser, quels que soient
+                ta carnation et ton genre.
               </p>
             </div>
             <LifestyleGrid className="mx-auto mt-10 max-w-2xl" />

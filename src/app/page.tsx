@@ -309,8 +309,8 @@ export default function Home() {
                 <h2 className="mt-3 text-3xl md:text-4xl">Tu peux t&apos;y reconnaître.</h2>
                 <p className="mt-5 leading-relaxed text-stone">
                   La peau grasse n&apos;a pas un seul visage. naeul s&apos;adresse à toutes celles
-                  qui brillent en milieu de journée — quels que soient ton teint, ton âge ou ton
-                  histoire. Une marque, une seule peau : la tienne.
+                  et ceux qui brillent en milieu de journée — quels que soient ton teint, ton âge,
+                  ton genre ou ton histoire. Une marque, une seule peau : la tienne.
                 </p>
                 <Link href="/#precommande" className={buttonClasses({ size: "lg", className: "mt-8" })}>
                   Je veux être prévenue (-15%)
@@ -365,7 +365,7 @@ export default function Home() {
               <h2 className="mt-3 text-3xl md:text-4xl">La peau grasse, sous toutes ses carnations</h2>
               <p className="mt-4 leading-relaxed text-stone">
                 Un même geste, pensé pour réguler le sébum sans agresser — quelle que soit ta
-                carnation, ton âge ou ton histoire.
+                carnation, ton âge, ton genre ou ton histoire.
               </p>
             </div>
             <LifestyleGrid className="mx-auto mt-10 max-w-2xl" />
