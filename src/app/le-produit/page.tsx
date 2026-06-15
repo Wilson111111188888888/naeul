@@ -427,7 +427,7 @@ export default function LeProduitPage() {
       {/* CTA sticky mobile — se révèle au scroll, s'efface près du bas */}
       <StickyCta
         href={PREORDER_ENABLED ? "#acheter" : "#precommande"}
-        label={PREORDER_ENABLED ? "Précommander (-15%)" : "Je rejoins la liste (-15%)"}
+        label={PREORDER_ENABLED ? "Précommander (-15%)" : "Je réserve ma place (-15%)"}
         event={PREORDER_ENABLED ? "sticky_preorder_click" : "sticky_waitlist_click"}
       />
     </div>

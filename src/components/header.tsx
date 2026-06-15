@@ -19,7 +19,7 @@ const NAV = [
 ];
 
 const CTA_HREF = PREORDER_ENABLED ? "/le-produit#acheter" : "/#precommande";
-const CTA_LABEL = PREORDER_ENABLED ? "Précommander (-15%)" : "Je rejoins la liste (-15%)";
+const CTA_LABEL = PREORDER_ENABLED ? "Précommander (-15%)" : "Je réserve ma place (-15%)";
 
 export function Header() {
   const [open, setOpen] = useState(false);

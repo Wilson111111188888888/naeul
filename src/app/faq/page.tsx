@@ -64,7 +64,7 @@ export default function FaqPage() {
 
       <div className="mt-12">
         <Link href="/#precommande" className={buttonClasses({ size: "lg" })}>
-          Je rejoins la liste (-15%)
+          Je réserve ma place (-15%)
         </Link>
       </div>
     </Container>

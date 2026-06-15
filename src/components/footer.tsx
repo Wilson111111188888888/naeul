@@ -38,7 +38,7 @@ export function Footer() {
             </p>
           </div>
           <Link href="/#precommande" className={buttonClasses({ size: "lg" })}>
-            Je rejoins la liste (-15%)
+            Je réserve ma place (-15%)
             <ArrowRight size={18} />
           </Link>
         </div>

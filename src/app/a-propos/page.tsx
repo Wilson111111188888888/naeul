@@ -13,9 +13,21 @@ export const metadata: Metadata = {
 };
 
 const VALUES = [
-  { icon: Eye, t: "Transparence", d: "On dit ce qu'on fait, et ce qu'on ne fait pas. Pas de promesse magique." },
-  { icon: Sparkle, t: "Efficacité", d: "Une marque utile, pensée pour un besoin précis : la peau grasse." },
-  { icon: Leaf, t: "Simplicité", d: "Des gestes simples, une routine claire. Le superflu, on le laisse de côté." },
+  {
+    icon: Eye,
+    t: "Concentrations affichées",
+    d: "On publie le dosage exact de chaque actif. Pas de « niacinamide » noyée dans la liste sans pourcentage.",
+  },
+  {
+    icon: Sparkle,
+    t: "Une seule peau",
+    d: "On ne formule que pour la peau grasse, mixte et grasse sensible. Rien pour « tous les types de peau ».",
+  },
+  {
+    icon: Leaf,
+    t: "Sans surenchère",
+    d: "Un seul sérum, pas une routine de 7 étapes. On ne sort un produit que s'il manque vraiment.",
+  },
 ];
 
 export default function AProposPage() {
@@ -29,9 +41,9 @@ export default function AProposPage() {
             L&apos;histoire de naeul, en vrai.
           </h1>
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-stone">
-            Je ne suis pas une grosse marque avec un département marketing. J&apos;ai une peau grasse
-            depuis l&apos;adolescence, et j&apos;en avais assez de chercher un soin honnête. Alors je
-            l&apos;ai créé.
+            Une peau grasse depuis l&apos;adolescence. Des années à tester des soins qui décapaient
+            ou laissaient un film gras. Alors j&apos;ai formulé celui que je cherchais — avec un
+            laboratoire certifié, et zéro compromis sur la douceur.
           </p>
         </Container>
         <div className="relative aspect-[16/7] w-full overflow-hidden">
@@ -107,14 +119,33 @@ export default function AProposPage() {
           </div>
 
           <div>
+            <h2 className="text-3xl">Pourquoi pas une K-beauty coréenne ?</h2>
+            <div className="mt-6 space-y-4 leading-relaxed text-stone">
+              <p>
+                Beauty of Joseon, COSRX, Anua : d&apos;excellentes marques, on les respecte. Mais
+                elles sont d&apos;abord pensées pour le marché coréen — climat, eau, habitudes de
+                soin différents — et souvent distribuées via des circuits où la traçabilité et le
+                SAV en français ne suivent pas.
+              </p>
+              <p>
+                Pour une peau grasse d&apos;ici, naeul fait des choix précis : pas d&apos;alcool
+                dénaturé ni de BHA forts (qui déclenchent le rebond séborrhéique), des actifs à dose
+                efficace (niacinamide, acide lactique doux, Centella), des concentrations affichées,
+                un laboratoire certifié ECOCERT et ISO 22716, un service en français. Même approche
+                douce que la K-beauty — mais lisible, garantie, et dédiée à une seule peau.
+              </p>
+            </div>
+          </div>
+
+          <div>
             <div className="rounded-2xl border border-sage/30 bg-sage/[0.05] p-7 md:p-9">
-              <h2 className="text-2xl md:text-3xl">Ma promesse</h2>
+              <h2 className="text-2xl md:text-3xl">Nos engagements</h2>
               <ul className="mt-6 grid gap-x-8 gap-y-4 sm:grid-cols-2">
                 {[
-                  "Je ne ferai jamais de promesses que je ne peux pas prouver.",
-                  "Je te réponds personnellement quand tu m'écris — c'est moi derrière l'email.",
-                  "Si ton sérum ne te convient pas, je te rembourse — même flacon entamé.",
-                  "Une seule expertise : la peau grasse. Si ta peau est sèche, je te le dirai.",
+                  "Aucune promesse qu'on ne peut pas prouver — concentrations et études à l'appui.",
+                  "Un humain te répond en français, vraiment — pas un chatbot.",
+                  "Si le sérum ne te convient pas, on te rembourse — même flacon entamé.",
+                  "Une seule expertise : la peau grasse. Si ta peau est sèche, on te le dira.",
                 ].map((p) => (
                   <li key={p} className="flex gap-3 text-sm leading-relaxed text-ink/85">
                     <Check size={18} weight="bold" className="mt-0.5 shrink-0 text-sage" />
@@ -158,7 +189,7 @@ export default function AProposPage() {
         </p>
         <div className="flex flex-col items-center gap-3 sm:flex-row">
           <Link href="/#precommande" className={buttonClasses({ size: "lg" })}>
-            Je rejoins la liste (-15%)
+            Je réserve ma place (-15%)
           </Link>
           <Link
             href="/diagnostic"

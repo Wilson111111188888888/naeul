@@ -99,7 +99,7 @@ export default function BlogIndexPage() {
               href={PREORDER_ENABLED ? "/le-produit#acheter" : "/#precommande"}
               className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-cream underline underline-offset-4"
             >
-              {PREORDER_ENABLED ? "Précommander (-15%)" : "Je rejoins la liste (-15%)"}
+              {PREORDER_ENABLED ? "Précommander (-15%)" : "Je réserve ma place (-15%)"}
               <ArrowRight size={14} />
             </Link>
           </div>

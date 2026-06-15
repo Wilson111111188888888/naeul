@@ -124,7 +124,7 @@ export default async function ArticlePage({
               href={PREORDER_ENABLED ? "/le-produit#acheter" : "/#precommande"}
               className={buttonClasses({ size: "lg" })}
             >
-              {PREORDER_ENABLED ? "Précommander (-15%)" : "Je rejoins la liste (-15%)"}
+              {PREORDER_ENABLED ? "Précommander (-15%)" : "Je réserve ma place (-15%)"}
             </Link>
             <Link href="/le-produit" className={buttonClasses({ variant: "secondary", size: "lg" })}>
               En savoir plus
