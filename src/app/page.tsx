@@ -8,9 +8,11 @@ import {
   Drop,
   Aperture,
   ArrowRight,
-  Star,
   Tag,
   Package,
+  PenNib,
+  UsersThree,
+  Gift,
   ShieldCheck,
   Check,
   X,
@@ -58,7 +60,7 @@ const FOUNDERS_PERKS = [
   "Édition limitée · 200 flacons",
   "Livraison offerte",
   "Garantie 30 jours",
-  "Servies en priorité",
+  "Servi·es en priorité",
 ];
 
 // Bande typographique de marque (grand défilement, en transition vers le CTA final).
@@ -98,21 +100,32 @@ const METHOD = [
   },
 ];
 
-const FOUNDERS = [
+// Les 200 Fondateur·rices — promesses réelles (l'utilisateur s'engage à les tenir).
+const FOUNDERS_PROMISES = [
   {
-    icon: Star,
-    title: "Accès prioritaire",
-    text: "Tu es prévenu·e et servi·e avant tout le monde, dès l'ouverture.",
+    icon: Package,
+    title: "Ton flacon numéroté à la main",
+    text: "De 001 à 200. Une seule fois dans l'histoire de naeul — le tien porte ton numéro.",
+  },
+  {
+    icon: PenNib,
+    title: "Une carte signée, avec ton prénom",
+    text: "Un vrai mot écrit à la main, pas un message générique. Pour toi.",
   },
   {
     icon: Tag,
-    title: "-15% sur ta 1ʳᵉ commande",
-    text: "La remise Édition Fondatrices, appliquée automatiquement.",
+    title: "-15% sur ta première commande",
+    text: "Code envoyé par email le jour du lancement, valable sur le premier lot.",
   },
   {
-    icon: Package,
-    title: "Édition limitée",
-    text: "Seulement 200 flacons pour le tout premier lot.",
+    icon: UsersThree,
+    title: "Le Cercle des Fondateur·rices",
+    text: "Un groupe privé où tu co-construis le prochain soin : textures, votes, avant-premières.",
+  },
+  {
+    icon: Gift,
+    title: "Le prochain soin en mini-format, offert",
+    text: "Six mois après ton flacon, tu testes le produit 2 avant tout le monde.",
   },
 ];
 
@@ -218,10 +231,15 @@ export default function Home() {
       <section className="border-y border-line bg-cream">
         <Container className="py-16 md:py-20">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs uppercase tracking-[0.25em] text-stone">Pourquoi naeul</p>
+            <p className="text-xs uppercase tracking-[0.25em] text-stone">Notre conviction</p>
             <p className="mt-6 text-balance font-serif text-2xl leading-snug text-ink md:text-[2rem]">
-              Une marque qui ne cherche pas à plaire à toutes les peaux. Une seule&nbsp;: la peau
-              grasse — qu&apos;on équilibre en douceur, jamais en agressant.
+              Les peaux grasses n&apos;ont pas besoin d&apos;être décapées. Elles ont besoin
+              d&apos;être comprises.
+            </p>
+            <p className="mx-auto mt-5 max-w-xl leading-relaxed text-stone">
+              On a appris aux peaux grasses à se combattre — à coups d&apos;alcool, d&apos;acides
+              forts et de matifiants qui dessèchent et relancent le sébum. Nous, on travaille
+              <em> avec</em> ta peau, pas contre elle.
             </p>
           </div>
           {/* 3 raisons — swipe + points sur mobile, grille sur desktop */}
@@ -251,27 +269,42 @@ export default function Home() {
           className="border-b border-cream/10 py-3.5"
           itemClassName="font-serif text-base italic text-cream/85 tracking-wide"
         />
-        <Container className="py-14 md:py-16">
-          <div className="grid gap-10 md:grid-cols-[1fr_1.5fr] md:items-center md:gap-16">
-            <div>
-              <p className="text-[0.7rem] uppercase tracking-[0.25em] text-cream/60">
-                Édition Fondatrices
-              </p>
-              <h2 className="mt-2 font-serif text-3xl text-cream md:text-4xl">Les 200 premières</h2>
-              <p className="mt-3 text-sm leading-relaxed text-cream/75">
-                Le tout premier lot est limité à 200 flacons. Rejoins les fondatrices qui vivent
-                le lancement en avant-première.
-              </p>
-            </div>
-            <SwipeCarousel className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-1 scrollbar-hide sm:grid sm:grid-cols-3 sm:gap-7 sm:overflow-visible">
-              {FOUNDERS.map((f) => (
-                <li key={f.title} className="w-full shrink-0 snap-center sm:w-auto">
-                  <f.icon size={22} className="text-terracotta" />
-                  <p className="mt-3 font-medium text-cream">{f.title}</p>
-                  <p className="mt-1 text-xs leading-relaxed text-cream/65">{f.text}</p>
-                </li>
-              ))}
-            </SwipeCarousel>
+        <Container className="py-14 md:py-20">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-[0.7rem] uppercase tracking-[0.25em] text-cream/60">Édition limitée</p>
+            <h2 className="mt-2 font-serif text-3xl text-cream md:text-5xl">Les 200 Fondateur·rices</h2>
+            <p className="mt-4 leading-relaxed text-cream/75">
+              Le tout premier lot de naeul n&apos;existera qu&apos;une fois. 200 flacons, 200
+              personnes, un lancement qu&apos;on vit ensemble.
+            </p>
+          </div>
+
+          <ol className="mx-auto mt-12 grid max-w-3xl gap-x-10 gap-y-8 sm:grid-cols-2">
+            {FOUNDERS_PROMISES.map((p) => (
+              <li key={p.title} className="flex gap-4">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-cream/10 text-terracotta">
+                  <p.icon size={20} />
+                </span>
+                <div>
+                  <h3 className="text-base font-medium text-cream">{p.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-cream/65">{p.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <div className="mt-12 flex flex-col items-center text-center">
+            <Link
+              href="/#precommande"
+              className={buttonClasses({ size: "lg", className: "bg-cream text-ink hover:bg-sand" })}
+            >
+              Je rejoins les 200
+              <ArrowRight size={18} />
+            </Link>
+            <p className="mt-3 max-w-sm text-xs leading-relaxed text-cream/60">
+              Inscription gratuite, sans engagement d&apos;achat. Tu reçois ton numéro de réservation
+              par email.
+            </p>
           </div>
         </Container>
       </section>
