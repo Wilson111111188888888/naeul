@@ -201,17 +201,17 @@ export default function LeProduitPage() {
       {hasAvantApres && (
         <Container className="py-16 md:py-24">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-xs uppercase tracking-[0.25em] text-stone">Résultats</p>
+            <p className="text-xs uppercase tracking-[0.25em] text-stone">Test interne</p>
             <h2 className="mt-3 text-3xl md:text-4xl">Le grain de peau, en 4 semaines</h2>
             <p className="mt-4 leading-relaxed text-stone">
-              Pores resserrés, peau plus lisse et moins brillante. Un résultat observé sur notre
-              test produit.
+              Pores resserrés, peau plus lisse et moins brillante — observés lors de notre test
+              interne sur peau grasse, avant lancement.
             </p>
           </div>
           <BeforeAfter />
           <p className="mt-4 text-center text-xs text-stone">
-            Glisse pour comparer · résultats observés après 4 semaines d&apos;utilisation. Résultats
-            individuels, non garantis.
+            Glisse pour comparer · test interne sur peau grasse, 4 semaines (pas un avis client).
+            Résultats individuels, non garantis.
           </p>
         </Container>
       )}

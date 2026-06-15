@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { CountUp } from "@/components/count-up";
 
 /**
  * Nombre réel d'inscrits sur la liste d'avant-première.
@@ -38,11 +37,10 @@ export function WaitlistCount({
         ))}
       </div>
       <p className={cn("text-sm", onDark ? "text-cream/85" : "text-stone")}>
-        <CountUp
-          to={WAITLIST_COUNT}
-          className={cn("font-medium", onDark ? "text-cream" : "text-ink")}
-        />{" "}
-        inscrit·es attendent déjà le lancement
+        <span className={cn("font-medium", onDark ? "text-cream" : "text-ink")}>
+          {WAITLIST_COUNT}
+        </span>{" "}
+        personnes déjà sur la liste d&apos;avant-première
       </p>
     </div>
   );

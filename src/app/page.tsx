@@ -25,7 +25,6 @@ import { SkinSelector } from "@/components/home/skin-selector";
 import { SwipeCarousel } from "@/components/swipe-carousel";
 import { Marquee } from "@/components/marquee";
 import { LifestyleGrid } from "@/components/lifestyle-grid";
-import { WaitlistCount } from "@/components/waitlist-count";
 import { FoundersGauge } from "@/components/founders-gauge";
 import { StickyCta } from "@/components/sticky-cta";
 import { ReassuranceRow } from "@/components/reassurance-row";
@@ -214,8 +213,6 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-
-            <WaitlistCount tone="onDark" className="mt-7 justify-start" />
           </div>
         </Container>
       </section>
@@ -574,13 +571,13 @@ export default function Home() {
         <section className="border-t border-line">
           <Container className="py-16 md:py-20">
             <div className="mx-auto max-w-2xl text-center">
-              <p className="text-xs uppercase tracking-[0.25em] text-stone">Résultats</p>
+              <p className="text-xs uppercase tracking-[0.25em] text-stone">Test interne</p>
               <h2 className="mt-3 text-3xl md:text-4xl">Avant / après, 8 semaines</h2>
             </div>
             <figure className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl border border-line">
               <Image
                 src="/images/naeul-resultats-8sem.jpg"
-                alt="Avant / après 8 semaines avec le sérum naeul : grain de peau plus net, moins de brillances"
+                alt="Test interne avant / après 8 semaines sur peau grasse avec le sérum naeul"
                 width={1536}
                 height={1024}
                 sizes="(max-width: 768px) 100vw, 768px"
@@ -588,8 +585,8 @@ export default function Home() {
               />
             </figure>
             <p className="mx-auto mt-4 max-w-2xl text-center text-xs leading-relaxed text-stone/80">
-              Résultats observés après 8 semaines d&apos;utilisation. Résultats individuels, non
-              garantis.
+              Test réalisé en interne sur peau grasse, avant lancement (pas un avis client). Résultats
+              individuels, non garantis.
             </p>
           </Container>
         </section>
