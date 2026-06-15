@@ -25,6 +25,7 @@ import { SkinSelector } from "@/components/home/skin-selector";
 import { SwipeCarousel } from "@/components/swipe-carousel";
 import { Marquee } from "@/components/marquee";
 import { LifestyleGrid } from "@/components/lifestyle-grid";
+import { WaitlistCount } from "@/components/waitlist-count";
 import { FoundersGauge } from "@/components/founders-gauge";
 import { StickyCta } from "@/components/sticky-cta";
 import { ReassuranceRow } from "@/components/reassurance-row";
@@ -213,6 +214,8 @@ export default function Home() {
                 </li>
               ))}
             </ul>
+
+            <WaitlistCount tone="onDark" className="mt-7 justify-start" />
           </div>
         </Container>
       </section>
