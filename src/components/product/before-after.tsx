@@ -51,7 +51,7 @@ export function BeforeAfter() {
         onPointerMove={(e) => dragging.current && moveTo(e.clientX)}
         onPointerUp={() => (dragging.current = false)}
         onPointerCancel={() => (dragging.current = false)}
-        className="relative aspect-[772/855] w-full touch-none select-none overflow-hidden rounded-2xl border border-line"
+        className="relative aspect-[772/855] w-full touch-pan-y select-none overflow-hidden rounded-2xl border border-line"
         role="slider"
         aria-label="Comparateur avant / après — glisse pour révéler"
         aria-valuenow={Math.round(pos)}

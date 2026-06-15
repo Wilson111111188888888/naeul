@@ -6,6 +6,7 @@ import heroLifestyle from "../../public/images/naeul-hero.jpg";
 import {
   Sparkle,
   Drop,
+  Aperture,
   ArrowRight,
   Star,
   Tag,
@@ -62,6 +63,13 @@ const FOUNDERS_PERKS = [
 
 // Bande typographique de marque (grand défilement, en transition vers le CTA final).
 const BRAND_WORDS = ["naeul", "나을", "K-beauty pour peau grasse", "sans agresser"];
+
+// Bénéfices en langage clair (placés tôt, plus parlants que les noms d'actifs).
+const BENEFITS = [
+  { Icon: Drop, t: "Moins de brillances" },
+  { Icon: Aperture, t: "Pores resserrés" },
+  { Icon: Sparkle, t: "Peau plus nette" },
+];
 
 // Comparatif naeul vs K-beauty importée (différenciation). rival: true=oui, false=non, string=nuance.
 const COMPARISON: { label: string; rival: boolean | string }[] = [
@@ -187,6 +195,22 @@ export default function Home() {
 
             <WaitlistCount tone="onDark" className="mt-7 justify-start" />
           </div>
+        </Container>
+      </section>
+
+      {/* BÉNÉFICES — en clair, tout de suite */}
+      <section className="border-b border-line bg-cream">
+        <Container className="py-10 md:py-12">
+          <ul className="grid grid-cols-3 gap-3 text-center sm:gap-8">
+            {BENEFITS.map((b) => (
+              <li key={b.t} className="flex flex-col items-center">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-sage/10 text-sage">
+                  <b.Icon size={20} />
+                </span>
+                <p className="mt-3 text-sm font-medium text-ink md:text-base">{b.t}</p>
+              </li>
+            ))}
+          </ul>
         </Container>
       </section>
 
@@ -357,16 +381,6 @@ export default function Home() {
         <section className="border-t border-line">
           <Container className="py-16 md:py-20">
             <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
-              <figure className="overflow-hidden rounded-2xl">
-                <Image
-                  src="/images/naeul-rituel-couple.jpg"
-                  alt="Le sérum naeul intégré à une routine du quotidien, dans la salle de bain"
-                  width={1086}
-                  height={1448}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="aspect-[3/4] h-full w-full object-cover"
-                />
-              </figure>
               <div>
                 <p className="text-xs uppercase tracking-[0.25em] text-stone">Au quotidien</p>
                 <h2 className="mt-3 text-3xl md:text-4xl">Un geste simple, à intégrer à ta routine.</h2>
@@ -381,6 +395,16 @@ export default function Home() {
                   Voir comment l&apos;utiliser
                 </Link>
               </div>
+              <figure className="overflow-hidden rounded-2xl">
+                <Image
+                  src="/images/naeul-rituel-couple.jpg"
+                  alt="Le sérum naeul intégré à une routine du quotidien, dans la salle de bain"
+                  width={1086}
+                  height={1448}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="aspect-[3/4] h-full w-full object-cover"
+                />
+              </figure>
             </div>
           </Container>
         </section>

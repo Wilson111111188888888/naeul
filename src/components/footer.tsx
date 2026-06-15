@@ -43,7 +43,7 @@ export function Footer() {
           </Link>
         </div>
 
-        <div className="mt-12 grid gap-12 md:grid-cols-[1.6fr_1fr_1fr]">
+        <div className="mt-12 grid gap-10 md:grid-cols-[1.6fr_1fr]">
           <div className="max-w-xs">
             <Wordmark className="text-2xl" hangulClassName="text-[0.6rem] tracking-[0.3em]" />
             <p className="mt-5 text-sm leading-relaxed text-stone">
@@ -78,34 +78,36 @@ export function Footer() {
             </div>
           </div>
 
-          <div>
-            <h3 className="font-sans text-xs font-semibold uppercase tracking-wider text-stone">
-              La marque
-            </h3>
-            <ul className="mt-4 space-y-3">
-              {NAV.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-ink/80 transition-colors hover:text-sage">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <div className="grid grid-cols-2 gap-8">
+            <div>
+              <h3 className="font-sans text-xs font-semibold uppercase tracking-wider text-stone">
+                La marque
+              </h3>
+              <ul className="mt-4 space-y-3">
+                {NAV.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-sm text-ink/80 transition-colors hover:text-sage">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div>
-            <h3 className="font-sans text-xs font-semibold uppercase tracking-wider text-stone">
-              Informations
-            </h3>
-            <ul className="mt-4 space-y-3">
-              {LEGAL.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-ink/80 transition-colors hover:text-sage">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <div>
+              <h3 className="font-sans text-xs font-semibold uppercase tracking-wider text-stone">
+                Informations
+              </h3>
+              <ul className="mt-4 space-y-3">
+                {LEGAL.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-sm text-ink/80 transition-colors hover:text-sage">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 

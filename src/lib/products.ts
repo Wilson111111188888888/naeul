@@ -51,7 +51,7 @@ export const HERO_PRODUCT: Product = {
   name: "Sérum aux exosomes et à la niacinamide",
   tagline: "Régule le sébum et les pores, apaise sans dessécher.",
   shortDescription:
-    "Un sérum K-beauty pensé pour la peau grasse, sans l'agresser. Texture légère, fini non gras, six actifs ciblés pour équilibrer, hydrater et affiner le grain de peau.",
+    "Un sérum K-beauty pensé pour la peau grasse, sans l'agresser. Texture légère qui pénètre vite et ne laisse pas de film gras — six actifs ciblés pour équilibrer, hydrater et affiner le grain de peau.",
   differentiator:
     "La majorité des soins « peau grasse » agressent : alcool dénaturé, BHA forts. La peau s'assèche en surface, se rebelle, et produit encore plus de sébum. naeul fait l'inverse : on équilibre en douceur, on hydrate sans graisser, on régule sans dessécher.",
   unitPrice: 32.9,
