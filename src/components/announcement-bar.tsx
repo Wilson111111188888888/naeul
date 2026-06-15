@@ -5,7 +5,7 @@ import { PREORDER_ENABLED } from "@/lib/preorder";
 // Messages de conversion (sans « Made in EU » — on en parle le moins possible).
 const MESSAGES = PREORDER_ENABLED
   ? [
-      "Précommande ouverte · Édition Fondateur·rices -15 %",
+      "Précommande ouverte · Édition limitée -15 %",
       "Premier lot limité à 200 flacons",
       "Livraison offerte pour les fondatrices",
       "Satisfait ou remboursé 30 jours",

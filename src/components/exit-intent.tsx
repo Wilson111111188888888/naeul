@@ -83,7 +83,7 @@ export function ExitIntent() {
         <h2 className="mt-5 text-2xl">Avant de partir…</h2>
         <p className="mt-2 text-sm leading-relaxed text-stone">
           Prends <strong className="text-ink">-15 %</strong> sur ta première commande. Inscris-toi et
-          sois prévenu·e en avant-première du lancement.
+          sois au courant en avant-première du lancement.
         </p>
         <WaitlistForm source="exit_intent" className="mt-5" />
       </div>

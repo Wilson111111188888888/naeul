@@ -53,14 +53,14 @@ const PILLARS = [
 
 const TRUST_BADGES = ["Sans parfum", "Vegan ECOCERT", "Livraison 48-72h", "Satisfait remboursé 30j"];
 
-// Ruban de perks de l'Édition Fondateur·rices (défilement premium).
+// Ruban de perks de l'Édition limitée (défilement premium).
 const FOUNDERS_PERKS = [
   "Accès prioritaire",
   "-15 % sur ta 1ʳᵉ commande",
-  "Édition Fondateur·rices · 200 flacons",
+  "Édition limitée · 200 flacons",
   "Livraison offerte",
   "Garantie 30 jours",
-  "Servi·es en priorité",
+  "Prioritaire à l.envoi",
 ];
 
 // Bande typographique de marque (grand défilement, en transition vers le CTA final).
@@ -107,7 +107,7 @@ const METHOD = [
   },
 ];
 
-// Les 200 Fondateur·rices — promesses réelles (l'utilisateur s'engage à les tenir).
+// Le Cercle des 200 — promesses réelles (l'utilisateur s'engage à les tenir).
 const FOUNDERS_PROMISES = [
   {
     icon: Package,
@@ -126,7 +126,7 @@ const FOUNDERS_PROMISES = [
   },
   {
     icon: UsersThree,
-    title: "Le Cercle des Fondateur·rices",
+    title: "Le Cercle des 200",
     text: "Un groupe privé où tu co-construis le prochain soin : textures, votes, avant-premières.",
   },
   {
@@ -165,7 +165,7 @@ export default function Home() {
           <div className="max-w-xl animate-fade-up [animation-delay:120ms]">
             <p className="text-[0.7rem] uppercase tracking-[0.2em] text-cream/70">
               {PREORDER_ENABLED
-                ? "K-beauty française · Édition Fondateur·rices"
+                ? "K-beauty française · Édition limitée"
                 : "K-beauty française · Avant-première"}
             </p>
             <h1 className="mt-4 text-balance font-serif text-3xl font-normal italic leading-tight text-cream md:text-5xl">
@@ -175,7 +175,7 @@ export default function Home() {
             {PREORDER_ENABLED ? (
               <>
                 <p className="mt-5 max-w-md leading-relaxed text-cream/85">
-                  L&apos;Édition Fondateur·rices est ouverte : <strong className="font-medium text-cream">-15%</strong>,
+                  L&apos;Édition limitée est ouverte : <strong className="font-medium text-cream">-15%</strong>,
                   livraison offerte et garantie 30 jours. Premier lot limité à 200 flacons.
                 </p>
                 <Link
@@ -186,7 +186,7 @@ export default function Home() {
                   <ArrowRight size={18} />
                 </Link>
                 <p className="mt-3 text-xs text-cream/70">
-                  Pas encore décidé·e ?{" "}
+                  Encore un doute ?{" "}
                   <Link href="#precommande" className="text-cream underline underline-offset-4">
                     Rejoins la liste d&apos;avant-première
                   </Link>
@@ -196,7 +196,7 @@ export default function Home() {
               <>
                 <p className="mt-5 max-w-md leading-relaxed text-cream/85">
                   Notre premier sérum arrive en <strong className="font-medium text-cream">juillet
-                  2026</strong>. Inscris-toi pour être prévenu·e en avant-première et recevoir{" "}
+                  2026</strong>. Inscris-toi pour être au courant en avant-première et recevoir{" "}
                   <strong className="font-medium text-cream">-15%</strong>{" "}
                   sur ta première commande.
                 </p>
@@ -267,7 +267,7 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* LES 200 PREMIÈRES (Édition Fondateur·rices) — bande sombre compacte */}
+      {/* LES 200 PREMIÈRES (Édition limitée) — bande sombre compacte */}
       <section className="bg-ink text-cream">
         {/* Ruban premium des avantages fondatrices */}
         <Marquee
@@ -278,8 +278,8 @@ export default function Home() {
         />
         <Container className="py-14 md:py-20">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-[0.7rem] uppercase tracking-[0.25em] text-cream/60">Édition Fondateur·rices</p>
-            <h2 className="mt-2 font-serif text-3xl text-cream md:text-5xl">Les 200 Fondateur·rices</h2>
+            <p className="text-[0.7rem] uppercase tracking-[0.25em] text-cream/60">Édition limitée</p>
+            <h2 className="mt-2 font-serif text-3xl text-cream md:text-5xl">Le Cercle des 200</h2>
             <p className="mt-4 leading-relaxed text-cream/75">
               Le tout premier lot de naeul n&apos;existera qu&apos;une fois. 200 flacons, 200
               personnes, un lancement qu&apos;on vit ensemble.
@@ -329,7 +329,7 @@ export default function Home() {
               href="/#precommande"
               className={buttonClasses({ size: "lg", className: "bg-cream text-ink hover:bg-sand" })}
             >
-              Je rejoins les 200
+              Je rejoins le Cercle
               <ArrowRight size={18} />
             </Link>
             <p className="mt-3 max-w-sm text-xs leading-relaxed text-cream/60">
@@ -386,7 +386,7 @@ export default function Home() {
                 <span className="text-sm text-stone">
                   {PREORDER_ENABLED ? (
                     <>
-                      Édition Fondateur·rices · dès{" "}
+                      Édition limitée · dès{" "}
                       {formatPrice(foundersPrice(HERO_PRODUCT.variants[0].price))}
                     </>
                   ) : (
@@ -671,7 +671,7 @@ export default function Home() {
           ) : (
             <>
               <h2 className="max-w-2xl text-balance font-serif text-3xl text-cream md:text-5xl">
-                Sois prévenu·e en avant-première.
+                Sois au courant en avant-première.
               </h2>
               <p className="max-w-md leading-relaxed text-cream/80">
                 Rejoins la liste : tu reçois ton code -15% et tu es la première informée du

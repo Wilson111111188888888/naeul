@@ -117,7 +117,7 @@ export default async function ArticlePage({
           <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-stone">
             {PREORDER_ENABLED
               ? "K-beauty pour peau grasse, sans agresser. Rejoins les fondatrices : -15 %, livraison offerte, garantie 30 jours."
-              : "K-beauty pour peau grasse, sans agresser. Inscris-toi pour être prévenu·e en avant-première et obtenir -15 %."}
+              : "K-beauty pour peau grasse, sans agresser. Inscris-toi pour être au courant en avant-première et obtenir -15 %."}
           </p>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <Link

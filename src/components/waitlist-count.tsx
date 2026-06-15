@@ -13,7 +13,7 @@ const DOTS = [
   "var(--color-stone)",
 ];
 
-/** Preuve sociale : « 108 inscrit·es attendent déjà le lancement » (chiffre réel). */
+/** Preuve sociale : « 108 personnes inscrites attendent déjà le lancement » (chiffre réel). */
 export function WaitlistCount({
   className,
   tone = "light",

@@ -150,7 +150,7 @@ export default function LeProduitPage() {
           </div>
 
           {PREORDER_ENABLED ? (
-            /* PRÉ-COMMANDE — Édition Fondateur·rices */
+            /* PRÉ-COMMANDE — Édition limitée */
             <div className="mt-8">
               <PreorderBox product={product} />
             </div>
@@ -180,10 +180,10 @@ export default function LeProduitPage() {
 
               <div className="mt-8 rounded-2xl border border-line bg-cream p-6">
                 <p className="text-sm font-medium text-ink">
-                  Le sérum arrive en juillet 2026. Sois prévenu·e en avant-première.
+                  Le sérum arrive en juillet 2026. Sois au courant en avant-première.
                 </p>
                 <p className="mt-1 text-xs text-stone">
-                  Premier lot limité à 200 flacons — les inscrit·es sont prévenu·es et servi·es en priorité.
+                  Premier lot limité à 200 flacons — les premières inscriptions sont prévenues et servies en priorité.
                 </p>
                 <WaitlistForm source="produit_haut" className="mt-4" />
                 <WaitlistCount className="mt-4 justify-start" />
@@ -264,7 +264,7 @@ export default function LeProduitPage() {
               },
               {
                 t: "Chez toi",
-                d: "Édition Fondateur·rices à 200 flacons, livraison Mondial Relay, garantie 30 jours.",
+                d: "Édition limitée à 200 flacons, livraison Mondial Relay, garantie 30 jours.",
               },
             ].map((step, i, arr) => (
               <li key={step.t} className="relative w-full shrink-0 snap-center sm:w-auto">
@@ -394,14 +394,14 @@ export default function LeProduitPage() {
                 Rejoins les fondatrices de naeul.
               </h2>
               <p className="max-w-md leading-relaxed text-stone">
-                -15% sur l&apos;Édition Fondateur·rices, livraison offerte, garantie 30 jours.
+                -15% sur l&apos;Édition limitée, livraison offerte, garantie 30 jours.
                 Expédition prévue {SHIPPING_DATE}.
               </p>
               <Link href="#acheter" className={buttonClasses({ size: "lg" })}>
                 Précommander (-15%)
               </Link>
               <p className="text-sm text-stone">
-                Pas encore décidé·e ?{" "}
+                Encore un doute ?{" "}
                 <Link href="/#precommande" className="text-sage underline underline-offset-4">
                   Rejoins la liste et reçois des nouvelles
                 </Link>
@@ -414,7 +414,7 @@ export default function LeProduitPage() {
                 Sois la première à l&apos;essayer. -15% au lancement.
               </h2>
               <p className="max-w-md leading-relaxed text-stone">
-                Rejoins la liste d&apos;avant-première : tu reçois ton code -15% et tu es prévenu·e
+                Rejoins la liste d&apos;avant-première : tu reçois ton code -15% et tu es au courant
                 dès l&apos;ouverture des précommandes.
               </p>
               <WaitlistForm source="produit_bas" className="w-full max-w-md" />

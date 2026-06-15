@@ -31,7 +31,7 @@ export function Footer() {
         <div className="flex flex-col items-start gap-6 border-b border-line pb-12 md:flex-row md:items-center md:justify-between">
           <div className="max-w-md">
             <h2 className="font-serif text-2xl text-ink md:text-3xl">
-              Sois prévenu·e en avant-première.
+              Sois au courant en avant-première.
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-stone">
               -15% au lancement, accès prioritaire au premier lot. Inscription gratuite, pas de spam.
@@ -48,7 +48,7 @@ export function Footer() {
             <Wordmark className="text-2xl" hangulClassName="text-[0.6rem] tracking-[0.3em]" />
             <p className="mt-5 text-sm leading-relaxed text-stone">
               K-beauty française pour peau grasse. Notre premier sérum arrive en juillet 2026 —
-              inscris-toi pour être prévenu·e en avant-première.
+              inscris-toi pour être au courant en avant-première.
             </p>
             <a
               href="mailto:hello@naeul.com"
