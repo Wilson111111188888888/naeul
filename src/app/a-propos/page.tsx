@@ -8,7 +8,7 @@ import { buttonClasses } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "Notre histoire — naeul, K-beauty française",
   description:
-    "naeul est né du parcours d'un couple qui en avait marre des marques agressives et des K-beauty importées sans SAV. Découvre notre histoire et notre méthode.",
+    "naeul est né du parcours d'une fondatrice à la peau grasse, lassée des soins qui décapent ou laissent un film gras. Découvre l'histoire et la méthode.",
   alternates: { canonical: "/a-propos" },
 };
 
@@ -29,8 +29,9 @@ export default function AProposPage() {
             L&apos;histoire de naeul, en vrai.
           </h1>
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-stone">
-            On n&apos;est pas une grosse marque avec un département marketing. On est un couple qui
-            en avait marre de chercher une marque honnête pour peau grasse. Alors on l&apos;a créée.
+            Je ne suis pas une grosse marque avec un département marketing. J&apos;ai une peau grasse
+            depuis l&apos;adolescence, et j&apos;en avais assez de chercher un soin honnête. Alors je
+            l&apos;ai créé.
           </p>
         </Container>
         <div className="relative aspect-[16/7] w-full overflow-hidden">
@@ -52,18 +53,18 @@ export default function AProposPage() {
             <div className="mt-6 space-y-4 leading-relaxed text-stone">
               <p>
                 Une peau grasse depuis l&apos;adolescence : brillances en milieu de journée, pores
-                visibles, boutons réguliers, maquillage qui glisse. Comme beaucoup, on a tout essayé.
+                visibles, boutons réguliers, maquillage qui glisse. J&apos;ai tout essayé.
               </p>
               <p>
-                Les classiques de pharmacie — efficaces à court terme, mais ça finit par décaper la
-                peau, et le sébum revient encore plus fort. Les « naturels » et « bio » français —
-                doux, mais souvent sans résultat visible. La K-beauty importée (du type Beauty of
-                Joseon ou COSRX) — d&apos;excellentes formulations, mais pensées pour la peau
-                asiatique, sans SAV en français, sans garantie, et des semaines de livraison.
+                Les classiques de pharmacie — efficaces sur le moment, mais ça finit par décaper la
+                peau, et le sébum revient plus fort. Les « bio » français — doux, mais sans résultat
+                visible. Les K-beauty importées (Beauty of Joseon, COSRX) — d&apos;excellentes
+                formulations, mais pensées pour la peau asiatique, sans SAV en français, sans
+                garantie, et des semaines de livraison.
               </p>
               <p className="font-medium text-ink">
-                À chaque fois, le même constat : personne ne fait spécifiquement la peau grasse, en
-                français, avec une vraie approche douce.
+                À chaque fois, soit ça décapait ma peau, soit ça laissait un film gras. Et personne
+                ne faisait spécifiquement la peau grasse, en français, avec une vraie approche douce.
               </p>
             </div>
           </div>
@@ -71,22 +72,21 @@ export default function AProposPage() {
           {/* Citation */}
           <figure className="border-l-2 border-terracotta/50 pl-6">
             <blockquote className="text-balance font-serif text-2xl leading-relaxed text-ink md:text-3xl">
-              « On ne te vendra jamais un produit qu&apos;on ne mettrait pas sur notre propre peau. »
+              « Je ne te vendrai jamais un produit que je ne mettrais pas sur ma propre peau. »
             </blockquote>
-            <figcaption className="mt-4 text-sm text-stone">— Les fondateurs de naeul</figcaption>
+            <figcaption className="mt-4 text-sm text-stone">— La fondatrice de naeul</figcaption>
           </figure>
 
           <div>
             <h2 className="text-3xl">La décision.</h2>
             <div className="mt-6 space-y-4 leading-relaxed text-stone">
               <p>
-                On a creusé. Les études sur la niacinamide, la logique de la routine coréenne, les
-                différences entre peau asiatique et peau européenne, la réglementation cosmétique.
-                Conclusion : la K-beauty a une vraie avance sur la formulation douce — mais personne
-                ne l&apos;adapte aux peaux grasses d&apos;ici, avec la transparence qu&apos;on
-                attendait.
+                Alors j&apos;ai creusé. Les études sur la niacinamide, la logique de la routine
+                coréenne, les différences entre peau asiatique et peau européenne. La K-beauty a une
+                vraie avance sur la douceur — mais personne ne l&apos;adaptait aux peaux grasses
+                d&apos;ici, avec la transparence que j&apos;attendais.
               </p>
-              <p>Alors on l&apos;a fait.</p>
+              <p>Alors je l&apos;ai fait.</p>
             </div>
           </div>
 
@@ -94,25 +94,25 @@ export default function AProposPage() {
             <h2 className="text-3xl">Comment naeul est né.</h2>
             <div className="mt-6 space-y-4 leading-relaxed text-stone">
               <p>
-                On a sélectionné des actifs validés sur la peau grasse — niacinamide, acide lactique,
-                Centella Asiatica, acide hyaluronique. Trouvé un laboratoire certifié ECOCERT et ISO
-                22716, dans l&apos;Union européenne. Refusé les formulations qui ne tenaient pas la
-                promesse. Et fait valider le produit avant de le proposer.
+                J&apos;ai sélectionné des actifs validés sur la peau grasse — niacinamide, acide
+                lactique, Centella Asiatica, acide hyaluronique. Trouvé un laboratoire certifié
+                ECOCERT et ISO 22716, dans l&apos;Union européenne. Refusé les formulations qui ne
+                tenaient pas la promesse. Et validé le produit avant de le proposer.
               </p>
               <p>
-                Le résultat : un sérum K-beauty français pour peau grasse. Et bientôt, une routine
-                complète.
+                Le résultat : un sérum K-beauty français pour peau grasse, lancé en juillet 2026. Et
+                bientôt, une routine complète.
               </p>
             </div>
           </div>
 
           <div>
-            <h2 className="text-3xl">Notre promesse.</h2>
+            <h2 className="text-3xl">Ma promesse.</h2>
             <ul className="mt-6 space-y-3 leading-relaxed text-stone">
-              <li>On ne fera jamais de promesses qu&apos;on ne peut pas prouver.</li>
-              <li>On te répondra personnellement quand tu nous écriras — c&apos;est nous derrière l&apos;email.</li>
-              <li>Si ton sérum ne te convient pas, on te rembourse — même flacon entamé.</li>
-              <li>Une seule expertise : la peau grasse. Si ta peau est sèche, on te le dira.</li>
+              <li>Je ne ferai jamais de promesses que je ne peux pas prouver.</li>
+              <li>Je te réponds personnellement quand tu m&apos;écris — c&apos;est moi derrière l&apos;email.</li>
+              <li>Si ton sérum ne te convient pas, je te rembourse — même flacon entamé.</li>
+              <li>Une seule expertise : la peau grasse. Si ta peau est sèche, je te le dirai.</li>
             </ul>
           </div>
         </div>
