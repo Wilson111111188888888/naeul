@@ -180,10 +180,10 @@ export default function LeProduitPage() {
 
               <div className="mt-8 rounded-2xl border border-line bg-cream p-6">
                 <p className="text-sm font-medium text-ink">
-                  Le sérum arrive bientôt. Sois prévenue en avant-première.
+                  Le sérum arrive bientôt. Sois prévenu·e en avant-première.
                 </p>
                 <p className="mt-1 text-xs text-stone">
-                  Premier lot limité à 200 flacons — les inscrites sont prévenues et servies en priorité.
+                  Premier lot limité à 200 flacons — les inscrit·es sont prévenu·es et servi·es en priorité.
                 </p>
                 <WaitlistForm source="produit_haut" className="mt-4" />
                 <WaitlistCount className="mt-4 justify-start" />
@@ -401,7 +401,7 @@ export default function LeProduitPage() {
                 Précommander (-15%)
               </Link>
               <p className="text-sm text-stone">
-                Pas encore prête ?{" "}
+                Pas encore décidé·e ?{" "}
                 <Link href="/#precommande" className="text-sage underline underline-offset-4">
                   Rejoins la liste et reçois des nouvelles
                 </Link>
@@ -414,8 +414,8 @@ export default function LeProduitPage() {
                 Sois la première à l&apos;essayer. -15% au lancement.
               </h2>
               <p className="max-w-md leading-relaxed text-stone">
-                Rejoins la liste d&apos;avant-première : tu reçois ton code -15% et tu es prévenue dès
-                l&apos;ouverture des précommandes.
+                Rejoins la liste d&apos;avant-première : tu reçois ton code -15% et tu es prévenu·e
+                dès l&apos;ouverture des précommandes.
               </p>
               <WaitlistForm source="produit_bas" className="w-full max-w-md" />
               <WaitlistCount />
@@ -427,7 +427,7 @@ export default function LeProduitPage() {
       {/* CTA sticky mobile — se révèle au scroll, s'efface près du bas */}
       <StickyCta
         href={PREORDER_ENABLED ? "#acheter" : "#precommande"}
-        label={PREORDER_ENABLED ? "Précommander (-15%)" : "Je veux être prévenue (-15%)"}
+        label={PREORDER_ENABLED ? "Précommander (-15%)" : "Je rejoins la liste (-15%)"}
         event={PREORDER_ENABLED ? "sticky_preorder_click" : "sticky_waitlist_click"}
       />
     </div>

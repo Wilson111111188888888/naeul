@@ -102,7 +102,7 @@ const FOUNDERS = [
   {
     icon: Star,
     title: "Accès prioritaire",
-    text: "Tu es prévenue et servie avant tout le monde, dès l'ouverture.",
+    text: "Tu es prévenu·e et servi·e avant tout le monde, dès l'ouverture.",
   },
   {
     icon: Tag,
@@ -166,7 +166,7 @@ export default function Home() {
                   <ArrowRight size={18} />
                 </Link>
                 <p className="mt-3 text-xs text-cream/70">
-                  Pas encore prête ?{" "}
+                  Pas encore décidé·e ?{" "}
                   <Link href="#precommande" className="text-cream underline underline-offset-4">
                     Rejoins la liste d&apos;avant-première
                   </Link>
@@ -175,7 +175,7 @@ export default function Home() {
             ) : (
               <>
                 <p className="mt-5 max-w-md leading-relaxed text-cream/85">
-                  Notre premier sérum arrive bientôt. Inscris-toi pour être prévenue en
+                  Notre premier sérum arrive bientôt. Inscris-toi pour être prévenu·e en
                   avant-première et recevoir <strong className="font-medium text-cream">-15%</strong>{" "}
                   sur ta première commande.
                 </p>
@@ -428,7 +428,7 @@ export default function Home() {
             <LifestyleGrid className="mx-auto mt-10 max-w-2xl" />
             <div className="mt-10 text-center">
               <Link href="/#precommande" className={buttonClasses({ size: "lg" })}>
-                Je veux être prévenue (-15%)
+                Je rejoins la liste (-15%)
               </Link>
             </div>
           </Container>
@@ -607,7 +607,7 @@ export default function Home() {
           ) : (
             <>
               <h2 className="max-w-2xl text-balance font-serif text-3xl text-cream md:text-5xl">
-                Sois prévenue en avant-première.
+                Sois prévenu·e en avant-première.
               </h2>
               <p className="max-w-md leading-relaxed text-cream/80">
                 Rejoins la liste : tu reçois ton code -15% et tu es la première informée du
@@ -623,7 +623,7 @@ export default function Home() {
       {/* CTA sticky mobile — se révèle au scroll, s'efface près du bas */}
       <StickyCta
         href={PREORDER_ENABLED ? "/le-produit#acheter" : "#precommande"}
-        label={PREORDER_ENABLED ? "Précommander (-15%)" : "Je veux être prévenue (-15%)"}
+        label={PREORDER_ENABLED ? "Précommander (-15%)" : "Je rejoins la liste (-15%)"}
         event={PREORDER_ENABLED ? "sticky_preorder_click" : "sticky_waitlist_click"}
       />
     </>

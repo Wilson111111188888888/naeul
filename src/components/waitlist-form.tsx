@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
  */
 export function WaitlistForm({
   tone = "light",
-  cta = "Je veux être prévenue (-15%)",
+  cta = "Je rejoins la liste (-15%)",
   source = "inconnu",
   className,
 }: {

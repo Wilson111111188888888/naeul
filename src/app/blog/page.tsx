@@ -93,13 +93,13 @@ export default function BlogIndexPage() {
             <p className="mt-2 text-sm text-cream/80">
               {PREORDER_ENABLED
                 ? "Précommande ouverte — premier lot limité à 200 flacons."
-                : "Inscris-toi pour être prévenue en avant-première."}
+                : "Inscris-toi pour être prévenu·e en avant-première."}
             </p>
             <Link
               href={PREORDER_ENABLED ? "/le-produit#acheter" : "/#precommande"}
               className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-cream underline underline-offset-4"
             >
-              {PREORDER_ENABLED ? "Précommander (-15%)" : "Je veux être prévenue (-15%)"}
+              {PREORDER_ENABLED ? "Précommander (-15%)" : "Je rejoins la liste (-15%)"}
               <ArrowRight size={14} />
             </Link>
           </div>

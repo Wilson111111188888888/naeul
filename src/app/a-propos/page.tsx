@@ -149,7 +149,7 @@ export default function AProposPage() {
         </p>
         <div className="flex flex-col items-center gap-3 sm:flex-row">
           <Link href="/#precommande" className={buttonClasses({ size: "lg" })}>
-            Je veux être prévenue (-15%)
+            Je rejoins la liste (-15%)
           </Link>
           <Link
             href="/diagnostic"

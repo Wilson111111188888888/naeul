@@ -7,14 +7,14 @@ import { FaqAccordion } from "@/components/faq-accordion";
 export const metadata: Metadata = {
   title: "FAQ",
   description:
-    "Questions fréquentes sur naeul : quand sort le sérum, pourquoi la peau grasse, peaux sensibles, comment être prévenue du lancement.",
+    "Questions fréquentes sur naeul : quand sort le sérum, pourquoi la peau grasse, peaux sensibles, comment être prévenu·e du lancement.",
   alternates: { canonical: "/faq" },
 };
 
 const FAQ: { q: string; a: string }[] = [
   {
     q: "Quand sort le premier produit ?",
-    a: "Notre premier produit — un sérum aux exosomes et à la niacinamide — arrive prochainement. Les personnes inscrites à la précommande seront les premières prévenues, avant tout le monde.",
+    a: "Notre premier produit — un sérum aux exosomes et à la niacinamide — arrive prochainement. Les personnes inscrites à la précommande seront prévenu·es avant tout le monde.",
   },
   {
     q: "Que signifie « naeul » ?",
@@ -38,10 +38,10 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "C'est quoi la précommande et le -15% ?",
-    a: "En t'inscrivant maintenant, tu rejoins la liste d'avant-première. Tu reçois un code -15% à utiliser sur ta première commande au lancement, et tu es prévenue en priorité dès que le produit est disponible.",
+    a: "En t'inscrivant maintenant, tu rejoins la liste d'avant-première. Tu reçois un code -15% à utiliser sur ta première commande au lancement, et tu es prévenu·e en priorité dès que le produit est disponible.",
   },
   {
-    q: "Comment être prévenue du lancement ?",
+    q: "Comment être prévenu·e du lancement ?",
     a: "Laisse ton email sur la page d'accueil. C'est tout. Pas de spam : tu reçois seulement les étapes importantes et ton code de bienvenue.",
   },
 ];
@@ -64,7 +64,7 @@ export default function FaqPage() {
 
       <div className="mt-12">
         <Link href="/#precommande" className={buttonClasses({ size: "lg" })}>
-          Je veux être prévenue (-15%)
+          Je rejoins la liste (-15%)
         </Link>
       </div>
     </Container>

@@ -117,14 +117,14 @@ export default async function ArticlePage({
           <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-stone">
             {PREORDER_ENABLED
               ? "K-beauty pour peau grasse, sans agresser. Rejoins les fondatrices : -15 %, livraison offerte, garantie 30 jours."
-              : "K-beauty pour peau grasse, sans agresser. Inscris-toi pour être prévenue en avant-première et obtenir -15 %."}
+              : "K-beauty pour peau grasse, sans agresser. Inscris-toi pour être prévenu·e en avant-première et obtenir -15 %."}
           </p>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <Link
               href={PREORDER_ENABLED ? "/le-produit#acheter" : "/#precommande"}
               className={buttonClasses({ size: "lg" })}
             >
-              {PREORDER_ENABLED ? "Précommander (-15%)" : "Je veux être prévenue (-15%)"}
+              {PREORDER_ENABLED ? "Précommander (-15%)" : "Je rejoins la liste (-15%)"}
             </Link>
             <Link href="/le-produit" className={buttonClasses({ variant: "secondary", size: "lg" })}>
               En savoir plus

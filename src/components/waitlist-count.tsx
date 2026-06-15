@@ -14,7 +14,7 @@ const DOTS = [
   "var(--color-stone)",
 ];
 
-/** Preuve sociale : « 108 inscrites attendent déjà le lancement » (chiffre réel). */
+/** Preuve sociale : « 108 inscrit·es attendent déjà le lancement » (chiffre réel). */
 export function WaitlistCount({
   className,
   tone = "light",
@@ -42,7 +42,7 @@ export function WaitlistCount({
           to={WAITLIST_COUNT}
           className={cn("font-medium", onDark ? "text-cream" : "text-ink")}
         />{" "}
-        inscrites attendent déjà le lancement
+        inscrit·es attendent déjà le lancement
       </p>
     </div>
   );
