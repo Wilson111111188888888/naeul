@@ -180,7 +180,7 @@ export default function LeProduitPage() {
 
               <div className="mt-8 rounded-2xl border border-line bg-cream p-6">
                 <p className="text-sm font-medium text-ink">
-                  Le sérum arrive bientôt. Sois prévenu·e en avant-première.
+                  Le sérum arrive en juillet 2026. Sois prévenu·e en avant-première.
                 </p>
                 <p className="mt-1 text-xs text-stone">
                   Premier lot limité à 200 flacons — les inscrit·es sont prévenu·es et servi·es en priorité.

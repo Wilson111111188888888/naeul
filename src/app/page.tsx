@@ -25,13 +25,13 @@ import { SkinSelector } from "@/components/home/skin-selector";
 import { SwipeCarousel } from "@/components/swipe-carousel";
 import { Marquee } from "@/components/marquee";
 import { LifestyleGrid } from "@/components/lifestyle-grid";
-import { WaitlistCount } from "@/components/waitlist-count";
+import { WaitlistCount, WAITLIST_COUNT } from "@/components/waitlist-count";
 import { StickyCta } from "@/components/sticky-cta";
 import { ReassuranceRow } from "@/components/reassurance-row";
 import { Reviews } from "@/components/reviews";
 import { HERO_PRODUCT } from "@/lib/products";
 import { PREORDER_ENABLED, foundersPrice } from "@/lib/preorder";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice, cn } from "@/lib/utils";
 
 const PILLARS = [
   {
@@ -65,6 +65,15 @@ const FOUNDERS_PERKS = [
 
 // Bande typographique de marque (grand défilement, en transition vers le CTA final).
 const BRAND_WORDS = ["naeul", "나을", "K-beauty pour peau grasse", "sans agresser"];
+
+// Journal de lancement — jalons RÉELS uniquement (transparence, pas de faux).
+const JOURNAL = [
+  { label: "Formule définie · 6 actifs ciblés", status: "fait" as const },
+  { label: "Liste d'avant-première ouverte", status: "fait" as const },
+  { label: `${WAITLIST_COUNT} inscrit·es`, status: "encours" as const },
+  { label: "Derniers contrôles · notification CPNP en cours", status: "encours" as const },
+  { label: "Lancement — juillet 2026", status: "avenir" as const },
+];
 
 // Bénéfices en langage clair (placés tôt, plus parlants que les noms d'actifs).
 const BENEFITS = [
@@ -188,8 +197,9 @@ export default function Home() {
             ) : (
               <>
                 <p className="mt-5 max-w-md leading-relaxed text-cream/85">
-                  Notre premier sérum arrive bientôt. Inscris-toi pour être prévenu·e en
-                  avant-première et recevoir <strong className="font-medium text-cream">-15%</strong>{" "}
+                  Notre premier sérum arrive en <strong className="font-medium text-cream">juillet
+                  2026</strong>. Inscris-toi pour être prévenu·e en avant-première et recevoir{" "}
+                  <strong className="font-medium text-cream">-15%</strong>{" "}
                   sur ta première commande.
                 </p>
                 <WaitlistForm tone="onAccent" source="hero" className="mt-6 max-w-md" />
@@ -309,6 +319,62 @@ export default function Home() {
               Inscription gratuite, sans engagement d&apos;achat. Tu reçois ton numéro de réservation
               par email.
             </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* JOURNAL DE LANCEMENT — jalons réels (transparence) */}
+      <section className="border-b border-line bg-cream">
+        <Container className="py-14 md:py-16">
+          <div className="mx-auto max-w-xl">
+            <p className="text-center text-xs uppercase tracking-[0.25em] text-stone">
+              Journal de lancement
+            </p>
+            <h2 className="mt-3 text-center text-3xl md:text-4xl">Où on en est</h2>
+            <ol className="mx-auto mt-10 max-w-md">
+              {JOURNAL.map((step, i) => {
+                const last = i === JOURNAL.length - 1;
+                return (
+                  <li key={step.label} className="flex gap-4">
+                    <div className="flex flex-col items-center">
+                      <span
+                        className={cn(
+                          "flex h-6 w-6 shrink-0 items-center justify-center rounded-full border",
+                          step.status === "fait" && "border-sage bg-sage text-cream",
+                          step.status === "encours" && "border-terracotta bg-terracotta/15 text-terracotta",
+                          step.status === "avenir" && "border-line text-stone/40",
+                        )}
+                      >
+                        {step.status === "fait" ? (
+                          <Check size={13} weight="bold" />
+                        ) : (
+                          <span
+                            className={cn(
+                              "h-1.5 w-1.5 rounded-full",
+                              step.status === "encours" ? "bg-terracotta" : "bg-stone/40",
+                            )}
+                          />
+                        )}
+                      </span>
+                      {!last && <span className="my-1 w-px flex-1 bg-line" />}
+                    </div>
+                    <div className={cn("pb-7", last && "pb-0")}>
+                      <p
+                        className={cn(
+                          "text-sm leading-snug",
+                          step.status === "avenir" ? "text-stone" : "font-medium text-ink",
+                        )}
+                      >
+                        {step.label}
+                      </p>
+                      {step.status === "encours" && (
+                        <p className="mt-0.5 text-xs text-terracotta">En cours</p>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
           </div>
         </Container>
       </section>

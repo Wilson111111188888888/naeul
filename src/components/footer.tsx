@@ -47,7 +47,7 @@ export function Footer() {
           <div className="max-w-xs">
             <Wordmark className="text-2xl" hangulClassName="text-[0.6rem] tracking-[0.3em]" />
             <p className="mt-5 text-sm leading-relaxed text-stone">
-              K-beauty française pour peau grasse. Notre premier sérum arrive bientôt —
+              K-beauty française pour peau grasse. Notre premier sérum arrive en juillet 2026 —
               inscris-toi pour être prévenu·e en avant-première.
             </p>
             <a
