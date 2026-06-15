@@ -27,27 +27,36 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://naeul.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "naeul — K-beauty pour peau grasse, sans agresser",
+    default: "naeul — K-beauty française pour peau grasse, sans agresser",
     template: "%s — naeul",
   },
   description:
-    "naeul est une marque K-beauty française qui propose des soins doux et efficaces pour les peaux grasses, mixtes et à pores. Lancement bientôt — inscris-toi pour -15%.",
-  keywords: ["K-beauty", "peau grasse", "sérum", "niacinamide", "exosomes", "soin coréen", "naeul"],
+    "naeul, marque K-beauty française pour peau grasse, mixte et à pores : un sérum à la niacinamide qui régule le sébum et les pores sans agresser. Lancement 2026 — -15% en avant-première.",
+  keywords: [
+    "K-beauty française",
+    "peau grasse",
+    "sérum peau grasse",
+    "sérum niacinamide",
+    "pores",
+    "sébum",
+    "soin peau grasse",
+    "naeul",
+  ],
   openGraph: {
     type: "website",
     locale: "fr_FR",
     siteName: "naeul",
-    title: "naeul — K-beauty pour peau grasse, sans agresser",
+    title: "naeul — K-beauty française pour peau grasse, sans agresser",
     description:
-      "Soins K-beauty doux et efficaces pour les peaux grasses. Lancement bientôt — inscris-toi pour -15%.",
+      "Un sérum K-beauty pour peau grasse qui régule le sébum et les pores sans agresser. Lancement 2026 — -15% en avant-première.",
     url: SITE_URL,
     images: ["/images/naeul-produit-avec-box.jpg"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "naeul — K-beauty pour peau grasse, sans agresser",
+    title: "naeul — K-beauty française pour peau grasse, sans agresser",
     description:
-      "Soins K-beauty doux et efficaces pour les peaux grasses. Lancement bientôt — inscris-toi pour -15%.",
+      "Un sérum K-beauty pour peau grasse qui régule le sébum et les pores sans agresser. Lancement 2026 — -15% en avant-première.",
     images: ["/images/naeul-produit-avec-box.jpg"],
   },
   alternates: { canonical: "/" },
