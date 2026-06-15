@@ -25,7 +25,7 @@ import { SkinSelector } from "@/components/home/skin-selector";
 import { SwipeCarousel } from "@/components/swipe-carousel";
 import { Marquee } from "@/components/marquee";
 import { LifestyleGrid } from "@/components/lifestyle-grid";
-import { WaitlistCount, WAITLIST_COUNT } from "@/components/waitlist-count";
+import { WaitlistCount } from "@/components/waitlist-count";
 import { FoundersGauge } from "@/components/founders-gauge";
 import { StickyCta } from "@/components/sticky-cta";
 import { ReassuranceRow } from "@/components/reassurance-row";
@@ -69,10 +69,9 @@ const BRAND_WORDS = ["naeul", "나을", "K-beauty pour peau grasse", "sans agres
 
 // Journal de lancement — jalons RÉELS uniquement (transparence, pas de faux).
 const JOURNAL = [
-  { label: "Formule définie · 6 actifs ciblés", status: "fait" as const },
+  { label: "Formule définie", status: "fait" as const },
   { label: "Liste d'avant-première ouverte", status: "fait" as const },
-  { label: `${WAITLIST_COUNT} inscrit·es`, status: "encours" as const },
-  { label: "Lancement — juillet 2026", status: "avenir" as const },
+  { label: "Lancement · juillet 2026", status: "avenir" as const },
 ];
 
 // Bénéfices en langage clair (placés tôt, plus parlants que les noms d'actifs).
@@ -251,15 +250,16 @@ export default function Home() {
               forts et de matifiants qui dessèchent et relancent le sébum. Nous, on travaille
               <em> avec</em> ta peau, pas contre elle.
             </p>
+            <div className="mx-auto mt-8 h-px w-12 bg-terracotta/40" />
           </div>
-          {/* 3 raisons — swipe + points sur mobile, grille sur desktop */}
-          <SwipeCarousel className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scrollbar-hide sm:mx-auto sm:mt-12 sm:grid sm:max-w-4xl sm:grid-cols-3 sm:gap-8 sm:overflow-visible">
+          {/* 3 raisons — cartes : swipe + points sur mobile, grille sur desktop */}
+          <SwipeCarousel className="mt-10 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto pb-2 scrollbar-hide sm:mx-auto sm:mt-12 sm:grid sm:max-w-4xl sm:grid-cols-3 sm:gap-6 sm:overflow-visible">
             {PILLARS.map((pillar) => (
               <div
                 key={pillar.title}
-                className="w-full shrink-0 snap-center text-center sm:w-auto"
+                className="flex w-full shrink-0 snap-center flex-col items-center rounded-2xl border border-line bg-sand p-6 text-center sm:w-auto"
               >
-                <span className="mx-auto inline-flex h-11 w-11 items-center justify-center rounded-xl bg-sage/10 text-sage">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-sage/10 text-sage">
                   <pillar.icon size={22} />
                 </span>
                 <h3 className="mt-4 text-base">{pillar.title}</h3>
@@ -288,6 +288,25 @@ export default function Home() {
               personnes, un lancement qu&apos;on vit ensemble.
             </p>
             <FoundersGauge className="mt-10" />
+
+            {/* Mini-journal de lancement (fusionné ici) */}
+            <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-cream/70">
+              {JOURNAL.map((s) => (
+                <li key={s.label} className="flex items-center gap-2">
+                  <span
+                    className={cn(
+                      "flex h-4 w-4 items-center justify-center rounded-full",
+                      s.status === "fait" ? "bg-sage text-cream" : "border border-cream/40",
+                    )}
+                  >
+                    {s.status === "fait" && <Check size={10} weight="bold" />}
+                  </span>
+                  <span className={s.status === "avenir" ? "font-medium text-cream/90" : ""}>
+                    {s.label}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <SwipeCarousel
@@ -320,59 +339,6 @@ export default function Home() {
               Inscription gratuite, sans engagement d&apos;achat. Tu reçois ton numéro de réservation
               par email.
             </p>
-          </div>
-        </Container>
-      </section>
-
-      {/* JOURNAL DE LANCEMENT — jalons réels (transparence) */}
-      <section className="border-b border-line bg-cream">
-        <Container className="py-14 md:py-16">
-          <div className="mx-auto max-w-xl">
-            <p className="text-center text-xs uppercase tracking-[0.25em] text-stone">
-              Journal de lancement
-            </p>
-            <h2 className="mt-3 text-center text-3xl md:text-4xl">Où on en est</h2>
-            <ol className="mx-auto mt-10 max-w-md">
-              {JOURNAL.map((step, i) => {
-                const last = i === JOURNAL.length - 1;
-                return (
-                  <li key={step.label} className="flex gap-4">
-                    <div className="flex flex-col items-center">
-                      <span
-                        className={cn(
-                          "flex h-6 w-6 shrink-0 items-center justify-center rounded-full border",
-                          step.status === "fait" && "border-sage bg-sage text-cream",
-                          step.status === "encours" && "border-terracotta bg-terracotta/15 text-terracotta",
-                          step.status === "avenir" && "border-line text-stone/40",
-                        )}
-                      >
-                        {step.status === "fait" ? (
-                          <Check size={13} weight="bold" />
-                        ) : (
-                          <span
-                            className={cn(
-                              "h-1.5 w-1.5 rounded-full",
-                              step.status === "encours" ? "bg-terracotta" : "bg-stone/40",
-                            )}
-                          />
-                        )}
-                      </span>
-                      {!last && <span className="my-1 w-px flex-1 bg-line" />}
-                    </div>
-                    <div className={cn("pb-7", last && "pb-0")}>
-                      <p
-                        className={cn(
-                          "text-sm leading-snug",
-                          step.status === "avenir" ? "text-stone" : "font-medium text-ink",
-                        )}
-                      >
-                        {step.label}
-                      </p>
-                    </div>
-                  </li>
-                );
-              })}
-            </ol>
           </div>
         </Container>
       </section>
