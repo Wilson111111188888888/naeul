@@ -74,15 +74,38 @@ export default async function ArticlePage({
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
-    headline: meta.title,
-    description: meta.description,
-    datePublished: meta.date,
-    dateModified: meta.updated ?? meta.date,
-    author: { "@type": "Organization", name: "naeul" },
-    publisher: { "@type": "Organization", name: "naeul", url: SITE_URL },
-    mainEntityOfPage: `${SITE_URL}/blog/${slug}`,
-    keywords: meta.keyword,
+    "@graph": [
+      {
+        "@type": "Article",
+        headline: meta.title,
+        description: meta.description,
+        datePublished: meta.date,
+        dateModified: meta.updated ?? meta.date,
+        inLanguage: "fr-FR",
+        author: { "@type": "Organization", name: "naeul", url: SITE_URL },
+        publisher: {
+          "@type": "Organization",
+          name: "naeul",
+          url: SITE_URL,
+          logo: { "@type": "ImageObject", url: `${SITE_URL}/icon.svg` },
+        },
+        mainEntityOfPage: `${SITE_URL}/blog/${slug}`,
+        keywords: meta.keyword,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Accueil", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Journal", item: `${SITE_URL}/blog` },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: meta.title,
+            item: `${SITE_URL}/blog/${slug}`,
+          },
+        ],
+      },
+    ],
   };
 
   return (

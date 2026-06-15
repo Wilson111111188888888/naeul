@@ -59,6 +59,34 @@ export const metadata: Metadata = {
     : undefined,
 };
 
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "naeul",
+      url: SITE_URL,
+      logo: `${SITE_URL}/icon.svg`,
+      description:
+        "Marque K-beauty française de soins pour peau grasse, mixte et à pores — réguler le sébum et les pores en douceur, sans agresser.",
+      slogan: "K-beauty pour peau grasse, sans agresser.",
+      sameAs: [
+        "https://www.instagram.com/naeul_by_kbeauty",
+        "https://www.tiktok.com/@naeul.bykbeauty",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "naeul",
+      inLanguage: "fr-FR",
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -67,6 +95,10 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${fraunces.variable} ${inter.variable}`}>
       <body className="flex min-h-dvh flex-col bg-sand text-ink">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
         <AnnouncementBar />
         <Header />
         <main className="flex-1">{children}</main>
