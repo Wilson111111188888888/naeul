@@ -84,11 +84,11 @@ const BENEFITS = [
 // Comparatif naeul vs K-beauty importée (différenciation). rival: true=oui, false=non, string=nuance.
 const COMPARISON: { label: string; rival: boolean | string }[] = [
   { label: "Spécialiste de la peau grasse", rival: "Tout type" },
-  { label: "Pensé pour la peau d'ici", rival: "Peau asiatique" },
+  { label: "Pensé pour le marché français", rival: "Marché coréen" },
   { label: "Approche K-beauty douce", rival: true },
   { label: "SAV en français", rival: false },
   { label: "Garantie 30 jours satisfait ou remboursé", rival: false },
-  { label: "Livraison 48-72h", rival: "2-3 semaines" },
+  { label: "Concentrations affichées", rival: "Variable" },
   { label: "Certifié ECOCERT · ISO 22716", rival: "Variable" },
 ];
 
@@ -170,8 +170,11 @@ export default function Home() {
                 : "K-beauty française · Avant-première"}
             </p>
             <h1 className="mt-4 text-balance font-serif text-3xl font-normal italic leading-tight text-cream md:text-5xl">
-              Moins de brillances. Pores affinés. Sans assécher.
+              K-beauty pour peau grasse, sans agresser.
             </h1>
+            <p className="mt-4 text-lg font-medium text-cream md:text-xl">
+              Moins de brillances. Pores affinés. Sans assécher.
+            </p>
 
             {PREORDER_ENABLED ? (
               <>
@@ -605,7 +608,7 @@ export default function Home() {
             </p>
             <p className="mt-6 leading-relaxed text-stone">
               Les classiques de pharmacie décapaient. Les « bio » ne donnaient rien. Les K-beauty
-              importées étaient excellentes — mais pensées pour la peau asiatique, sans SAV français.
+              importées étaient excellentes — mais pensées pour le marché coréen, sans SAV français.
               Personne ne faisait spécifiquement la peau grasse, en français, avec une vraie approche
               douce. Alors on l&apos;a fait.
             </p>

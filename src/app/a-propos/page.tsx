@@ -71,7 +71,7 @@ export default function AProposPage() {
                 Les classiques de pharmacie — efficaces sur le moment, mais ça finit par décaper la
                 peau, et le sébum revient plus fort. Les « bio » français — doux, mais sans résultat
                 visible. Les K-beauty importées (Beauty of Joseon, COSRX) — d&apos;excellentes
-                formulations, mais pensées pour la peau asiatique, sans SAV en français, sans
+                formulations, mais pensées pour le marché coréen, sans SAV en français, sans
                 garantie, et des semaines de livraison.
               </p>
               <p className="font-medium text-ink">
@@ -94,7 +94,8 @@ export default function AProposPage() {
             <div className="mt-6 space-y-4 leading-relaxed text-stone">
               <p>
                 Alors j&apos;ai creusé. Les études sur la niacinamide, la logique de la routine
-                coréenne, les différences entre peau asiatique et peau européenne. La K-beauty a une
+                coréenne, les différences de climat, d&apos;eau et d&apos;habitudes entre la Corée et
+                l&apos;Europe. La K-beauty a une
                 vraie avance sur la douceur — mais personne ne l&apos;adaptait aux peaux grasses
                 d&apos;ici, avec la transparence que j&apos;attendais.
               </p>
