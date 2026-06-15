@@ -43,10 +43,10 @@ export function PreorderBox({ product }: { product: Product }) {
 
   return (
     <div id="acheter" className="scroll-mt-24">
-      {/* Bandeau Édition limitée */}
+      {/* Bandeau Édition Fondateur·rices */}
       <div className="mb-5 flex items-center gap-2 rounded-full border border-terracotta/40 bg-terracotta/[0.08] px-3 py-1.5 text-xs font-medium text-ink">
         <Package size={15} className="text-terracotta" />
-        Édition limitée — premier lot limité à {FOUNDERS_LIMIT} flacons
+        Édition Fondateur·rices — premier lot limité à {FOUNDERS_LIMIT} flacons
       </div>
 
       {/* Sélecteur de format */}

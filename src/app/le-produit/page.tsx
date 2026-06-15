@@ -150,7 +150,7 @@ export default function LeProduitPage() {
           </div>
 
           {PREORDER_ENABLED ? (
-            /* PRÉ-COMMANDE — Édition limitée */
+            /* PRÉ-COMMANDE — Édition Fondateur·rices */
             <div className="mt-8">
               <PreorderBox product={product} />
             </div>
@@ -264,7 +264,7 @@ export default function LeProduitPage() {
               },
               {
                 t: "Chez toi",
-                d: "Édition limitée à 200 flacons, livraison Mondial Relay, garantie 30 jours.",
+                d: "Édition Fondateur·rices à 200 flacons, livraison Mondial Relay, garantie 30 jours.",
               },
             ].map((step, i, arr) => (
               <li key={step.t} className="relative w-full shrink-0 snap-center sm:w-auto">
@@ -394,7 +394,7 @@ export default function LeProduitPage() {
                 Rejoins les fondatrices de naeul.
               </h2>
               <p className="max-w-md leading-relaxed text-stone">
-                -15% sur l&apos;Édition limitée, livraison offerte, garantie 30 jours.
+                -15% sur l&apos;Édition Fondateur·rices, livraison offerte, garantie 30 jours.
                 Expédition prévue {SHIPPING_DATE}.
               </p>
               <Link href="#acheter" className={buttonClasses({ size: "lg" })}>

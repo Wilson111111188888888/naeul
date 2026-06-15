@@ -26,6 +26,7 @@ import { SwipeCarousel } from "@/components/swipe-carousel";
 import { Marquee } from "@/components/marquee";
 import { LifestyleGrid } from "@/components/lifestyle-grid";
 import { WaitlistCount, WAITLIST_COUNT } from "@/components/waitlist-count";
+import { FoundersGauge } from "@/components/founders-gauge";
 import { StickyCta } from "@/components/sticky-cta";
 import { ReassuranceRow } from "@/components/reassurance-row";
 import { Reviews } from "@/components/reviews";
@@ -53,11 +54,11 @@ const PILLARS = [
 
 const TRUST_BADGES = ["Sans parfum", "Vegan ECOCERT", "Livraison 48-72h", "Satisfait remboursé 30j"];
 
-// Ruban de perks de l'Édition limitée (défilement premium).
+// Ruban de perks de l'Édition Fondateur·rices (défilement premium).
 const FOUNDERS_PERKS = [
   "Accès prioritaire",
   "-15 % sur ta 1ʳᵉ commande",
-  "Édition limitée · 200 flacons",
+  "Édition Fondateur·rices · 200 flacons",
   "Livraison offerte",
   "Garantie 30 jours",
   "Servi·es en priorité",
@@ -71,7 +72,6 @@ const JOURNAL = [
   { label: "Formule définie · 6 actifs ciblés", status: "fait" as const },
   { label: "Liste d'avant-première ouverte", status: "fait" as const },
   { label: `${WAITLIST_COUNT} inscrit·es`, status: "encours" as const },
-  { label: "Derniers contrôles · notification CPNP en cours", status: "encours" as const },
   { label: "Lancement — juillet 2026", status: "avenir" as const },
 ];
 
@@ -167,7 +167,7 @@ export default function Home() {
           <div className="max-w-xl animate-fade-up [animation-delay:120ms]">
             <p className="text-[0.7rem] uppercase tracking-[0.2em] text-cream/70">
               {PREORDER_ENABLED
-                ? "K-beauty française · Édition limitée"
+                ? "K-beauty française · Édition Fondateur·rices"
                 : "K-beauty française · Avant-première"}
             </p>
             <h1 className="mt-4 text-balance font-serif text-3xl font-normal italic leading-tight text-cream md:text-5xl">
@@ -177,7 +177,7 @@ export default function Home() {
             {PREORDER_ENABLED ? (
               <>
                 <p className="mt-5 max-w-md leading-relaxed text-cream/85">
-                  L&apos;Édition limitée est ouverte : <strong className="font-medium text-cream">-15%</strong>,
+                  L&apos;Édition Fondateur·rices est ouverte : <strong className="font-medium text-cream">-15%</strong>,
                   livraison offerte et garantie 30 jours. Premier lot limité à 200 flacons.
                 </p>
                 <Link
@@ -270,7 +270,7 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* LES 200 PREMIÈRES (Édition limitée) — bande sombre compacte */}
+      {/* LES 200 PREMIÈRES (Édition Fondateur·rices) — bande sombre compacte */}
       <section className="bg-ink text-cream">
         {/* Ruban premium des avantages fondatrices */}
         <Marquee
@@ -281,12 +281,13 @@ export default function Home() {
         />
         <Container className="py-14 md:py-20">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-[0.7rem] uppercase tracking-[0.25em] text-cream/60">Édition limitée</p>
+            <p className="text-[0.7rem] uppercase tracking-[0.25em] text-cream/60">Édition Fondateur·rices</p>
             <h2 className="mt-2 font-serif text-3xl text-cream md:text-5xl">Les 200 Fondateur·rices</h2>
             <p className="mt-4 leading-relaxed text-cream/75">
               Le tout premier lot de naeul n&apos;existera qu&apos;une fois. 200 flacons, 200
               personnes, un lancement qu&apos;on vit ensemble.
             </p>
+            <FoundersGauge className="mt-10" />
           </div>
 
           <SwipeCarousel
@@ -367,9 +368,6 @@ export default function Home() {
                       >
                         {step.label}
                       </p>
-                      {step.status === "encours" && (
-                        <p className="mt-0.5 text-xs text-terracotta">En cours</p>
-                      )}
                     </div>
                   </li>
                 );
@@ -425,7 +423,7 @@ export default function Home() {
                 <span className="text-sm text-stone">
                   {PREORDER_ENABLED ? (
                     <>
-                      Édition limitée · dès{" "}
+                      Édition Fondateur·rices · dès{" "}
                       {formatPrice(foundersPrice(HERO_PRODUCT.variants[0].price))}
                     </>
                   ) : (

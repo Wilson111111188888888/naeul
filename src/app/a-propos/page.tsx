@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
-import { Eye, Sparkle, Leaf } from "@phosphor-icons/react/dist/ssr";
+import { Eye, Sparkle, Leaf, Check } from "@phosphor-icons/react/dist/ssr";
 import { buttonClasses } from "@/components/ui/button";
 
 export const metadata: Metadata = {
@@ -107,13 +107,22 @@ export default function AProposPage() {
           </div>
 
           <div>
-            <h2 className="text-3xl">Ma promesse.</h2>
-            <ul className="mt-6 space-y-3 leading-relaxed text-stone">
-              <li>Je ne ferai jamais de promesses que je ne peux pas prouver.</li>
-              <li>Je te réponds personnellement quand tu m&apos;écris — c&apos;est moi derrière l&apos;email.</li>
-              <li>Si ton sérum ne te convient pas, je te rembourse — même flacon entamé.</li>
-              <li>Une seule expertise : la peau grasse. Si ta peau est sèche, je te le dirai.</li>
-            </ul>
+            <div className="rounded-2xl border border-sage/30 bg-sage/[0.05] p-7 md:p-9">
+              <h2 className="text-2xl md:text-3xl">Ma promesse</h2>
+              <ul className="mt-6 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+                {[
+                  "Je ne ferai jamais de promesses que je ne peux pas prouver.",
+                  "Je te réponds personnellement quand tu m'écris — c'est moi derrière l'email.",
+                  "Si ton sérum ne te convient pas, je te rembourse — même flacon entamé.",
+                  "Une seule expertise : la peau grasse. Si ta peau est sèche, je te le dirai.",
+                ].map((p) => (
+                  <li key={p} className="flex gap-3 text-sm leading-relaxed text-ink/85">
+                    <Check size={18} weight="bold" className="mt-0.5 shrink-0 text-sage" />
+                    {p}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </Container>
