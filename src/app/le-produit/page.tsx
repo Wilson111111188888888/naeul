@@ -150,7 +150,7 @@ export default function LeProduitPage() {
           </div>
 
           {PREORDER_ENABLED ? (
-            /* PRÉ-COMMANDE — Édition Fondatrices */
+            /* PRÉ-COMMANDE — Édition limitée */
             <div className="mt-8">
               <PreorderBox product={product} />
             </div>
@@ -344,7 +344,7 @@ export default function LeProduitPage() {
       {/* L'ESSENTIEL — ce que ça fait/pas + pour qui, en accordéon compact */}
       <section className="border-y border-line bg-cream">
         <Container className="py-16 md:py-24">
-          <SectionHeading eyebrow="Promesse honnête" title="L'essentiel, sans détour" />
+          <SectionHeading eyebrow="En clair" title="L'essentiel, sans détour" />
           <ListAccordion
             className="mt-10 max-w-2xl"
             rows={[
@@ -394,7 +394,7 @@ export default function LeProduitPage() {
                 Rejoins les fondatrices de naeul.
               </h2>
               <p className="max-w-md leading-relaxed text-stone">
-                -15% sur l&apos;Édition Fondatrices, livraison offerte, garantie 30 jours.
+                -15% sur l&apos;Édition limitée, livraison offerte, garantie 30 jours.
                 Expédition prévue {SHIPPING_DATE}.
               </p>
               <Link href="#acheter" className={buttonClasses({ size: "lg" })}>

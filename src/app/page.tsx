@@ -53,7 +53,7 @@ const PILLARS = [
 
 const TRUST_BADGES = ["Sans parfum", "Vegan ECOCERT", "Livraison 48-72h", "Satisfait remboursé 30j"];
 
-// Ruban de perks de l'Édition Fondatrices (défilement premium).
+// Ruban de perks de l'Édition limitée (défilement premium).
 const FOUNDERS_PERKS = [
   "Accès prioritaire",
   "-15 % sur ta 1ʳᵉ commande",
@@ -158,7 +158,7 @@ export default function Home() {
           <div className="max-w-xl animate-fade-up [animation-delay:120ms]">
             <p className="text-[0.7rem] uppercase tracking-[0.2em] text-cream/70">
               {PREORDER_ENABLED
-                ? "K-beauty française · Édition Fondatrices"
+                ? "K-beauty française · Édition limitée"
                 : "K-beauty française · Avant-première"}
             </p>
             <h1 className="mt-4 text-balance font-serif text-3xl font-normal italic leading-tight text-cream md:text-5xl">
@@ -168,7 +168,7 @@ export default function Home() {
             {PREORDER_ENABLED ? (
               <>
                 <p className="mt-5 max-w-md leading-relaxed text-cream/85">
-                  L&apos;Édition Fondatrices est ouverte : <strong className="font-medium text-cream">-15%</strong>,
+                  L&apos;Édition limitée est ouverte : <strong className="font-medium text-cream">-15%</strong>,
                   livraison offerte et garantie 30 jours. Premier lot limité à 200 flacons.
                 </p>
                 <Link
@@ -260,7 +260,7 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* LES 200 PREMIÈRES (Édition Fondatrices) — bande sombre compacte */}
+      {/* LES 200 PREMIÈRES (Édition limitée) — bande sombre compacte */}
       <section className="bg-ink text-cream">
         {/* Ruban premium des avantages fondatrices */}
         <Marquee
@@ -279,19 +279,23 @@ export default function Home() {
             </p>
           </div>
 
-          <ol className="mx-auto mt-12 grid max-w-3xl gap-x-10 gap-y-8 sm:grid-cols-2">
+          <SwipeCarousel
+            as="ol"
+            className="mt-10 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto pb-2 scrollbar-hide sm:grid sm:grid-cols-3 sm:gap-5 sm:overflow-visible lg:grid-cols-5"
+          >
             {FOUNDERS_PROMISES.map((p) => (
-              <li key={p.title} className="flex gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-cream/10 text-terracotta">
+              <li
+                key={p.title}
+                className="flex w-full shrink-0 snap-center flex-col rounded-2xl border border-cream/10 bg-cream/[0.04] p-6 sm:w-auto"
+              >
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-cream/10 text-terracotta">
                   <p.icon size={20} />
                 </span>
-                <div>
-                  <h3 className="text-base font-medium text-cream">{p.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-cream/65">{p.text}</p>
-                </div>
+                <h3 className="mt-4 text-sm font-medium leading-snug text-cream">{p.title}</h3>
+                <p className="mt-1.5 text-xs leading-relaxed text-cream/65">{p.text}</p>
               </li>
             ))}
-          </ol>
+          </SwipeCarousel>
 
           <div className="mt-12 flex flex-col items-center text-center">
             <Link
@@ -355,7 +359,7 @@ export default function Home() {
                 <span className="text-sm text-stone">
                   {PREORDER_ENABLED ? (
                     <>
-                      Édition Fondatrices · dès{" "}
+                      Édition limitée · dès{" "}
                       {formatPrice(foundersPrice(HERO_PRODUCT.variants[0].price))}
                     </>
                   ) : (
