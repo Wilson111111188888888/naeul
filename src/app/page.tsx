@@ -207,18 +207,6 @@ export default function Home() {
                 <WaitlistForm tone="onAccent" source="hero" className="mt-6 max-w-md" />
               </>
             )}
-
-            {/* Trust badges */}
-            <ul className="mt-7 grid max-w-md grid-cols-2 gap-x-4 gap-y-2.5">
-              {TRUST_BADGES.map((t) => (
-                <li key={t} className="flex items-center gap-2 text-[0.7rem] text-cream/80">
-                  <Check size={14} weight="bold" className="shrink-0 text-cream" />
-                  {t}
-                </li>
-              ))}
-            </ul>
-
-            <WaitlistCount tone="onDark" className="mt-7 justify-start" />
           </div>
         </Container>
       </section>
@@ -236,6 +224,19 @@ export default function Home() {
               </li>
             ))}
           </ul>
+
+          {/* Réassurance + preuve sociale (déplacées du hero pour l'alléger) */}
+          <div className="mt-8 flex flex-col items-center gap-4 border-t border-line pt-8 sm:mt-10 sm:pt-10">
+            <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+              {TRUST_BADGES.map((t) => (
+                <li key={t} className="flex items-center gap-1.5 text-xs text-stone">
+                  <Check size={13} weight="bold" className="shrink-0 text-sage" />
+                  {t}
+                </li>
+              ))}
+            </ul>
+            <WaitlistCount tone="light" />
+          </div>
         </Container>
       </section>
 
@@ -290,7 +291,10 @@ export default function Home() {
               Le tout premier lot de naeul n&apos;existera qu&apos;une fois. 200 flacons, 200
               personnes, un lancement qu&apos;on vit ensemble.
             </p>
-            <FoundersGauge className="mt-10" />
+            <FoundersGauge
+              className="mt-10"
+              href={PREORDER_ENABLED ? "/le-produit#acheter" : "#precommande"}
+            />
 
             {/* Mini-journal de lancement (fusionné ici) */}
             <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-cream/70">
