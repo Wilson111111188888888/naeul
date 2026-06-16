@@ -6,22 +6,32 @@ import { Check, ShieldCheck, Truck, Lock, Package } from "@phosphor-icons/react"
 import type { Product } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { formatPrice, cn } from "@/lib/utils";
-import { foundersPrice, FOUNDERS_LIMIT, SHIPPING_DATE } from "@/lib/preorder";
+import {
+  foundersPrice,
+  FOUNDERS_LIMIT,
+  SHIPPING_DATE,
+  ALMA_ENABLED,
+  ALMA_INSTALLMENTS,
+  installmentAmount,
+} from "@/lib/preorder";
 
 export function PreorderBox({ product }: { product: Product }) {
   const def = product.variants.find((v) => v.highlight) ?? product.variants[0];
   const [selectedId, setSelectedId] = useState(def.id);
   const [loading, setLoading] = useState(false);
+  const [loading3x, setLoading3x] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const selected = product.variants.find((v) => v.id === selectedId) ?? def;
+  const selectedFounders = foundersPrice(selected.price);
 
-  async function precommander() {
-    setLoading(true);
+  // Lance un paiement (Stripe 1× ou Alma 3×) et redirige vers la page de paiement.
+  async function checkout(endpoint: string, setBusy: (v: boolean) => void, mode: string) {
+    setBusy(true);
     setError(null);
-    track("begin_preorder", { variant: selected.id, price: selectedFounders });
+    track("begin_preorder", { variant: selected.id, price: selectedFounders, mode });
     try {
-      const res = await fetch("/api/preorder", {
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ variantId: selected.id }),
@@ -32,14 +42,18 @@ export function PreorderBox({ product }: { product: Product }) {
         return;
       }
       setError(data.error ?? "Une erreur est survenue.");
-      setLoading(false);
+      setBusy(false);
     } catch {
       setError("Connexion impossible. Réessaie dans un instant.");
-      setLoading(false);
+      setBusy(false);
     }
   }
 
-  const selectedFounders = foundersPrice(selected.price);
+  const precommander = () => checkout("/api/preorder", setLoading, "stripe_1x");
+  const payer3x = () => checkout("/api/preorder/alma", setLoading3x, "alma_3x");
+
+  const busy = loading || loading3x;
+  const perInstallment = installmentAmount(selectedFounders);
 
   return (
     <div id="acheter" className="scroll-mt-24">
@@ -104,9 +118,28 @@ export function PreorderBox({ product }: { product: Product }) {
         })}
       </fieldset>
 
-      <Button size="lg" className="mt-6 w-full" onClick={precommander} disabled={loading}>
+      <Button size="lg" className="mt-6 w-full" onClick={precommander} disabled={busy}>
         {loading ? "Redirection vers le paiement…" : `Précommander — ${formatPrice(selectedFounders)}`}
       </Button>
+
+      {ALMA_ENABLED && (
+        <>
+          <Button
+            variant="secondary"
+            size="lg"
+            className="mt-3 w-full"
+            onClick={payer3x}
+            disabled={busy}
+          >
+            {loading3x
+              ? "Redirection vers Alma…"
+              : `Payer en ${ALMA_INSTALLMENTS}× — ${ALMA_INSTALLMENTS} × ${formatPrice(perInstallment)}`}
+          </Button>
+          <p className="mt-2 text-center text-xs text-stone">
+            Paiement en {ALMA_INSTALLMENTS} fois avec Alma · sans frais
+          </p>
+        </>
+      )}
 
       {error && <p className="mt-3 text-center text-sm text-terracotta">{error}</p>}
 

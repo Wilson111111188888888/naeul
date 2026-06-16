@@ -30,3 +30,28 @@ export const SHIPPING_DATE = process.env.NEXT_PUBLIC_SHIPPING_DATE ?? "à confir
 export function foundersPrice(price: number): number {
   return Math.floor(price * (1 - FOUNDERS_DISCOUNT) * 100) / 100;
 }
+
+/**
+ * PAIEMENT EN 3× (Alma) — option « payer en 3 fois ».
+ *
+ * Piloté par NEXT_PUBLIC_ALMA_ENABLED. Indépendant de Stripe : le client peut
+ * choisir 1× (Stripe) ou 3× (Alma). Tant que le flag n'est pas "true", aucune
+ * mention 3× n'apparaît.
+ *
+ * Pour activer (côté Vercel → Environment Variables) :
+ *   - ALMA_API_KEY = clé API Alma (sk_test_… en sandbox, sk_live_… en prod)
+ *   - NEXT_PUBLIC_ALMA_ENABLED = true
+ * puis redéployer. Le compte Alma se crée sur getalma.com (étape à ta charge).
+ */
+export const ALMA_ENABLED = process.env.NEXT_PUBLIC_ALMA_ENABLED === "true";
+
+/** Nombre d'échéances pour le paiement fractionné (3×). */
+export const ALMA_INSTALLMENTS = 3;
+
+/**
+ * Montant d'une échéance affiché à titre indicatif (total / 3, arrondi au
+ * centime supérieur). Le calcul exact des échéances reste fait par Alma.
+ */
+export function installmentAmount(total: number): number {
+  return Math.ceil((total / ALMA_INSTALLMENTS) * 100) / 100;
+}
