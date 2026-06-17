@@ -19,7 +19,6 @@ import {
 import { Container } from "@/components/ui/container";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { buttonClasses } from "@/components/ui/button";
-import { SkinSelector } from "@/components/home/skin-selector";
 import { MethodStrates } from "@/components/sections/method-strates";
 import { GesteNaeul } from "@/components/sections/geste-naeul";
 import { FirstTesters } from "@/components/sections/first-testers";
@@ -186,7 +185,7 @@ export default function Home() {
                   className="aspect-[4/5] h-full w-full object-cover"
                 />
               ) : (
-                <div className="flex aspect-[4/5] w-full flex-col items-center justify-center gap-2 border border-dashed border-line p-8 text-center">
+                <div className="flex aspect-[16/11] w-full flex-col items-center justify-center gap-2 border border-dashed border-line p-8 text-center">
                   <p className="font-serif text-lg italic text-stone">Le couple derrière naeul</p>
                   <p className="text-xs text-stone/60">[Photo à shooter cette semaine]</p>
                 </div>
@@ -297,10 +296,10 @@ export default function Home() {
                 finition non grasse. Une seule mission : équilibrer le sébum sans agresser.
               </p>
 
-              <ul className="mt-8 space-y-4 border-t border-line pt-6">
+              <ul className="mt-8 grid gap-x-6 gap-y-4 border-t border-line pt-6 sm:grid-cols-2">
                 {ACTIVES.map((a) => (
                   <li key={a.name}>
-                    <p className="font-medium text-ink">{a.name}</p>
+                    <p className="text-sm font-medium text-ink">{a.name}</p>
                     <p className="mt-0.5 text-sm leading-relaxed text-stone">{a.role}</p>
                   </li>
                 ))}
@@ -476,9 +475,6 @@ export default function Home() {
           </ol>
         </Container>
       </section>
-
-      {/* TA PEAU, NOTRE RÉPONSE (module interactif conservé) */}
-      <SkinSelector />
 
       {/* 12 — FAQ CRITIQUE */}
       <section className="border-b border-line bg-cream">

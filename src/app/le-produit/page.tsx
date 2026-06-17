@@ -232,14 +232,20 @@ export default function LeProduitPage() {
               on publiera ici la liste INCI exacte, intégrale, le jour de la sortie — sans rien
               retirer ni embellir.
             </p>
-            <ul className="mt-5 space-y-3 border-t border-line pt-5">
-              {product.actives.map((a) => (
-                <li key={a.name}>
-                  <p className="text-sm font-medium text-ink">{a.name}</p>
-                  <p className="mt-0.5 text-sm leading-relaxed text-stone">{a.role}</p>
-                </li>
-              ))}
-            </ul>
+            <details className="group mt-5 border-t border-line pt-5">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-medium text-ink transition-colors hover:text-sage">
+                Voir les 6 actifs et leur rôle
+                <span className="text-stone transition-transform group-open:rotate-45">+</span>
+              </summary>
+              <ul className="mt-4 space-y-3">
+                {product.actives.map((a) => (
+                  <li key={a.name}>
+                    <p className="text-sm font-medium text-ink">{a.name}</p>
+                    <p className="mt-0.5 text-sm leading-relaxed text-stone">{a.role}</p>
+                  </li>
+                ))}
+              </ul>
+            </details>
           </div>
         </Container>
       </section>
