@@ -129,11 +129,20 @@ export default function CartPage() {
                 </dd>
               </div>
             </dl>
-            {!freeShipping && (
-              <p className="mt-3 rounded-lg bg-sand px-3 py-2 text-xs text-stone">
-                Plus que {formatPrice(50 - total)} pour la livraison offerte.
+            {/* Barre de progression livraison offerte */}
+            <div className="mt-4">
+              <div className="h-1.5 w-full overflow-hidden rounded-full bg-sand">
+                <div
+                  className="h-full rounded-full bg-sage transition-all duration-300"
+                  style={{ width: `${Math.min(100, (total / 50) * 100)}%` }}
+                />
+              </div>
+              <p className="mt-2 text-xs text-stone">
+                {freeShipping
+                  ? "Livraison offerte débloquée."
+                  : `Plus que ${formatPrice(50 - total)} pour la livraison offerte.`}
               </p>
-            )}
+            </div>
             <div className="mt-5 flex justify-between border-t border-line pt-5">
               <span className="font-medium text-ink">Total</span>
               <span className="font-serif text-xl text-ink">{formatPrice(total)}</span>
@@ -144,13 +153,22 @@ export default function CartPage() {
             </Button>
             {error && <p className="mt-3 text-sm text-terracotta">{error}</p>}
 
-            <p className="mt-4 text-center text-xs text-stone">
+            <p className="mt-4 text-center text-xs leading-relaxed text-stone">
+              Garantie 30 jours · remboursement intégral, même flacon entamé
+            </p>
+            <p className="mt-1 text-center text-xs leading-relaxed text-stone">
+              Expédition sous 5 à 7 jours ouvrés ·{" "}
+              <Link href="/retours" className="underline underline-offset-2 hover:text-ink">
+                Retour gratuit 30 jours
+              </Link>
+            </p>
+            <p className="mt-3 text-center text-xs text-stone">
               Paiement sécurisé Stripe · CB, Apple Pay, Google Pay
             </p>
           </div>
 
           <Link
-            href="/produits/pads-exfoliants"
+            href="/le-produit"
             className="mt-4 block text-center text-sm text-sage underline-offset-4 hover:underline"
           >
             ← Continuer mes achats

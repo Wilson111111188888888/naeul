@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@vercel/analytics";
 import { Plus } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
@@ -22,7 +23,10 @@ export function FaqAccordion({ items, className }: { items: Item[]; className?: 
           <div key={item.q}>
             <button
               type="button"
-              onClick={() => setOpen(isOpen ? null : i)}
+              onClick={() => {
+                setOpen(isOpen ? null : i);
+                if (!isOpen) track("faq_open", { q: item.q });
+              }}
               aria-expanded={isOpen}
               className="flex w-full cursor-pointer items-center justify-between gap-4 py-5 text-left text-base font-medium text-ink transition-colors hover:text-sage"
             >

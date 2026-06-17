@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CheckCircle, Package, EnvelopeSimple, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
 import { Container } from "@/components/ui/container";
 import { buttonClasses } from "@/components/ui/button";
+import { TrackOnMount } from "@/components/analytics";
 import { SHIPPING_DATE } from "@/lib/preorder";
 
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 export default function OrderConfirmedPage() {
   return (
     <Container className="flex flex-col items-center py-24 text-center md:py-28">
+      <TrackOnMount event="purchase_confirmed" />
       <CheckCircle size={56} weight="light" className="text-sage" />
       <h1 className="mt-6 text-4xl">Bienvenue chez les fondatrices</h1>
       <p className="mt-4 max-w-md leading-relaxed text-stone">

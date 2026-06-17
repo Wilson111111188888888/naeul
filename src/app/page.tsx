@@ -25,6 +25,7 @@ import { GesteNaeul } from "@/components/sections/geste-naeul";
 import { FirstTesters } from "@/components/sections/first-testers";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { StickyCta } from "@/components/sticky-cta";
+import { TrackedLink, ScrollDepth } from "@/components/analytics";
 import { HERO_PRODUCT } from "@/lib/products";
 import { PREORDER_ENABLED } from "@/lib/preorder";
 
@@ -118,6 +119,8 @@ export default function Home() {
 
   return (
     <>
+      <ScrollDepth page="home" />
+
       {/* 1 — HERO (split 60/40 : texte + visage de la marque) */}
       <section className="border-b border-line bg-cream">
         <Container className="grid items-center gap-10 py-12 md:grid-cols-5 md:gap-14 md:py-20">
@@ -137,13 +140,15 @@ export default function Home() {
             <p className="mt-6 text-[0.8rem] uppercase tracking-[0.15em] text-stone/80">
               Sortie juillet 2026 · -15% pour les 200 premières · Édition fondatrice numérotée
             </p>
-            <Link
+            <TrackedLink
               href={ctaHref}
+              event="cta_click"
+              data={{ location: "hero" }}
               className={buttonClasses({ size: "lg", className: "mt-7 w-full sm:w-auto" })}
             >
               Je rejoins les 200 premières
               <ArrowRight size={18} />
-            </Link>
+            </TrackedLink>
             <p className="mt-3 text-xs text-stone/70">
               Pas de spam. Pas de pré-paiement. Ton code -15% arrive le jour J.
             </p>
@@ -332,13 +337,15 @@ export default function Home() {
                 </div>
               </div>
 
-              <Link
+              <TrackedLink
                 href={ctaHref}
+                event="cta_click"
+                data={{ location: "product" }}
                 className={buttonClasses({ size: "lg", className: "mt-6 w-full" })}
               >
                 {PREORDER_ENABLED ? "Je réserve mon flacon (-15%)" : "Je réserve ma place (-15%)"}
                 <ArrowRight size={18} />
-              </Link>
+              </TrackedLink>
               <p className="mt-3 text-center text-xs text-stone">
                 Code BIENVENUE15 envoyé à l&apos;inscription. Édition fondatrice limitée à 200 flacons.
               </p>
@@ -382,13 +389,15 @@ export default function Home() {
             <p className="text-[0.75rem] uppercase tracking-[0.2em] text-cream/55">
               Édition fondatrice · 200 flacons numérotés · le premier lot ne reviendra jamais
             </p>
-            <Link
+            <TrackedLink
               href="#precommande"
+              event="cta_click"
+              data={{ location: "cercle" }}
               className={buttonClasses({ size: "lg", className: "mt-5 bg-cream text-ink hover:bg-sand" })}
             >
               Je rejoins le Cercle
               <ArrowRight size={18} />
-            </Link>
+            </TrackedLink>
             <p className="mt-3 max-w-sm text-xs leading-relaxed text-cream/60">
               Inscription gratuite, sans engagement d&apos;achat. Tu reçois ton numéro de réservation
               par email.
