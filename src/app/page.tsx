@@ -13,7 +13,6 @@ import {
   PenNib,
   UsersThree,
   Gift,
-  ShieldCheck,
   Check,
   X,
 } from "@phosphor-icons/react/dist/ssr";
@@ -33,24 +32,6 @@ import { Reviews } from "@/components/reviews";
 import { HERO_PRODUCT } from "@/lib/products";
 import { PREORDER_ENABLED, foundersPrice } from "@/lib/preorder";
 import { formatPrice, cn } from "@/lib/utils";
-
-const PILLARS = [
-  {
-    icon: Drop,
-    title: "Le meilleur des deux mondes",
-    text: "La douceur de la K-beauty, adaptée à la peau d'ici : pas d'alcool dénaturé, pas de BHA forts, rien d'introuvable.",
-  },
-  {
-    icon: Sparkle,
-    title: "Une seule peau, une seule expertise",
-    text: "On ne cherche pas à plaire à toutes les peaux. Une seule cible : la peau grasse, mixte à grasse et grasse sensible.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Transparence française",
-    text: "Certifié ECOCERT et ISO 22716, liste complète des actifs, SAV en français, livraison 48-72h. Tu sais ce que tu mets.",
-  },
-];
 
 const TRUST_BADGES = ["Sans parfum", "Vegan ECOCERT", "Livraison 48-72h", "Satisfait remboursé 30j"];
 
@@ -140,7 +121,6 @@ const FOUNDERS_PROMISES = [
 export default function Home() {
   // Les sections lifestyle n'apparaissent que si l'image existe dans public/images.
   const hasImage = (name: string) => fs.existsSync(path.join(process.cwd(), "public/images", name));
-  const hasPortrait = hasImage("naeul-texture-macro.jpg");
   const hasLifestyleGrid = hasImage("naeul-lifestyle-1.jpg");
   const hasResultats = hasImage("naeul-resultats-8sem.jpg");
   const hasCouple = hasImage("naeul-rituel-couple.jpg");
@@ -256,21 +236,6 @@ export default function Home() {
             </p>
             <div className="mx-auto mt-8 h-px w-12 bg-terracotta/40" />
           </div>
-          {/* 3 raisons — cartes : swipe + points sur mobile, grille sur desktop */}
-          <SwipeCarousel className="mt-10 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto pb-2 scrollbar-hide sm:mx-auto sm:mt-12 sm:grid sm:max-w-4xl sm:grid-cols-3 sm:gap-6 sm:overflow-visible">
-            {PILLARS.map((pillar) => (
-              <div
-                key={pillar.title}
-                className="flex w-full shrink-0 snap-center flex-col items-center rounded-2xl border border-line bg-sand p-6 text-center sm:w-auto"
-              >
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-sage/10 text-sage">
-                  <pillar.icon size={22} />
-                </span>
-                <h3 className="mt-4 text-base">{pillar.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-stone">{pillar.text}</p>
-              </div>
-            ))}
-          </SwipeCarousel>
         </Container>
       </section>
 
@@ -414,41 +379,6 @@ export default function Home() {
 
       {/* PREUVES DE CONFIANCE */}
       <TrustStrip />
-
-      {/* NOTRE APPROCHE K-BEAUTY (portrait éditorial) */}
-      {hasPortrait && (
-        <section className="border-y border-line bg-cream">
-          <Container className="py-16 md:py-20">
-            <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
-              <figure className="order-2 overflow-hidden rounded-2xl">
-                <Image
-                  src="/images/naeul-texture-macro.jpg"
-                  alt="Texture légère et non grasse du sérum naeul à la niacinamide pour peau grasse"
-                  width={1254}
-                  height={1254}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="aspect-square h-full w-full object-cover"
-                />
-              </figure>
-              <div className="order-1">
-                <p className="text-xs uppercase tracking-[0.25em] text-stone">Notre approche K-beauty</p>
-                <h2 className="mt-3 text-3xl md:text-4xl">Équilibrer, pas agresser.</h2>
-                <p className="mt-5 leading-relaxed text-stone">
-                  La douceur d&apos;abord. On régule le sébum et on resserre l&apos;apparence des
-                  pores avec des actifs justes — niacinamide, AHA doux, Centella — au lieu de
-                  décaper la peau. Le résultat se construit semaine après semaine.
-                </p>
-                <Link
-                  href="/le-produit"
-                  className={buttonClasses({ variant: "secondary", size: "lg", className: "mt-8" })}
-                >
-                  En savoir plus
-                </Link>
-              </div>
-            </div>
-          </Container>
-        </section>
-      )}
 
       {/* AU QUOTIDIEN (couple) — imagerie lifestyle neutre, pas de fondateurs */}
       {hasCouple && (
@@ -611,10 +541,9 @@ export default function Home() {
               naeul, créé par un couple qui galérait avec la peau grasse.
             </p>
             <p className="mt-6 leading-relaxed text-stone">
-              Les classiques de pharmacie décapaient. Les « bio » ne donnaient rien. Les K-beauty
-              importées étaient excellentes — mais pensées pour le marché coréen, sans SAV français.
-              Personne ne faisait spécifiquement la peau grasse, en français, avec une vraie approche
-              douce. Alors on l&apos;a fait.
+              La pharmacie décapait, le « bio » ne donnait rien, la K-beauty importée était
+              excellente mais sans SAV français. Personne ne faisait la peau grasse, en français,
+              avec une vraie approche douce. Alors on l&apos;a fait.
             </p>
             <Link
               href="/a-propos"
@@ -629,20 +558,6 @@ export default function Home() {
 
       {/* AVIS */}
       <Reviews />
-
-      {/* GARANTIE 30 JOURS */}
-      <section className="border-t border-line">
-        <Container className="py-16 md:py-20">
-          <div className="mx-auto flex max-w-2xl flex-col items-center gap-3 rounded-2xl border border-line bg-cream p-8 text-center md:p-10">
-            <ShieldCheck size={32} weight="light" className="text-sage" />
-            <h2 className="text-2xl md:text-3xl">30 jours pour tester. Sans risque.</h2>
-            <p className="max-w-md leading-relaxed text-stone">
-              Si naeul ne te convient pas, on te rembourse intégralement — même flacon entamé. Notre
-              seul critère : ta satisfaction.
-            </p>
-          </div>
-        </Container>
-      </section>
 
       {/* BANDE DE MARQUE — défilement typographique premium */}
       <Marquee
