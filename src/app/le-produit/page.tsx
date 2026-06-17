@@ -1,55 +1,38 @@
-import fs from "node:fs";
-import path from "node:path";
 import type { Metadata } from "next";
-import { Check } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
+import { Check, X, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
 import { HERO_PRODUCT } from "@/lib/products";
 import { Container } from "@/components/ui/container";
 import { WaitlistForm } from "@/components/waitlist-form";
-import { Reviews } from "@/components/reviews";
 import { ProductCarousel } from "@/components/product/product-carousel";
 import { ActivesCarousel } from "@/components/product/actives-carousel";
-import { GalleryCarousel } from "@/components/product/gallery-carousel";
-import { BeforeAfter } from "@/components/product/before-after";
 import { SwipeCarousel } from "@/components/swipe-carousel";
 import { PreorderBox } from "@/components/product/preorder-box";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { StickyCta } from "@/components/sticky-cta";
 import { ReassuranceRow } from "@/components/reassurance-row";
-import { LifestyleGrid } from "@/components/lifestyle-grid";
 import { Marquee } from "@/components/marquee";
-import { ListAccordion } from "@/components/list-accordion";
+import { MethodStrates } from "@/components/sections/method-strates";
+import { GesteNaeul } from "@/components/sections/geste-naeul";
+import { FirstTesters } from "@/components/sections/first-testers";
 import { PREORDER_ENABLED, SHIPPING_DATE } from "@/lib/preorder";
 import { buttonClasses } from "@/components/ui/button";
 import { formatPrice } from "@/lib/utils";
 
 const product = HERO_PRODUCT;
 
-const GALLERY = [
-  {
-    src: "/images/naeul-texture-macro.jpg",
-    alt: "Macro de la texture du sérum naeul : une goutte fluide et légère sur la peau",
-    title: "Texture légère",
-    desc: "Un sérum fluide et non gras, qui pénètre vite.",
-  },
-  {
-    src: "/images/naeul-application.jpg",
-    alt: "Une personne à la peau lumineuse applique le sérum naeul sur le dos de sa main",
-    title: "En 2-3 gouttes",
-    desc: "Matin et/ou soir, sur peau propre, avant ta crème.",
-  },
-  {
-    src: "/images/naeul-produit-minimal.jpg",
-    alt: "Le flacon airless du sérum naeul, composition minimaliste",
-    title: "Flacon airless 30 ml",
-    desc: "Protège les actifs de l'air et de la lumière.",
-  },
-  {
-    src: "/images/naeul-produit-lifestyle.jpg",
-    alt: "Le sérum naeul dans une ambiance végétale",
-    title: "Une routine douce",
-    desc: "Un seul geste, pensé pour la peau grasse.",
-  },
+// Pour qui c'est fait — et pour qui ce n'est pas (qualification + déqualification).
+const FOR_YOU = [
+  "Tu as la peau grasse, mixte à grasse, ou grasse sensible",
+  "Tu en as marre des produits agressifs qui assèchent",
+  "Tu cherches une approche douce mais efficace",
+  "Tu acceptes que les vrais résultats prennent 6 à 8 semaines",
+];
+const NOT_FOR_YOU = [
+  "Tu as la peau sèche ou très sèche",
+  "Tu cherches un effet matifiant instantané",
+  "Tu attends un miracle en 7 jours",
+  "Tu es enceinte ou allaitante (consulte d'abord)",
 ];
 
 export const metadata: Metadata = {
@@ -96,31 +79,25 @@ const jsonLd = {
 };
 
 export default function LeProduitPage() {
-  const hasAvantApres = fs.existsSync(
-    path.join(process.cwd(), "public/images/naeul-avant-apres.jpg"),
-  );
-  const hasLifestyle = fs.existsSync(
-    path.join(process.cwd(), "public/images/naeul-lifestyle-1.jpg"),
-  );
   return (
     <div className="pb-20 md:pb-0">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {/* HERO */}
+
+      {/* 1 — HERO PRODUIT (packshot + prix/bundles + CTA + mini-trust) */}
       <Container className="grid gap-10 py-12 md:grid-cols-2 md:gap-16 md:py-20">
         <ProductCarousel photos={product.photos} />
 
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-sage/30 bg-sage/[0.06] px-3 py-1 text-xs font-medium text-sage">
-            Bientôt disponible · précommande -15%
+            Bientôt disponible · Édition fondatrice -15%
           </span>
           <h1 className="mt-4 text-balance text-4xl leading-tight md:text-5xl">{product.name}</h1>
           <p className="mt-4 text-lg leading-relaxed text-stone">{product.tagline}</p>
           <p className="mt-4 leading-relaxed text-ink/80">{product.shortDescription}</p>
 
-          {/* Bénéfices clairs, près du CTA */}
           <ul className="mt-6 space-y-2.5">
             {product.does.map((d) => (
               <li key={d} className="flex items-start gap-2.5 text-sm text-ink/85">
@@ -130,7 +107,6 @@ export default function LeProduitPage() {
             ))}
           </ul>
 
-          {/* Specs + certifications */}
           <div className="mt-7 border-t border-line pt-5">
             <p className="text-sm text-stone">
               {product.format} · {product.volume}
@@ -149,12 +125,10 @@ export default function LeProduitPage() {
           </div>
 
           {PREORDER_ENABLED ? (
-            /* PRÉ-COMMANDE — Édition limitée */
             <div className="mt-8">
               <PreorderBox product={product} />
             </div>
           ) : (
-            /* WAITLIST — mode pré-lancement (avant activation du paiement) */
             <>
               <div className="mt-6">
                 <ul className="divide-y divide-line overflow-hidden rounded-xl border border-line">
@@ -173,7 +147,7 @@ export default function LeProduitPage() {
                   ))}
                 </ul>
                 <p className="mt-2 text-xs text-stone">
-                  Livraison Mondial Relay 3,50 € — offerte dès 50 €.
+                  Expédition sous 5 à 7 jours ouvrés · Mondial Relay, offerte dès 50 €.
                 </p>
               </div>
 
@@ -182,7 +156,8 @@ export default function LeProduitPage() {
                   Le sérum arrive en juillet 2026. Sois au courant en avant-première.
                 </p>
                 <p className="mt-1 text-xs text-stone">
-                  Premier lot limité à 200 flacons — les premières inscriptions sont prévenues et servies en priorité.
+                  Édition fondatrice limitée à 200 flacons — les premières inscrites sont prévenues et
+                  servies en priorité.
                 </p>
                 <WaitlistForm source="produit_haut" className="mt-4" />
                 <p className="mt-4 text-xs uppercase tracking-[0.15em] text-stone/70">
@@ -198,26 +173,7 @@ export default function LeProduitPage() {
         </div>
       </Container>
 
-      {/* RÉSULTATS — avant/après (proof early) */}
-      {hasAvantApres && (
-        <Container className="py-16 md:py-24">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-xs uppercase tracking-[0.25em] text-stone">Test interne</p>
-            <h2 className="mt-3 text-3xl md:text-4xl">Le grain de peau, en 4 semaines</h2>
-            <p className="mt-4 leading-relaxed text-stone">
-              Pores resserrés, peau plus lisse et moins brillante — observés lors de notre test
-              interne sur peau grasse, avant lancement.
-            </p>
-          </div>
-          <BeforeAfter />
-          <p className="mt-4 text-center text-xs text-stone">
-            Glisse pour comparer · test interne sur peau grasse, 4 semaines (pas un avis client).
-            Résultats individuels, non garantis.
-          </p>
-        </Container>
-      )}
-
-      {/* DIFFÉRENCIATEUR */}
+      {/* 2 — DIFFÉRENCIATEUR */}
       <section className="border-y border-line bg-cream">
         <Container className="py-16 md:py-24">
           <div className="max-w-3xl">
@@ -228,7 +184,10 @@ export default function LeProduitPage() {
         </Container>
       </section>
 
-      {/* ACTIFS — la formule */}
+      {/* 3 — LA MÉTHODE DES TROIS STRATES */}
+      <MethodStrates className="border-b border-line" />
+
+      {/* 4 — LES ACTIFS */}
       <Container className="py-16 md:py-24">
         <SectionHeading eyebrow="La formule" title="Six actifs, une intention" />
         <ActivesCarousel actives={product.actives} />
@@ -242,10 +201,71 @@ export default function LeProduitPage() {
         itemClassName="font-serif text-2xl italic text-ink md:text-3xl"
       />
 
-      {/* TIMELINE — de la formule à ta peau */}
-      <section className="border-t border-line">
+      {/* 5 — TRANSPARENCE / INCI */}
+      <section className="border-b border-line">
         <Container className="py-16 md:py-24">
-          <SectionHeading eyebrow="Notre démarche" title="De la formule à ta peau" />
+          <SectionHeading eyebrow="Transparence totale" title="Ce qu'il y a dedans" />
+          <div className="mt-8 max-w-2xl rounded-2xl border border-line bg-cream p-6 md:p-8">
+            <p className="leading-relaxed text-stone">
+              On ne cache rien. Tu retrouveras la liste INCI complète au dos du flacon (visible sur
+              les photos ci-dessus). La formule finale étant en cours de verrouillage avant lancement,
+              on publiera ici la liste INCI exacte, intégrale, le jour de la sortie — sans rien
+              retirer ni embellir.
+            </p>
+            <ul className="mt-5 space-y-3 border-t border-line pt-5">
+              {product.actives.map((a) => (
+                <li key={a.name}>
+                  <p className="text-sm font-medium text-ink">{a.name}</p>
+                  <p className="mt-0.5 text-sm leading-relaxed text-stone">{a.role}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Container>
+      </section>
+
+      {/* 6 — LE GESTE NAEUL */}
+      <GesteNaeul className="border-b border-line bg-cream" />
+
+      {/* 7 — POUR QUI C'EST FAIT / PAS FAIT */}
+      <section className="border-b border-line">
+        <Container className="py-16 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-balance font-serif text-3xl md:text-4xl">
+              Pour qui c&apos;est fait. Et pour qui ce n&apos;est pas.
+            </h2>
+          </div>
+          <div className="mx-auto mt-10 grid max-w-3xl gap-5 md:grid-cols-2">
+            <div className="rounded-2xl border border-sage/30 bg-sage/[0.06] p-6">
+              <p className="font-medium text-ink">Fait pour toi si :</p>
+              <ul className="mt-4 space-y-3">
+                {FOR_YOU.map((t) => (
+                  <li key={t} className="flex items-start gap-2.5 text-sm leading-relaxed text-ink/85">
+                    <Check size={16} weight="bold" className="mt-0.5 shrink-0 text-sage" />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-2xl border border-line bg-sand p-6">
+              <p className="font-medium text-ink">Pas fait pour toi si :</p>
+              <ul className="mt-4 space-y-3">
+                {NOT_FOR_YOU.map((t) => (
+                  <li key={t} className="flex items-start gap-2.5 text-sm leading-relaxed text-stone">
+                    <X size={16} weight="bold" className="mt-0.5 shrink-0 text-stone/50" />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 8 — PRODUCTION · CERTIFICATIONS · TRAÇABILITÉ */}
+      <section className="border-b border-line bg-cream">
+        <Container className="py-16 md:py-24">
+          <SectionHeading eyebrow="Production · certifications · traçabilité" title="De la formule à ta peau" />
           <SwipeCarousel
             as="ol"
             className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-2 scrollbar-hide sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 sm:overflow-visible lg:grid-cols-4"
@@ -257,7 +277,7 @@ export default function LeProduitPage() {
               },
               {
                 t: "Le laboratoire",
-                d: "Formulée dans un laboratoire certifié ISO 22716 et ECOCERT, dans l'Union européenne.",
+                d: "Formulée dans un laboratoire certifié ISO 22716 et ECOCERT, en Union européenne (Riga, Lettonie).",
               },
               {
                 t: "Les contrôles",
@@ -265,7 +285,7 @@ export default function LeProduitPage() {
               },
               {
                 t: "Chez toi",
-                d: "Édition limitée à 200 flacons, livraison Mondial Relay, garantie 30 jours.",
+                d: "Édition fondatrice de 200 flacons, expédition sous 5 à 7 jours ouvrés (Mondial Relay), garantie 30 jours.",
               },
             ].map((step, i, arr) => (
               <li key={step.t} className="relative w-full shrink-0 snap-center sm:w-auto">
@@ -285,38 +305,8 @@ export default function LeProduitPage() {
         </Container>
       </section>
 
-      {/* L'EXPÉRIENCE — galerie */}
-      <section className="border-y border-line bg-cream">
-        <Container className="py-16 md:py-24">
-          <SectionHeading eyebrow="L'expérience" title="Le sérum, en gestes" />
-          <GalleryCarousel cards={GALLERY} />
-        </Container>
-      </section>
-
-      {/* ROUTINE */}
-      <Container className="py-16 md:py-24">
-        <SectionHeading eyebrow="La routine" title="Comment l'utiliser" />
-        <SwipeCarousel
-          as="ol"
-          className="mt-10 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto pb-2 scrollbar-hide"
-        >
-          {product.steps.map((step, i) => (
-            <li
-              key={step.title}
-              className="flex w-full shrink-0 snap-center flex-col rounded-2xl border border-line bg-sand p-6 sm:w-[45%] lg:w-[31%]"
-            >
-              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-sage font-serif text-sm text-sage">
-                {i + 1}
-              </span>
-              <h3 className="mt-4 text-base">{step.title}</h3>
-              <p className="mt-1 text-sm leading-relaxed text-stone">{step.detail}</p>
-            </li>
-          ))}
-        </SwipeCarousel>
-      </Container>
-
-      {/* COMPARAISON */}
-      <section className="border-y border-line bg-cream">
+      {/* 9 — COMPARAISON (vs sérum « peau grasse » classique) */}
+      <section className="border-b border-line">
         <Container className="py-16 md:py-24">
           <SectionHeading eyebrow="La différence, concrètement" title="naeul vs un sérum « peau grasse » classique" />
           <div className="mt-10 max-w-2xl overflow-hidden rounded-2xl border border-line">
@@ -342,44 +332,31 @@ export default function LeProduitPage() {
         </Container>
       </section>
 
-      {/* L'ESSENTIEL — ce que ça fait/pas + pour qui, en accordéon compact */}
-      <section className="border-y border-line bg-cream">
-        <Container className="py-16 md:py-24">
-          <SectionHeading eyebrow="En clair" title="L'essentiel, sans détour" />
-          <ListAccordion
-            className="mt-10 max-w-2xl"
-            rows={[
-              { title: "Ce que ça fait", items: product.does, tone: "positive" },
-              { title: "Ce que ça ne fait pas", items: product.doesNot, tone: "negative" },
-              { title: "Pour toi si…", items: product.forWho, tone: "positive" },
-              { title: "Sans doute pas pour toi si…", items: product.notForWho, tone: "negative" },
-            ]}
-          />
+      {/* 10 — PREMIÈRES TESTEUSES */}
+      <FirstTesters className="border-b border-line bg-cream" />
+
+      {/* 11 — GARANTIE 30 JOURS */}
+      <section className="border-b border-line">
+        <Container className="py-16 md:py-20">
+          <div className="mx-auto flex max-w-2xl flex-col items-center gap-3 rounded-2xl border border-sage/30 bg-sage/[0.05] p-8 text-center md:p-10">
+            <ShieldCheck size={32} weight="light" className="text-sage" />
+            <h2 className="text-balance font-serif text-2xl md:text-3xl">
+              Trente jours pour tester. Sans aucun risque.
+            </h2>
+            <p className="max-w-md leading-relaxed text-stone">
+              Si naeul ne te convient pas, on te rembourse intégralement — même flacon entamé. Tu
+              n&apos;as rien à prouver, rien à renvoyer en parfait état. Tu nous écris, on rembourse.
+            </p>
+            <p className="mt-1 text-xs text-stone/70">
+              Garantie 30 jours à compter de la réception. Remboursement intégral, frais d&apos;envoi
+              inclus.
+            </p>
+          </div>
         </Container>
       </section>
 
-      {/* EN SITUATION — grille lifestyle (imagerie neutre) */}
-      {hasLifestyle && (
-        <section className="border-t border-line">
-          <Container className="py-16 md:py-24">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="text-xs uppercase tracking-[0.25em] text-stone">En situation</p>
-              <h2 className="mt-3 text-3xl md:text-4xl">Un geste, toutes les peaux grasses</h2>
-              <p className="mt-4 leading-relaxed text-stone">
-                Le même sérum, la même promesse — réguler le sébum sans agresser, quels que soient
-                ta carnation et ton genre.
-              </p>
-            </div>
-            <LifestyleGrid className="mx-auto mt-10 max-w-2xl" />
-          </Container>
-        </section>
-      )}
-
-      {/* AVIS */}
-      <Reviews />
-
-      {/* FAQ — déplacée ici, juste avant le CTA final */}
-      <section className="border-t border-line">
+      {/* 12 — FAQ PRODUIT */}
+      <section className="border-b border-line bg-cream">
         <Container className="py-16 md:py-24">
           <SectionHeading eyebrow="Questions fréquentes" title="Avant le lancement" />
           <FaqAccordion items={product.faq} className="mt-10 max-w-2xl" />
@@ -387,7 +364,7 @@ export default function LeProduitPage() {
       </section>
 
       {/* CTA FINAL */}
-      <section id="precommande" className="scroll-mt-20 border-t border-line bg-cream">
+      <section id="precommande" className="scroll-mt-20 bg-cream">
         <Container className="flex flex-col items-center gap-6 py-20 text-center md:py-24">
           {PREORDER_ENABLED ? (
             <>
@@ -395,8 +372,8 @@ export default function LeProduitPage() {
                 Rejoins les fondatrices de naeul.
               </h2>
               <p className="max-w-md leading-relaxed text-stone">
-                -15% sur l&apos;Édition limitée, livraison offerte, garantie 30 jours.
-                Expédition prévue {SHIPPING_DATE}.
+                -15% sur l&apos;Édition fondatrice, livraison offerte, garantie 30 jours. Expédition
+                prévue {SHIPPING_DATE}.
               </p>
               <Link href="#acheter" className={buttonClasses({ size: "lg" })}>
                 Précommander (-15%)
@@ -427,7 +404,7 @@ export default function LeProduitPage() {
         </Container>
       </section>
 
-      {/* CTA sticky mobile — se révèle au scroll, s'efface près du bas */}
+      {/* CTA sticky mobile */}
       <StickyCta
         href={PREORDER_ENABLED ? "#acheter" : "#precommande"}
         label={PREORDER_ENABLED ? "Précommander (-15%)" : "Je réserve ma place (-15%)"}
@@ -447,4 +424,3 @@ function SectionHeading({ eyebrow, title }: { eyebrow?: string; title: string })
     </div>
   );
 }
-
