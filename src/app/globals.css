@@ -7,15 +7,15 @@
 */
 
 @theme {
-  /* Couleurs de marque */
-  --color-sand: #f5efe5; /* crème sable — fond principal */
+  /* Couleurs de marque — hex exacts du diagnostic CRO */
+  --color-sand: #f5f2ec; /* crème — fond principal */
   --color-cream: #faf7f2; /* crème pure — sections alternées */
-  --color-sage: #5c6b5a; /* vert sauge — boutons, liens, accents */
-  --color-sage-dark: #4b584a; /* hover bouton */
-  --color-ink: #2b2620; /* brun très foncé — texte principal */
-  --color-stone: #6b5e52; /* brun moyen — texte secondaire */
+  --color-sage: #5c6b4f; /* vert sauge profond — boutons, liens, accents */
+  --color-sage-dark: #4a5640; /* hover bouton */
+  --color-ink: #1a1a1a; /* noir doux — texte principal */
+  --color-stone: #7a7268; /* gris taupe — texte secondaire */
   --color-terracotta: #c9a586; /* terracotta poudré — lignes, séparateurs, accents */
-  --color-rose: #e8d0cc; /* rosé poudré — touches produit, hover subtils. JAMAIS sur boutons, JAMAIS en grande surface */
+  --color-rose: #d4b5a5; /* rosé chaleureux — touches produit, hover subtils. JAMAIS sur boutons, JAMAIS en grande surface */
   --color-line: #e7ded0; /* filets subtils dérivés du sable */
 
   /* Typographies (variables injectées par next/font) */

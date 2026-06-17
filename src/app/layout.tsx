@@ -27,11 +27,11 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://naeul.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "naeul — K-beauty française pour peau grasse, sans agresser",
+    default: "naeul · K-beauty française pour peau grasse · Sans agresser",
     template: "%s — naeul",
   },
   description:
-    "naeul, marque K-beauty française pour peau grasse, mixte et à pores : un sérum à la niacinamide qui régule le sébum et les pores sans agresser. Lancement 2026 — -15% en avant-première.",
+    "Le sérum K-beauty pensé pour les peaux grasses françaises. Niacinamide, AHA doux, sans alcool. Édition fondatrice, sortie juillet 2026.",
   keywords: [
     "K-beauty française",
     "peau grasse",
@@ -46,17 +46,17 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     siteName: "naeul",
-    title: "naeul — K-beauty française pour peau grasse, sans agresser",
+    title: "naeul · K-beauty française pour peau grasse · Sans agresser",
     description:
-      "Un sérum K-beauty pour peau grasse qui régule le sébum et les pores sans agresser. Lancement 2026 — -15% en avant-première.",
+      "Le sérum K-beauty pensé pour les peaux grasses françaises. Niacinamide, AHA doux, sans alcool. Édition fondatrice, sortie juillet 2026.",
     url: SITE_URL,
     images: ["/images/naeul-produit-avec-box.jpg"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "naeul — K-beauty française pour peau grasse, sans agresser",
+    title: "naeul · K-beauty française pour peau grasse · Sans agresser",
     description:
-      "Un sérum K-beauty pour peau grasse qui régule le sébum et les pores sans agresser. Lancement 2026 — -15% en avant-première.",
+      "Le sérum K-beauty pensé pour les peaux grasses françaises. Niacinamide, AHA doux, sans alcool. Édition fondatrice, sortie juillet 2026.",
     images: ["/images/naeul-produit-avec-box.jpg"],
   },
   alternates: { canonical: "/" },
