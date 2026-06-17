@@ -25,6 +25,7 @@ import { GesteNaeul } from "@/components/sections/geste-naeul";
 import { FirstTesters } from "@/components/sections/first-testers";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { StickyCta } from "@/components/sticky-cta";
+import { BeforeAfter } from "@/components/product/before-after";
 import { TrackedLink, ScrollDepth } from "@/components/analytics";
 import { HERO_PRODUCT } from "@/lib/products";
 import { PREORDER_ENABLED } from "@/lib/preorder";
@@ -446,20 +447,25 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 11 — COMMENT SE MESURE LE RÉSULTAT (remplace l'avant/après) */}
+      {/* 11 — RÉSULTATS (test interne) + comment lire le résultat */}
       <section className="border-b border-line">
         <Container className="py-16 md:py-24">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-xs uppercase tracking-[0.25em] text-stone">Honnêteté radicale</p>
+            <p className="text-xs uppercase tracking-[0.25em] text-stone">Résultats · test interne</p>
             <h2 className="mt-3 text-balance font-serif text-3xl md:text-4xl">
-              On n&apos;a pas encore d&apos;avant/après. Et on n&apos;en invente pas.
+              Le grain de peau, en 4 semaines.
             </h2>
             <p className="mt-5 leading-relaxed text-stone">
-              La plupart des marques skincare publient des avant/après photographiés sous deux
-              éclairages différents, ou générés par retouche numérique. On préfère t&apos;expliquer ce
-              qu&apos;on a mesuré nous-mêmes, et ce que tu pourras mesurer toi-même.
+              Pores resserrés, peau plus lisse et moins brillante — observés lors de notre test
+              interne sur peau grasse, avant lancement. Pas un avis client : les vrais avant/après
+              vérifiés arriveront avec les premières clientes, datés et jamais retouchés.
             </p>
           </div>
+          <BeforeAfter />
+          <p className="mx-auto mt-4 max-w-xl text-center text-xs leading-relaxed text-stone">
+            Glisse pour comparer · test interne sur peau grasse, 4 semaines (pas un avis client).
+            Résultats individuels, non garantis.
+          </p>
           <ol className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-3">
             {MESURE.map((m) => (
               <li key={m.t} className="rounded-2xl border border-line bg-cream p-6 text-center">
@@ -468,10 +474,6 @@ export default function Home() {
               </li>
             ))}
           </ol>
-          <p className="mx-auto mt-8 max-w-xl text-center text-sm leading-relaxed text-stone">
-            Les vrais avant/après arriveront avec les premières clientes. On les publiera, vérifiés,
-            datés, jamais retouchés.
-          </p>
         </Container>
       </section>
 

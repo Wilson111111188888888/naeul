@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/container";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { ProductCarousel } from "@/components/product/product-carousel";
 import { ActivesCarousel } from "@/components/product/actives-carousel";
+import { BeforeAfter } from "@/components/product/before-after";
 import { SwipeCarousel } from "@/components/swipe-carousel";
 import { PreorderBox } from "@/components/product/preorder-box";
 import { FaqAccordion } from "@/components/faq-accordion";
@@ -181,6 +182,25 @@ export default function LeProduitPage() {
             <h2 className="mt-3 text-3xl md:text-4xl">Réguler, pas dessécher.</h2>
             <p className="mt-6 text-lg leading-relaxed text-stone">{product.differentiator}</p>
           </div>
+        </Container>
+      </section>
+
+      {/* RÉSULTATS — avant/après interactif (test interne) */}
+      <section className="border-b border-line">
+        <Container className="py-16 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs uppercase tracking-[0.25em] text-stone">Résultats · test interne</p>
+            <h2 className="mt-3 text-3xl md:text-4xl">Le grain de peau, en 4 semaines</h2>
+            <p className="mt-4 leading-relaxed text-stone">
+              Pores resserrés, peau plus lisse et moins brillante — observés lors de notre test
+              interne sur peau grasse, avant lancement.
+            </p>
+          </div>
+          <BeforeAfter />
+          <p className="mx-auto mt-4 max-w-xl text-center text-xs leading-relaxed text-stone">
+            Glisse pour comparer · test interne sur peau grasse, 4 semaines (pas un avis client).
+            Résultats individuels, non garantis.
+          </p>
         </Container>
       </section>
 
