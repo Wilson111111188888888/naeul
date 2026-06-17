@@ -9,11 +9,20 @@ import { buttonClasses } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { PREORDER_ENABLED } from "@/lib/preorder";
 
-const NAV = [
+// Nav simplifiée (CRO) : moins de choix = plus de conversion. « Diagnostic peau »
+// reste une page mais sort du menu principal.
+const NAV_DESKTOP = [
   { href: "/le-produit", label: "Le produit" },
-  { href: "/diagnostic", label: "Diagnostic peau" },
+  { href: "/a-propos", label: "Notre histoire" },
   { href: "/blog", label: "Journal" },
-  { href: "/a-propos", label: "À propos" },
+  { href: "/faq", label: "FAQ" },
+];
+
+const NAV_MOBILE = [
+  { href: "/le-produit", label: "Le produit" },
+  { href: "/a-propos", label: "Notre histoire" },
+  { href: "/#precommande", label: "Le Cercle des 200" },
+  { href: "/blog", label: "Journal" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
@@ -33,7 +42,7 @@ export function Header() {
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex">
-            {NAV.map((item) => (
+            {NAV_DESKTOP.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -63,12 +72,12 @@ export function Header() {
       <div
         className={cn(
           "overflow-hidden border-t border-line/70 bg-sand/95 backdrop-blur-md transition-[max-height] duration-300 ease-out md:hidden",
-          open ? "max-h-80" : "max-h-0 border-t-0",
+          open ? "max-h-[30rem]" : "max-h-0 border-t-0",
         )}
       >
         <Container>
           <nav className="flex flex-col py-2">
-            {NAV.map((item) => (
+            {NAV_MOBILE.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
