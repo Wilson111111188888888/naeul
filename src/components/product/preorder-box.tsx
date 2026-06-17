@@ -163,7 +163,7 @@ export function PreorderBox({ product }: { product: Product }) {
       <div className="mt-5 space-y-2.5 text-sm text-stone">
         <p className="flex items-center gap-2.5">
           <Truck size={18} className="shrink-0 text-sage" />
-          Livraison offerte pour les fondatrices · Mondial Relay 48-72 h
+          Livraison offerte pour les fondatrices · Mondial Relay, expédition sous 5 à 7 jours ouvrés
         </p>
         <p className="flex items-center gap-2.5">
           <Lock size={18} className="shrink-0 text-sage" />

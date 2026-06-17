@@ -4,305 +4,497 @@ import Link from "next/link";
 import Image from "next/image";
 import heroLifestyle from "../../public/images/naeul-hero.jpg";
 import {
-  Sparkle,
-  Drop,
-  Aperture,
   ArrowRight,
-  Tag,
+  Check,
+  SealCheck,
+  Leaf,
+  ShieldCheck,
+  Lock,
   Package,
   PenNib,
+  Tag,
   UsersThree,
   Gift,
-  Check,
-  X,
 } from "@phosphor-icons/react/dist/ssr";
 import { Container } from "@/components/ui/container";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { buttonClasses } from "@/components/ui/button";
-import { TrustStrip } from "@/components/trust-strip";
 import { SkinSelector } from "@/components/home/skin-selector";
-import { SwipeCarousel } from "@/components/swipe-carousel";
-import { Marquee } from "@/components/marquee";
-import { LifestyleGrid } from "@/components/lifestyle-grid";
-import { WaitlistCount } from "@/components/waitlist-count";
-import { FoundersGauge } from "@/components/founders-gauge";
+import { FaqAccordion } from "@/components/faq-accordion";
 import { StickyCta } from "@/components/sticky-cta";
-import { ReassuranceRow } from "@/components/reassurance-row";
-import { Reviews } from "@/components/reviews";
 import { HERO_PRODUCT } from "@/lib/products";
-import { PREORDER_ENABLED, foundersPrice } from "@/lib/preorder";
-import { formatPrice, cn } from "@/lib/utils";
+import { PREORDER_ENABLED } from "@/lib/preorder";
 
-const TRUST_BADGES = ["Sans parfum", "Vegan ECOCERT", "Livraison 48-72h", "Satisfait remboursé 30j"];
-
-// Ruban de perks de l'Édition limitée (défilement premium).
-const FOUNDERS_PERKS = [
-  "Accès prioritaire",
-  "-15 % sur ta 1ʳᵉ commande",
-  "Édition limitée · 200 flacons",
-  "Livraison offerte",
-  "Garantie 30 jours",
-  "Prioritaire à l.envoi",
+// Trust bar — 5 réassurances factuelles (juste après le hero).
+const TRUST_BAR = [
+  { Icon: SealCheck, label: "ISO 22716 · Cosmétique certifié" },
+  { Icon: Leaf, label: "ECOCERT · Vegan" },
+  { Icon: ShieldCheck, label: "CPNP en cours · Conformité EU" },
+  { Icon: Check, label: "Satisfait remboursé 30 jours" },
+  { Icon: Lock, label: "Paiement sécurisé Stripe" },
 ];
 
-// Bande typographique de marque (grand défilement, en transition vers le CTA final).
-const BRAND_WORDS = ["naeul", "나을", "K-beauty pour peau grasse", "sans agresser"];
-
-// Journal de lancement — jalons RÉELS uniquement (transparence, pas de faux).
-const JOURNAL = [
-  { label: "Formule définie", status: "fait" as const },
-  { label: "Liste d'avant-première ouverte", status: "fait" as const },
-  { label: "Lancement · juillet 2026", status: "avenir" as const },
-];
-
-// Bénéfices en langage clair (placés tôt, plus parlants que les noms d'actifs).
-const BENEFITS = [
-  { Icon: Drop, t: "Moins de brillances" },
-  { Icon: Aperture, t: "Pores resserrés" },
-  { Icon: Sparkle, t: "Peau plus nette" },
-];
-
-// Comparatif naeul vs K-beauty importée (différenciation). rival: true=oui, false=non, string=nuance.
-const COMPARISON: { label: string; rival: boolean | string }[] = [
-  { label: "Spécialiste de la peau grasse", rival: "Tout type" },
-  { label: "Pensé pour le marché français", rival: "Marché coréen" },
-  { label: "Approche K-beauty douce", rival: true },
-  { label: "SAV en français", rival: false },
-  { label: "Garantie 30 jours satisfait ou remboursé", rival: false },
-  { label: "Concentrations affichées", rival: "Variable" },
-  { label: "Certifié ECOCERT · ISO 22716", rival: "Variable" },
-];
-
-// Notre méthode — 4 étapes (autorité). Aligné sur ce qui est déjà affirmé sur le site.
-const METHOD = [
+// Les 6 actifs, en clair (transparence — fini le « +2 actifs »).
+const ACTIVES = [
+  { name: "Niacinamide 5%", role: "Régule la production de sébum. Réduit l'apparence des pores." },
   {
-    t: "Actifs ciblés",
-    d: "Six actifs K-beauty choisis pour la peau grasse : niacinamide, acide lactique, Centella, acide hyaluronique.",
+    name: "Acide lactique",
+    role: "AHA doux. Exfolie sans piquer. Choisi contre le BHA salicylique qu'on trouve partout ailleurs.",
+  },
+  { name: "Acide hyaluronique", role: "Hydrate sans alourdir. La peau grasse a soif aussi." },
+  { name: "Centella Asiatica", role: "Apaise. Calme l'inflammation post-imperfection." },
+  {
+    name: "Ferments microbiome",
+    role: "Renforce la barrière cutanée. Une barrière saine produit moins de sébum.",
   },
   {
-    t: "Formulation douce",
-    d: "Sans alcool dénaturé, sans BHA forts, sans parfum. On régule le sébum sans faire tirailler la peau.",
-  },
-  {
-    t: "Fabrication certifiée",
-    d: "Laboratoire certifié ECOCERT et ISO 22716, dans l'Union européenne. Conformité cosmétique européenne.",
+    name: "Exosomes d'extrait de pomme",
+    role: "Soutien au renouvellement cellulaire. La biotech derrière le grain de peau lisse.",
   },
 ];
 
-// Le Cercle des 200 — promesses réelles (l'utilisateur s'engage à les tenir).
-const FOUNDERS_PROMISES = [
+// La méthode des trois strates (mécanisme propriétaire).
+const STRATES = [
   {
-    icon: Package,
-    title: "Ton flacon numéroté à la main",
-    text: "De 001 à 200. Une seule fois dans l'histoire de naeul — le tien porte ton numéro.",
+    n: "01",
+    t: "Apaiser",
+    d: "Centella Asiatica calme. Acide hyaluronique hydrate. Avant de rééquilibrer, on arrête l'inflammation.",
   },
   {
-    icon: PenNib,
-    title: "Une carte signée, avec ton prénom",
-    text: "Un vrai mot écrit à la main, pas un message générique. Pour toi.",
+    n: "02",
+    t: "Équilibrer",
+    d: "Niacinamide à 5%. Acide lactique en douceur. On régule le sébum et on affine le grain de peau sans déclencher la machine à excès.",
   },
   {
-    icon: Tag,
-    title: "-15% sur ta première commande",
-    text: "Code envoyé par email le jour du lancement, valable sur le premier lot.",
+    n: "03",
+    t: "Renforcer",
+    d: "Ferments microbiome. Exosomes de pomme. On reconstruit la barrière cutanée. Une barrière saine produit moins.",
+  },
+];
+
+// Le geste naeul (rituel signature).
+const GESTE = [
+  { n: "01", t: "Tu pompes", d: "Trois pompes du sérum dans le creux de la paume. Pas plus. Pas moins." },
+  {
+    n: "02",
+    t: "Tu déposes",
+    d: "Tu tapotes le sérum sur le visage propre. Du centre vers l'extérieur. Tu n'étales pas — tu déposes.",
   },
   {
-    icon: UsersThree,
-    title: "Le Cercle des 200",
-    text: "Un groupe privé où tu co-construis le prochain soin : textures, votes, avant-premières.",
+    n: "03",
+    t: "Tu attends",
+    d: "Deux minutes. Pendant que le sérum pénètre, tu te regardes dans le miroir. Et tu arrêtes de te juger.",
+  },
+];
+
+// Le Cercle des 200 — bénéfices réels.
+const CERCLE = [
+  { icon: Package, t: "Ton flacon numéroté à la main", d: "De 001 à 200. Une seule fois dans l'histoire de naeul." },
+  { icon: PenNib, t: "Une carte signée, avec ton prénom", d: "Un mot écrit à la main. Pas un message générique." },
+  { icon: Tag, t: "-15% sur ta première commande", d: "Code envoyé par email le jour du lancement." },
+  { icon: UsersThree, t: "Accès au Cercle privé", d: "Un groupe où tu co-construis le prochain soin." },
+  { icon: Gift, t: "Le prochain soin offert en mini-format", d: "Six mois après ton flacon, tu testes le produit 2 avant tout le monde." },
+];
+
+// naeul vs K-beauty importée (réponse à « pourquoi pas Anua ? », sans nominer).
+const COMPARISON: { label: string; naeul: string; rival: string }[] = [
+  { label: "Spécialité", naeul: "Peau grasse uniquement", rival: "Tous types" },
+  { label: "Climat ciblé", naeul: "France · Europe", rival: "Corée" },
+  { label: "Approche", naeul: "Réconciliation", rival: "Performance" },
+  { label: "SAV en français", naeul: "Oui, par le couple", rival: "Variable" },
+  { label: "Garantie 30 jours", naeul: "Oui", rival: "Variable" },
+  { label: "Concentrations affichées", naeul: "Oui", rival: "Variable" },
+  { label: "Certifications affichées", naeul: "ISO 22716 · ECOCERT", rival: "Variable" },
+  { label: "Visage derrière", naeul: "Un couple identifié", rival: "Anonyme" },
+];
+
+// Comment se mesure le résultat (remplace l'avant/après — honnêteté radicale).
+const MESURE = [
+  { t: "Semaine 2", d: "La peau tire moins. Tu sens que ton sérum ne te punit plus." },
+  { t: "Semaine 4", d: "Le sébum se régule progressivement. Moins de brillance en milieu de journée." },
+  { t: "Semaine 8", d: "Le grain de peau s'affine. Les pores paraissent moins visibles à la lumière naturelle." },
+];
+
+// FAQ critique — 5 questions qui lèvent les freins à l'achat.
+const HOME_FAQ = [
+  {
+    q: "J'ai la peau grasse ET acnéique. naeul est fait pour moi ?",
+    a: "Oui — si ton acné est légère à modérée (microkystes, boutons inflammatoires occasionnels). La niacinamide et l'acide lactique aident à équilibrer le sébum et à affiner le grain de peau, ce qui réduit le terrain des imperfections. Si ton acné est sévère ou kystique, parles-en à un dermatologue. Aucun cosmétique ne remplace un traitement médical.",
   },
   {
-    icon: Gift,
-    title: "Le prochain soin en mini-format, offert",
-    text: "Six mois après ton flacon, tu testes le produit 2 avant tout le monde.",
+    q: "Combien de temps avant de voir un résultat ?",
+    a: "Sois patiente avec ta peau. La plupart des utilisatrices remarquent une peau moins tiraillée dès la deuxième semaine, et une régulation du sébum visible à six-huit semaines. C'est plus lent qu'un BHA fort. C'est aussi plus durable.",
+  },
+  {
+    q: "Je peux utiliser naeul avec ma routine actuelle ?",
+    a: "Oui, à condition que ta routine n'inclue pas déjà un acide fort (BHA salicylique, AHA glycolique au-dessus de 8%, rétinol à dose élevée). Si c'est le cas, espace les applications de 24h. naeul s'utilise le matin et/ou le soir, avant ta crème hydratante.",
+  },
+  {
+    q: "Où est fabriqué naeul ?",
+    a: "Dans un laboratoire certifié ISO 22716 et ECOCERT, basé à Riga, en Lettonie (Union européenne). On a choisi ce partenaire parce qu'il respecte la réglementation cosmétique européenne stricte et qu'il nous permet de produire sans surstock. Pensé en France. Fabriqué en UE. Pour ta peau.",
+  },
+  {
+    q: "Quand arrive ma commande ?",
+    a: "Le sérum est expédié sous 5 à 7 jours ouvrés depuis notre laboratoire EU, en Mondial Relay, livraison offerte dès 50€. On produit à la demande — pas de chimie qui dort dans un entrepôt. C'est plus long, c'est plus frais.",
   },
 ];
 
 export default function Home() {
-  // Les sections lifestyle n'apparaissent que si l'image existe dans public/images.
+  // Les sections à image n'apparaissent que si le fichier existe (placeholder honnête sinon).
   const hasImage = (name: string) => fs.existsSync(path.join(process.cwd(), "public/images", name));
-  const hasLifestyleGrid = hasImage("naeul-lifestyle-1.jpg");
-  const hasResultats = hasImage("naeul-resultats-8sem.jpg");
-  const hasCouple = hasImage("naeul-rituel-couple.jpg");
+  const hasCouple = hasImage("naeul-couple.jpg");
+
+  // CTA principal : pointe vers la précommande si le flag est actif, sinon l'inscription.
+  const ctaHref = PREORDER_ENABLED ? "/le-produit#acheter" : "#precommande";
 
   return (
     <>
-      {/* HERO — plein écran cinématique */}
-      <section className="relative flex min-h-[80svh] items-end overflow-hidden sm:min-h-[calc(100dvh-4rem)] sm:items-center">
-        <Image
-          src={heroLifestyle}
-          alt="Sérum K-beauty naeul tenu en main dans une lumière dorée"
-          fill
-          priority
-          quality={90}
-          placeholder="blur"
-          sizes="100vw"
-          className="animate-kenburns object-cover object-center"
-        />
-        {/* Voile dégradé pour la lisibilité (bas sur mobile, gauche sur desktop) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/40 to-ink/5 sm:bg-gradient-to-r sm:from-ink/80 sm:via-ink/35 sm:to-transparent" />
-
-        <Container className="relative w-full py-12 md:py-20">
-          <div className="max-w-xl animate-fade-up [animation-delay:120ms]">
-            <p className="text-[0.7rem] uppercase tracking-[0.2em] text-cream/70">
-              {PREORDER_ENABLED
-                ? "K-beauty française · Édition limitée"
-                : "K-beauty française · Avant-première"}
+      {/* 1 — HERO (split 60/40 : texte + visage de la marque) */}
+      <section className="border-b border-line bg-cream">
+        <Container className="grid items-center gap-10 py-12 md:grid-cols-5 md:gap-14 md:py-20">
+          <div className="order-2 animate-fade-up md:order-1 md:col-span-3">
+            <p className="text-[0.7rem] uppercase tracking-[0.25em] text-sage">
+              K-beauty française · Avant-première
             </p>
-            <h1 className="mt-4 text-balance font-serif text-3xl font-normal italic leading-tight text-cream md:text-5xl">
-              K-beauty pour peau grasse, sans agresser.
+            <h1 className="mt-4 text-balance font-serif text-4xl font-normal italic leading-[1.05] text-ink md:text-6xl">
+              Ta peau grasse
+              <br />
+              n&apos;est pas ton ennemie.
             </h1>
-            <p className="mt-4 text-lg font-medium text-cream md:text-xl">
-              Moins de brillances. Pores affinés. Sans assécher.
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-stone md:text-xl">
+              On a créé le sérum K-beauty qu&apos;on cherchait pour la peau de ma femme. Sans alcool
+              dénaturé. Sans BHA agressifs. Sans représailles.
             </p>
+            <p className="mt-6 text-[0.8rem] uppercase tracking-[0.15em] text-stone/80">
+              Sortie juillet 2026 · -15% pour les 200 premières · Édition fondatrice numérotée
+            </p>
+            <Link
+              href={ctaHref}
+              className={buttonClasses({ size: "lg", className: "mt-7 w-full sm:w-auto" })}
+            >
+              Je rejoins les 200 premières
+              <ArrowRight size={18} />
+            </Link>
+            <p className="mt-3 text-xs text-stone/70">
+              Pas de spam. Pas de pré-paiement. Ton code -15% arrive le jour J.
+            </p>
+          </div>
 
-            {PREORDER_ENABLED ? (
-              <>
-                <p className="mt-5 max-w-md leading-relaxed text-cream/85">
-                  L&apos;Édition limitée est ouverte : <strong className="font-medium text-cream">-15%</strong>,
-                  livraison offerte et garantie 30 jours. Premier lot limité à 200 flacons.
-                </p>
-                <Link
-                  href="/le-produit#acheter"
-                  className={buttonClasses({ size: "lg", className: "mt-6 w-full sm:w-auto" })}
-                >
-                  Précommander (-15%)
-                  <ArrowRight size={18} />
-                </Link>
-                <p className="mt-3 text-xs text-cream/70">
-                  Encore un doute ?{" "}
-                  <Link href="#precommande" className="text-cream underline underline-offset-4">
-                    Rejoins la liste d&apos;avant-première
-                  </Link>
-                </p>
-              </>
-            ) : (
-              <>
-                <p className="mt-5 max-w-md leading-relaxed text-cream/85">
-                  Notre premier sérum arrive en <strong className="font-medium text-cream">juillet
-                  2026</strong>. Inscris-toi pour être au courant en avant-première et recevoir{" "}
-                  <strong className="font-medium text-cream">-15%</strong>{" "}
-                  sur ta première commande.
-                </p>
-                <WaitlistForm tone="onAccent" source="hero" className="mt-6 max-w-md" />
-              </>
-            )}
+          <div className="order-1 md:order-2 md:col-span-2">
+            <figure className="overflow-hidden rounded-2xl">
+              <Image
+                src={heroLifestyle}
+                alt="Le sérum K-beauty naeul tenu en main, dans une lumière naturelle"
+                priority
+                quality={90}
+                placeholder="blur"
+                sizes="(max-width: 768px) 100vw, 40vw"
+                className="aspect-[4/5] h-full w-full object-cover"
+              />
+            </figure>
           </div>
         </Container>
       </section>
 
-      {/* BÉNÉFICES — en clair, tout de suite */}
+      {/* 2 — NOTRE HISTOIRE (le couple) */}
+      <section className="border-b border-line">
+        <Container className="py-16 md:py-24">
+          <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
+            <figure className="overflow-hidden rounded-2xl bg-sand">
+              {hasCouple ? (
+                <Image
+                  src="/images/naeul-couple.jpg"
+                  alt="Le couple fondateur de naeul"
+                  width={1086}
+                  height={1357}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="aspect-[4/5] h-full w-full object-cover"
+                />
+              ) : (
+                <div className="flex aspect-[4/5] w-full flex-col items-center justify-center gap-2 border border-dashed border-line p-8 text-center">
+                  <p className="font-serif text-lg italic text-stone">Le couple derrière naeul</p>
+                  <p className="text-xs text-stone/60">[Photo à shooter cette semaine]</p>
+                </div>
+              )}
+            </figure>
+            <div>
+              <p className="text-xs uppercase tracking-[0.25em] text-stone">Notre histoire</p>
+              <h2 className="mt-3 text-balance font-serif text-3xl md:text-4xl">
+                On a créé la marque qu&apos;on n&apos;a pas pu acheter.
+              </h2>
+              <div className="mt-6 space-y-4 leading-relaxed text-stone">
+                <p>Ma femme a la peau grasse depuis ses douze ans.</p>
+                <p>
+                  Pendant douze ans, on lui a vendu des produits qui assèchent, des acides qui
+                  décapent, des matifiants qui font ressortir le sébum dès quatorze heures.
+                </p>
+                <p>
+                  À chaque nouveau produit, le même cycle : trois semaines de mieux, puis sa peau se
+                  rebellait, plus grasse qu&apos;avant.
+                </p>
+                <p>
+                  On a cherché une K-beauty pensée pour sa peau. Les marques coréennes étaient
+                  excellentes — mais conçues pour le climat de Séoul, sans interlocuteur en France.
+                </p>
+                <p>Les pharmaciennes lui parlaient comme à une ado en crise d&apos;acné.</p>
+                <p>Alors on l&apos;a faite nous-mêmes.</p>
+                <p className="text-ink">
+                  naeul, c&apos;est le sérum qu&apos;on aurait voulu pour elle, il y a dix ans.
+                </p>
+              </div>
+              <p className="mt-6 font-serif text-sm italic text-stone">— Le couple derrière naeul</p>
+              <Link
+                href="/a-propos"
+                className="mt-5 inline-flex items-center gap-1.5 text-sm text-sage underline underline-offset-4 hover:text-sage-dark"
+              >
+                Lire l&apos;histoire complète
+                <ArrowRight size={14} />
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 3 — TRUST BAR */}
       <section className="border-b border-line bg-cream">
-        <Container className="py-10 md:py-12">
-          <ul className="grid grid-cols-3 gap-3 text-center sm:gap-8">
-            {BENEFITS.map((b) => (
-              <li key={b.t} className="flex flex-col items-center">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-sage/10 text-sage">
-                  <b.Icon size={20} />
-                </span>
-                <p className="mt-3 text-sm font-medium text-ink md:text-base">{b.t}</p>
+        <Container className="py-6">
+          <ul className="grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3 lg:grid-cols-5">
+            {TRUST_BAR.map(({ Icon, label }) => (
+              <li key={label} className="flex items-center gap-2 text-xs text-stone">
+                <Icon size={16} weight="regular" className="shrink-0 text-sage" />
+                {label}
               </li>
             ))}
           </ul>
-
-          {/* Réassurance + preuve sociale (déplacées du hero pour l'alléger) */}
-          <div className="mt-8 flex flex-col items-center gap-4 border-t border-line pt-8 sm:mt-10 sm:pt-10">
-            <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-              {TRUST_BADGES.map((t) => (
-                <li key={t} className="flex items-center gap-1.5 text-xs text-stone">
-                  <Check size={13} weight="bold" className="shrink-0 text-sage" />
-                  {t}
-                </li>
-              ))}
-            </ul>
-            <WaitlistCount tone="light" />
-          </div>
         </Container>
       </section>
 
-      {/* POURQUOI NAEUL — Mission Section */}
-      <section className="border-y border-line bg-cream">
-        <Container className="py-16 md:py-20">
-          <div className="mx-auto max-w-3xl text-center">
+      {/* 4 — LA CONVICTION */}
+      <section className="border-b border-line bg-sage/[0.08]">
+        <Container className="py-20 text-center md:py-28">
+          <div className="mx-auto max-w-2xl">
             <p className="text-xs uppercase tracking-[0.25em] text-stone">Notre conviction</p>
-            <p className="mt-6 text-balance font-serif text-2xl leading-snug text-ink md:text-[2rem]">
+            <h2 className="mt-6 text-balance font-serif text-3xl leading-snug text-sage-dark md:text-[2.4rem]">
               Les peaux grasses n&apos;ont pas besoin d&apos;être décapées. Elles ont besoin
               d&apos;être comprises.
-            </p>
-            <p className="mx-auto mt-5 max-w-xl leading-relaxed text-stone">
-              On a appris aux peaux grasses à se combattre — à coups d&apos;alcool, d&apos;acides
-              forts et de matifiants qui dessèchent et relancent le sébum. Nous, on travaille
-              <em> avec</em> ta peau, pas contre elle.
-            </p>
-            <div className="mx-auto mt-8 h-px w-12 bg-terracotta/40" />
+            </h2>
+            <div className="mt-8 space-y-4 leading-relaxed text-stone">
+              <p>
+                On a appris aux peaux grasses à se combattre. À coups d&apos;alcool dénaturé,
+                d&apos;acides forts, de matifiants qui dessèchent et relancent le sébum quatre heures
+                plus tard.
+              </p>
+              <p>
+                Le sébum n&apos;est pas un défaut à éliminer. C&apos;est un signal que ta peau te
+                demande de calmer.
+              </p>
+              <p className="text-ink">
+                naeul travaille avec ta peau, jamais contre elle. On régule. On apaise. On renforce
+                la barrière. Et on attend que ta peau fasse le reste.
+              </p>
+              <p>C&apos;est plus lent qu&apos;un BHA fort. C&apos;est durable.</p>
+            </div>
           </div>
         </Container>
       </section>
 
-      {/* LES 200 PREMIÈRES (Édition limitée) — bande sombre compacte */}
-      <section className="bg-ink text-cream">
-        {/* Ruban premium des avantages fondatrices */}
-        <Marquee
-          items={FOUNDERS_PERKS}
-          duration={40}
-          className="border-b border-cream/10 py-3.5"
-          itemClassName="font-serif text-base italic text-cream/85 tracking-wide"
-        />
-        <Container className="py-14 md:py-20">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-[0.7rem] uppercase tracking-[0.25em] text-cream/60">Édition limitée</p>
-            <h2 className="mt-2 font-serif text-3xl text-cream md:text-5xl">Le Cercle des 200</h2>
-            <p className="mt-4 leading-relaxed text-cream/75">
-              Le tout premier lot de naeul n&apos;existera qu&apos;une fois. 200 flacons, 200
-              personnes, un lancement qu&apos;on vit ensemble.
-            </p>
-            <FoundersGauge
-              className="mt-10"
-              href={PREORDER_ENABLED ? "/le-produit#acheter" : "#precommande"}
-            />
+      {/* 5 — LE PRODUIT (prix + bundles visibles) */}
+      <section className="border-b border-line">
+        <Container className="py-16 md:py-24">
+          <div className="grid items-start gap-12 md:grid-cols-2 md:gap-16">
+            <figure className="overflow-hidden rounded-2xl bg-rose/20 md:sticky md:top-24">
+              <Image
+                src={HERO_PRODUCT.photos[0].src}
+                alt={HERO_PRODUCT.photos[0].alt}
+                width={1100}
+                height={1375}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="aspect-[4/5] h-full w-full object-cover"
+              />
+            </figure>
+            <div>
+              <p className="text-xs uppercase tracking-[0.25em] text-stone">Le sérum</p>
+              <h2 className="mt-3 text-balance font-serif text-3xl md:text-4xl">
+                Six actifs choisis. Aucun ingrédient pour faire joli.
+              </h2>
+              <p className="mt-4 leading-relaxed text-stone">
+                Notre premier soin. Trente millilitres pour soixante applications. Texture légère,
+                finition non grasse. Une seule mission : équilibrer le sébum sans agresser.
+              </p>
 
-            {/* Mini-journal de lancement (fusionné ici) */}
-            <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-cream/70">
-              {JOURNAL.map((s) => (
-                <li key={s.label} className="flex items-center gap-2">
-                  <span
-                    className={cn(
-                      "flex h-4 w-4 items-center justify-center rounded-full",
-                      s.status === "fait" ? "bg-sage text-cream" : "border border-cream/40",
-                    )}
-                  >
-                    {s.status === "fait" && <Check size={10} weight="bold" />}
-                  </span>
-                  <span className={s.status === "avenir" ? "font-medium text-cream/90" : ""}>
-                    {s.label}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
+              <ul className="mt-8 space-y-4 border-t border-line pt-6">
+                {ACTIVES.map((a) => (
+                  <li key={a.name}>
+                    <p className="font-medium text-ink">{a.name}</p>
+                    <p className="mt-0.5 text-sm leading-relaxed text-stone">{a.role}</p>
+                  </li>
+                ))}
+              </ul>
 
-          <SwipeCarousel
-            as="ol"
-            className="mt-10 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto pb-2 scrollbar-hide sm:grid sm:grid-cols-3 sm:gap-5 sm:overflow-visible lg:grid-cols-5"
-          >
-            {FOUNDERS_PROMISES.map((p) => (
-              <li
-                key={p.title}
-                className="flex w-full shrink-0 snap-center flex-col rounded-2xl border border-cream/10 bg-cream/[0.04] p-6 sm:w-auto"
+              {/* Bloc prix — visible, assumé, hiérarchisé */}
+              <div className="mt-8 overflow-hidden rounded-2xl border border-line">
+                <div className="flex items-center justify-between px-5 py-4">
+                  <span className="text-sm text-ink">Le flacon</span>
+                  <span className="font-serif text-lg text-ink">32,90€</span>
+                </div>
+                <div className="flex items-center justify-between border-t border-line bg-sage/[0.06] px-5 py-4">
+                  <span className="flex items-center gap-2 text-sm text-ink">
+                    Bundle 2 flacons
+                    <span className="rounded-full bg-sage px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wide text-cream">
+                      Le plus populaire
+                    </span>
+                  </span>
+                  <span className="flex items-baseline gap-2">
+                    <span className="text-xs text-stone line-through">65,80€</span>
+                    <span className="font-serif text-lg text-ink">59,90€</span>
+                  </span>
+                </div>
+                <div className="flex items-center justify-between border-t border-line px-5 py-4">
+                  <span className="flex items-center gap-2 text-sm text-ink">
+                    Bundle 3 flacons
+                    <span className="rounded-full bg-terracotta/15 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wide text-terracotta">
+                      Économise 14€
+                    </span>
+                  </span>
+                  <span className="flex items-baseline gap-2">
+                    <span className="text-xs text-stone line-through">98,70€</span>
+                    <span className="font-serif text-lg text-ink">84,90€</span>
+                  </span>
+                </div>
+              </div>
+
+              <Link
+                href={ctaHref}
+                className={buttonClasses({ size: "lg", className: "mt-6 w-full" })}
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-cream/10 text-terracotta">
-                  <p.icon size={20} />
-                </span>
-                <h3 className="mt-4 text-sm font-medium leading-snug text-cream">{p.title}</h3>
-                <p className="mt-1.5 text-xs leading-relaxed text-cream/65">{p.text}</p>
+                {PREORDER_ENABLED ? "Je réserve mon flacon (-15%)" : "Je réserve ma place (-15%)"}
+                <ArrowRight size={18} />
+              </Link>
+              <p className="mt-3 text-center text-xs text-stone">
+                Code BIENVENUE15 envoyé à l&apos;inscription. Édition fondatrice limitée à 200 flacons.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 6 — LA MÉTHODE DES TROIS STRATES */}
+      <section className="border-b border-line bg-cream">
+        <Container className="py-16 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs uppercase tracking-[0.25em] text-stone">Notre méthode</p>
+            <h2 className="mt-3 font-serif text-3xl md:text-4xl">La méthode des trois strates.</h2>
+            <p className="mt-5 leading-relaxed text-stone">
+              On a refusé de mélanger tous les actifs au hasard. naeul agit en trois temps, dans cet
+              ordre, pour réconcilier ta peau avec elle-même.
+            </p>
+          </div>
+          <ol className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-3">
+            {STRATES.map((s) => (
+              <li key={s.n} className="rounded-2xl border border-line bg-sand p-6">
+                <span className="font-serif text-sm text-sage">{s.n}</span>
+                <h3 className="mt-2 text-lg uppercase tracking-wide">{s.t}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-stone">{s.d}</p>
               </li>
             ))}
-          </SwipeCarousel>
+          </ol>
+          <p className="mx-auto mt-10 max-w-xl text-center font-serif text-lg italic text-ink">
+            C&apos;est l&apos;inverse des sérums « peau grasse » classiques : on attaque la cause, pas
+            le symptôme.
+          </p>
+        </Container>
+      </section>
 
+      {/* 7 — LE GESTE NAEUL */}
+      <section className="border-b border-line">
+        <Container className="py-16 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs uppercase tracking-[0.25em] text-stone">Le geste naeul</p>
+            <h2 className="mt-3 text-balance font-serif text-3xl md:text-4xl">
+              Trois pompes. Deux minutes. Et tu lâches.
+            </h2>
+          </div>
+          <ol className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-3">
+            {GESTE.map((g) => (
+              <li key={g.n} className="flex flex-col items-center text-center">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-sage font-serif text-sage">
+                  {g.n}
+                </span>
+                <h3 className="mt-4 text-lg">{g.t}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-stone">{g.d}</p>
+              </li>
+            ))}
+          </ol>
+          <p className="mx-auto mt-10 max-w-xl text-center font-serif text-lg italic text-ink">
+            La peau réconciliée commence dans la tête.
+          </p>
+        </Container>
+      </section>
+
+      {/* 8 — PREMIÈRES TESTEUSES (placeholder honnête en attendant les vrais retours) */}
+      <section className="border-b border-line bg-cream">
+        <Container className="py-16 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs uppercase tracking-[0.25em] text-stone">Premières testeuses</p>
+            <h2 className="mt-3 font-serif text-3xl md:text-4xl">
+              Elles ont essayé naeul avant tout le monde.
+            </h2>
+            <p className="mt-5 leading-relaxed text-stone">
+              On a envoyé les tout premiers flacons à des peaux grasses françaises avant le lancement
+              public. Pas de partenariat payant. Juste un produit et la liberté de dire ce
+              qu&apos;elles en pensent.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div
+                key={i}
+                className="flex flex-col gap-4 rounded-2xl border border-dashed border-line bg-sand p-6"
+              >
+                <div className="aspect-square w-16 rounded-xl bg-line/60" />
+                <p className="text-sm leading-relaxed text-stone/70">
+                  Les retours arrivent. Premières testeuses en cours, témoignages publiés vérifiés
+                  dès réception.
+                </p>
+              </div>
+            ))}
+          </div>
+          <p className="mx-auto mt-8 max-w-xl text-center text-xs leading-relaxed text-stone/70">
+            Témoignages reçus avant lancement. Aucune contrepartie financière. Aucune retouche, aucun
+            mot modifié.
+          </p>
+        </Container>
+      </section>
+
+      {/* 9 — LE CERCLE DES 200 (scarcity légitime, sans faux compteur) */}
+      <section className="bg-ink text-cream">
+        <Container className="py-16 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-[0.7rem] uppercase tracking-[0.25em] text-cream/60">Édition fondatrice</p>
+            <h2 className="mt-2 font-serif text-3xl text-cream md:text-5xl">Le Cercle des 200.</h2>
+            <p className="mt-4 leading-relaxed text-cream/75">
+              Le premier lot de naeul n&apos;existera qu&apos;une fois. Deux cents flacons numérotés,
+              deux cents personnes, un lancement qu&apos;on vit ensemble.
+            </p>
+          </div>
+          <ul className="mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {CERCLE.map((b) => (
+              <li key={b.t} className="rounded-2xl border border-cream/10 bg-cream/[0.04] p-6">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-cream/10 text-terracotta">
+                  <b.icon size={20} />
+                </span>
+                <h3 className="mt-4 text-sm font-medium leading-snug text-cream">{b.t}</h3>
+                <p className="mt-1.5 text-xs leading-relaxed text-cream/65">{b.d}</p>
+              </li>
+            ))}
+          </ul>
           <div className="mt-12 flex flex-col items-center text-center">
+            <p className="text-[0.75rem] uppercase tracking-[0.2em] text-cream/55">
+              Édition fondatrice · 200 flacons numérotés · le premier lot ne reviendra jamais
+            </p>
             <Link
-              href="/#precommande"
-              className={buttonClasses({ size: "lg", className: "bg-cream text-ink hover:bg-sand" })}
+              href="#precommande"
+              className={buttonClasses({ size: "lg", className: "mt-5 bg-cream text-ink hover:bg-sand" })}
             >
               Je rejoins le Cercle
               <ArrowRight size={18} />
@@ -315,261 +507,111 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* LE PRODUIT QUI ARRIVE */}
-      <section>
-        <Container className="py-16 md:py-20">
-          <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
-            <Link
-              href="/le-produit"
-              aria-label="Voir le produit"
-              className="group block overflow-hidden rounded-2xl bg-rose/30"
-            >
-              <Image
-                src={HERO_PRODUCT.photos[0].src}
-                alt={HERO_PRODUCT.photos[0].alt}
-                width={1100}
-                height={1400}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-              />
-            </Link>
-            <div>
-              <p className="text-xs uppercase tracking-[0.25em] text-stone">Le produit qui arrive</p>
-              <h2 className="mt-3 text-3xl md:text-4xl">{HERO_PRODUCT.name}</h2>
-              <p className="mt-4 leading-relaxed text-stone">{HERO_PRODUCT.shortDescription}</p>
-              <ul className="mt-6 flex flex-wrap gap-2">
-                {HERO_PRODUCT.actives.slice(0, 4).map((a) => (
-                  <li
-                    key={a.name}
-                    className="rounded-full border border-line bg-cream px-3 py-1 text-xs text-stone"
-                  >
-                    {a.name}
-                  </li>
-                ))}
-                <li className="rounded-full border border-line bg-cream px-3 py-1 text-xs text-stone">
-                  +2 actifs
-                </li>
-              </ul>
-              <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
-                <Link
-                  href={PREORDER_ENABLED ? "/le-produit#acheter" : "/le-produit"}
-                  className={buttonClasses({ size: "lg" })}
-                >
-                  {PREORDER_ENABLED ? "Précommander (-15%)" : "En savoir plus"}
-                  <ArrowRight size={18} />
-                </Link>
-                <span className="text-sm text-stone">
-                  {PREORDER_ENABLED ? (
-                    <>
-                      Édition limitée · dès{" "}
-                      {formatPrice(foundersPrice(HERO_PRODUCT.variants[0].price))}
-                    </>
-                  ) : (
-                    <>À partir de {formatPrice(HERO_PRODUCT.variants[0].price)}</>
-                  )}
-                </span>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* TA PEAU, NOTRE RÉPONSE (module interactif) */}
-      <SkinSelector />
-
-      {/* PREUVES DE CONFIANCE */}
-      <TrustStrip />
-
-      {/* AU QUOTIDIEN (couple) — imagerie lifestyle neutre, pas de fondateurs */}
-      {hasCouple && (
-        <section className="border-t border-line">
-          <Container className="py-16 md:py-20">
-            <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
-              <div>
-                <p className="text-xs uppercase tracking-[0.25em] text-stone">Au quotidien</p>
-                <h2 className="mt-3 text-3xl md:text-4xl">Un geste simple, à intégrer à ta routine.</h2>
-                <p className="mt-5 leading-relaxed text-stone">
-                  Quelques gouttes le matin et/ou le soir, sur peau propre, avant ta crème. Pas de
-                  routine compliquée — un seul sérum, pensé pour réguler le sébum sans agresser.
-                </p>
-                <Link
-                  href="/le-produit"
-                  className={buttonClasses({ variant: "secondary", size: "lg", className: "mt-8" })}
-                >
-                  Voir comment l&apos;utiliser
-                </Link>
-              </div>
-              <figure className="overflow-hidden rounded-2xl">
-                <Image
-                  src="/images/naeul-rituel-couple.jpg"
-                  alt="Le sérum naeul intégré à une routine du quotidien, dans la salle de bain"
-                  width={1086}
-                  height={1448}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="aspect-[3/4] h-full w-full object-cover"
-                />
-              </figure>
-            </div>
-          </Container>
-        </section>
-      )}
-
-      {/* TOUTES LES CARNATIONS (grille lifestyle) — imagerie neutre, pas d'avis */}
-      {hasLifestyleGrid && (
-        <section className="border-t border-line">
-          <Container className="py-16 md:py-24">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="text-xs uppercase tracking-[0.25em] text-stone">
-                Pour toutes les peaux grasses
-              </p>
-              <h2 className="mt-3 text-3xl md:text-4xl">La peau grasse, sous toutes ses carnations</h2>
-              <p className="mt-4 leading-relaxed text-stone">
-                La peau grasse n&apos;a pas un seul visage. Un même geste pour réguler le sébum sans
-                agresser — quels que soient ton teint, ton âge, ton genre ou ton histoire. Une
-                marque, une seule peau : la tienne.
-              </p>
-            </div>
-            <LifestyleGrid className="mx-auto mt-10 max-w-2xl" />
-            <div className="mt-10 text-center">
-              <Link href="/#precommande" className={buttonClasses({ size: "lg" })}>
-                Je réserve ma place (-15%)
-              </Link>
-            </div>
-          </Container>
-        </section>
-      )}
-
-      {/* NOTRE MÉTHODE — 4 étapes numérotées (autorité) */}
-      <section className="border-t border-line">
+      {/* 10 — NAEUL VS ALTERNATIVES */}
+      <section className="border-b border-line bg-cream">
         <Container className="py-16 md:py-24">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-xs uppercase tracking-[0.25em] text-stone">Notre méthode</p>
-            <h2 className="mt-3 text-3xl md:text-4xl">Trois exigences, une formule</h2>
-          </div>
-          <SwipeCarousel
-            as="ol"
-            className="mt-10 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto pb-2 scrollbar-hide sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible"
-          >
-            {METHOD.map((step, i) => (
-              <li
-                key={step.t}
-                className="flex w-full shrink-0 snap-center flex-col rounded-2xl border border-line bg-cream p-6 sm:w-auto"
-              >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-sage font-serif text-sm text-sage">
-                  {i + 1}
-                </span>
-                <h3 className="mt-4 text-base">{step.t}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-stone">{step.d}</p>
-              </li>
-            ))}
-          </SwipeCarousel>
-        </Container>
-      </section>
-
-      {/* COMPARATIF — naeul vs K-beauty importée (différenciation) */}
-      <section className="border-t border-line bg-cream">
-        <Container className="py-16 md:py-24">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-xs uppercase tracking-[0.25em] text-stone">La différence</p>
-            <h2 className="mt-3 text-3xl md:text-4xl">naeul vs K-beauty importée</h2>
+            <p className="text-xs uppercase tracking-[0.25em] text-stone">Le choix</p>
+            <h2 className="mt-3 text-balance font-serif text-3xl md:text-4xl">
+              Pourquoi naeul, et pas une K-beauty importée ?
+            </h2>
+            <p className="mt-5 leading-relaxed text-stone">
+              Les marques coréennes sont excellentes. Elles ont été conçues pour des peaux coréennes
+              et un climat coréen. Voilà ce qu&apos;on a fait différemment.
+            </p>
           </div>
           <div className="mx-auto mt-10 max-w-2xl overflow-hidden rounded-2xl border border-line bg-sand">
-            <div className="grid grid-cols-[1.6fr_1fr_1fr] border-b border-line text-[0.65rem] font-semibold uppercase tracking-wide">
+            <div className="grid grid-cols-[1.3fr_1fr_1fr] border-b border-line text-[0.65rem] font-semibold uppercase tracking-wide">
               <span className="px-4 py-3" />
               <span className="px-2 py-3 text-center text-sage">naeul</span>
               <span className="px-2 py-3 text-center text-stone">K-beauty importée</span>
             </div>
             <ul className="divide-y divide-line">
               {COMPARISON.map((row) => (
-                <li key={row.label} className="grid grid-cols-[1.6fr_1fr_1fr] items-center">
+                <li key={row.label} className="grid grid-cols-[1.3fr_1fr_1fr] items-center">
                   <span className="px-4 py-3 text-sm leading-snug text-ink">{row.label}</span>
-                  <span className="flex justify-center px-2 py-3">
-                    <Check size={18} weight="bold" className="text-sage" />
+                  <span className="px-2 py-3 text-center text-xs font-medium leading-snug text-ink">
+                    {row.naeul}
                   </span>
                   <span className="px-2 py-3 text-center text-xs leading-snug text-stone">
-                    {row.rival === true ? (
-                      <Check size={16} className="mx-auto text-stone/50" />
-                    ) : row.rival === false ? (
-                      <X size={16} className="mx-auto text-stone/40" />
-                    ) : (
-                      row.rival
-                    )}
+                    {row.rival}
                   </span>
                 </li>
               ))}
             </ul>
           </div>
-          <p className="mx-auto mt-5 max-w-2xl text-center text-xs text-stone/80">
-            On ne nomme personne : on cadre simplement le choix. Pour une peau normale ou sèche, une
-            K-beauty généraliste reste un très bon choix.
+          <p className="mx-auto mt-5 max-w-2xl text-center font-serif text-base italic text-stone">
+            Pour une peau normale ou sèche, une K-beauty généraliste reste un excellent choix. Pour
+            une peau grasse française, on pense qu&apos;on peut mieux.
           </p>
         </Container>
       </section>
 
-      {/* RÉSULTATS — avant/après 8 semaines (image composée, telle quelle) */}
-      {hasResultats && (
-        <section className="border-t border-line">
-          <Container className="py-16 md:py-20">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="text-xs uppercase tracking-[0.25em] text-stone">Test interne</p>
-              <h2 className="mt-3 text-3xl md:text-4xl">Avant / après, 8 semaines</h2>
-            </div>
-            <figure className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl border border-line">
-              <Image
-                src="/images/naeul-resultats-8sem.jpg"
-                alt="Test interne avant / après 8 semaines sur peau grasse avec le sérum naeul"
-                width={1536}
-                height={1024}
-                sizes="(max-width: 768px) 100vw, 768px"
-                className="w-full"
-              />
-            </figure>
-            <p className="mx-auto mt-4 max-w-2xl text-center text-xs leading-relaxed text-stone/80">
-              Test réalisé en interne sur peau grasse, avant lancement (pas un avis client). Résultats
-              individuels, non garantis.
+      {/* 11 — COMMENT SE MESURE LE RÉSULTAT (remplace l'avant/après) */}
+      <section className="border-b border-line">
+        <Container className="py-16 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs uppercase tracking-[0.25em] text-stone">Honnêteté radicale</p>
+            <h2 className="mt-3 text-balance font-serif text-3xl md:text-4xl">
+              On n&apos;a pas encore d&apos;avant/après. Et on n&apos;en invente pas.
+            </h2>
+            <p className="mt-5 leading-relaxed text-stone">
+              La plupart des marques skincare publient des avant/après photographiés sous deux
+              éclairages différents, ou générés par retouche numérique. On préfère t&apos;expliquer ce
+              qu&apos;on a mesuré nous-mêmes, et ce que tu pourras mesurer toi-même.
             </p>
-          </Container>
-        </section>
-      )}
+          </div>
+          <ol className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-3">
+            {MESURE.map((m) => (
+              <li key={m.t} className="rounded-2xl border border-line bg-cream p-6 text-center">
+                <p className="font-serif text-xl text-sage">{m.t}</p>
+                <p className="mt-3 text-sm leading-relaxed text-stone">{m.d}</p>
+              </li>
+            ))}
+          </ol>
+          <p className="mx-auto mt-8 max-w-xl text-center text-sm leading-relaxed text-stone">
+            Les vrais avant/après arriveront avec les premières clientes. On les publiera, vérifiés,
+            datés, jamais retouchés.
+          </p>
+        </Container>
+      </section>
 
-      {/* NOTRE HISTOIRE */}
-      <section className="border-y border-line bg-cream">
-        <Container className="py-16 text-center md:py-20">
+      {/* TA PEAU, NOTRE RÉPONSE (module interactif conservé) */}
+      <SkinSelector />
+
+      {/* 12 — FAQ CRITIQUE */}
+      <section className="border-b border-line bg-cream">
+        <Container className="py-16 md:py-24">
           <div className="mx-auto max-w-2xl">
-            <p className="text-xs uppercase tracking-[0.25em] text-stone">Notre histoire</p>
-            <p className="mt-6 text-balance font-serif text-2xl leading-relaxed text-ink md:text-3xl">
-              naeul, créé par un couple qui galérait avec la peau grasse.
-            </p>
-            <p className="mt-6 leading-relaxed text-stone">
-              La pharmacie décapait, le « bio » ne donnait rien, la K-beauty importée était
-              excellente mais sans SAV français. Personne ne faisait la peau grasse, en français,
-              avec une vraie approche douce. Alors on l&apos;a fait.
-            </p>
-            <Link
-              href="/a-propos"
-              className={buttonClasses({ variant: "secondary", size: "lg", className: "mt-8" })}
-            >
-              Notre histoire complète
-              <ArrowRight size={18} />
-            </Link>
+            <h2 className="text-center font-serif text-3xl md:text-4xl">
+              Les questions qu&apos;on nous pose le plus.
+            </h2>
+            <FaqAccordion items={HOME_FAQ} className="mt-10" />
           </div>
         </Container>
       </section>
 
-      {/* AVIS */}
-      <Reviews />
+      {/* 13 — GARANTIE 30 JOURS */}
+      <section className="border-b border-line">
+        <Container className="py-16 md:py-20">
+          <div className="mx-auto flex max-w-2xl flex-col items-center gap-3 rounded-2xl border border-sage/30 bg-sage/[0.05] p-8 text-center md:p-10">
+            <ShieldCheck size={32} weight="light" className="text-sage" />
+            <h2 className="text-balance font-serif text-2xl md:text-3xl">
+              Trente jours pour tester. Sans aucun risque.
+            </h2>
+            <p className="max-w-md leading-relaxed text-stone">
+              Si naeul ne te convient pas, on te rembourse intégralement — même flacon entamé. Tu
+              n&apos;as rien à prouver, rien à renvoyer en parfait état. Tu nous écris, on rembourse.
+            </p>
+            <p className="mt-1 text-xs text-stone/70">
+              Garantie 30 jours à compter de la réception. Remboursement intégral, frais d&apos;envoi
+              inclus.
+            </p>
+          </div>
+        </Container>
+      </section>
 
-      {/* BANDE DE MARQUE — défilement typographique premium */}
-      <Marquee
-        items={BRAND_WORDS}
-        duration={52}
-        reverse
-        className="border-y border-line py-6 md:py-8"
-        itemClassName="font-serif text-lg italic text-ink/90 md:text-2xl"
-        separatorClassName="text-sm md:text-base text-terracotta/70"
-      />
-
-      {/* CAPTURE FINALE — Cinematic CTA */}
+      {/* 14 — CTA FINAL */}
       <section id="precommande" className="relative scroll-mt-20 overflow-hidden">
         <Image
           src="/images/naeul-produit-bois.jpg"
@@ -580,39 +622,31 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-ink/75" />
         <Container className="relative flex flex-col items-center gap-6 py-24 text-center md:py-32">
+          <h2 className="max-w-2xl text-balance font-serif text-3xl text-cream md:text-5xl">
+            Tu rejoins les 200 premières ?
+          </h2>
+          <p className="max-w-md leading-relaxed text-cream/80">
+            naeul sort en juillet 2026. Édition fondatrice limitée à 200 flacons numérotés. -15% pour
+            les inscrites en avant-première.
+          </p>
           {PREORDER_ENABLED ? (
-            <>
-              <h2 className="max-w-2xl text-balance font-serif text-3xl text-cream md:text-5xl">
-                Rejoins les fondatrices de naeul.
-              </h2>
-              <p className="max-w-md leading-relaxed text-cream/80">
-                -15%, livraison offerte, garantie 30 jours. Premier lot limité à 200 flacons.
-              </p>
-              <Link href="/le-produit#acheter" className={buttonClasses({ size: "lg", className: "mt-2" })}>
-                Précommander (-15%)
-                <ArrowRight size={18} />
-              </Link>
-            </>
+            <Link href="/le-produit#acheter" className={buttonClasses({ size: "lg", className: "mt-2" })}>
+              Précommander (-15%)
+              <ArrowRight size={18} />
+            </Link>
           ) : (
-            <>
-              <h2 className="max-w-2xl text-balance font-serif text-3xl text-cream md:text-5xl">
-                Sois au courant en avant-première.
-              </h2>
-              <p className="max-w-md leading-relaxed text-cream/80">
-                Rejoins la liste : tu reçois ton code -15% et tu es la première informée du
-                lancement.
-              </p>
-              <WaitlistForm tone="onAccent" source="home_cta" className="w-full max-w-md" />
-              <ReassuranceRow tone="onAccent" className="mt-2 max-w-md" />
-            </>
+            <WaitlistForm tone="onAccent" source="home_cta" className="w-full max-w-md" />
           )}
+          <p className="max-w-md text-xs leading-relaxed text-cream/60">
+            Inscription gratuite. Pas de spam. Désinscription en un clic.
+          </p>
         </Container>
       </section>
 
-      {/* CTA sticky mobile — se révèle au scroll, s'efface près du bas */}
+      {/* 15 — STICKY CTA mobile */}
       <StickyCta
-        href={PREORDER_ENABLED ? "/le-produit#acheter" : "#precommande"}
-        label={PREORDER_ENABLED ? "Précommander (-15%)" : "Je réserve ma place (-15%)"}
+        href={ctaHref}
+        label="Édition fondatrice -15% · Je réserve ma place"
         event={PREORDER_ENABLED ? "sticky_preorder_click" : "sticky_waitlist_click"}
       />
     </>

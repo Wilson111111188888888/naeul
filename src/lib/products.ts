@@ -119,7 +119,7 @@ export const HERO_PRODUCT: Product = {
   faq: [
     {
       q: "Pourquoi naeul plutôt qu'une K-beauty importée (Beauty of Joseon, COSRX) ?",
-      a: "On respecte ces marques, elles sont excellentes. Mais pour une peau grasse française, naeul change trois choses : on ne fait QUE la peau grasse (elles s'adressent à tous les types de peau), tu as un SAV en français et une garantie 30 jours satisfait ou remboursé, et une livraison sous 48-72h plutôt que plusieurs semaines. Même approche K-beauty douce — niacinamide, Centella, acide hyaluronique — mais pensée et accompagnée ici. Si ta peau est normale ou sèche, en revanche, on n'est pas pour toi, et on te le dit.",
+      a: "On respecte ces marques, elles sont excellentes. Mais pour une peau grasse française, naeul change trois choses : on ne fait QUE la peau grasse (elles s'adressent à tous les types de peau), tu as un SAV en français et une garantie 30 jours satisfait ou remboursé, et une expédition sous 5 à 7 jours ouvrés depuis notre laboratoire EU plutôt que plusieurs semaines. Même approche K-beauty douce — niacinamide, Centella, acide hyaluronique — mais pensée et accompagnée ici. Si ta peau est normale ou sèche, en revanche, on n'est pas pour toi, et on te le dit.",
     },
     {
       q: "Quand puis-je l'utiliser ?",

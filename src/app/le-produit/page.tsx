@@ -14,7 +14,6 @@ import { BeforeAfter } from "@/components/product/before-after";
 import { SwipeCarousel } from "@/components/swipe-carousel";
 import { PreorderBox } from "@/components/product/preorder-box";
 import { FaqAccordion } from "@/components/faq-accordion";
-import { WaitlistCount } from "@/components/waitlist-count";
 import { StickyCta } from "@/components/sticky-cta";
 import { ReassuranceRow } from "@/components/reassurance-row";
 import { LifestyleGrid } from "@/components/lifestyle-grid";
@@ -186,7 +185,9 @@ export default function LeProduitPage() {
                   Premier lot limité à 200 flacons — les premières inscriptions sont prévenues et servies en priorité.
                 </p>
                 <WaitlistForm source="produit_haut" className="mt-4" />
-                <WaitlistCount className="mt-4 justify-start" />
+                <p className="mt-4 text-xs uppercase tracking-[0.15em] text-stone/70">
+                  Inscriptions en cours · Lancement juillet 2026
+                </p>
                 <ReassuranceRow className="mt-4 border-t border-line pt-4" />
                 <p className="mt-3 text-[0.7rem] text-stone/80">
                   Inscription gratuite · pas de spam · ton code -15% par email.
@@ -418,7 +419,9 @@ export default function LeProduitPage() {
                 dès l&apos;ouverture des précommandes.
               </p>
               <WaitlistForm source="produit_bas" className="w-full max-w-md" />
-              <WaitlistCount />
+              <p className="text-xs uppercase tracking-[0.15em] text-stone/70">
+                Inscriptions en cours · Lancement juillet 2026
+              </p>
             </>
           )}
         </Container>
