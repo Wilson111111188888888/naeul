@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/container";
+import { SwipeCarousel } from "@/components/swipe-carousel";
 
 // La méthode des trois strates (mécanisme propriétaire). Réutilisée home + produit.
 const STRATES = [
@@ -31,15 +32,21 @@ export function MethodStrates({ className }: { className?: string }) {
             ordre, pour réconcilier ta peau avec elle-même.
           </p>
         </div>
-        <ol className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-3">
+        <SwipeCarousel
+          as="ol"
+          className="mx-auto mt-12 flex max-w-4xl snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scrollbar-hide text-stone md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:pb-0"
+        >
           {STRATES.map((s) => (
-            <li key={s.n} className="rounded-2xl border border-line bg-sand p-6">
+            <li
+              key={s.n}
+              className="w-[80%] shrink-0 snap-center rounded-2xl border border-line bg-sand p-6 md:w-auto"
+            >
               <span className="font-serif text-sm text-sage">{s.n}</span>
               <h3 className="mt-2 text-lg uppercase tracking-wide">{s.t}</h3>
               <p className="mt-2 text-sm leading-relaxed text-stone">{s.d}</p>
             </li>
           ))}
-        </ol>
+        </SwipeCarousel>
         <p className="mx-auto mt-10 max-w-xl text-center font-serif text-lg italic text-ink">
           C&apos;est l&apos;inverse des sérums « peau grasse » classiques : on attaque la cause, pas
           le symptôme.

@@ -19,6 +19,7 @@ import { WaitlistForm } from "@/components/waitlist-form";
 import { buttonClasses } from "@/components/ui/button";
 import { MethodStrates } from "@/components/sections/method-strates";
 import { GesteNaeul } from "@/components/sections/geste-naeul";
+import { SwipeCarousel } from "@/components/swipe-carousel";
 import { FirstTesters } from "@/components/sections/first-testers";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { StickyCta } from "@/components/sticky-cta";
@@ -283,14 +284,22 @@ export default function Home() {
                 finition non grasse. Une seule mission : équilibrer le sébum sans agresser.
               </p>
 
-              <ul className="mt-8 grid gap-x-6 gap-y-4 border-t border-line pt-6 sm:grid-cols-2">
-                {ACTIVES.map((a) => (
-                  <li key={a.name}>
-                    <p className="text-sm font-medium text-ink">{a.name}</p>
-                    <p className="mt-0.5 text-sm leading-relaxed text-stone">{a.role}</p>
-                  </li>
-                ))}
-              </ul>
+              <div className="mt-8 border-t border-line pt-6 text-stone">
+                <SwipeCarousel
+                  as="ul"
+                  className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scrollbar-hide sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-4 sm:overflow-visible sm:pb-0"
+                >
+                  {ACTIVES.map((a) => (
+                    <li
+                      key={a.name}
+                      className="w-[78%] shrink-0 snap-center rounded-xl border border-line bg-sand p-4 sm:w-auto sm:rounded-none sm:border-0 sm:bg-transparent sm:p-0"
+                    >
+                      <p className="text-sm font-medium text-ink">{a.name}</p>
+                      <p className="mt-0.5 text-sm leading-relaxed text-stone">{a.role}</p>
+                    </li>
+                  ))}
+                </SwipeCarousel>
+              </div>
 
               {/* Bloc prix — visible, assumé, hiérarchisé */}
               <div className="mt-8 overflow-hidden rounded-2xl border border-line">
@@ -341,8 +350,45 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 6 — LA MÉTHODE DES TROIS STRATES */}
-      <MethodStrates className="border-b border-line bg-cream" />
+      {/* RÉSULTATS (test interne) — remonté juste après le produit */}
+      <section className="border-b border-line bg-cream">
+        <Container className="py-16 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs uppercase tracking-[0.25em] text-stone">Résultats · test interne</p>
+            <h2 className="mt-3 text-balance font-serif text-3xl md:text-4xl">
+              Le grain de peau, en 4 semaines.
+            </h2>
+            <p className="mt-5 leading-relaxed text-stone">
+              Pores resserrés, peau plus lisse et moins brillante — observés lors de notre test
+              interne sur peau grasse, avant lancement. Pas un avis client : les vrais avant/après
+              vérifiés arriveront avec les premières clientes, datés et jamais retouchés.
+            </p>
+          </div>
+          <BeforeAfter />
+          <p className="mx-auto mt-4 max-w-xl text-center text-xs leading-relaxed text-stone">
+            Glisse pour comparer · test interne sur peau grasse, 4 semaines (pas un avis client).
+            Résultats individuels, non garantis.
+          </p>
+          {/* Paliers de résultat — carrousel (défilable + points sur mobile) */}
+          <SwipeCarousel
+            as="ol"
+            className="mx-auto mt-10 flex max-w-4xl snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scrollbar-hide md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:pb-0"
+          >
+            {MESURE.map((m) => (
+              <li
+                key={m.t}
+                className="w-[80%] shrink-0 snap-center rounded-2xl border border-line bg-sand p-6 text-center md:w-auto"
+              >
+                <p className="font-serif text-xl text-sage">{m.t}</p>
+                <p className="mt-3 text-sm leading-relaxed text-stone">{m.d}</p>
+              </li>
+            ))}
+          </SwipeCarousel>
+        </Container>
+      </section>
+
+      {/* LA MÉTHODE DES TROIS STRATES */}
+      <MethodStrates className="border-b border-line" />
 
       {/* 7 — LE GESTE NAEUL */}
       <GesteNaeul className="border-b border-line" />
@@ -361,9 +407,15 @@ export default function Home() {
               deux cents personnes, un lancement qu&apos;on vit ensemble.
             </p>
           </div>
-          <ul className="mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <SwipeCarousel
+            as="ul"
+            className="mx-auto mt-12 flex max-w-4xl snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scrollbar-hide text-cream sm:grid sm:grid-cols-2 sm:gap-4 sm:overflow-visible sm:pb-0 lg:grid-cols-3"
+          >
             {CERCLE.map((b) => (
-              <li key={b.t} className="rounded-2xl border border-cream/10 bg-cream/[0.04] p-6">
+              <li
+                key={b.t}
+                className="w-[80%] shrink-0 snap-center rounded-2xl border border-cream/10 bg-cream/[0.04] p-6 sm:w-auto"
+              >
                 <span className="flex h-11 w-11 items-center justify-center rounded-full bg-cream/10 text-terracotta">
                   <b.icon size={20} />
                 </span>
@@ -371,7 +423,7 @@ export default function Home() {
                 <p className="mt-1.5 text-xs leading-relaxed text-cream/65">{b.d}</p>
               </li>
             ))}
-          </ul>
+          </SwipeCarousel>
           <div className="mt-12 flex flex-col items-center text-center">
             <p className="text-[0.75rem] uppercase tracking-[0.2em] text-cream/55">
               Édition fondatrice · 200 flacons numérotés · le premier lot ne reviendra jamais
@@ -433,37 +485,7 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 11 — RÉSULTATS (test interne) + comment lire le résultat */}
-      <section className="border-b border-line">
-        <Container className="py-16 md:py-24">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-xs uppercase tracking-[0.25em] text-stone">Résultats · test interne</p>
-            <h2 className="mt-3 text-balance font-serif text-3xl md:text-4xl">
-              Le grain de peau, en 4 semaines.
-            </h2>
-            <p className="mt-5 leading-relaxed text-stone">
-              Pores resserrés, peau plus lisse et moins brillante — observés lors de notre test
-              interne sur peau grasse, avant lancement. Pas un avis client : les vrais avant/après
-              vérifiés arriveront avec les premières clientes, datés et jamais retouchés.
-            </p>
-          </div>
-          <BeforeAfter />
-          <p className="mx-auto mt-4 max-w-xl text-center text-xs leading-relaxed text-stone">
-            Glisse pour comparer · test interne sur peau grasse, 4 semaines (pas un avis client).
-            Résultats individuels, non garantis.
-          </p>
-          <ol className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-3">
-            {MESURE.map((m) => (
-              <li key={m.t} className="rounded-2xl border border-line bg-cream p-6 text-center">
-                <p className="font-serif text-xl text-sage">{m.t}</p>
-                <p className="mt-3 text-sm leading-relaxed text-stone">{m.d}</p>
-              </li>
-            ))}
-          </ol>
-        </Container>
-      </section>
-
-      {/* 12 — FAQ CRITIQUE */}
+      {/* FAQ CRITIQUE */}
       <section className="border-b border-line bg-cream">
         <Container className="py-16 md:py-24">
           <div className="mx-auto max-w-2xl">

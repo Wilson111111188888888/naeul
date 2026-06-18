@@ -251,7 +251,7 @@ export default function LeProduitPage() {
       </section>
 
       {/* 6 — LE GESTE NAEUL */}
-      <GesteNaeul className="border-b border-line bg-cream" />
+      <GesteNaeul variant="accordion" className="border-b border-line bg-cream" />
 
       {/* 7 — POUR QUI C'EST FAIT / PAS FAIT */}
       <section className="border-b border-line">
