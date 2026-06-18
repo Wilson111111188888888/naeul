@@ -1,5 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
 import Link from "next/link";
 import Image from "next/image";
 import heroLifestyle from "../../public/images/naeul-hero.jpg";
@@ -110,10 +108,6 @@ const HOME_FAQ = [
 ];
 
 export default function Home() {
-  // Les sections à image n'apparaissent que si le fichier existe (placeholder honnête sinon).
-  const hasImage = (name: string) => fs.existsSync(path.join(process.cwd(), "public/images", name));
-  const hasCouple = hasImage("naeul-couple.jpg");
-
   // CTA principal : pointe vers la précommande si le flag est actif, sinon l'inscription.
   const ctaHref = PREORDER_ENABLED ? "/le-produit#acheter" : "#precommande";
 
@@ -175,21 +169,14 @@ export default function Home() {
         <Container className="py-16 md:py-24">
           <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
             <figure className="overflow-hidden rounded-2xl bg-sand">
-              {hasCouple ? (
-                <Image
-                  src="/images/naeul-couple.jpg"
-                  alt="Le couple fondateur de naeul"
-                  width={1086}
-                  height={1357}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="aspect-[4/5] h-full w-full object-cover"
-                />
-              ) : (
-                <div className="flex aspect-[16/11] w-full flex-col items-center justify-center gap-2 border border-dashed border-line p-8 text-center">
-                  <p className="font-serif text-lg italic text-stone">Le couple derrière naeul</p>
-                  <p className="text-xs text-stone/60">[Photo à shooter cette semaine]</p>
-                </div>
-              )}
+              <Image
+                src="/images/naeul-histoire.jpg"
+                alt="Le sérum naeul posé sur le marbre d'une salle de bain, dans la lumière du matin"
+                width={1086}
+                height={1448}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="aspect-[4/5] h-full w-full object-cover"
+              />
             </figure>
             <div>
               <p className="text-xs uppercase tracking-[0.25em] text-stone">Notre histoire</p>
