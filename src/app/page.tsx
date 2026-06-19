@@ -264,7 +264,7 @@ export default function Home() {
       <section className="border-b border-line">
         <Container className="py-16 md:py-24">
           <div className="grid items-start gap-12 md:grid-cols-2 md:gap-16">
-            <figure className="overflow-hidden rounded-2xl bg-rose/20 md:sticky md:top-24">
+            <figure className="overflow-hidden rounded-2xl bg-rose/20 md:sticky md:top-24 md:self-start">
               <Image
                 src={HERO_PRODUCT.photos[0].src}
                 alt={HERO_PRODUCT.photos[0].alt}
@@ -274,7 +274,7 @@ export default function Home() {
                 className="aspect-[4/5] h-full w-full object-cover"
               />
             </figure>
-            <div>
+            <div className="min-w-0">
               <p className="text-xs uppercase tracking-[0.25em] text-stone">Le sérum</p>
               <h2 className="mt-3 text-balance font-serif text-3xl md:text-4xl">
                 Six actifs choisis. Aucun ingrédient pour faire joli.
