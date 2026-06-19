@@ -22,6 +22,7 @@ const NAV_MOBILE = [
   { href: "/le-produit", label: "Le produit" },
   { href: "/a-propos", label: "Notre histoire" },
   { href: "/#precommande", label: "Le Cercle des 200" },
+  { href: "/diagnostic", label: "Diagnostic de ta peau" },
   { href: "/blog", label: "Journal" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
