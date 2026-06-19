@@ -6,7 +6,7 @@ import { Eye, Sparkle, Leaf, Check } from "@phosphor-icons/react/dist/ssr";
 import { buttonClasses } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "Notre histoire — naeul, K-beauty française",
+  title: "Notre histoire — K-beauty française pour peau grasse",
   description:
     "naeul est né du parcours d'une fondatrice à la peau grasse, lassée des soins qui décapent ou laissent un film gras. Découvre l'histoire et la méthode.",
   alternates: { canonical: "/a-propos" },

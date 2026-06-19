@@ -108,12 +108,27 @@ const HOME_FAQ = [
   },
 ];
 
+// FAQ structurée (rich results Google + réponses IA) — bâtie depuis HOME_FAQ.
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: HOME_FAQ.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 export default function Home() {
   // CTA principal : pointe vers la précommande si le flag est actif, sinon l'inscription.
   const ctaHref = PREORDER_ENABLED ? "/le-produit#acheter" : "#precommande";
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <ScrollDepth page="home" />
 
       {/* 1 — HERO (split 60/40 : texte + visage de la marque) */}
