@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const FAQ: { q: string; a: string }[] = [
   {
     q: "Quand sort le premier produit ?",
-    a: "Notre premier produit — un sérum aux exosomes et à la niacinamide — arrive prochainement. Les personnes inscrites à la précommande seront au courant avant tout le monde.",
+    a: "Notre premier produit — un sérum régulateur à la niacinamide pour peau grasse — arrive prochainement. Les personnes inscrites à l'avant-première seront au courant avant tout le monde.",
   },
   {
     q: "Que signifie « naeul » ?",

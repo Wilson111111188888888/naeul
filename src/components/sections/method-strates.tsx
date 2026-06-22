@@ -16,7 +16,7 @@ const STRATES = [
   {
     n: "03",
     t: "Renforcer",
-    d: "Ferments microbiome. Exosomes de pomme. On reconstruit la barrière cutanée. Une barrière saine produit moins.",
+    d: "Ferments du microbiome. On reconstruit la barrière cutanée — et une barrière saine produit naturellement moins de sébum.",
   },
 ];
 

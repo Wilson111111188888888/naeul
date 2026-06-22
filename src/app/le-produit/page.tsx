@@ -38,9 +38,9 @@ const NOT_FOR_YOU = [
 ];
 
 export const metadata: Metadata = {
-  title: "Sérum aux exosomes et à la niacinamide pour peau grasse",
+  title: "Sérum régulateur à la niacinamide pour peau grasse",
   description:
-    "Sérum K-beauty pour peau grasse : niacinamide, exosomes, acide hyaluronique. Régule le sébum, apaise sans dessécher. Vegan, ECOCERT. Précommande -15%.",
+    "Sérum K-beauty pour peau grasse : niacinamide 5%, acide lactique, Centella, acide hyaluronique. Régule le sébum, apaise sans dessécher. Vegan, ECOCERT.",
   alternates: { canonical: "/le-produit" },
 };
 
@@ -243,7 +243,7 @@ export default function LeProduitPage() {
 
       {/* 4 — LES ACTIFS */}
       <Container className="py-16 md:py-24">
-        <SectionHeading eyebrow="La formule" title="Six actifs, une intention" />
+        <SectionHeading eyebrow="La formule" title="Cinq actifs, une intention" />
         <ActivesCarousel actives={product.actives} />
       </Container>
 
@@ -333,7 +333,7 @@ export default function LeProduitPage() {
             {[
               {
                 t: "La formule",
-                d: "Six actifs dosés juste, pensés pour la peau grasse — sans alcool dénaturé ni BHA forts.",
+                d: "Cinq actifs dosés juste, pensés pour la peau grasse — sans alcool dénaturé ni BHA forts.",
               },
               {
                 t: "Le laboratoire",

@@ -48,10 +48,10 @@ export type Product = {
 
 export const HERO_PRODUCT: Product = {
   slug: "serum-exosomes-niacinamide",
-  name: "Sérum aux exosomes et à la niacinamide",
+  name: "Sérum régulateur à la niacinamide",
   tagline: "Régule le sébum et les pores, apaise sans dessécher.",
   shortDescription:
-    "Un sérum K-beauty pensé pour la peau grasse, sans l'agresser. Texture légère qui pénètre vite et ne laisse pas de film gras — six actifs ciblés pour équilibrer, hydrater et affiner le grain de peau.",
+    "Un sérum K-beauty pensé pour la peau grasse, sans l'agresser. Texture légère qui pénètre vite et ne laisse pas de film gras — cinq actifs ciblés pour équilibrer, hydrater et affiner le grain de peau.",
   differentiator:
     "La majorité des soins « peau grasse » agressent : alcool dénaturé, BHA forts. La peau s'assèche en surface, se rebelle, et produit encore plus de sébum. naeul fait l'inverse : on équilibre en douceur, on hydrate sans graisser, on régule sans dessécher.",
   unitPrice: 32.9,
@@ -66,7 +66,6 @@ export const HERO_PRODUCT: Product = {
     { name: "Acide hyaluronique", role: "Hydrate sans graisser" },
     { name: "Centella Asiatica", role: "Apaise et restaure" },
     { name: "Ferments du microbiome", role: "Renforcent la barrière cutanée" },
-    { name: "Exosomes (extrait de pomme)", role: "Favorisent le renouvellement cellulaire" },
   ],
   variants: [
     { id: "naeul-serum-1", flacons: 1, label: "1 flacon", price: 32.9, saving: 0 },
@@ -74,7 +73,7 @@ export const HERO_PRODUCT: Product = {
     { id: "naeul-serum-3", flacons: 3, label: "3 flacons", price: 84.9, saving: 13 },
   ],
   photos: [
-    { src: "/images/naeul-produit-avec-box.jpg", alt: "Sérum K-beauty naeul aux exosomes et à la niacinamide pour peau grasse, avec sa boîte vert sauge" },
+    { src: "/images/naeul-produit-avec-box.jpg", alt: "Sérum K-beauty naeul à la niacinamide pour peau grasse, avec sa boîte vert sauge" },
     { src: "/images/naeul-produit-lifestyle.jpg", alt: "Sérum naeul à la niacinamide pour peau grasse, dans une ambiance végétale" },
     { src: "/images/naeul-produit-bois.jpg", alt: "Sérum K-beauty naeul pour peau grasse et pores, sur fond bois" },
     { src: "/images/naeul-produit-minimal.jpg", alt: "Flacon airless du sérum naeul à la niacinamide, composition minimaliste" },
@@ -112,7 +111,7 @@ export const HERO_PRODUCT: Product = {
   ],
   priceBreakdown: [
     { label: "Formulation laboratoire EU (ISO 22716, ECOCERT)", value: "Actifs dosés, pas de remplissage" },
-    { label: "Six actifs ciblés dont des exosomes", value: "Une formule premium, pas un sérum générique" },
+    { label: "Cinq actifs ciblés à dose utile", value: "Une formule premium, pas un sérum générique" },
     { label: "Flacon airless 30 ml", value: "Protège les actifs de l'air et de la lumière" },
     { label: "Vendu en direct", value: "Sans marge d'intermédiaire" },
   ],

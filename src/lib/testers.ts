@@ -57,7 +57,7 @@ export const TESTERS: Tester[] = [
     type: "grasse",
     tag: "Peau grasse à imperfections",
     title: "Ma peau de février ne s'est pas emballée",
-    body: "Chaque printemps mon visage s'emballe. Pendant le test, beaucoup plus calme. Le combo niacinamide + exosomes, j'aurais aimé l'essayer bien avant.",
+    body: "Chaque printemps mon visage s'emballe. Pendant le test, beaucoup plus calme. Le combo niacinamide + Centella, j'aurais aimé l'essayer bien avant.",
   },
   {
     name: "Léa T.",
@@ -74,8 +74,8 @@ export const TESTERS: Tester[] = [
     age: 23,
     type: "grasse",
     tag: "Peau grasse",
-    title: "Sceptique sur les exosomes… plus maintenant",
-    body: "Je pensais que c'était du marketing. Mais à J14, deux petites imperfections persistantes sur mon front s'étaient nettement apaisées. Bluffée.",
+    title: "Sceptique au début… plus maintenant",
+    body: "Je pensais que c'était un sérum de plus. Mais à J14, deux petites imperfections persistantes sur mon front s'étaient nettement apaisées. Bluffée.",
   },
   {
     name: "Manon D.",

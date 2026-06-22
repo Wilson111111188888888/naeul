@@ -40,7 +40,7 @@ const TRUST_BAR = [
   { Icon: Lock, label: "Paiement sécurisé Stripe" },
 ];
 
-// Les 6 actifs, en clair (transparence — fini le « +2 actifs »).
+// Les 5 actifs, en clair (transparence sur les dosages).
 const ACTIVES = [
   { name: "Niacinamide 5%", role: "Régule la production de sébum. Réduit l'apparence des pores." },
   {
@@ -52,10 +52,6 @@ const ACTIVES = [
   {
     name: "Ferments microbiome",
     role: "Renforce la barrière cutanée. Une barrière saine produit moins de sébum.",
-  },
-  {
-    name: "Exosomes d'extrait de pomme",
-    role: "Soutien au renouvellement cellulaire. La biotech derrière le grain de peau lisse.",
   },
 ];
 
@@ -355,7 +351,7 @@ export default function Home() {
             <div className="min-w-0">
               <p className="text-xs uppercase tracking-[0.25em] text-stone">Le sérum</p>
               <h2 className="mt-3 text-balance font-serif text-3xl md:text-4xl">
-                Six actifs choisis. Aucun ingrédient pour faire joli.
+                Cinq actifs choisis. Aucun ingrédient pour faire joli.
               </h2>
               <p className="mt-4 leading-relaxed text-stone">
                 Notre premier soin. Trente millilitres pour soixante applications. Texture légère,
