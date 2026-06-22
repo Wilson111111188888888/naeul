@@ -342,13 +342,13 @@ export default function Home() {
             </h2>
             <div className="mt-8 space-y-4 leading-relaxed text-stone">
               <p>
-                Depuis toujours, on t&apos;apprend à <em>combattre</em> ta peau grasse : décaper,
+                Depuis toujours, on t&apos;apprend à <em>combattre</em>{" "}ta peau grasse : décaper,
                 assécher, matifier. Plus tu l&apos;attaques, plus elle se défend — et plus elle
                 graisse. C&apos;est une guerre que tu ne peux pas gagner, parce que ton sébum
                 n&apos;est pas ton ennemi.
               </p>
               <p className="text-ink">
-                Nous, on choisit l&apos;inverse : travailler <em>avec</em> ta peau. Réguler, apaiser,
+                Nous, on choisit l&apos;inverse : travailler <em>avec</em>{" "}ta peau. Réguler, apaiser,
                 renforcer — et la laisser retrouver son équilibre. C&apos;est plus lent qu&apos;un BHA
                 fort. C&apos;est durable.
               </p>
