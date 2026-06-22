@@ -499,7 +499,7 @@ export default function Home() {
       <GesteNaeul className="border-b border-line" />
 
       {/* 8 — PREMIÈRES TESTEUSES (placeholder honnête en attendant les vrais retours) */}
-      <TestersWall limit={6} className="border-b border-line bg-cream" />
+      <TestersWall limit={5} carousel className="border-b border-line bg-cream" />
 
       {/* 9 — LE CERCLE DES 200 (scarcity légitime, sans faux compteur) */}
       <section className="bg-ink text-cream">

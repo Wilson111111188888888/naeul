@@ -393,7 +393,7 @@ export default function LeProduitPage() {
       </section>
 
       {/* 10 — PREMIÈRES TESTEUSES */}
-      <TestersWall limit={6} className="border-b border-line bg-cream" />
+      <TestersWall limit={5} carousel className="border-b border-line bg-cream" />
 
       {/* 11 — GARANTIE 30 JOURS */}
       <section className="border-b border-line">
