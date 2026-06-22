@@ -16,11 +16,17 @@ export function WaitlistForm({
   tone = "light",
   cta = "Je réserve ma place (-15%)",
   source = "inconnu",
+  properties,
+  onSuccess,
   className,
 }: {
   tone?: "light" | "onAccent";
   cta?: string;
   source?: string;
+  /** Propriétés à enregistrer dans Loops (réponses diagnostic) pour segmentation. */
+  properties?: Record<string, string>;
+  /** Appelé après une inscription réussie (ex. révéler le résultat du diagnostic). */
+  onSuccess?: () => void;
   className?: string;
 }) {
   const [email, setEmail] = useState("");
@@ -33,12 +39,13 @@ export function WaitlistForm({
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, source }),
+        body: JSON.stringify({ email, source, properties }),
       });
       if (!res.ok) throw new Error();
       track("waitlist_signup", { source });
       setStatus("done");
       setEmail("");
+      onSuccess?.();
     } catch {
       setStatus("error");
     }

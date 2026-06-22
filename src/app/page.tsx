@@ -24,6 +24,7 @@ import { FirstTesters } from "@/components/sections/first-testers";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { StickyCta } from "@/components/sticky-cta";
 import { Countdown } from "@/components/countdown";
+import { SkinDiagnostic } from "@/components/diagnostic/skin-diagnostic";
 import { BeforeAfter } from "@/components/product/before-after";
 import { TrackedLink, ScrollDepth } from "@/components/analytics";
 import { HERO_PRODUCT } from "@/lib/products";
@@ -200,7 +201,12 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 2 — NOTRE HISTOIRE (le couple) */}
+      {/* 2 — DIAGNOSTIC PEAU (générateur de leads principal) */}
+      <section id="diagnostic" className="scroll-mt-20 border-b border-line bg-cream">
+        <SkinDiagnostic embedded />
+      </section>
+
+      {/* 3 — NOTRE HISTOIRE (la fondatrice) */}
       <section className="border-b border-line">
         <Container className="py-16 md:py-24">
           <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">

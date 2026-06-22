@@ -10,11 +10,29 @@ import { Button, buttonClasses } from "@/components/ui/button";
 import { WaitlistForm } from "@/components/waitlist-form";
 import { cn } from "@/lib/utils";
 
-type Step = "intro" | number | "result";
+type Step = "intro" | number | "gate" | "result";
 
-export function SkinDiagnostic() {
+// Réponses → propriétés de contact Loops (segmentation post-lancement).
+function diagnosticProperties(
+  answers: Record<string, number | number[]>,
+  profile: ProfileKey,
+): Record<string, string> {
+  const props: Record<string, string> = { skinProfile: PROFILES[profile].title };
+  for (const q of QUESTIONS) {
+    const a = answers[q.id];
+    let val = "";
+    if (Array.isArray(a)) val = a.map((i) => q.options[i]?.label).filter(Boolean).join(", ");
+    else if (typeof a === "number") val = q.options[a]?.label ?? "";
+    if (val) props[`dx_${q.id}`] = val.slice(0, 200);
+  }
+  return props;
+}
+
+export function SkinDiagnostic({ embedded = false }: { embedded?: boolean }) {
   const [step, setStep] = useState<Step>("intro");
   const [answers, setAnswers] = useState<Record<string, number | number[]>>({});
+  // h1 sur /diagnostic ; h2 quand embarqué sur la home (SEO : un seul h1 par page).
+  const Heading = embedded ? "h2" : "h1";
 
   function start() {
     track("quiz_started", {});
@@ -39,7 +57,7 @@ export function SkinDiagnostic() {
     } else {
       const profile = computeProfile(answers);
       track("quiz_completed", { profile });
-      setStep("result");
+      setStep("gate");
     }
   }
   function back() {
@@ -53,9 +71,9 @@ export function SkinDiagnostic() {
       <Container className="py-16 md:py-24">
         <div className="mx-auto max-w-xl text-center">
           <p className="text-xs uppercase tracking-[0.25em] text-stone">Diagnostic peau · gratuit</p>
-          <h1 className="mt-3 text-balance text-3xl leading-tight md:text-5xl">
+          <Heading className="mt-3 text-balance text-3xl leading-tight md:text-5xl">
             Quel est ton vrai type de peau grasse ?
-          </h1>
+          </Heading>
           <p className="mt-5 leading-relaxed text-stone">
             60 secondes pour découvrir ta routine K-beauty personnalisée et recevoir -15% sur ta
             première commande.
@@ -81,6 +99,54 @@ export function SkinDiagnostic() {
     );
   }
 
+  // ----- GATE (email obligatoire pour révéler le résultat complet) -----
+  if (step === "gate") {
+    const profile: ProfileKey = computeProfile(answers);
+    const p = PROFILES[profile];
+    const props = diagnosticProperties(answers, profile);
+    return (
+      <Container className="py-16 md:py-24">
+        <div className="mx-auto max-w-xl text-center">
+          <p className="text-xs uppercase tracking-[0.25em] text-stone">Ton diagnostic est prêt</p>
+          <Heading className="mt-3 text-balance text-3xl leading-tight md:text-4xl">{p.title}</Heading>
+          <ul className="mx-auto mt-5 flex flex-wrap justify-center gap-2">
+            {p.traits.map((t) => (
+              <li
+                key={t}
+                className="rounded-full border border-terracotta/40 bg-cream px-3 py-1 text-xs text-stone"
+              >
+                {t}
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-8 rounded-2xl border border-sage/30 bg-sage/[0.05] p-6">
+            <p className="font-serif text-xl text-ink">Ta routine personnalisée + ton code -15%</p>
+            <p className="mt-2 text-sm leading-relaxed text-stone">
+              Laisse ton email : tu vois ton résultat détaillé tout de suite, et on t&apos;envoie ta
+              routine matin/soir + ton code -15% en avant-première.
+            </p>
+            <WaitlistForm
+              source={`diagnostic_${profile}`}
+              properties={props}
+              cta="Voir mon résultat"
+              onSuccess={() => setStep("result")}
+              className="mx-auto mt-5 max-w-md text-left"
+            />
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setStep(QUESTIONS.length - 1)}
+            className="mt-5 text-sm text-stone underline-offset-4 hover:text-ink hover:underline"
+          >
+            Revenir aux questions
+          </button>
+        </div>
+      </Container>
+    );
+  }
+
   // ----- RESULT -----
   if (step === "result") {
     const profile: ProfileKey = computeProfile(answers);
@@ -89,7 +155,7 @@ export function SkinDiagnostic() {
       <Container className="py-16 md:py-24">
         <div className="mx-auto max-w-2xl">
           <p className="text-center text-xs uppercase tracking-[0.25em] text-stone">Ton profil</p>
-          <h1 className="mt-3 text-center text-balance text-3xl leading-tight md:text-4xl">{p.title}</h1>
+          <Heading className="mt-3 text-center text-balance text-3xl leading-tight md:text-4xl">{p.title}</Heading>
           <p className="mt-5 leading-relaxed text-stone">{p.intro}</p>
 
           <ul className="mt-6 flex flex-wrap gap-2">
@@ -130,13 +196,13 @@ export function SkinDiagnostic() {
             </p>
           )}
 
-          {/* Capture email — le -15% arrive par email (honnête, checkout pas encore live) */}
-          <div className="mt-8 rounded-2xl border border-sage/30 bg-sage/[0.05] p-6 text-center">
-            <p className="font-serif text-xl text-ink">Reçois ton diagnostic + ton code -15%</p>
-            <p className="mt-2 text-sm leading-relaxed text-stone">
-              On t'envoie ton profil détaillé et ton code -15% en avant-première du lancement.
+          {/* Email déjà collecté au gate — confirmation honnête. */}
+          <div className="mt-8 flex items-start gap-3 rounded-2xl border border-sage/30 bg-sage/[0.05] p-5">
+            <Check size={20} weight="bold" className="mt-0.5 shrink-0 text-sage" />
+            <p className="text-sm leading-relaxed text-stone">
+              C&apos;est noté — ton profil détaillé et ton code -15% arrivent par email, en
+              avant-première du lancement. Surveille ta boîte de réception.
             </p>
-            <WaitlistForm source={`diagnostic_${profile}`} className="mx-auto mt-5 max-w-md text-left" />
           </div>
 
           <div className="mt-8 text-center">
