@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/le-produit",
     "/diagnostic",
+    "/testeuses",
     "/blog",
     "/a-propos",
     "/faq",

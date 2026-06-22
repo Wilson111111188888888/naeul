@@ -20,7 +20,7 @@ import { buttonClasses } from "@/components/ui/button";
 import { MethodStrates } from "@/components/sections/method-strates";
 import { GesteNaeul } from "@/components/sections/geste-naeul";
 import { SwipeCarousel } from "@/components/swipe-carousel";
-import { FirstTesters } from "@/components/sections/first-testers";
+import { TestersWall } from "@/components/sections/testers-wall";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { StickyCta } from "@/components/sticky-cta";
 import { Countdown } from "@/components/countdown";
@@ -499,7 +499,7 @@ export default function Home() {
       <GesteNaeul className="border-b border-line" />
 
       {/* 8 — PREMIÈRES TESTEUSES (placeholder honnête en attendant les vrais retours) */}
-      <FirstTesters className="border-b border-line bg-cream" />
+      <TestersWall limit={6} className="border-b border-line bg-cream" />
 
       {/* 9 — LE CERCLE DES 200 (scarcity légitime, sans faux compteur) */}
       <section className="bg-ink text-cream">

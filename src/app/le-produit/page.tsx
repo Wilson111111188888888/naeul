@@ -16,7 +16,7 @@ import { ReassuranceRow } from "@/components/reassurance-row";
 import { Marquee } from "@/components/marquee";
 import { MethodStrates } from "@/components/sections/method-strates";
 import { GesteNaeul } from "@/components/sections/geste-naeul";
-import { FirstTesters } from "@/components/sections/first-testers";
+import { TestersWall } from "@/components/sections/testers-wall";
 import { PREORDER_ENABLED, SHIPPING_DATE } from "@/lib/preorder";
 import { buttonClasses } from "@/components/ui/button";
 import { formatPrice, cn } from "@/lib/utils";
@@ -393,7 +393,7 @@ export default function LeProduitPage() {
       </section>
 
       {/* 10 — PREMIÈRES TESTEUSES */}
-      <FirstTesters className="border-b border-line bg-cream" />
+      <TestersWall limit={6} className="border-b border-line bg-cream" />
 
       {/* 11 — GARANTIE 30 JOURS */}
       <section className="border-b border-line">
