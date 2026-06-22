@@ -81,6 +81,21 @@ export default function AProposPage() {
             </div>
           </div>
 
+          {/* « J'ai tout essayé » — preuve par l'image */}
+          <figure className="overflow-hidden rounded-2xl">
+            <Image
+              src="/images/naeul-jai-tout-essaye.jpg"
+              alt="Des dizaines de produits peau grasse testés et un carnet de notes : trop de produits, peu de résultats"
+              width={1200}
+              height={900}
+              sizes="(max-width: 768px) 100vw, 672px"
+              className="aspect-[4/3] w-full object-cover"
+            />
+            <figcaption className="mt-3 text-xs text-stone">
+              Douze ans d&apos;essais. Trop de produits, trop de promesses, peu de résultats.
+            </figcaption>
+          </figure>
+
           {/* Citation */}
           <figure className="border-l-2 border-terracotta/50 pl-6">
             <blockquote className="text-balance font-serif text-2xl leading-relaxed text-ink md:text-3xl">
@@ -117,6 +132,16 @@ export default function AProposPage() {
                 bientôt, une routine complète.
               </p>
             </div>
+            <figure className="mt-8 overflow-hidden rounded-2xl">
+              <Image
+                src="/images/naeul-peau-confortable.jpg"
+                alt="Une peau grasse apaisée et confortable, sans brillance, après plusieurs semaines"
+                width={825}
+                height={1100}
+                sizes="(max-width: 768px) 100vw, 672px"
+                className="h-auto w-full"
+              />
+            </figure>
           </div>
 
           <div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Check, X, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
 import { HERO_PRODUCT } from "@/lib/products";
 import { Container } from "@/components/ui/container";
@@ -205,6 +206,16 @@ export default function LeProduitPage() {
             <h2 className="mt-3 text-3xl md:text-4xl">Réguler, pas dessécher.</h2>
             <p className="mt-6 text-lg leading-relaxed text-stone">{product.differentiator}</p>
           </div>
+          <figure className="mx-auto mt-10 max-w-md overflow-hidden rounded-2xl">
+            <Image
+              src="/images/naeul-texture.jpg"
+              alt="Texture du sérum naeul : fluide, légère, non grasse, absorption rapide, effet peau nue"
+              width={880}
+              height={1100}
+              sizes="(max-width: 768px) 100vw, 448px"
+              className="h-auto w-full"
+            />
+          </figure>
         </Container>
       </section>
 
