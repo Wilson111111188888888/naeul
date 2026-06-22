@@ -20,6 +20,12 @@ export const FOUNDERS_DISCOUNT = 0.15;
 export const FOUNDERS_LIMIT = 200;
 
 /**
+ * Date de lancement cible (pour le compte à rebours). Réelle : juillet 2026.
+ * Surchargeable via NEXT_PUBLIC_LAUNCH_DATE (format ISO, ex. "2026-07-01").
+ */
+export const LAUNCH_DATE = process.env.NEXT_PUBLIC_LAUNCH_DATE ?? "2026-07-01";
+
+/**
  * Date d'expédition prévisionnelle — OBLIGATION LÉGALE de l'afficher avant toute
  * vente en pré-commande (Code de la consommation). À définir via la variable
  * d'environnement NEXT_PUBLIC_SHIPPING_DATE (ex. "15 septembre 2026").

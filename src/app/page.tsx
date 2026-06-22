@@ -23,6 +23,7 @@ import { SwipeCarousel } from "@/components/swipe-carousel";
 import { FirstTesters } from "@/components/sections/first-testers";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { StickyCta } from "@/components/sticky-cta";
+import { Countdown } from "@/components/countdown";
 import { BeforeAfter } from "@/components/product/before-after";
 import { TrackedLink, ScrollDepth } from "@/components/analytics";
 import { HERO_PRODUCT } from "@/lib/products";
@@ -147,21 +148,40 @@ export default function Home() {
               Le sérum K-beauty que je cherchais pour ma peau grasse. Mon mari l&apos;a formulé, je
               l&apos;ai testé sur ma peau. Sans alcool dénaturé, sans BHA agressifs, sans représailles.
             </p>
-            <p className="mt-6 text-[0.8rem] uppercase tracking-[0.15em] text-stone/80">
-              Sortie juillet 2026 · -15% pour les 200 premières · Édition fondatrice numérotée
-            </p>
-            <TrackedLink
-              href={ctaHref}
-              event="cta_click"
-              data={{ location: "hero" }}
-              className={buttonClasses({ size: "lg", className: "mt-7 w-full sm:w-auto" })}
-            >
-              Je rejoins les 200 premières
-              <ArrowRight size={18} />
-            </TrackedLink>
-            <p className="mt-3 text-xs text-stone/70">
-              Pas de spam. Pas de pré-paiement. Ton code -15% arrive le jour J.
-            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <Countdown />
+              <span className="text-[0.8rem] uppercase tracking-[0.15em] text-stone/80">
+                -15% pour les 200 premières · Édition numérotée
+              </span>
+            </div>
+            {PREORDER_ENABLED ? (
+              <>
+                <TrackedLink
+                  href={ctaHref}
+                  event="cta_click"
+                  data={{ location: "hero" }}
+                  className={buttonClasses({ size: "lg", className: "mt-7 w-full sm:w-auto" })}
+                >
+                  Précommander (-15%)
+                  <ArrowRight size={18} />
+                </TrackedLink>
+                <p className="mt-3 text-xs text-stone/70">
+                  Paiement aujourd&apos;hui pour réserver ton flacon numéroté.
+                </p>
+              </>
+            ) : (
+              <>
+                <WaitlistForm
+                  tone="light"
+                  source="hero"
+                  cta="Je rejoins les 200 premières"
+                  className="mt-7 max-w-md"
+                />
+                <p className="mt-2 text-xs text-stone/70">
+                  Pas de pré-paiement. Ton code -15% arrive le jour J.
+                </p>
+              </>
+            )}
           </div>
 
           <div className="order-1 md:order-2 md:col-span-2">
