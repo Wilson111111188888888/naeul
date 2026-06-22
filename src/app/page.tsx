@@ -68,18 +68,6 @@ const CERCLE = [
   { icon: Gift, t: "Le prochain soin offert en mini-format", d: "Six mois après ton flacon, tu testes le produit 2 avant tout le monde." },
 ];
 
-// naeul vs marques généralistes nommées (Typology · La Rosée · The Ordinary).
-// Comparaison sur infos publiques uniquement, sans claim non vérifiable.
-const COMPARISON: { label: string; naeul: string; rival: string }[] = [
-  { label: "Spécialité", naeul: "Peau grasse uniquement", rival: "Tous types de peau" },
-  { label: "Niacinamide", naeul: "5% (dosée pour la tolérance)", rival: "Variable — ex. The Ordinary 10%" },
-  { label: "Exfoliation", naeul: "AHA lactique doux, sans BHA fort ni alcool", rival: "Variable" },
-  { label: "SAV & garantie 30 j en français", naeul: "Oui", rival: "Variable" },
-  { label: "Concentrations affichées", naeul: "Oui", rival: "Variable" },
-  { label: "Certifications", naeul: "ISO 22716 · ECOCERT", rival: "Variable" },
-  { label: "Prix indicatif (30 ml)", naeul: "32,90 €", rival: "Très variable" },
-];
-
 // Comment se mesure le résultat (remplace l'avant/après — honnêteté radicale).
 const MESURE = [
   { t: "Semaine 2", d: "La peau tire moins. Tu sens que ton sérum ne te punit plus." },
@@ -540,45 +528,27 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 10 — NAEUL VS ALTERNATIVES */}
+      {/* 10 — POURQUOI NAEUL EXISTE (disqualification, pas comparaison) */}
       <section className="border-b border-line bg-cream">
-        <Container className="py-16 md:py-24">
-          <div className="mx-auto max-w-2xl text-center">
+        <Container className="py-20 text-center md:py-28">
+          <div className="mx-auto max-w-2xl">
             <p className="text-xs uppercase tracking-[0.25em] text-stone">Le choix</p>
-            <h2 className="mt-3 text-balance font-serif text-3xl md:text-4xl">
-              naeul vs les généralistes
+            <h2 className="mt-3 text-balance font-serif text-3xl leading-snug md:text-4xl">
+              Pourquoi naeul existe, quand The Ordinary existe déjà.
             </h2>
-            <p className="mt-5 leading-relaxed text-stone">
-              Typology, La Rosée, The Ordinary : d&apos;excellentes marques — mais généralistes, pour
-              tous les types de peau. naeul fait le choix d&apos;une seule peau. Voilà la différence,
-              sur des faits publics.
+            <p className="mt-8 text-balance font-serif text-xl leading-relaxed text-ink md:text-2xl">
+              The Ordinary est excellent si tu veux gérer ta peau toute seule, avec des ingrédients
+              nus.
+            </p>
+            <p className="mt-4 text-balance font-serif text-xl leading-relaxed text-sage-dark md:text-2xl">
+              naeul existe si tu veux que quelqu&apos;un s&apos;en occupe <em>avec</em>{" "}toi.
+            </p>
+            <p className="mx-auto mt-8 max-w-xl leading-relaxed text-stone">
+              Pas une routine de plus à décoder seule. Un soin pensé pour une seule peau — la
+              grasse — et un accompagnement humain, en français. C&apos;est tout le contraire d&apos;un
+              flacon anonyme posé sur une étagère.
             </p>
           </div>
-          <div className="mx-auto mt-10 max-w-2xl overflow-hidden rounded-2xl border border-line bg-sand">
-            <div className="grid grid-cols-[1.3fr_1fr_1fr] border-b border-line text-[0.65rem] font-semibold uppercase tracking-wide">
-              <span className="px-4 py-3" />
-              <span className="px-2 py-3 text-center text-sage">naeul</span>
-              <span className="px-2 py-3 text-center text-stone">Généralistes*</span>
-            </div>
-            <ul className="divide-y divide-line">
-              {COMPARISON.map((row) => (
-                <li key={row.label} className="grid grid-cols-[1.3fr_1fr_1fr] items-center">
-                  <span className="px-4 py-3 text-sm leading-snug text-ink">{row.label}</span>
-                  <span className="px-2 py-3 text-center text-xs font-medium leading-snug text-ink">
-                    {row.naeul}
-                  </span>
-                  <span className="px-2 py-3 text-center text-xs leading-snug text-stone">
-                    {row.rival}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-xs leading-relaxed text-stone/70">
-            *Typology · La Rosée · The Ordinary. Comparaison établie sur des informations publiques
-            (sites des marques), août 2026. Ces marques restent d&apos;excellents choix pour une peau
-            normale ou sèche.
-          </p>
         </Container>
       </section>
 
