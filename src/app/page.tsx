@@ -144,8 +144,8 @@ export default function Home() {
               n&apos;est pas ton ennemie.
             </h1>
             <p className="mt-6 max-w-lg text-lg leading-relaxed text-stone md:text-xl">
-              On a créé le sérum K-beauty qu&apos;on cherchait pour la peau de ma femme. Sans alcool
-              dénaturé. Sans BHA agressifs. Sans représailles.
+              Le sérum K-beauty que je cherchais pour ma peau grasse. Mon mari l&apos;a formulé, je
+              l&apos;ai testé sur ma peau. Sans alcool dénaturé, sans BHA agressifs, sans représailles.
             </p>
             <p className="mt-6 text-[0.8rem] uppercase tracking-[0.15em] text-stone/80">
               Sortie juillet 2026 · -15% pour les 200 premières · Édition fondatrice numérotée
@@ -200,26 +200,26 @@ export default function Home() {
                 On a créé la marque qu&apos;on n&apos;a pas pu acheter.
               </h2>
               <div className="mt-6 space-y-4 leading-relaxed text-stone">
-                <p>Ma femme a la peau grasse depuis ses douze ans.</p>
+                <p>J&apos;ai la peau grasse depuis mes douze ans.</p>
                 <p>
-                  Pendant douze ans, on lui a vendu des produits qui assèchent, des acides qui
+                  Pendant douze ans, on m&apos;a vendu des produits qui assèchent, des acides qui
                   décapent, des matifiants qui font ressortir le sébum dès quatorze heures.
                 </p>
                 <p>
-                  À chaque nouveau produit, le même cycle : trois semaines de mieux, puis sa peau se
+                  À chaque nouveau produit, le même cycle : trois semaines de mieux, puis ma peau se
                   rebellait, plus grasse qu&apos;avant.
                 </p>
                 <p>
-                  On a cherché une K-beauty pensée pour sa peau. Les marques coréennes étaient
+                  J&apos;ai cherché une K-beauty pensée pour ma peau. Les marques coréennes étaient
                   excellentes — mais conçues pour le climat de Séoul, sans interlocuteur en France.
                 </p>
-                <p>Les pharmaciennes lui parlaient comme à une ado en crise d&apos;acné.</p>
-                <p>Alors on l&apos;a faite nous-mêmes.</p>
+                <p>Les pharmaciennes me parlaient comme à une ado en crise d&apos;acné.</p>
+                <p>Alors on s&apos;y est mis : mon mari a creusé les formules, j&apos;ai testé chaque version sur ma peau.</p>
                 <p className="text-ink">
-                  naeul, c&apos;est le sérum qu&apos;on aurait voulu pour elle, il y a dix ans.
+                  naeul, c&apos;est le sérum que j&apos;aurais voulu il y a dix ans.
                 </p>
               </div>
-              <p className="mt-6 font-serif text-sm italic text-stone">— Le couple derrière naeul</p>
+              <p className="mt-6 font-serif text-sm italic text-stone">— La fondatrice de naeul</p>
               <Link
                 href="/a-propos"
                 className="mt-5 inline-flex items-center gap-1.5 text-sm text-sage underline underline-offset-4 hover:text-sage-dark"
@@ -316,34 +316,39 @@ export default function Home() {
                 </SwipeCarousel>
               </div>
 
-              {/* Bloc prix — visible, assumé, hiérarchisé */}
+              {/* Bloc prix — visible, assumé, hiérarchisé (prix au flacon = ancrage valeur) */}
               <div className="mt-8 overflow-hidden rounded-2xl border border-line">
-                <div className="flex items-center justify-between px-5 py-4">
-                  <span className="text-sm text-ink">Le flacon</span>
-                  <span className="font-serif text-lg text-ink">32,90€</span>
+                <div className="flex items-center justify-between gap-3 px-5 py-4">
+                  <span className="min-w-0">
+                    <span className="block text-sm text-ink">1 flacon</span>
+                    <span className="block text-xs text-stone">32,90 € / flacon</span>
+                  </span>
+                  <span className="shrink-0 whitespace-nowrap font-serif text-lg text-ink">32,90 €</span>
                 </div>
-                <div className="flex items-center justify-between border-t border-line bg-sage/[0.06] px-5 py-4">
-                  <span className="flex items-center gap-2 text-sm text-ink">
-                    Bundle 2 flacons
-                    <span className="rounded-full bg-sage px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wide text-cream">
-                      Le plus populaire
+                <div className="flex items-center justify-between gap-3 border-t border-line px-5 py-4">
+                  <span className="min-w-0">
+                    <span className="text-sm text-ink">2 flacons</span>
+                    <span className="ml-2 rounded-full bg-sand px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wide text-stone">
+                      Le plus pris
                     </span>
+                    <span className="mt-0.5 block text-xs text-stone">29,95 € / flacon</span>
                   </span>
-                  <span className="flex items-baseline gap-2">
-                    <span className="text-xs text-stone line-through">65,80€</span>
-                    <span className="font-serif text-lg text-ink">59,90€</span>
+                  <span className="shrink-0 whitespace-nowrap text-right">
+                    <span className="mr-1.5 text-xs text-stone line-through">65,80 €</span>
+                    <span className="font-serif text-lg text-ink">59,90 €</span>
                   </span>
                 </div>
-                <div className="flex items-center justify-between border-t border-line px-5 py-4">
-                  <span className="flex items-center gap-2 text-sm text-ink">
-                    Bundle 3 flacons
-                    <span className="rounded-full bg-terracotta/15 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wide text-terracotta">
-                      Économise 14€
+                <div className="flex items-center justify-between gap-3 border-t border-line bg-sage/[0.06] px-5 py-4">
+                  <span className="min-w-0">
+                    <span className="text-sm text-ink">3 flacons</span>
+                    <span className="ml-2 rounded-full bg-sage px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wide text-cream">
+                      Meilleure valeur
                     </span>
+                    <span className="mt-0.5 block text-xs text-stone">28,30 € / flacon · livraison offerte</span>
                   </span>
-                  <span className="flex items-baseline gap-2">
-                    <span className="text-xs text-stone line-through">98,70€</span>
-                    <span className="font-serif text-lg text-ink">84,90€</span>
+                  <span className="shrink-0 whitespace-nowrap text-right">
+                    <span className="mr-1.5 text-xs text-stone line-through">98,70 €</span>
+                    <span className="font-serif text-lg text-ink">84,90 €</span>
                   </span>
                 </div>
               </div>

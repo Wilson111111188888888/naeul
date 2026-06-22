@@ -118,6 +118,11 @@ export function PreorderBox({ product }: { product: Product }) {
         })}
       </fieldset>
 
+      <p className="mt-3 rounded-lg bg-sand px-3 py-2 text-xs leading-relaxed text-stone">
+        Ta peau met 6 à 8 semaines à se réguler. La plupart des fondatrices prennent 2 ou 3 flacons
+        pour ne pas s&apos;arrêter en plein milieu — et payer moins cher le flacon.
+      </p>
+
       <Button size="lg" className="mt-6 w-full" onClick={precommander} disabled={busy}>
         {loading ? "Redirection vers le paiement…" : `Précommander — ${formatPrice(selectedFounders)}`}
       </Button>

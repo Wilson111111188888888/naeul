@@ -18,7 +18,7 @@ import { GesteNaeul } from "@/components/sections/geste-naeul";
 import { FirstTesters } from "@/components/sections/first-testers";
 import { PREORDER_ENABLED, SHIPPING_DATE } from "@/lib/preorder";
 import { buttonClasses } from "@/components/ui/button";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice, cn } from "@/lib/utils";
 
 const product = HERO_PRODUCT;
 
@@ -134,12 +134,35 @@ export default function LeProduitPage() {
               <div className="mt-6">
                 <ul className="divide-y divide-line overflow-hidden rounded-xl border border-line">
                   {product.variants.map((v) => (
-                    <li key={v.id} className="flex items-center justify-between gap-4 px-4 py-3">
-                      <span className="text-sm text-ink">{v.label}</span>
+                    <li
+                      key={v.id}
+                      className={cn(
+                        "flex items-center justify-between gap-4 px-4 py-3",
+                        v.flacons === 3 && "bg-sage/[0.06]",
+                      )}
+                    >
+                      <span>
+                        <span className="flex items-center gap-2 text-sm text-ink">
+                          {v.label}
+                          {v.flacons === 3 && (
+                            <span className="rounded-full bg-sage px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wide text-cream">
+                              Meilleure valeur
+                            </span>
+                          )}
+                          {v.flacons === 2 && (
+                            <span className="rounded-full bg-sand px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wide text-stone">
+                              Le plus pris
+                            </span>
+                          )}
+                        </span>
+                        <span className="mt-0.5 block text-xs text-stone">
+                          {formatPrice(v.price / v.flacons)} / flacon
+                        </span>
+                      </span>
                       <span className="flex items-baseline gap-2">
                         {v.saving > 0 && (
                           <span className="text-xs font-medium text-sage">
-                            économise {formatPrice(v.saving)}
+                            -{formatPrice(v.saving)}
                           </span>
                         )}
                         <span className="font-serif text-lg text-ink">{formatPrice(v.price)}</span>
