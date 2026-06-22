@@ -2,11 +2,14 @@ import { NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { getVariant } from "@/lib/products";
 import { PREORDER_ENABLED, foundersPrice, SHIPPING_DATE } from "@/lib/preorder";
+import { SUBSCRIPTION_ENABLED, REFILL_INTERVAL_MONTHS, refillPrice } from "@/lib/membership";
 
 /**
- * Crée une session Stripe Checkout pour une pré-commande (Édition Fondatrices).
- * Prix Founders (-15 %), livraison offerte pour les fondatrices, date d'expédition
- * annoncée. Débit immédiat (mode "payment").
+ * Crée une session Stripe Checkout pour le sérum :
+ *  - achat unique (mode "payment", prix Founders -15 %), OU
+ *  - abonnement refill (mode "subscription", -10 %, livré tous les 2 mois) si
+ *    `subscribe` et NEXT_PUBLIC_SUBSCRIPTION_ENABLED=true. Prix récurrent inline
+ *    (pas besoin de Price ID Stripe).
  */
 export async function POST(request: Request) {
   if (!PREORDER_ENABLED) {
@@ -20,34 +23,46 @@ export async function POST(request: Request) {
   }
 
   let variantId: string;
+  let subscribe = false;
   try {
     const body = await request.json();
     variantId = body.variantId;
+    subscribe = body.subscribe === true;
   } catch {
     return NextResponse.json({ error: "Requête invalide." }, { status: 400 });
   }
+
+  // L'abonnement n'est disponible que si le flag est actif.
+  const isSub = subscribe && SUBSCRIPTION_ENABLED;
 
   const resolved = getVariant(variantId);
   if (!resolved) {
     return NextResponse.json({ error: "Format introuvable." }, { status: 400 });
   }
   const { product, variant } = resolved;
-  const price = foundersPrice(variant.price);
+  const price = isSub ? refillPrice(foundersPrice(variant.price)) : foundersPrice(variant.price);
 
   const origin =
     request.headers.get("origin") ?? process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3001";
 
   try {
     const session = await stripe.checkout.sessions.create({
-      mode: "payment",
+      mode: isSub ? "subscription" : "payment",
       line_items: [
         {
           price_data: {
             currency: "eur",
             unit_amount: Math.round(price * 100),
+            ...(isSub
+              ? { recurring: { interval: "month", interval_count: REFILL_INTERVAL_MONTHS } }
+              : {}),
             product_data: {
-              name: `${product.name} — ${variant.label} · Édition Fondatrices`,
-              description: `Pré-commande — expédition prévue ${SHIPPING_DATE}. ${product.format}, ${product.volume}.`,
+              name: isSub
+                ? `${product.name} — ${variant.label} · Abonnement refill`
+                : `${product.name} — ${variant.label} · Édition Fondatrices`,
+              description: isSub
+                ? `Livré tous les ${REFILL_INTERVAL_MONTHS} mois, sans engagement. ${product.format}, ${product.volume}.`
+                : `Pré-commande — expédition prévue ${SHIPPING_DATE}. ${product.format}, ${product.volume}.`,
             },
           },
           quantity: 1,
@@ -62,6 +77,7 @@ export async function POST(request: Request) {
         variantId: variant.id,
         flacons: String(variant.flacons),
         shippingDate: SHIPPING_DATE,
+        plan: isSub ? "refill" : "once",
       },
       success_url: `${origin}/commande/confirmee?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/le-produit`,

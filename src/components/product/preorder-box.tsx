@@ -14,27 +14,36 @@ import {
   ALMA_INSTALLMENTS,
   installmentAmount,
 } from "@/lib/preorder";
+import {
+  SUBSCRIPTION_ENABLED,
+  REFILL_INTERVAL_MONTHS,
+  REFILL_DISCOUNT,
+  refillPrice,
+} from "@/lib/membership";
 
 export function PreorderBox({ product }: { product: Product }) {
   const def = product.variants.find((v) => v.highlight) ?? product.variants[0];
   const [selectedId, setSelectedId] = useState(def.id);
+  const [subscribe, setSubscribe] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loading3x, setLoading3x] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const selected = product.variants.find((v) => v.id === selectedId) ?? def;
   const selectedFounders = foundersPrice(selected.price);
+  // Prix payé : refill (-10 %) si abonnement, sinon prix fondateur.
+  const payPrice = subscribe ? refillPrice(selectedFounders) : selectedFounders;
 
-  // Lance un paiement (Stripe 1× ou Alma 3×) et redirige vers la page de paiement.
+  // Lance un paiement (Stripe 1×/abonnement ou Alma 3×) et redirige.
   async function checkout(endpoint: string, setBusy: (v: boolean) => void, mode: string) {
     setBusy(true);
     setError(null);
-    track("begin_preorder", { variant: selected.id, price: selectedFounders, mode });
+    track("begin_preorder", { variant: selected.id, price: payPrice, mode });
     try {
       const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ variantId: selected.id }),
+        body: JSON.stringify({ variantId: selected.id, subscribe }),
       });
       const data = await res.json();
       if (data.url) {
@@ -49,11 +58,12 @@ export function PreorderBox({ product }: { product: Product }) {
     }
   }
 
-  const precommander = () => checkout("/api/preorder", setLoading, "stripe_1x");
+  const precommander = () =>
+    checkout("/api/preorder", setLoading, subscribe ? "stripe_refill" : "stripe_1x");
   const payer3x = () => checkout("/api/preorder/alma", setLoading3x, "alma_3x");
 
   const busy = loading || loading3x;
-  const perInstallment = installmentAmount(selectedFounders);
+  const perInstallment = installmentAmount(payPrice);
 
   return (
     <div id="acheter" className="scroll-mt-24">
@@ -118,16 +128,53 @@ export function PreorderBox({ product }: { product: Product }) {
         })}
       </fieldset>
 
+      {/* Achat unique vs abonnement refill (-10 %, livré tous les 2 mois) */}
+      {SUBSCRIPTION_ENABLED && (
+        <div className="mt-4 grid grid-cols-2 gap-2">
+          <button
+            type="button"
+            onClick={() => setSubscribe(false)}
+            aria-pressed={!subscribe}
+            className={cn(
+              "rounded-xl border p-3 text-left text-sm transition-colors",
+              !subscribe ? "border-sage bg-sage/[0.06]" : "border-ink/12 bg-cream hover:border-ink/25",
+            )}
+          >
+            <span className="font-medium text-ink">Achat unique</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setSubscribe(true)}
+            aria-pressed={subscribe}
+            className={cn(
+              "rounded-xl border p-3 text-left text-sm transition-colors",
+              subscribe ? "border-sage bg-sage/[0.06]" : "border-ink/12 bg-cream hover:border-ink/25",
+            )}
+          >
+            <span className="font-medium text-ink">
+              Abonnement -{Math.round(REFILL_DISCOUNT * 100)} %
+            </span>
+            <span className="mt-0.5 block text-[0.65rem] leading-snug text-stone">
+              Livré tous les {REFILL_INTERVAL_MONTHS} mois · sans engagement, annulable
+            </span>
+          </button>
+        </div>
+      )}
+
       <p className="mt-3 rounded-lg bg-sand px-3 py-2 text-xs leading-relaxed text-stone">
         Ta peau met 6 à 8 semaines à se réguler. La plupart des fondatrices prennent 2 ou 3 flacons
         pour ne pas s&apos;arrêter en plein milieu — et payer moins cher le flacon.
       </p>
 
       <Button size="lg" className="mt-6 w-full" onClick={precommander} disabled={busy}>
-        {loading ? "Redirection vers le paiement…" : `Précommander — ${formatPrice(selectedFounders)}`}
+        {loading
+          ? "Redirection vers le paiement…"
+          : subscribe
+            ? `M'abonner — ${formatPrice(payPrice)} / ${REFILL_INTERVAL_MONTHS} mois`
+            : `Précommander — ${formatPrice(payPrice)}`}
       </Button>
 
-      {ALMA_ENABLED && (
+      {ALMA_ENABLED && !subscribe && (
         <>
           <Button
             variant="secondary"

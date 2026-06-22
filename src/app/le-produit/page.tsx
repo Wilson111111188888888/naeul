@@ -415,6 +415,26 @@ export default function LeProduitPage() {
         </Container>
       </section>
 
+      {/* TEASER — Le Cercle (suivi) */}
+      <section className="border-b border-line bg-ink text-cream">
+        <Container className="flex flex-col items-center gap-4 py-14 text-center md:py-16">
+          <p className="text-[0.7rem] uppercase tracking-[0.25em] text-cream/60">Le Cercle</p>
+          <h2 className="max-w-xl text-balance font-serif text-2xl text-cream md:text-3xl">
+            Et si quelqu&apos;un s&apos;occupait de ta peau grasse avec toi ?
+          </h2>
+          <p className="max-w-md leading-relaxed text-cream/75">
+            Une experte à ton écoute, un suivi photo, -15 % toute l&apos;année. Le sérum n&apos;est
+            que le début.
+          </p>
+          <Link
+            href="/cercle"
+            className={buttonClasses({ size: "lg", className: "mt-2 bg-cream text-ink hover:bg-sand" })}
+          >
+            Découvrir Le Cercle
+          </Link>
+        </Container>
+      </section>
+
       {/* 12 — FAQ PRODUIT */}
       <section className="border-b border-line bg-cream">
         <Container className="py-16 md:py-24">
