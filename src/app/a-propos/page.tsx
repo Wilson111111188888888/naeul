@@ -113,7 +113,7 @@ export default function AProposPage() {
                 tenaient pas la promesse. Et validé le produit avant de le proposer.
               </p>
               <p>
-                Le résultat : un sérum K-beauty français pour peau grasse, lancé en juillet 2026. Et
+                Le résultat : un sérum K-beauty français pour peau grasse, lancé en août 2026. Et
                 bientôt, une routine complète.
               </p>
             </div>

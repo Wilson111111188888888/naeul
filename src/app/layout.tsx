@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s — naeul",
   },
   description:
-    "Le sérum K-beauty pensé pour les peaux grasses françaises. Niacinamide, AHA doux, sans alcool. Édition fondatrice, sortie juillet 2026.",
+    "Le sérum K-beauty pensé pour les peaux grasses françaises. Niacinamide, AHA doux, sans alcool. Édition fondatrice, sortie août 2026.",
   keywords: [
     "K-beauty française",
     "peau grasse",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     siteName: "naeul",
     title: "naeul · K-beauty française pour peau grasse · Sans agresser",
     description:
-      "Le sérum K-beauty pensé pour les peaux grasses françaises. Niacinamide, AHA doux, sans alcool. Édition fondatrice, sortie juillet 2026.",
+      "Le sérum K-beauty pensé pour les peaux grasses françaises. Niacinamide, AHA doux, sans alcool. Édition fondatrice, sortie août 2026.",
     url: SITE_URL,
     images: ["/images/naeul-produit-avec-box.jpg"],
   },
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "naeul · K-beauty française pour peau grasse · Sans agresser",
     description:
-      "Le sérum K-beauty pensé pour les peaux grasses françaises. Niacinamide, AHA doux, sans alcool. Édition fondatrice, sortie juillet 2026.",
+      "Le sérum K-beauty pensé pour les peaux grasses françaises. Niacinamide, AHA doux, sans alcool. Édition fondatrice, sortie août 2026.",
     images: ["/images/naeul-produit-avec-box.jpg"],
   },
   alternates: { canonical: "/" },

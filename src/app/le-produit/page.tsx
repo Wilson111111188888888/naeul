@@ -177,7 +177,7 @@ export default function LeProduitPage() {
 
               <div className="mt-8 rounded-2xl border border-line bg-cream p-6">
                 <p className="text-sm font-medium text-ink">
-                  Le sérum arrive en juillet 2026. Sois au courant en avant-première.
+                  Le sérum arrive en août 2026. Sois au courant en avant-première.
                 </p>
                 <p className="mt-1 text-xs text-stone">
                   Édition fondatrice limitée à 200 flacons — les premières inscrites sont prévenues et
@@ -185,7 +185,7 @@ export default function LeProduitPage() {
                 </p>
                 <WaitlistForm source="produit_haut" className="mt-4" />
                 <p className="mt-4 text-xs uppercase tracking-[0.15em] text-stone/70">
-                  Inscriptions en cours · Lancement juillet 2026
+                  Inscriptions en cours · Lancement août 2026
                 </p>
                 <ReassuranceRow className="mt-4 border-t border-line pt-4" />
                 <p className="mt-3 text-[0.7rem] text-stone/80">
@@ -446,7 +446,7 @@ export default function LeProduitPage() {
               </p>
               <WaitlistForm source="produit_bas" className="w-full max-w-md" />
               <p className="text-xs uppercase tracking-[0.15em] text-stone/70">
-                Inscriptions en cours · Lancement juillet 2026
+                Inscriptions en cours · Lancement août 2026
               </p>
             </>
           )}

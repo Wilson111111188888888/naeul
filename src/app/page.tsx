@@ -28,7 +28,8 @@ import { SkinDiagnostic } from "@/components/diagnostic/skin-diagnostic";
 import { BeforeAfter } from "@/components/product/before-after";
 import { TrackedLink, ScrollDepth } from "@/components/analytics";
 import { HERO_PRODUCT } from "@/lib/products";
-import { PREORDER_ENABLED } from "@/lib/preorder";
+import { PREORDER_ENABLED, FOUNDERS_LIMIT } from "@/lib/preorder";
+import { WAITLIST_COUNT } from "@/components/waitlist-count";
 
 // Trust bar — 5 réassurances factuelles (juste après le hero).
 const TRUST_BAR = [
@@ -67,16 +68,16 @@ const CERCLE = [
   { icon: Gift, t: "Le prochain soin offert en mini-format", d: "Six mois après ton flacon, tu testes le produit 2 avant tout le monde." },
 ];
 
-// naeul vs K-beauty importée (réponse à « pourquoi pas Anua ? », sans nominer).
+// naeul vs marques généralistes nommées (Typology · La Rosée · The Ordinary).
+// Comparaison sur infos publiques uniquement, sans claim non vérifiable.
 const COMPARISON: { label: string; naeul: string; rival: string }[] = [
-  { label: "Spécialité", naeul: "Peau grasse uniquement", rival: "Tous types" },
-  { label: "Climat ciblé", naeul: "France · Europe", rival: "Corée" },
-  { label: "Approche", naeul: "Réconciliation", rival: "Performance" },
-  { label: "SAV en français", naeul: "Oui, par le couple", rival: "Variable" },
-  { label: "Garantie 30 jours", naeul: "Oui", rival: "Variable" },
+  { label: "Spécialité", naeul: "Peau grasse uniquement", rival: "Tous types de peau" },
+  { label: "Niacinamide", naeul: "5% (dosée pour la tolérance)", rival: "Variable — ex. The Ordinary 10%" },
+  { label: "Exfoliation", naeul: "AHA lactique doux, sans BHA fort ni alcool", rival: "Variable" },
+  { label: "SAV & garantie 30 j en français", naeul: "Oui", rival: "Variable" },
   { label: "Concentrations affichées", naeul: "Oui", rival: "Variable" },
-  { label: "Certifications affichées", naeul: "ISO 22716 · ECOCERT", rival: "Variable" },
-  { label: "Visage derrière", naeul: "Un couple identifié", rival: "Anonyme" },
+  { label: "Certifications", naeul: "ISO 22716 · ECOCERT", rival: "Variable" },
+  { label: "Prix indicatif (30 ml)", naeul: "32,90 €", rival: "Très variable" },
 ];
 
 // Comment se mesure le résultat (remplace l'avant/après — honnêteté radicale).
@@ -155,6 +156,22 @@ export default function Home() {
                 -15% pour les 200 premières · Édition numérotée
               </span>
             </div>
+
+            {/* Compteur RÉEL (108 inscrites vérifiées, pas un faux compteur) */}
+            <div className="mt-5 max-w-sm">
+              <div className="flex items-baseline justify-between text-sm">
+                <span className="font-medium text-ink">
+                  {WAITLIST_COUNT} <span className="text-stone">/ {FOUNDERS_LIMIT} places réservées</span>
+                </span>
+                <span className="text-xs text-stone">Plus que {FOUNDERS_LIMIT - WAITLIST_COUNT}</span>
+              </div>
+              <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-line">
+                <div
+                  className="h-full rounded-full bg-sage transition-all"
+                  style={{ width: `${(WAITLIST_COUNT / FOUNDERS_LIMIT) * 100}%` }}
+                />
+              </div>
+            </div>
             {PREORDER_ENABLED ? (
               <>
                 <TrackedLink
@@ -204,6 +221,49 @@ export default function Home() {
       {/* 2 — DIAGNOSTIC PEAU (générateur de leads principal) */}
       <section id="diagnostic" className="scroll-mt-20 border-b border-line bg-cream">
         <SkinDiagnostic embedded />
+      </section>
+
+      {/* 2bis — TU TE RECONNAIS ? (coût émotionnel — l'identification avant les actifs) */}
+      <section className="border-b border-line">
+        <Container className="py-16 md:py-24">
+          <div className="grid items-center gap-10 md:grid-cols-2 md:gap-14">
+            <figure className="mx-auto w-full max-w-sm overflow-hidden rounded-2xl bg-sand">
+              <Image
+                src="/images/naeul-miroir.jpg"
+                alt="Femme à la peau grasse qui examine son grain de peau dans le miroir"
+                width={900}
+                height={1125}
+                sizes="(max-width: 768px) 100vw, 40vw"
+                className="aspect-[4/5] h-full w-full object-cover"
+              />
+            </figure>
+            <div>
+              <p className="text-xs uppercase tracking-[0.25em] text-stone">Tu te reconnais ?</p>
+              <h2 className="mt-3 text-balance font-serif text-3xl leading-snug md:text-4xl">
+                Le vrai problème n&apos;est pas ton sébum. C&apos;est ce qu&apos;il te fait
+                ressentir.
+              </h2>
+              <ul className="mt-7 space-y-4">
+                {[
+                  "Je brille sur toutes les photos.",
+                  "Je me lave le visage, et deux heures après, ça recommence.",
+                  "Je vérifie mon reflet dès que je passe devant une vitre.",
+                ].map((t) => (
+                  <li
+                    key={t}
+                    className="border-l-2 border-terracotta/50 pl-4 font-serif text-lg italic leading-relaxed text-ink"
+                  >
+                    « {t} »
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-7 leading-relaxed text-stone">
+                On ne parle pas que de pores et de pourcentages. On parle de cette fatigue-là — celle
+                de surveiller sa peau toute la journée. naeul existe pour que tu arrêtes.
+              </p>
+            </div>
+          </div>
+        </Container>
       </section>
 
       {/* 3 — NOTRE HISTOIRE (la fondatrice) */}
@@ -276,27 +336,26 @@ export default function Home() {
       <section className="border-b border-line bg-sage/[0.08]">
         <Container className="py-20 text-center md:py-28">
           <div className="mx-auto max-w-2xl">
-            <p className="text-xs uppercase tracking-[0.25em] text-stone">Notre conviction</p>
-            <h2 className="mt-6 text-balance font-serif text-3xl leading-snug text-sage-dark md:text-[2.4rem]">
-              Les peaux grasses n&apos;ont pas besoin d&apos;être décapées. Elles ont besoin
-              d&apos;être comprises.
+            <p className="text-xs uppercase tracking-[0.25em] text-stone">Notre combat</p>
+            <h2 className="mt-6 text-balance font-serif text-3xl leading-snug text-sage-dark md:text-[2.6rem]">
+              On déclare la fin de la guerre contre le sébum.
             </h2>
             <div className="mt-8 space-y-4 leading-relaxed text-stone">
               <p>
-                On a appris aux peaux grasses à se combattre. À coups d&apos;alcool dénaturé,
-                d&apos;acides forts, de matifiants qui dessèchent et relancent le sébum quatre heures
-                plus tard.
-              </p>
-              <p>
-                Le sébum n&apos;est pas un défaut à éliminer. C&apos;est un signal que ta peau te
-                demande de calmer.
+                Depuis toujours, on t&apos;apprend à <em>combattre</em> ta peau grasse : décaper,
+                assécher, matifier. Plus tu l&apos;attaques, plus elle se défend — et plus elle
+                graisse. C&apos;est une guerre que tu ne peux pas gagner, parce que ton sébum
+                n&apos;est pas ton ennemi.
               </p>
               <p className="text-ink">
-                naeul travaille avec ta peau, jamais contre elle. On régule. On apaise. On renforce
-                la barrière. Et on attend que ta peau fasse le reste.
+                Nous, on choisit l&apos;inverse : travailler <em>avec</em> ta peau. Réguler, apaiser,
+                renforcer — et la laisser retrouver son équilibre. C&apos;est plus lent qu&apos;un BHA
+                fort. C&apos;est durable.
               </p>
-              <p>C&apos;est plus lent qu&apos;un BHA fort. C&apos;est durable.</p>
             </div>
+            <p className="mt-9 font-serif text-2xl italic text-sage-dark md:text-3xl">
+              Peau grasse, peau respectée.
+            </p>
           </div>
         </Container>
       </section>
@@ -497,18 +556,19 @@ export default function Home() {
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-xs uppercase tracking-[0.25em] text-stone">Le choix</p>
             <h2 className="mt-3 text-balance font-serif text-3xl md:text-4xl">
-              Pourquoi naeul, et pas une K-beauty importée ?
+              naeul vs les généralistes
             </h2>
             <p className="mt-5 leading-relaxed text-stone">
-              Les marques coréennes sont excellentes. Elles ont été conçues pour des peaux coréennes
-              et un climat coréen. Voilà ce qu&apos;on a fait différemment.
+              Typology, La Rosée, The Ordinary : d&apos;excellentes marques — mais généralistes, pour
+              tous les types de peau. naeul fait le choix d&apos;une seule peau. Voilà la différence,
+              sur des faits publics.
             </p>
           </div>
           <div className="mx-auto mt-10 max-w-2xl overflow-hidden rounded-2xl border border-line bg-sand">
             <div className="grid grid-cols-[1.3fr_1fr_1fr] border-b border-line text-[0.65rem] font-semibold uppercase tracking-wide">
               <span className="px-4 py-3" />
               <span className="px-2 py-3 text-center text-sage">naeul</span>
-              <span className="px-2 py-3 text-center text-stone">K-beauty importée</span>
+              <span className="px-2 py-3 text-center text-stone">Généralistes*</span>
             </div>
             <ul className="divide-y divide-line">
               {COMPARISON.map((row) => (
@@ -524,9 +584,10 @@ export default function Home() {
               ))}
             </ul>
           </div>
-          <p className="mx-auto mt-5 max-w-2xl text-center font-serif text-base italic text-stone">
-            Pour une peau normale ou sèche, une K-beauty généraliste reste un excellent choix. Pour
-            une peau grasse française, on pense qu&apos;on peut mieux.
+          <p className="mx-auto mt-4 max-w-2xl text-center text-xs leading-relaxed text-stone/70">
+            *Typology · La Rosée · The Ordinary. Comparaison établie sur des informations publiques
+            (sites des marques), août 2026. Ces marques restent d&apos;excellents choix pour une peau
+            normale ou sèche.
           </p>
         </Container>
       </section>
@@ -578,7 +639,7 @@ export default function Home() {
             Tu rejoins les 200 premières ?
           </h2>
           <p className="max-w-md leading-relaxed text-cream/80">
-            naeul sort en juillet 2026. Édition fondatrice limitée à 200 flacons numérotés. -15% pour
+            naeul sort en août 2026. Édition fondatrice limitée à 200 flacons numérotés. -15% pour
             les inscrites en avant-première.
           </p>
           {PREORDER_ENABLED ? (
