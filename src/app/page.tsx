@@ -269,17 +269,7 @@ export default function Home() {
       {/* 3 — NOTRE HISTOIRE (la fondatrice) */}
       <section className="border-b border-line">
         <Container className="py-16 md:py-24">
-          <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
-            <figure className="overflow-hidden rounded-2xl bg-sand">
-              <Image
-                src="/images/naeul-histoire.jpg"
-                alt="Le sérum naeul posé sur le marbre d'une salle de bain, dans la lumière du matin"
-                width={1086}
-                height={1448}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="aspect-[4/5] h-full w-full object-cover"
-              />
-            </figure>
+          <div className="mx-auto max-w-2xl">
             <div>
               <p className="text-xs uppercase tracking-[0.25em] text-stone">Notre histoire</p>
               <h2 className="mt-3 text-balance font-serif text-3xl md:text-4xl">
